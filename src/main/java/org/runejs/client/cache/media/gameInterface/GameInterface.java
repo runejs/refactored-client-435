@@ -38,13 +38,13 @@ import org.runejs.client.*;
 import org.runejs.Configuration;
 
 public class GameInterface extends CachedNode {
-    public static GameInterface[][] cachedInterfaces;
+    public static GameInterface[][] components;
     public static int gameScreenInterfaceId = -1;
     public static int tabAreaInterfaceId = -1;
     public static int chatboxInterfaceId = -1;
     public static int fullscreenInterfaceId = -1;
     public static int fullscreenSiblingInterfaceId = -1;
-    public static boolean[] loadedInterfaces;
+    public static boolean[] loaded;
     public static boolean drawTabIcons = false;
     public static boolean redrawTabArea = false;
     /**
@@ -119,162 +119,162 @@ public class GameInterface extends CachedNode {
     private static int SCROLLBAR_COLOR_CHIP_FILL = 0x4D4233;
     private static boolean aBoolean1444 = false;
 
-    public boolean isNewInterfaceFormat = false;
+    public boolean if3 = false;
     public int contentType;
-    public String alternateText;
+    public String activeText;
     public boolean tiled;
-    public int fontId;
-    public int originalHeight;
+    public int textFont;
+    public int height;
     public Object[] anObjectArray2644;
-    public boolean filled;
+    public boolean fill;
     public int textColor;
-    public int parentId;
-    public int originalX;
+    public int layer;
+    public int baseX;
     public Object[] anObjectArray2650;
-    public InterfaceModelType alternateModelType = InterfaceModelType.MODEL;
-    public int alternateAnimation;
+    public InterfaceModelType activeModelType = InterfaceModelType.MODEL;
+    public int activeModelSeqId;
     public int animationFrame;
-    public boolean itemUsable;
-    public int currentX;
-    public int rotationZ;
+    public boolean invUsable;
+    public int x;
+    public int modelYAngle;
     public Object[] anObjectArray2658;
-    public int animation;
+    public int modelSeqId;
     public int remainingAnimationTime;
     public String[] aClass1Array2661;
-    public int alternateHoveredTextColor;
-    public String targetVerb;
-    public boolean textShadowed;
-    public int itemSpritePadsY;
-    public String disabledText;
+    public int activeHoverColor;
+    public String spellAction;
+    public boolean textShadow;
+    public int invMarginY;
+    public String text;
     public Object[] anObjectArray2669;
-    public int alternateSpriteId;
+    public int activeGraphic;
     public Object[] anObjectArray2672;
     public int modelId;
-    public String tooltip;
-    public Object[] onLoadListeners;
-    public int offsetY2d;
+    public String option;
+    public Object[] onLoadListener;
+    public int modelYOffset;
     public Object[] anObjectArray2680;
     public Object[] anObjectArray2681;
     public boolean aBoolean2682;
     public GameInterfaceType type;
-    public int[] items;
+    public int[] invSlotObjId;
     public InterfaceModelType modelType;
     public boolean hasListeners;
     public int id;
-    public int rotationX;
-    public int originalWidth;
-    public int[] alternateRhs;
+    public int modelXAngle;
+    public int width;
+    public int[] scriptOperand;
     public boolean lockScroll;
     public Object[] anObjectArray2695;
-    public int currentY;
-    public String[] configActions;
-    public int[] images;
-    public boolean orthogonal;
-    public int clickMask;
-    public boolean itemSwapable;
-    public int[] imageY;
+    public int y;
+    public String[] invOptions;
+    public int[] invSlotImage;
+    public boolean modelOrthographic;
+    public int spellFlags;
+    public boolean invDraggable;
+    public int[] invSlotOffsetY;
     public Object[] anObjectArray2707;
-    public int[] imageX;
+    public int[] invSlotOffsetX;
     public String spellName;
-    public int[] itemAmounts;
-    public int alternateModelId;
+    public int[] invSlotObjCount;
+    public int activeModelID;
     public Object[] anObjectArray2712;
-    public GameInterface[] children;
-    public int actionType;
-    public int yTextAlignment;
+    public GameInterface[] createdComponents;
+    public int buttonType;
+    public int textVerticalAlignment;
     public int itemId;
-    public int hoveredTextColor;
-    public int scrollHeight;
-    public int hoveredSiblingId;
+    public int hoverColor;
+    public int scrollableHeight;
+    public int delegateHover;
     public int rotationSpeed;
-    public boolean itemDeletesDraged;
-    public int rotationY;
-    public int alternateTextColor;
-    public boolean isInventory;
+    public boolean invClearDragged;
+    public int modelZAngle;
+    public int activeColor;
+    public boolean invInteractable;
     public int modelZoom;
     public boolean aBoolean2730;
-    public int scrollDepth;
-    public int lineHeight;
-    public int xTextAlignment;
+    public int scrollY;
+    public int textLineHeight;
+    public int textHorizontalAlignment;
     public int itemAmount;
     public int anInt2736;
-    public int offsetX2d;
+    public int modelXOffset;
     public int anInt2738;
-    public int[] alternateOperators;
-    public int originalY;
-    public int spriteId;
-    public int opacity;
-    public int scrollWidth;
+    public int[] scriptComparator;
+    public int baseY;
+    public int graphic;
+    public int transparency;
+    public int scrollX;
     public Object[] anObjectArray2747;
-    public int[][] clientScripts;
-    public int itemSpritePadsX;
-    public boolean isHidden;
+    public int[][] scripts;
+    public int invMarginX;
+    public boolean hide;
     public int textureId;
 
     public GameInterface() {
         contentType = 0;
-        rotationZ = 0;
-        textShadowed = false;
+        modelYAngle = 0;
+        textShadow = false;
         tiled = false;
-        targetVerb = "";
+        spellAction = "";
         animationFrame = 0;
-        tooltip = English.ok;
-        itemSpritePadsY = 0;
+        option = English.ok;
+        invMarginY = 0;
         remainingAnimationTime = 0;
         modelType = InterfaceModelType.MODEL;
-        alternateAnimation = -1;
+        activeModelSeqId = -1;
         textColor = 0;
         aBoolean2682 = false;
         modelId = -1;
-        rotationX = 0;
-        clickMask = 0;
+        modelXAngle = 0;
+        spellFlags = 0;
         lockScroll = false;
-        parentId = -1;
-        alternateHoveredTextColor = 0;
+        layer = -1;
+        activeHoverColor = 0;
         hasListeners = false;
-        alternateSpriteId = -1;
-        currentY = 0;
-        alternateModelId = -1;
-        originalX = 0;
-        isInventory = false;
-        alternateText = "";
-        itemSwapable = false;
-        hoveredTextColor = 0;
-        originalWidth = 0;
-        animation = -1;
-        xTextAlignment = 0;
-        hoveredSiblingId = -1;
+        activeGraphic = -1;
+        y = 0;
+        activeModelID = -1;
+        baseX = 0;
+        invInteractable = false;
+        activeText = "";
+        invDraggable = false;
+        hoverColor = 0;
+        width = 0;
+        modelSeqId = -1;
+        textHorizontalAlignment = 0;
+        delegateHover = -1;
         spellName = "";
-        offsetY2d = 0;
+        modelYOffset = 0;
         itemAmount = 0;
-        disabledText = "";
+        text = "";
         id = -1;
-        lineHeight = 0;
-        itemUsable = false;
-        filled = false;
+        textLineHeight = 0;
+        invUsable = false;
+        fill = false;
         anInt2738 = -1;
         modelZoom = 100;
-        itemDeletesDraged = false;
+        invClearDragged = false;
         rotationSpeed = 0;
-        yTextAlignment = 0;
-        currentX = 0;
-        orthogonal = false;
-        spriteId = -1;
+        textVerticalAlignment = 0;
+        x = 0;
+        modelOrthographic = false;
+        graphic = -1;
         aBoolean2730 = false;
-        originalHeight = 0;
-        opacity = 0;
-        originalY = 0;
-        rotationY = 0;
-        scrollWidth = 0;
-        offsetX2d = 0;
-        isHidden = false;
-        alternateTextColor = 0;
-        scrollHeight = 0;
-        scrollDepth = 0;
+        height = 0;
+        transparency = 0;
+        baseY = 0;
+        modelZAngle = 0;
+        scrollX = 0;
+        modelXOffset = 0;
+        hide = false;
+        activeColor = 0;
+        scrollableHeight = 0;
+        scrollY = 0;
         anInt2736 = 0;
         itemId = -1;
-        itemSpritePadsX = 0;
-        actionType = 0;
+        invMarginX = 0;
+        buttonType = 0;
         textureId = 0;
     }
 
@@ -315,27 +315,27 @@ public class GameInterface extends CachedNode {
     public static GameInterface getInterface(int interfaceData) {
         int parentInterfaceId = interfaceData >> 16;
         int childInterfaceId = 0xffff & interfaceData;
-        if(cachedInterfaces[parentInterfaceId] == null || cachedInterfaces[parentInterfaceId][childInterfaceId] == null) {
-            if(!decodeGameInterface(parentInterfaceId)) {
+        if(components[parentInterfaceId] == null || components[parentInterfaceId][childInterfaceId] == null) {
+            if(!load(parentInterfaceId)) {
                 return null;
             }
         }
 
-        return cachedInterfaces[parentInterfaceId][childInterfaceId];
+        return components[parentInterfaceId][childInterfaceId];
     }
 
     public static void updateGameInterface(GameInterface gameInterface) {
         int type = gameInterface.contentType;
         if(type >= 1 && type <= 100 || type >= 701 && type <= 800) {
             if(type == 1 && Player.friendListStatus == 0) {
-                gameInterface.disabledText = English.loadingFriendList;
-                gameInterface.actionType = 0;
+                gameInterface.text = English.loadingFriendList;
+                gameInterface.buttonType = 0;
             } else if(type == 1 && Player.friendListStatus == 1) {
-                gameInterface.disabledText = English.connectingToFriendserver;
-                gameInterface.actionType = 0;
+                gameInterface.text = English.connectingToFriendserver;
+                gameInterface.buttonType = 0;
             } else if(type == 2 && Player.friendListStatus != 2) {
-                gameInterface.actionType = 0;
-                gameInterface.disabledText = English.pleaseWait;
+                gameInterface.buttonType = 0;
+                gameInterface.text = English.pleaseWait;
             } else {
                 int fCount = Game.friendList.getCount();
                 if(type > 700)
@@ -345,11 +345,11 @@ public class GameInterface extends CachedNode {
                 if(Player.friendListStatus != 2)
                     fCount = 0;
                 if(fCount <= type) {
-                    gameInterface.disabledText = "";
-                    gameInterface.actionType = 0;
+                    gameInterface.text = "";
+                    gameInterface.buttonType = 0;
                 } else {
-                    gameInterface.disabledText = Game.friendList.getPlayerUsername(type);
-                    gameInterface.actionType = 1;
+                    gameInterface.text = Game.friendList.getPlayerUsername(type);
+                    gameInterface.buttonType = 1;
                 }
             }
         } else if(type >= 101 && type <= 200 || type >= 801 && type <= 900) {
@@ -361,97 +361,97 @@ public class GameInterface extends CachedNode {
             if(Player.friendListStatus != 2)
                 count = 0;
             if(type >= count) {
-                gameInterface.disabledText = "";
-                gameInterface.actionType = 0;
+                gameInterface.text = "";
+                gameInterface.buttonType = 0;
             } else {
                 int world = Game.friendList.getPlayerWorld(type);
                 if(world == 0) {
-                    gameInterface.disabledText = Native.red + English.offline;
+                    gameInterface.text = Native.red + English.offline;
                 } else if(world < 5000) {
                     if(world == Player.worldId) {
-                        gameInterface.disabledText = Native.green + English.world + world;
+                        gameInterface.text = Native.green + English.world + world;
                     } else {
-                        gameInterface.disabledText = Native.yellow + English.world + world;
+                        gameInterface.text = Native.yellow + English.world + world;
                     }
                 } else if(Player.worldId == world) {
-                    gameInterface.disabledText = Native.green + English.classic + (-5000 + world);
+                    gameInterface.text = Native.green + English.classic + (-5000 + world);
                 } else {
-                    gameInterface.disabledText = Native.yellow + English.classic + (world + -5000);
+                    gameInterface.text = Native.yellow + English.classic + (world + -5000);
                 }
-                gameInterface.actionType = 1;
+                gameInterface.buttonType = 1;
             }
         } else if(type == 203) {
             int count = Game.friendList.getCount();
             if(Player.friendListStatus != 2)
                 count = 0;
-            gameInterface.scrollHeight = 20 + 15 * count;
-            if(gameInterface.originalHeight >= gameInterface.scrollHeight)
-                gameInterface.scrollHeight = 1 + gameInterface.originalHeight;
+            gameInterface.scrollableHeight = 20 + 15 * count;
+            if(gameInterface.height >= gameInterface.scrollableHeight)
+                gameInterface.scrollableHeight = 1 + gameInterface.height;
         } else if(type >= 401 && type <= 500) {
             type -= 401;
             if(type == 0 && Player.friendListStatus == 0) {
-                gameInterface.disabledText = English.loadingIgnoreList;
-                gameInterface.actionType = 0;
+                gameInterface.text = English.loadingIgnoreList;
+                gameInterface.buttonType = 0;
             } else if(type == 1 && Player.friendListStatus == 0) {
-                gameInterface.disabledText = English.pleaseWait;
-                gameInterface.actionType = 0;
+                gameInterface.text = English.pleaseWait;
+                gameInterface.buttonType = 0;
             } else {
                 int i_4_ = Game.ignoreList.getCount();
                 if(Player.friendListStatus == 0)
                     i_4_ = 0;
                 if(i_4_ <= type) {
-                    gameInterface.actionType = 0;
-                    gameInterface.disabledText = "";
+                    gameInterface.buttonType = 0;
+                    gameInterface.text = "";
                 } else {
-                    gameInterface.disabledText = TextUtils.formatName(TextUtils.longToName(Game.ignoreList.getPlayer(type)));
-                    gameInterface.actionType = 1;
+                    gameInterface.text = TextUtils.formatName(TextUtils.longToName(Game.ignoreList.getPlayer(type)));
+                    gameInterface.buttonType = 1;
                 }
             }
         } else if(type == 503) {
-            gameInterface.scrollHeight = 15 * Game.ignoreList.getCount() + 20;
-            if(gameInterface.scrollHeight <= gameInterface.originalHeight)
-                gameInterface.scrollHeight = gameInterface.originalHeight + 1;
+            gameInterface.scrollableHeight = 15 * Game.ignoreList.getCount() + 20;
+            if(gameInterface.scrollableHeight <= gameInterface.height)
+                gameInterface.scrollableHeight = gameInterface.height + 1;
         } else if(type == 324) {
             if(maleGenderButtonSpriteId == -1) {
-                maleGenderButtonSpriteId = gameInterface.spriteId;
-                femaleGenderButtonSpriteId = gameInterface.alternateSpriteId;
+                maleGenderButtonSpriteId = gameInterface.graphic;
+                femaleGenderButtonSpriteId = gameInterface.activeGraphic;
             }
             if(!Player.activePlayerAppearance.isFemale)
-                gameInterface.spriteId = femaleGenderButtonSpriteId;
+                gameInterface.graphic = femaleGenderButtonSpriteId;
             else
-                gameInterface.spriteId = maleGenderButtonSpriteId;
+                gameInterface.graphic = maleGenderButtonSpriteId;
         } else if(type == 325) {
             if(maleGenderButtonSpriteId == -1) {
-                femaleGenderButtonSpriteId = gameInterface.alternateSpriteId;
-                maleGenderButtonSpriteId = gameInterface.spriteId;
+                femaleGenderButtonSpriteId = gameInterface.activeGraphic;
+                maleGenderButtonSpriteId = gameInterface.graphic;
             }
             if(Player.activePlayerAppearance.isFemale)
-                gameInterface.spriteId = femaleGenderButtonSpriteId;
+                gameInterface.graphic = femaleGenderButtonSpriteId;
             else
-                gameInterface.spriteId = maleGenderButtonSpriteId;
+                gameInterface.graphic = maleGenderButtonSpriteId;
         } else if(type == 327) {
-            gameInterface.rotationX = 150;
-            gameInterface.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) MovedStatics.pulseCycle / 40.0));
+            gameInterface.modelXAngle = 150;
+            gameInterface.modelYAngle = 0x7ff & (int) (256.0 * Math.sin((double) MovedStatics.pulseCycle / 40.0));
             gameInterface.modelId = 0;
             gameInterface.modelType = InterfaceModelType.PLAYER;
         } else if(type == 328) {
-            gameInterface.rotationX = 150;
-            gameInterface.rotationZ = 0x7ff & (int) (256.0 * Math.sin((double) MovedStatics.pulseCycle / 40.0));
+            gameInterface.modelXAngle = 150;
+            gameInterface.modelYAngle = 0x7ff & (int) (256.0 * Math.sin((double) MovedStatics.pulseCycle / 40.0));
             gameInterface.modelId = 1;
             gameInterface.modelType = InterfaceModelType.PLAYER;
         } else if(type == 600)
-            gameInterface.disabledText = Native.reportedName + Native.yellowBar;
+            gameInterface.text = Native.reportedName + Native.yellowBar;
         else if(type == 620) {
             if(Game.playerRights >= 1) {
                 if(MovedStatics.reportMutePlayer) {
                     gameInterface.textColor = 0xff0000;
-                    gameInterface.disabledText = English.moderatorOptionMutePlayerFor48HoursON;
+                    gameInterface.text = English.moderatorOptionMutePlayerFor48HoursON;
                 } else {
                     gameInterface.textColor = 0xffffff;
-                    gameInterface.disabledText = English.moderatorOptionMutePlayerFor48HoursOFF;
+                    gameInterface.text = English.moderatorOptionMutePlayerFor48HoursOFF;
                 }
             } else
-                gameInterface.disabledText = "";
+                gameInterface.text = "";
         }
     }
 
@@ -474,48 +474,48 @@ public class GameInterface extends CachedNode {
         Rasterizer.drawHorizontalLine(x + 1, 14 + y + scrollCurrent + length, 15, SCROLLBAR_COLOR_CHIP_EDGE_DARK);
     }
 
-    public static boolean decodeGameInterface(int interfaceId) {
-        if(loadedInterfaces[interfaceId]) {
+    public static boolean load(int id) {
+        if (loaded[id]) {
             return true;
         }
 
-        if(!CacheArchive.gameInterfaceCacheArchive.groupExists(interfaceId)) {
+        if (!CacheArchive.gameInterfaceCacheArchive.groupExists(id)) {
             return false;
         }
 
-        int gameInterfaceCount = CacheArchive.gameInterfaceCacheArchive.fileLength(interfaceId);
-        if(gameInterfaceCount == 0) {
-            loadedInterfaces[interfaceId] = true;
+        int capacity = CacheArchive.gameInterfaceCacheArchive.fileLength(id);
+        if (capacity == 0) {
+            loaded[id] = true;
             return true;
         }
 
-        if(cachedInterfaces[interfaceId] == null) {
-            cachedInterfaces[interfaceId] = new GameInterface[gameInterfaceCount];
+        if (components[id] == null) {
+            components[id] = new GameInterface[capacity];
         }
 
-        for(int childId = 0; childId < gameInterfaceCount; childId++) {
-            if(cachedInterfaces[interfaceId][childId] == null) {
-                byte[] data = CacheArchive.gameInterfaceCacheArchive.getFile(interfaceId, childId);
+        for (int i = 0; i < capacity; i++) {
+            if (components[id][i] == null) {
+                byte[] data = CacheArchive.gameInterfaceCacheArchive.getFile(id, i);
 
-                if(data != null) {
-                    cachedInterfaces[interfaceId][childId] = new GameInterface();
-                    cachedInterfaces[interfaceId][childId].id = (interfaceId << 16) + childId;
-                    if(data[0] == -1) {
-                        cachedInterfaces[interfaceId][childId].decodeIf3(new Buffer(data));
+                if (data != null) {
+                    components[id][i] = new GameInterface();
+                    components[id][i].id = (id << 16) + i;
+                    if (data[0] == -1) {
+                        components[id][i].decodeIf3(new Buffer(data));
                     } else {
-                        cachedInterfaces[interfaceId][childId].decodeIf1(new Buffer(data));
+                        components[id][i].decodeIf1(new Buffer(data));
                     }
                 }
             }
         }
 
-        loadedInterfaces[interfaceId] = true;
+        loaded[id] = true;
         return true;
     }
 
     public static void resetInterfaceAnimations(int interfaceId) {
-        if(decodeGameInterface(interfaceId)) {
-            GameInterface[] interfaceChildren = cachedInterfaces[interfaceId];
+        if(load(interfaceId)) {
+            GameInterface[] interfaceChildren = components[interfaceId];
             for(GameInterface interfaceChild : interfaceChildren) {
                 if(interfaceChild != null) {
                     interfaceChild.remainingAnimationTime = 0;
@@ -526,64 +526,66 @@ public class GameInterface extends CachedNode {
     }
 
     public static void resetInterface(int interfaceId) {
-        if(interfaceId == -1 || !loadedInterfaces[interfaceId]) {
+        if(interfaceId == -1 || !loaded[interfaceId]) {
             return;
         }
 
         CacheArchive.gameInterfaceCacheArchive.unloadGroup(interfaceId);
 
-        if(cachedInterfaces[interfaceId] != null) {
+        if(components[interfaceId] != null) {
             boolean deleteFromCache = true;
 
-            for(int i = 0; cachedInterfaces[interfaceId].length > i; i++) {
-                if(cachedInterfaces[interfaceId][i] != null) {
-                    if(cachedInterfaces[interfaceId][i].type != GameInterfaceType.INVENTORY)
-                        cachedInterfaces[interfaceId][i] = null;
+            for(int i = 0; components[interfaceId].length > i; i++) {
+                if(components[interfaceId][i] != null) {
+                    if(components[interfaceId][i].type != GameInterfaceType.INVENTORY)
+                        components[interfaceId][i] = null;
                     else
                         deleteFromCache = false;
                 }
             }
 
             if(deleteFromCache) {
-                cachedInterfaces[interfaceId] = null;
+                components[interfaceId] = null;
             }
 
-            loadedInterfaces[interfaceId] = false;
+            loaded[interfaceId] = false;
         }
     }
 
     public static void createInterfaceMemoryBuffers() {
-        cachedInterfaces = new GameInterface
+        components = new GameInterface
                 [CacheArchive.gameInterfaceCacheArchive.getLength()][];
-        loadedInterfaces = new boolean
+        loaded = new boolean
                 [CacheArchive.gameInterfaceCacheArchive.getLength()];
     }
 
     public static void callOnLoadListeners(int interfaceId) {
-        if(decodeGameInterface(interfaceId)) {
-            GameInterface[] gameInterfaces = cachedInterfaces[interfaceId];
+        if(load(interfaceId)) {
+            GameInterface[] gameInterfaces = components[interfaceId];
             for(GameInterface gameInterface : gameInterfaces) {
-                if(gameInterface.onLoadListeners != null) {
-                    ClientScriptRunner.runClientScripts(gameInterface.onLoadListeners, 0, 0, gameInterface, 0);
+                if(gameInterface.onLoadListener != null) {
+                    ClientScriptRunner.run(gameInterface.onLoadListener, 0, 0, gameInterface, 0);
                 }
             }
         }
     }
 
-    public static Object[] decodeListener(Buffer buffer) {
-        int length = buffer.getUnsignedByte();
-        if(length == 0) {
+    public static Object[] readArguments(Buffer buf) {
+        int len = buf.getUnsignedByte();
+        if (len == 0) {
             return null;
         }
-        Object[] objects = new Object[length];
-        for(int i = 0; i < length; i++) {
-            int opcode = buffer.getUnsignedByte();
-            if(opcode == 0)
-                objects[i] = new Integer(buffer.getIntBE());
-            else if(opcode == 1)
-                objects[i] = buffer.getRSString();
+
+        Object[] arguments = new Object[len];
+        for (int i = 0; i < len; i++) {
+            int type = buf.getUnsignedByte();
+            if (type == 0) {
+                arguments[i] = buf.getIntBE();
+            } else if (type == 1) {
+                arguments[i] = buf.getRSString();
+            }
         }
-        return objects;
+        return arguments;
     }
 
     public static void processMenuActions(int arg1) {
@@ -783,10 +785,10 @@ public class GameInterface extends CachedNode {
                 OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
 
                 GameInterface gameInterface = getInterface(i_10_);
-                if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
-                    int i_16_ = gameInterface.clientScripts[0][1];
-                    if(gameInterface.alternateRhs[0] != VarPlayerDefinition.varPlayers[i_16_]) {
-                        VarPlayerDefinition.varPlayers[i_16_] = gameInterface.alternateRhs[0];
+                if(gameInterface.scripts != null && gameInterface.scripts[0][0] == 5) {
+                    int i_16_ = gameInterface.scripts[0][1];
+                    if(gameInterface.scriptOperand[0] != VarPlayerDefinition.varPlayers[i_16_]) {
+                        VarPlayerDefinition.varPlayers[i_16_] = gameInterface.scriptOperand[0];
                         MovedStatics.handleVarPlayers(i_16_);
                         redrawTabArea = true;
                     }
@@ -915,8 +917,8 @@ public class GameInterface extends CachedNode {
                     OutgoingPackets.sendMessage(new ClickWidgetButtonOutboundMessage(widgetId, childId));
 
                     GameInterface gameInterface = getInterface(i_10_);
-                    if(gameInterface.clientScripts != null && gameInterface.clientScripts[0][0] == 5) {
-                        int i_17_ = gameInterface.clientScripts[0][1];
+                    if(gameInterface.scripts != null && gameInterface.scripts[0][0] == 5) {
+                        int i_17_ = gameInterface.scripts[0][1];
                         VarPlayerDefinition.varPlayers[i_17_] = -VarPlayerDefinition.varPlayers[i_17_] + 1;
                         MovedStatics.handleVarPlayers(i_17_);
                         redrawTabArea = true;
@@ -1104,8 +1106,8 @@ public class GameInterface extends CachedNode {
                     GameInterface gameInterface = getInterface(i_10_);
                     redrawTabArea = true;
                     Game.widgetSelected = 1;
-                    Native.selectedSpellVerb = gameInterface.targetVerb;
-                    MovedStatics.selectedMask = gameInterface.clickMask;
+                    Native.selectedSpellVerb = gameInterface.spellAction;
+                    MovedStatics.selectedMask = gameInterface.spellFlags;
                     itemCurrentlySelected = 0;
                     selectedSpell = i_10_;
                     Native.selectedSpellName = Native.green + gameInterface.spellName + Native.white;
@@ -1117,8 +1119,8 @@ public class GameInterface extends CachedNode {
                 } else {
                     if(action == ActionRowType.EXAMINE_ITEM_ON_V2_WIDGET.getId()) {
                         GameInterface gameInterface = getInterface(i_10_);
-                        if(gameInterface != null && gameInterface.children != null && i != -1) {
-                            gameInterface = gameInterface.children[i];
+                        if(gameInterface != null && gameInterface.createdComponents != null && i != -1) {
+                            gameInterface = gameInterface.createdComponents[i];
                         }
                         if(gameInterface == null || gameInterface.itemAmount < 100000) {
                             OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
@@ -1265,10 +1267,10 @@ public class GameInterface extends CachedNode {
                     }
                     if(action == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()) {
                         GameInterface gameInterface = getInterface(i_10_);
-                        if(gameInterface == null || gameInterface.itemAmounts[i] < 100000) {
+                        if(gameInterface == null || gameInterface.invSlotObjCount[i] < 100000) {
                             OutgoingPackets.sendMessage(new ExamineItemOutboundMessage(npcIdx));
                         } else {
-                            ChatBox.addChatMessage("", gameInterface.itemAmounts[i] + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
+                            ChatBox.addChatMessage("", gameInterface.invSlotObjCount[i] + Native.amountSeparatorX + ItemDefinition.forId(npcIdx, 10).name, 0);
                         }
                         anInt1233 = i;
                         anInt1651 = 0;
@@ -1591,11 +1593,11 @@ public class GameInterface extends CachedNode {
     }
 
     public static void runClientScriptsForParentInterface(int arg1, int arg2, int arg3, int widgetId, int arg5, int arg6) {
-        if (!decodeGameInterface(widgetId)) {
+        if (!load(widgetId)) {
             return;
         }
 
-        runClientScriptsForInterface(arg5, arg3, 0, arg2, arg6, -1, cachedInterfaces[widgetId], arg1, 0);
+        runClientScriptsForInterface(arg5, arg3, 0, arg2, arg6, -1, components[widgetId], arg1, 0);
 
         if(aGameInterface_353 != null) {
             GameInterface gameInterface = aGameInterface_353;
@@ -1608,21 +1610,21 @@ public class GameInterface extends CachedNode {
                 if(y < 0) {
                     y = 0;
                 }
-                if(gameInterface_24_.originalHeight < y + gameInterface.originalHeight) {
-                    y = -gameInterface.originalHeight + gameInterface_24_.originalHeight;
+                if(gameInterface_24_.height < y + gameInterface.height) {
+                    y = -gameInterface.height + gameInterface_24_.height;
                 }
                 if(x < 0) {
                     x = 0;
                 }
-                if(gameInterface_24_.originalWidth < gameInterface.originalWidth + x) {
-                    x = gameInterface_24_.originalWidth - gameInterface.originalWidth;
+                if(gameInterface_24_.width < gameInterface.width + x) {
+                    x = gameInterface_24_.width - gameInterface.width;
                 }
                 if(aGameInterface_353.anObjectArray2669 != null && (arg2 & 0x200) != 0) {
-                    ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2669, 0, y, gameInterface, x);
+                    ClientScriptRunner.run(gameInterface.anObjectArray2669, 0, y, gameInterface, x);
                 }
                 if(MouseHandler.currentMouseButtonPressed == 0 && (arg2 & 0x400) != 0) {
                     if(aGameInterface_353.anObjectArray2695 != null) {
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2695, 0, y, gameInterface, x);
+                        ClientScriptRunner.run(gameInterface.anObjectArray2695, 0, y, gameInterface, x);
                     }
                     aGameInterface_353 = null;
                 }
@@ -1637,20 +1639,20 @@ public class GameInterface extends CachedNode {
         GameInterface gameInterface = null;
         for(int i = 0; arg0.length > i; i++) {
             GameInterface gameInterface_27_ = arg0[i];
-            if(gameInterface_27_ != null && gameInterface_27_.parentId == arg4) {
-                int i_28_ = arg3 + gameInterface_27_.currentY;
-                int i_29_ = arg5 + gameInterface_27_.currentX;
-                if(i_29_ <= arg6 && i_28_ <= arg1 && i_29_ + gameInterface_27_.originalWidth > arg6 && arg1 < i_28_ + gameInterface_27_.originalHeight && !gameInterface_27_.isHidden) {
+            if(gameInterface_27_ != null && gameInterface_27_.layer == arg4) {
+                int i_28_ = arg3 + gameInterface_27_.y;
+                int i_29_ = arg5 + gameInterface_27_.x;
+                if(i_29_ <= arg6 && i_28_ <= arg1 && i_29_ + gameInterface_27_.width > arg6 && arg1 < i_28_ + gameInterface_27_.height && !gameInterface_27_.hide) {
                     if(gameInterface_27_.id < 0 && arg2 || gameInterface_27_.id >= 0 && !arg2) {
                         gameInterface = gameInterface_27_;
                     }
                     if(gameInterface_27_.type == GameInterfaceType.LAYER) {
-                        GameInterface gameInterface_30_ = method361(arg0, arg1, arg2, -gameInterface_27_.scrollDepth + gameInterface_27_.currentY, i, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
+                        GameInterface gameInterface_30_ = method361(arg0, arg1, arg2, -gameInterface_27_.scrollY + gameInterface_27_.y, i, gameInterface_27_.x - gameInterface_27_.scrollX, arg6, 398);
                         if(gameInterface_30_ != null) {
                             gameInterface = gameInterface_30_;
                         }
-                        if(arg2 && gameInterface_27_.children != null) {
-                            GameInterface gameInterface_31_ = method361(gameInterface_27_.children, arg1, arg2, gameInterface_27_.currentY + -gameInterface_27_.scrollDepth, gameInterface_27_.id, gameInterface_27_.currentX - gameInterface_27_.scrollWidth, arg6, 398);
+                        if(arg2 && gameInterface_27_.createdComponents != null) {
+                            GameInterface gameInterface_31_ = method361(gameInterface_27_.createdComponents, arg1, arg2, gameInterface_27_.y + -gameInterface_27_.scrollY, gameInterface_27_.id, gameInterface_27_.x - gameInterface_27_.scrollX, arg6, 398);
                             if(gameInterface_31_ != null) {
                                 gameInterface = gameInterface_31_;
                             }
@@ -1672,7 +1674,7 @@ public class GameInterface extends CachedNode {
             anInt1171 = 0;
         aBoolean1444 = false;
         if(arg2 >= arg6 && arg2 < arg6 + 16 && arg1 >= arg8 && 16 + arg8 > arg1) {
-            arg5.scrollDepth -= Game.mouseClicksSinceLastDraw * 4;
+            arg5.scrollY -= Game.mouseClicksSinceLastDraw * 4;
             if(arg7 == 1)
                 redrawTabArea = true;
             if(arg7 == 2 || arg7 == 3)
@@ -1689,10 +1691,10 @@ public class GameInterface extends CachedNode {
                     i = 8;
                 int i_17_ = -i + arg0 + -32;
                 int i_18_ = -(i / 2) + -arg8 + arg1 + -16;
-                arg5.scrollDepth = (arg3 + -arg0) * i_18_ / i_17_;
+                arg5.scrollY = (arg3 + -arg0) * i_18_ / i_17_;
             }
         } else {
-            arg5.scrollDepth += 4 * Game.mouseClicksSinceLastDraw;
+            arg5.scrollY += 4 * Game.mouseClicksSinceLastDraw;
             if(arg7 == 2 || arg7 == 3)
                 ChatBox.redrawChatbox = true;
             if(arg7 == 1)
@@ -1779,23 +1781,23 @@ public class GameInterface extends CachedNode {
     public static void runClientScriptsForInterface(int minY, int arg1, int scrollWidth, int arg3, int minX, int parentId, GameInterface[] interfaceCollection, int arg8, int scrollHeight) {
         for (int i = 0; i < interfaceCollection.length; i++) {
             GameInterface gameInterface = interfaceCollection[i];
-            if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.hasListeners) && parentId == gameInterface.parentId && (!gameInterface.isHidden || hiddenButtonTest)) {
-                int absoluteX = minX + gameInterface.currentX;
-                int absoluteY = minY + gameInterface.currentY;
+            if (gameInterface != null && (gameInterface.type == GameInterfaceType.LAYER || gameInterface.hasListeners) && parentId == gameInterface.layer && (!gameInterface.hide || hiddenButtonTest)) {
+                int absoluteX = minX + gameInterface.x;
+                int absoluteY = minY + gameInterface.y;
                 if (!gameInterface.lockScroll)
                     absoluteY -= scrollHeight;
-                int bottomLeftY = absoluteY + gameInterface.originalHeight;
+                int bottomLeftY = absoluteY + gameInterface.height;
                 int i_4_ = Math.max(minY, absoluteY);
                 if (!gameInterface.lockScroll)
                     absoluteX -= scrollWidth;
-                int topRightX = absoluteX + gameInterface.originalWidth;
+                int topRightX = absoluteX + gameInterface.width;
                 int i_6_ = Math.max(minX, absoluteX);
                 int i_7_ = Math.min(arg1, bottomLeftY);
                 int i_8_ = Math.min(topRightX, arg8);
                 if (gameInterface.type == GameInterfaceType.LAYER) {
-                    runClientScriptsForInterface(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, i, interfaceCollection, i_8_, gameInterface.scrollDepth);
-                    if (gameInterface.children != null)
-                        runClientScriptsForInterface(i_4_, i_7_, gameInterface.scrollWidth, arg3, i_6_, gameInterface.id, gameInterface.children, i_8_, gameInterface.scrollDepth);
+                    runClientScriptsForInterface(i_4_, i_7_, gameInterface.scrollX, arg3, i_6_, i, interfaceCollection, i_8_, gameInterface.scrollY);
+                    if (gameInterface.createdComponents != null)
+                        runClientScriptsForInterface(i_4_, i_7_, gameInterface.scrollX, arg3, i_6_, gameInterface.id, gameInterface.createdComponents, i_8_, gameInterface.scrollY);
                 }
                 if (gameInterface.hasListeners) {
                     boolean bool;
@@ -1819,33 +1821,33 @@ public class GameInterface extends CachedNode {
                     if (!gameInterface.aBoolean2730 && bool_10_ && (0x1 & arg3) != 0) {
                         gameInterface.aBoolean2730 = true;
                         if (gameInterface.anObjectArray2681 != null)
-                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2681, 0, MouseHandler.clickY + -absoluteY, gameInterface, MouseHandler.clickX - absoluteX);
+                            ClientScriptRunner.run(gameInterface.anObjectArray2681, 0, MouseHandler.clickY + -absoluteY, gameInterface, MouseHandler.clickX - absoluteX);
                     }
                     if (gameInterface.aBoolean2730 && bool_9_ && (arg3 & 0x4) != 0 && gameInterface.anObjectArray2747 != null)
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2747, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
+                        ClientScriptRunner.run(gameInterface.anObjectArray2747, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
                     if (gameInterface.aBoolean2730 && !bool_9_ && (0x2 & arg3) != 0) {
                         gameInterface.aBoolean2730 = false;
                         if (gameInterface.anObjectArray2707 != null)
-                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2707, 0, MouseHandler.mouseY - absoluteY, gameInterface, MouseHandler.mouseX - absoluteX);
+                            ClientScriptRunner.run(gameInterface.anObjectArray2707, 0, MouseHandler.mouseY - absoluteY, gameInterface, MouseHandler.mouseX - absoluteX);
                     }
                     if (bool_9_ && (arg3 & 0x8) != 0 && gameInterface.anObjectArray2644 != null)
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2644, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
+                        ClientScriptRunner.run(gameInterface.anObjectArray2644, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
                     if (!gameInterface.aBoolean2682 && bool && (0x10 & arg3) != 0) {
                         gameInterface.aBoolean2682 = true;
                         if (gameInterface.anObjectArray2658 != null)
-                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2658, 0, MouseHandler.mouseY - absoluteY, gameInterface, MouseHandler.mouseX - absoluteX);
+                            ClientScriptRunner.run(gameInterface.anObjectArray2658, 0, MouseHandler.mouseY - absoluteY, gameInterface, MouseHandler.mouseX - absoluteX);
                     }
                     if (gameInterface.aBoolean2682 && bool && (0x40 & arg3) != 0 && gameInterface.anObjectArray2680 != null)
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2680, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
+                        ClientScriptRunner.run(gameInterface.anObjectArray2680, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
                     if (gameInterface.aBoolean2682 && !bool && (arg3 & 0x20) != 0) {
                         gameInterface.aBoolean2682 = false;
                         if (gameInterface.anObjectArray2672 != null)
-                            ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2672, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
+                            ClientScriptRunner.run(gameInterface.anObjectArray2672, 0, -absoluteY + MouseHandler.mouseY, gameInterface, -absoluteX + MouseHandler.mouseX);
                     }
                     if (gameInterface.anObjectArray2712 != null && (arg3 & 0x80) != 0)
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0);
+                        ClientScriptRunner.run(gameInterface.anObjectArray2712, 0, 0, gameInterface, 0);
                     if (MovedStatics.anInt2480 == MovedStatics.pulseCycle && gameInterface.anObjectArray2650 != null && (arg3 & 0x100) != 0)
-                        ClientScriptRunner.runClientScripts(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0);
+                        ClientScriptRunner.run(gameInterface.anObjectArray2650, 0, 0, gameInterface, 0);
                 }
             }
         }
@@ -2006,13 +2008,13 @@ public class GameInterface extends CachedNode {
                         }
                         if(ChatBox.chatboxInput.startsWith("::region")) {
                             for(int qq = 0; qq < 469; qq++) {
-                                if(decodeGameInterface(qq)) {
-                                    GameInterface[] gameInterfaces = cachedInterfaces[qq];
+                                if(load(qq)) {
+                                    GameInterface[] gameInterfaces = components[qq];
                                     for(int y = 0; gameInterfaces.length > y; y++) {
                                         GameInterface gameInterface = gameInterfaces[y];
-                                        if(gameInterface.disabledText != null) {
-                                            String text = gameInterface.disabledText.toString().toLowerCase();
-                                            if(gameInterface.disabledText.toString().toLowerCase().contains("bank")) {
+                                        if(gameInterface.text != null) {
+                                            String text = gameInterface.text.toString().toLowerCase();
+                                            if(gameInterface.text.toString().toLowerCase().contains("bank")) {
                                                 System.out.println(qq + " contains " + text);
                                             }
                                         }
@@ -2153,39 +2155,39 @@ ChatBox.tradeMode
         int id;
 
         if(arg1.id < 0) {
-            id = arg1.parentId >> 16;
+            id = arg1.layer >> 16;
         } else {
             id = arg1.id >> 16;
         }
 
-        if(!decodeGameInterface(id)) {
+        if(!load(id)) {
             return null;
         }
 
         if(arg1.anInt2738 >= 0) {
-            return cachedInterfaces[id][0xffff & arg1.anInt2738];
+            return components[id][0xffff & arg1.anInt2738];
         }
 
-        GameInterface gameInterface = cachedInterfaces[id][(0x7fff99d9 & arg1.anInt2738) >> 15];
-        return gameInterface.children[arg1.anInt2738 & 0x7fff];
+        GameInterface gameInterface = components[id][(0x7fff99d9 & arg1.anInt2738) >> 15];
+        return gameInterface.createdComponents[arg1.anInt2738 & 0x7fff];
     }
 
     public static boolean checkForAlternateAction(GameInterface gameInterface) {
-        if(gameInterface.alternateOperators == null) {
+        if(gameInterface.scriptComparator == null) {
             return false;
         }
-        for(int scriptIndex = 0; gameInterface.alternateOperators.length > scriptIndex; scriptIndex++) {
-            int i_10_ = ClientScript.parseClientScripts(scriptIndex, gameInterface);
-            int rhsValue = gameInterface.alternateRhs[scriptIndex]; // 1
-            if(gameInterface.alternateOperators[scriptIndex] == 2) {
+        for(int scriptIndex = 0; gameInterface.scriptComparator.length > scriptIndex; scriptIndex++) {
+            int i_10_ = ClientScript.run(scriptIndex, gameInterface);
+            int rhsValue = gameInterface.scriptOperand[scriptIndex]; // 1
+            if(gameInterface.scriptComparator[scriptIndex] == 2) {
                 if(rhsValue <= i_10_) {
                     return false;
                 }
-            } else if(gameInterface.alternateOperators[scriptIndex] == 3) {
+            } else if(gameInterface.scriptComparator[scriptIndex] == 3) {
                 if(rhsValue >= i_10_) {
                     return false;
                 }
-            } else if(gameInterface.alternateOperators[scriptIndex] == 4) {
+            } else if(gameInterface.scriptComparator[scriptIndex] == 4) {
                 if(rhsValue == i_10_) {
                     return false;
                 }
@@ -2204,31 +2206,31 @@ ChatBox.tradeMode
     public static int[] getAdjustedPosition(GameInterface gameInterface) {
         int id;
         if(gameInterface.id < 0) {
-            id = gameInterface.parentId >> 16;
+            id = gameInterface.layer >> 16;
         } else {
             id = gameInterface.id >> 16;
         }
 
-        if(!decodeGameInterface(id)) {
+        if(!load(id)) {
             return null;
         }
 
-        int totalX = gameInterface.currentX;
-        int totalY = gameInterface.currentY;
-        int parentId = gameInterface.parentId;
+        int totalX = gameInterface.x;
+        int totalY = gameInterface.y;
+        int parentId = gameInterface.layer;
         while(parentId != -1) {
-            GameInterface parentInterface = cachedInterfaces[id][parentId & 0xffff];
-            totalX += parentInterface.currentX;
+            GameInterface parentInterface = components[id][parentId & 0xffff];
+            totalX += parentInterface.x;
             if(!gameInterface.lockScroll) {
-                totalX -= parentInterface.scrollWidth;
+                totalX -= parentInterface.scrollX;
             }
 
-            totalY += parentInterface.currentY;
+            totalY += parentInterface.y;
             if(!gameInterface.lockScroll) {
-                totalY -= parentInterface.scrollDepth;
+                totalY -= parentInterface.scrollY;
             }
 
-            parentId = parentInterface.parentId;
+            parentId = parentInterface.layer;
         }
 
         return new int[] {
@@ -2289,20 +2291,20 @@ ChatBox.tradeMode
     }
 
     public static boolean handleSequences(int interfaceId) {
-        if(!decodeGameInterface(interfaceId))
+        if(!load(interfaceId))
             return false;
-        GameInterface[] gameInterfaces = cachedInterfaces[interfaceId];
+        GameInterface[] gameInterfaces = components[interfaceId];
         boolean bool = false;
         for(int i = 0; gameInterfaces.length > i; i++) {
             GameInterface gameInterface = gameInterfaces[i];
             if(gameInterface != null && gameInterface.type == GameInterfaceType.MODEL) {
-                if(gameInterface.animation != -1 || gameInterface.alternateAnimation != -1) {
+                if(gameInterface.modelSeqId != -1 || gameInterface.activeModelSeqId != -1) {
                     boolean isAlternative = checkForAlternateAction(gameInterface);
                     int animationId;
                     if(isAlternative)
-                        animationId = gameInterface.alternateAnimation;
+                        animationId = gameInterface.activeModelSeqId;
                     else
-                        animationId = gameInterface.animation;
+                        animationId = gameInterface.modelSeqId;
                     if(animationId != -1) {
                         AnimationSequence animationSequence = AnimationSequence.getAnimationSequence(animationId);
                         gameInterface.remainingAnimationTime += Game.deltaT;
@@ -2323,9 +2325,9 @@ ChatBox.tradeMode
                     int i_2_ = gameInterface.rotationSpeed >> 16;
                     int i_3_ = gameInterface.rotationSpeed << 16 >> 16;
                     i_2_ *= Game.deltaT;
-                    gameInterface.rotationX = 0x7ff & i_2_ + gameInterface.rotationX;
+                    gameInterface.modelXAngle = 0x7ff & i_2_ + gameInterface.modelXAngle;
                     i_3_ *= Game.deltaT;
-                    gameInterface.rotationZ = 0x7ff & gameInterface.rotationZ + i_3_;
+                    gameInterface.modelYAngle = 0x7ff & gameInterface.modelYAngle + i_3_;
                 }
             }
         }
@@ -2333,186 +2335,214 @@ ChatBox.tradeMode
     }
 
     public void swapItems(int arg0, boolean arg1, int arg2) {
-        int i = items[arg2];
-        items[arg2] = items[arg0];
-        items[arg0] = i;
-        i = itemAmounts[arg2];
-        itemAmounts[arg2] = itemAmounts[arg0];
+        int i = invSlotObjId[arg2];
+        invSlotObjId[arg2] = invSlotObjId[arg0];
+        invSlotObjId[arg0] = i;
+        i = invSlotObjCount[arg2];
+        invSlotObjCount[arg2] = invSlotObjCount[arg0];
         if(arg1) {
-            clientScripts = null;
+            scripts = null;
         }
-        itemAmounts[arg0] = i;
+        invSlotObjCount[arg0] = i;
     }
 
-    public void decodeIf1(Buffer buffer) {
-        isNewInterfaceFormat = false;
-        type = GameInterfaceType.get(buffer.getUnsignedByte());
-        actionType = buffer.getUnsignedByte();
-        contentType = buffer.getUnsignedShortBE();
-        originalX = currentX = buffer.getShortBE(); // originalX
-        originalY = currentY = buffer.getShortBE(); // originalY
-        originalWidth = buffer.getUnsignedShortBE();
-        originalHeight = buffer.getUnsignedShortBE();
-        opacity = buffer.getUnsignedByte();
-        parentId = buffer.getUnsignedShortBE();
-        if(parentId == 0xFFFF) {
-            parentId = -1;
+    public void decodeIf1(Buffer buf) {
+        if3 = false;
+
+        type = GameInterfaceType.get(buf.getUnsignedByte());
+        buttonType = buf.getUnsignedByte();
+        contentType = buf.getUnsignedShortBE();
+        baseX = x = buf.getShortBE();
+        baseY = y = buf.getShortBE();
+        width = buf.getUnsignedShortBE();
+        height = buf.getUnsignedShortBE();
+        transparency = buf.getUnsignedByte();
+
+        layer = buf.getUnsignedShortBE();
+        if (layer == 0xFFFF) {
+            layer = -1;
         }
-        hoveredSiblingId = buffer.getUnsignedShortBE();
-        if(hoveredSiblingId == 0xFFFF) {
-            hoveredSiblingId = -1;
+
+        delegateHover = buf.getUnsignedShortBE();
+        if (delegateHover == 0xFFFF) {
+            delegateHover = -1;
         }
-        int var2 = buffer.getUnsignedByte();
-        int var3;
-        if(var2 > 0) {
-            alternateOperators = new int[var2];
-            alternateRhs = new int[var2];
-            for(var3 = 0; var2 > var3; var3++) {
-                alternateOperators[var3] = buffer.getUnsignedByte();
-                alternateRhs[var3] = buffer.getUnsignedShortBE();
+
+        int comparatorCount = buf.getUnsignedByte();
+        if (comparatorCount > 0) {
+            scriptComparator = new int[comparatorCount];
+            scriptOperand = new int[comparatorCount];
+            for (int i = 0; comparatorCount > i; i++) {
+                scriptComparator[i] = buf.getUnsignedByte();
+                scriptOperand[i] = buf.getUnsignedShortBE();
             }
         }
-        var3 = buffer.getUnsignedByte();
-        if(var3 > 0) {
-            clientScripts = new int[var3][];
-            for(int i_2_ = 0; i_2_ < var3; i_2_++) {
-                int i_3_ = buffer.getUnsignedShortBE();
-                clientScripts[i_2_] = new int[i_3_];
-                for(int i_4_ = 0; i_3_ > i_4_; i_4_++) {
-                    clientScripts[i_2_][i_4_] = buffer.getUnsignedShortBE();
-                    if(clientScripts[i_2_][i_4_] == 65535) {
-                        clientScripts[i_2_][i_4_] = -1;
+
+        int scriptCount = buf.getUnsignedByte();
+        if (scriptCount > 0) {
+            scripts = new int[scriptCount][];
+
+            for (int i = 0; i < scriptCount; i++) {
+                int opcodeCount = buf.getUnsignedShortBE();
+                scripts[i] = new int[opcodeCount];
+
+                for (int j = 0; opcodeCount > j; j++) {
+                    scripts[i][j] = buf.getUnsignedShortBE();
+                    if (scripts[i][j] == 65535) {
+                        scripts[i][j] = -1;
                     }
                 }
             }
         }
-        if(type == GameInterfaceType.LAYER) {
-            scrollHeight = buffer.getUnsignedShortBE();
-            isHidden = buffer.getUnsignedByte() == 1;
+
+        if (type == GameInterfaceType.LAYER) {
+            scrollableHeight = buf.getUnsignedShortBE();
+            hide = buf.getUnsignedByte() == 1;
         }
-        if(type == GameInterfaceType.UNKNOWN) {
-            buffer.getUnsignedShortBE();
-            buffer.getUnsignedByte();
+
+        if (type == GameInterfaceType.UNKNOWN) {
+            buf.getUnsignedShortBE();
+            buf.getUnsignedByte();
         }
-        if(type == GameInterfaceType.INVENTORY) {
-            items = new int[originalHeight * originalWidth];
-            itemAmounts = new int[originalHeight * originalWidth];
-            itemSwapable = buffer.getUnsignedByte() == 1;
-            isInventory = buffer.getUnsignedByte() == 1;
-            itemUsable = buffer.getUnsignedByte() == 1;
-            itemDeletesDraged = buffer.getUnsignedByte() == 1;
-            itemSpritePadsX = buffer.getUnsignedByte();
-            itemSpritePadsY = buffer.getUnsignedByte();
-            imageX = new int[20];
-            imageY = new int[20];
-            images = new int[20];
-            for(int sprite = 0; sprite < 20; sprite++) {
-                int hasSprite = buffer.getUnsignedByte();
-                if(hasSprite == 1) {
-                    images[sprite] = buffer.getShortBE();
-                    imageX[sprite] = buffer.getShortBE();
-                    imageY[sprite] = buffer.getIntBE();
+
+        if (type == GameInterfaceType.INVENTORY) {
+            invSlotObjId = new int[height * width];
+            invSlotObjCount = new int[height * width];
+
+            invDraggable = buf.getUnsignedByte() == 1;
+            invInteractable = buf.getUnsignedByte() == 1;
+            invUsable = buf.getUnsignedByte() == 1;
+            invClearDragged = buf.getUnsignedByte() == 1;
+            invMarginX = buf.getUnsignedByte();
+            invMarginY = buf.getUnsignedByte();
+
+            invSlotOffsetX = new int[20];
+            invSlotOffsetY = new int[20];
+            invSlotImage = new int[20];
+
+            for (int i = 0; i < 20; i++) {
+                if (buf.getUnsignedByte() == 1) {
+                    invSlotImage[i] = buf.getShortBE();
+                    invSlotOffsetX[i] = buf.getShortBE();
+                    invSlotOffsetY[i] = buf.getIntBE();
                 } else {
-                    imageY[sprite] = -1;
+                    invSlotOffsetY[i] = -1;
                 }
             }
-            configActions = new String[5];
-            for(int i_7_ = 0; i_7_ < 5; i_7_++) {
-                configActions[i_7_] = buffer.getString();
-                if(configActions[i_7_].length() == 0) {
-                    configActions[i_7_] = null;
+
+            invOptions = new String[5];
+            for (int i = 0; i < 5; i++) {
+                invOptions[i] = buf.getString();
+                if (invOptions[i].length() == 0) {
+                    invOptions[i] = null;
                 }
             }
         }
-        if(type == GameInterfaceType.RECTANGLE) {
-            filled = buffer.getUnsignedByte() == 1;
+
+        if (type == GameInterfaceType.RECTANGLE) {
+            fill = buf.getUnsignedByte() == 1;
         }
-        if(type == GameInterfaceType.TEXT || type == GameInterfaceType.UNKNOWN) {
-            xTextAlignment = buffer.getUnsignedByte();
-            yTextAlignment = buffer.getUnsignedByte();
-            lineHeight = buffer.getUnsignedByte();
-            fontId = buffer.getUnsignedShortBE();
-            textShadowed = buffer.getUnsignedByte() == 1;
+
+        if (type == GameInterfaceType.TEXT || type == GameInterfaceType.UNKNOWN) {
+            textHorizontalAlignment = buf.getUnsignedByte();
+            textVerticalAlignment = buf.getUnsignedByte();
+            textLineHeight = buf.getUnsignedByte();
+            textFont = buf.getUnsignedShortBE();
+            textShadow = buf.getUnsignedByte() == 1;
         }
-        if(type == GameInterfaceType.TEXT) {
-            disabledText = buffer.getString();
-            alternateText = buffer.getString();
+
+        if (type == GameInterfaceType.TEXT) {
+            text = buf.getString();
+            activeText = buf.getString();
         }
-        if(type == GameInterfaceType.UNKNOWN || type == GameInterfaceType.RECTANGLE || type == GameInterfaceType.TEXT) {
-            textColor = buffer.getIntBE();
+
+        if (type == GameInterfaceType.UNKNOWN || type == GameInterfaceType.RECTANGLE || type == GameInterfaceType.TEXT) {
+            textColor = buf.getIntBE();
         }
-        if(type == GameInterfaceType.RECTANGLE || type == GameInterfaceType.TEXT) {
-            alternateTextColor = buffer.getIntBE();
-            hoveredTextColor = buffer.getIntBE();
-            alternateHoveredTextColor = buffer.getIntBE();
+
+        if (type == GameInterfaceType.RECTANGLE || type == GameInterfaceType.TEXT) {
+            activeColor = buf.getIntBE();
+            hoverColor = buf.getIntBE();
+            activeHoverColor = buf.getIntBE();
         }
-        if(type == GameInterfaceType.GRAPHIC) {
-            spriteId = buffer.getIntBE();
-            alternateSpriteId = buffer.getIntBE();
+
+        if (type == GameInterfaceType.GRAPHIC) {
+            graphic = buf.getIntBE();
+            activeGraphic = buf.getIntBE();
         }
-        if(type == GameInterfaceType.MODEL) {
+
+        if (type == GameInterfaceType.MODEL) {
             modelType = InterfaceModelType.MODEL;
-            modelId = buffer.getUnsignedShortBE();
-            if(modelId == 0xFFFF) {
+            modelId = buf.getUnsignedShortBE();
+            if (modelId == 0xFFFF) {
                 modelId = -1;
             }
-            alternateModelType = InterfaceModelType.MODEL;
-            alternateModelId = buffer.getUnsignedShortBE();
-            if(alternateModelId == 0xFFFF) {
-                alternateModelId = -1;
+
+            activeModelType = InterfaceModelType.MODEL;
+            activeModelID = buf.getUnsignedShortBE();
+            if (activeModelID == 0xFFFF) {
+                activeModelID = -1;
             }
-            animation = buffer.getUnsignedShortBE();
-            if(animation == 0xFFFF) {
-                animation = -1;
+
+            modelSeqId = buf.getUnsignedShortBE();
+            if (modelSeqId == 0xFFFF) {
+                modelSeqId = -1;
             }
-            alternateAnimation = buffer.getUnsignedShortBE();
-            if(alternateAnimation == 0xFFFF) {
-                alternateAnimation = -1;
+
+            activeModelSeqId = buf.getUnsignedShortBE();
+            if (activeModelSeqId == 0xFFFF) {
+                activeModelSeqId = -1;
             }
-            modelZoom = buffer.getUnsignedShortBE();
-            rotationX = buffer.getUnsignedShortBE();
-            rotationZ = buffer.getUnsignedShortBE();
+
+            modelZoom = buf.getUnsignedShortBE();
+            modelXAngle = buf.getUnsignedShortBE();
+            modelYAngle = buf.getUnsignedShortBE();
         }
-        if(type == GameInterfaceType.TEXT_INVENTORY) {
-            items = new int[originalWidth * originalHeight];
-            itemAmounts = new int[originalWidth * originalHeight];
-            xTextAlignment = buffer.getUnsignedByte();
-            fontId = buffer.getUnsignedShortBE();
-            textShadowed = buffer.getUnsignedByte() == 1;
-            textColor = buffer.getIntBE();
-            itemSpritePadsX = buffer.getShortBE();
-            itemSpritePadsY = buffer.getShortBE();
-            isInventory = buffer.getUnsignedByte() == 1;
-            configActions = new String[5];
-            for(int i_8_ = 0; i_8_ < 5; i_8_++) {
-                configActions[i_8_] = buffer.getString();
-                if(configActions[i_8_].length() == 0) {
-                    configActions[i_8_] = null;
+
+        if (type == GameInterfaceType.TEXT_INVENTORY) {
+            invSlotObjId = new int[width * height];
+            invSlotObjCount = new int[width * height];
+
+            textHorizontalAlignment = buf.getUnsignedByte();
+            textFont = buf.getUnsignedShortBE();
+            textShadow = buf.getUnsignedByte() == 1;
+            textColor = buf.getIntBE();
+            invMarginX = buf.getShortBE();
+            invMarginY = buf.getShortBE();
+            invInteractable = buf.getUnsignedByte() == 1;
+
+            invOptions = new String[5];
+            for (int i = 0; i < 5; i++) {
+                invOptions[i] = buf.getString();
+                if (invOptions[i].length() == 0) {
+                    invOptions[i] = null;
                 }
             }
         }
-        if(type == GameInterfaceType.IF1_TOOLTIP) {
-            disabledText = buffer.getString();
+
+        if (type == GameInterfaceType.IF1_TOOLTIP) {
+            text = buf.getString();
         }
-        if(actionType == 2 || type == GameInterfaceType.INVENTORY) {
-            targetVerb = buffer.getString();
-            spellName = buffer.getString();
-            clickMask = buffer.getUnsignedShortBE();
+
+        // buttonType 2 = target
+        if (buttonType == 2 || type == GameInterfaceType.INVENTORY) {
+            spellAction = buf.getString();
+            spellName = buf.getString();
+            spellFlags = buf.getUnsignedShortBE();
         }
-        if(actionType == 1 || actionType == 4 || actionType == 5 || actionType == 6) {
-            tooltip = buffer.getString();
-            if(tooltip.length() == 0) {
-                if(actionType == 1) {
-                    tooltip = English.ok;
-                }
-                if(actionType == 4) {
-                    tooltip = English.select;
-                }
-                if(actionType == 5) {
-                    tooltip = English.select;
-                }
-                if(actionType == 6) {
-                    tooltip = English.sContinue;
+
+        // buttonType 1 = button, 4 = toggle, 5 = select, 6 = pause
+        if (buttonType == 1 || buttonType == 4 || buttonType == 5 || buttonType == 6) {
+            option = buf.getString();
+            if (option.length() == 0) {
+                if (buttonType == 1) {
+                    option = English.ok;
+                } else if (buttonType == 4) {
+                    option = English.select;
+                } else if (buttonType == 5) {
+                    option = English.select;
+                } else if (buttonType == 6) {
+                    option = English.sContinue;
                 }
             }
         }
@@ -2520,10 +2550,10 @@ ChatBox.tradeMode
 
     public ImageRGB method638(int arg1) {
         aBoolean2177 = false;
-        if(arg1 < 0 || imageY.length <= arg1) {
+        if(arg1 < 0 || invSlotOffsetY.length <= arg1) {
             return null;
         }
-        int i = imageY[arg1];
+        int i = invSlotOffsetY[arg1];
         if(i == -1) {
             return null;
         }
@@ -2545,9 +2575,9 @@ ChatBox.tradeMode
 
         int i;
         if(useAlternateImage) {
-            i = alternateSpriteId;
+            i = activeGraphic;
         } else {
-            i = spriteId;
+            i = graphic;
         }
         if(Configuration.FREE_TELEPORTS) {
             switch(id) {
@@ -2560,7 +2590,7 @@ ChatBox.tradeMode
                 case 12583301:
                 case 12583404:
                 case 12583481:
-                    i = alternateSpriteId;
+                    i = activeGraphic;
                     break;
                 default:
                     break;
@@ -2584,99 +2614,115 @@ ChatBox.tradeMode
     }
 
     public void decodeIf3(Buffer buffer) {
+        if3 = true;
+
         buffer.getUnsignedByte();
-        isNewInterfaceFormat = true;
         type = GameInterfaceType.get(buffer.getUnsignedByte());
         contentType = buffer.getUnsignedShortBE();
-        originalX = currentX = buffer.getShortBE();
-        originalY = currentY = buffer.getShortBE();
-        originalWidth = buffer.getUnsignedShortBE();
-        if(type == GameInterfaceType.LINE) {
-            originalHeight = buffer.getShortBE();
+        baseX = x = buffer.getShortBE();
+        baseY = y = buffer.getShortBE();
+        width = buffer.getUnsignedShortBE();
+
+        if (type == GameInterfaceType.LINE) {
+            height = buffer.getShortBE();
         } else {
-            originalHeight = buffer.getUnsignedShortBE();
+            height = buffer.getUnsignedShortBE();
         }
-        parentId = buffer.getUnsignedShortBE();
-        if(parentId == 0xFFFF) {
-            parentId = -1;
+
+        layer = buffer.getUnsignedShortBE();
+        if (layer == 0xFFFF) {
+            layer = -1;
         }
-        isHidden = buffer.getUnsignedByte() == 1;
+
+        hide = buffer.getUnsignedByte() == 1;
         hasListeners = buffer.getUnsignedByte() == 1;
-        if(type == GameInterfaceType.LAYER) {
-            scrollWidth = buffer.getUnsignedShortBE();
-            scrollDepth = buffer.getUnsignedShortBE();
+
+        if (type == GameInterfaceType.LAYER) {
+            scrollX = buffer.getUnsignedShortBE();
+            scrollY = buffer.getUnsignedShortBE();
         }
-        if(type == GameInterfaceType.GRAPHIC) {
-            spriteId = buffer.getIntBE();
+
+        if (type == GameInterfaceType.GRAPHIC) {
+            graphic = buffer.getIntBE();
             textureId = buffer.getUnsignedShortBE();
             tiled = buffer.getUnsignedByte() == 1;
-            opacity = buffer.getUnsignedByte();
+            transparency = buffer.getUnsignedByte();
         }
-        if(type == GameInterfaceType.MODEL) {
+
+        if (type == GameInterfaceType.MODEL) {
             modelType = InterfaceModelType.MODEL;
             modelId = buffer.getUnsignedShortBE();
             if(modelId == 65535) {
                 modelId = -1;
             }
-            offsetX2d = buffer.getShortBE();
-            offsetY2d = buffer.getShortBE();
-            rotationX = buffer.getUnsignedShortBE();
-            rotationZ = buffer.getUnsignedShortBE();
-            rotationY = buffer.getUnsignedShortBE();
+
+            modelXOffset = buffer.getShortBE();
+            modelYOffset = buffer.getShortBE();
+            modelXAngle = buffer.getUnsignedShortBE();
+            modelYAngle = buffer.getUnsignedShortBE();
+            modelZAngle = buffer.getUnsignedShortBE();
             modelZoom = buffer.getUnsignedShortBE();
-            animation = buffer.getUnsignedShortBE();
-            if(animation == 65535) {
-                animation = -1;
+            modelSeqId = buffer.getUnsignedShortBE();
+            if(modelSeqId == 65535) {
+                modelSeqId = -1;
             }
-            orthogonal = buffer.getUnsignedByte() == 1;
+
+            modelOrthographic = buffer.getUnsignedByte() == 1;
         }
-        if(type == GameInterfaceType.TEXT) {
-            fontId = buffer.getUnsignedShortBE();
-            disabledText = buffer.getString();
-            lineHeight = buffer.getUnsignedByte();
-            xTextAlignment = buffer.getUnsignedByte();
-            yTextAlignment = buffer.getUnsignedByte();
-            textShadowed = buffer.getUnsignedByte() == 1;
+
+        if (type == GameInterfaceType.TEXT) {
+            textFont = buffer.getUnsignedShortBE();
+            text = buffer.getString();
+            textLineHeight = buffer.getUnsignedByte();
+            textHorizontalAlignment = buffer.getUnsignedByte();
+            textVerticalAlignment = buffer.getUnsignedByte();
+            textShadow = buffer.getUnsignedByte() == 1;
             textColor = buffer.getIntBE();
         }
-        if(type == GameInterfaceType.RECTANGLE) {
+
+        if (type == GameInterfaceType.RECTANGLE) {
             textColor = buffer.getIntBE();
-            filled = buffer.getUnsignedByte() == 1;
-            opacity = buffer.getUnsignedByte();
+            fill = buffer.getUnsignedByte() == 1;
+            transparency = buffer.getUnsignedByte();
         }
-        if(type == GameInterfaceType.LINE) {
+
+        if (type == GameInterfaceType.LINE) {
             buffer.getUnsignedByte();
             textColor = buffer.getIntBE();
         }
-        if(hasListeners) {
+
+        if (hasListeners) {
             // various interface action listeners (click, mouse move, onload, etc)
-            onLoadListeners = decodeListener(buffer);
-            anObjectArray2681 = decodeListener(buffer);
-            anObjectArray2644 = decodeListener(buffer);
-            anObjectArray2707 = decodeListener(buffer);
-            anObjectArray2658 = decodeListener(buffer);
-            anObjectArray2672 = decodeListener(buffer);
-            anObjectArray2669 = decodeListener(buffer);
-            decodeListener(buffer);
-            anObjectArray2650 = decodeListener(buffer);
-            anObjectArray2712 = decodeListener(buffer);
-            decodeListener(buffer);
-            anObjectArray2695 = decodeListener(buffer);
-            anObjectArray2747 = decodeListener(buffer);
-            anObjectArray2680 = decodeListener(buffer);
-            isInventory = buffer.getUnsignedByte() == 1;
+            onLoadListener = readArguments(buffer);
+            anObjectArray2681 = readArguments(buffer);
+            anObjectArray2644 = readArguments(buffer);
+            anObjectArray2707 = readArguments(buffer);
+            anObjectArray2658 = readArguments(buffer);
+            anObjectArray2672 = readArguments(buffer);
+            anObjectArray2669 = readArguments(buffer);
+            readArguments(buffer);
+            anObjectArray2650 = readArguments(buffer);
+            anObjectArray2712 = readArguments(buffer);
+            readArguments(buffer);
+            anObjectArray2695 = readArguments(buffer);
+            anObjectArray2747 = readArguments(buffer);
+            anObjectArray2680 = readArguments(buffer);
+
+            invInteractable = buffer.getUnsignedByte() == 1;
             anInt2736 = buffer.getUnsignedShortBE();
             lockScroll = buffer.getUnsignedByte() == 1;
             buffer.getUnsignedByte();
+
             int i = buffer.getUnsignedByte();
-            if(i > 0) {
+            if (i > 0) {
                 aClass1Array2661 = new String[i];
                 for(int i_10_ = 0; i_10_ < i; i_10_++) {
                     aClass1Array2661[i_10_] = buffer.getString();
                 }
             }
+
             anInt2738 = buffer.getUnsignedShortBE();
-            if(anInt2738 == 65535) {
+            if (anInt2738 == 65535) {
                 anInt2738 = -1;
             }
         }
@@ -2687,8 +2733,8 @@ ChatBox.tradeMode
         InterfaceModelType modelType;
         int modelId;
         if(applyAlternateAction) {
-            modelId = alternateModelId;
-            modelType = alternateModelType;
+            modelId = activeModelID;
+            modelType = activeModelType;
         } else {
             modelType = this.modelType;
             modelId = this.modelId;
@@ -2757,21 +2803,21 @@ ChatBox.tradeMode
 
     public TypeFace getTypeFace() {
         aBoolean2177 = false;
-        if(fontId == 65535) {
+        if(textFont == 65535) {
             return null;
         }
-        TypeFace typeFace = (TypeFace) interfaceTypefaceCache.get(fontId);
+        TypeFace typeFace = (TypeFace) interfaceTypefaceCache.get(textFont);
 
         if(typeFace != null) {
             return typeFace;
         }
 
-        typeFace = TypeFace.getFont(CacheArchive.gameImageCacheArchive, fontId, 0);
+        typeFace = TypeFace.getFont(CacheArchive.gameImageCacheArchive, textFont, 0);
 
         if(typeFace == null) {
             aBoolean2177 = true;
         } else {
-            interfaceTypefaceCache.put(fontId, typeFace);
+            interfaceTypefaceCache.put(textFont, typeFace);
         }
 
         return typeFace;

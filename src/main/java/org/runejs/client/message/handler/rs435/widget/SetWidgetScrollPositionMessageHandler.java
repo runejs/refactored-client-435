@@ -15,9 +15,9 @@ public class SetWidgetScrollPositionMessageHandler implements MessageHandler<Set
 
             if(scrollPosition < 0)
                 scrollPosition = 0;
-            if(-gameInterface.originalHeight + gameInterface.scrollHeight < scrollPosition)
-                scrollPosition = -gameInterface.originalHeight + gameInterface.scrollHeight;
-            gameInterface.scrollDepth = scrollPosition;
+            if(-gameInterface.height + gameInterface.scrollableHeight < scrollPosition)
+                scrollPosition = -gameInterface.height + gameInterface.scrollableHeight;
+            gameInterface.scrollY = scrollPosition;
         }
     }
 }

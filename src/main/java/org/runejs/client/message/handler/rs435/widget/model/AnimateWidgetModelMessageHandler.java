@@ -11,10 +11,10 @@ public class AnimateWidgetModelMessageHandler implements MessageHandler<AnimateW
 
         int animationId = message.animationId;
 
-        if(animationId != gameInterface.animation || animationId == -1) {
+        if(animationId != gameInterface.modelSeqId || animationId == -1) {
             gameInterface.remainingAnimationTime = 0;
             gameInterface.animationFrame = 0;
-            gameInterface.animation = animationId;
+            gameInterface.modelSeqId = animationId;
         }
     }
 }

@@ -14,6 +14,6 @@ public class UpdateCarryWeightMessageHandler implements MessageHandler<UpdateCar
     public void handle(UpdateCarryWeightMessage message) {
         if(Game.currentTabId == 12)
             GameInterface.redrawTabArea = true;
-        MovedStatics.carryWeight = message.amount;
+        MovedStatics.runWeight = message.amount;
     }
 }

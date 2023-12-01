@@ -1,6 +1,6 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.cs.InvokedScript;
+import org.runejs.client.cache.cs.GoSubFrame;
 import org.runejs.client.cache.cs.ClientScript;
 import org.runejs.client.net.OutgoingPackets;
 import org.runejs.client.node.Node;
@@ -31,19 +31,20 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class ClientScriptRunner extends Node {
-    public static String[] scriptStringValues = new String[1000];
+    public static String[] scriptStack = new String[1000];
     public static int runEnergy = 0;
     public static String[] localStrings;
-    public static int[] localInts;
-    public static int[] scriptIntValues = new int[1000];
-    public static InvokedScript[] invokedScripts = new InvokedScript[50];
-    public static int invokedScriptIndex = 0;
+    public static int[] intLocals;
+    public static int[] intStack = new int[1000];
+    public static GoSubFrame[] callStack = new GoSubFrame[50];
+    public static int fp = 0;
     public static LinkedList clientScriptRunnerCache = new LinkedList();
-    public static Calendar aCalendar279 = Calendar.getInstance();
-    public static boolean[] aBooleanArray548 = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
-    public static GameInterface aGameInterface_1887;
-    public static int[] anIntArray1847 = new int[2000];
-    private static String[] aClass1Array2964 = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+    public static Calendar calendar = Calendar.getInstance();
+    public static boolean[] ENABLED_SKILLS = new boolean[]{true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, true, false, false};
+    public static GameInterface primaryActiveComponent;
+    public static int[] varcs = new int[2000];
+    public static GameInterface secondaryActiveComponent;
+    private static String[] MONTHS = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     public int[] opcodes;
     public int[] errorCodes;
@@ -301,917 +302,843 @@ public class ClientScriptRunner extends Node {
         }
     }
 
-    public static void runClientScripts(Object[] listeners, int arg1, int arg2, GameInterface gameInterface1, int arg4) {
-        ClientScript clientScript = ClientScript.decodeClientScript((Integer) listeners[0], 76);
-        int[] intOperands = clientScript.intOperands;
-        int[] scriptOpcodes = clientScript.opcodes;
-        int intValueIndex = 0;
-        int stringValueIndex = 0;
-        int scriptIndex = -1;
-        int scriptOpcode;
+    public static void run(Object[] listeners, int arg1, int arg2, GameInterface gameInterface1, int arg4) {
+        ClientScript script = ClientScript.get((Integer) listeners[0], 76);
+        int[] intOperands = script.intOperands;
+        int[] opcodes = script.opcodes;
+        int isp = 0;
+        int ssp = 0;
+        int pc = -1;
+        int opcode;
 
         try {
-            localInts = new int[clientScript.localIntCount];
-            localStrings = new String[clientScript.localStringCount];
+            intLocals = new int[script.intLocalCount];
+            localStrings = new String[script.stringLocalCount];
             int localIntIndex = 0;
             int localStringIndex = 0;
 
             for(int listenerIndex = 1; listenerIndex < listeners.length; listenerIndex++) {
-                if(listeners[listenerIndex] instanceof Integer) {
+                if (listeners[listenerIndex] instanceof Integer) {
                     int intValue = ((Integer) listeners[listenerIndex]).intValue();
-                    if(intValue == -2147483647) { // 0
+                    if (intValue == 0x80000001) {
                         intValue = arg4;
                     }
-                    if(intValue == -2147483646) { // 1
+                    if (intValue == 0x80000002) {
                         intValue = arg2;
                     }
-                    if(intValue == -2147483645) { // 2
+                    if (intValue == 0x80000003) {
                         intValue = gameInterface1.id;
                     }
-                    if(intValue == -2147483644) { // 3
+                    if (intValue == 0x80000004) {
                         intValue = arg1;
                     }
-                    localInts[localIntIndex++] = intValue;
-                } else if(listeners[listenerIndex] instanceof String) {
+                    intLocals[localIntIndex++] = intValue;
+                } else if (listeners[listenerIndex] instanceof String) {
                     localStrings[localStringIndex++] = (String) listeners[listenerIndex];
                 }
             }
 
-            for(; ; ) {
-                scriptOpcode = scriptOpcodes[++scriptIndex];
-                if(scriptOpcode < 100) {
-                    // core language ops (not commands)
+            for (; ; ) {
+                opcode = opcodes[++pc];
 
-                    if(scriptOpcode == 0) {
+                // core language ops (not commands)
+                if (opcode < 100) {
+                    if (opcode == 0) {
                         // push_constant_int
-                        scriptIntValues[intValueIndex++] = intOperands[scriptIndex];
+                        intStack[isp++] = intOperands[pc];
                         continue;
-                    }
-                    if(scriptOpcode == 1) {
+                    } else if (opcode == 1) {
                         // push_varp
-                        int operand = intOperands[scriptIndex];
-                        scriptIntValues[intValueIndex++] = VarPlayerDefinition.varPlayers[operand];
+                        int operand = intOperands[pc];
+                        intStack[isp++] = VarPlayerDefinition.varPlayers[operand];
                         continue;
-                    }
-                    if(scriptOpcode == 2) {
+                    } else if (opcode == 2) {
                         // pop_varp
-                        int operand = intOperands[scriptIndex];
-                        VarPlayerDefinition.varPlayers[operand] = scriptIntValues[--intValueIndex];
+                        int operand = intOperands[pc];
+                        VarPlayerDefinition.varPlayers[operand] = intStack[--isp];
                         continue;
-                    }
-                    if(scriptOpcode == 3) {
+                    } else if (opcode == 3) {
                         // push_constant_string
-                        scriptStringValues[stringValueIndex++] = clientScript.stringOperands[scriptIndex];
+                        scriptStack[ssp++] = script.stringOperands[pc];
                         continue;
-                    }
-                    if(scriptOpcode == 6) {
+                    } else if (opcode == 6) {
                         // branch
-                        scriptIndex += intOperands[scriptIndex];
+                        pc += intOperands[pc];
                         continue;
-                    }
-                    if(scriptOpcode == 7) {
+                    } else if (opcode == 7) {
                         // branch_not
-                        intValueIndex -= 2;
-                        if(scriptIntValues[intValueIndex] != scriptIntValues[1 + intValueIndex]) {
-                            scriptIndex += intOperands[scriptIndex];
+                        isp -= 2;
+                        if (intStack[isp] != intStack[1 + isp]) {
+                            pc += intOperands[pc];
                         }
                         continue;
-                    }
-                    if(scriptOpcode == 8) {
+                    } else if (opcode == 8) {
                         // branch_equal
-                        intValueIndex -= 2;
-                        if(scriptIntValues[intValueIndex] == scriptIntValues[1 + intValueIndex]) {
-                            scriptIndex += intOperands[scriptIndex];
+                        isp -= 2;
+                        if (intStack[isp] == intStack[1 + isp]) {
+                            pc += intOperands[pc];
                         }
                         continue;
-                    }
-                    if(scriptOpcode == 9) {
+                    } else if (opcode == 9) {
                         // branch_equals
-                        intValueIndex -= 2;
-                        if(scriptIntValues[1 + intValueIndex] > scriptIntValues[intValueIndex]) {
-                            scriptIndex += intOperands[scriptIndex];
+                        isp -= 2;
+                        if (intStack[1 + isp] > intStack[isp]) {
+                            pc += intOperands[pc];
                         }
                         continue;
-                    }
-                    if(scriptOpcode == 10) {
+                    } else if (opcode == 10) {
                         // branch_greater_than
-                        intValueIndex -= 2;
-                        if(scriptIntValues[1 + intValueIndex] < scriptIntValues[intValueIndex]) {
-                            scriptIndex += intOperands[scriptIndex];
+                        isp -= 2;
+                        if (intStack[1 + isp] < intStack[isp]) {
+                            pc += intOperands[pc];
                         }
                         continue;
-                    }
-                    if(scriptOpcode == 21) {
+                    } else if (opcode == 21) {
                         // return
-                        if(invokedScriptIndex != 0) {
-                            InvokedScript invokedScript = invokedScripts[--invokedScriptIndex];
-                            localStrings = invokedScript.localStrings;
-                            localInts = invokedScript.localInts;
-                            scriptIndex = invokedScript.scriptIndex;
-                            clientScript = invokedScript.script;
-                            intOperands = clientScript.intOperands;
-                            scriptOpcodes = clientScript.opcodes;
+                        if (fp != 0) {
+                            GoSubFrame invokedScript = callStack[--fp];
+                            localStrings = invokedScript.stringLocals;
+                            intLocals = invokedScript.intLocals;
+                            pc = invokedScript.pc;
+                            script = invokedScript.script;
+                            intOperands = script.intOperands;
+                            opcodes = script.opcodes;
                             continue;
                         }
                         break;
-                    }
-                    if(scriptOpcode == 25) {
+                    } else if (opcode == 25) {
                         // push_varbit
-                        int operand = intOperands[scriptIndex];
-                        scriptIntValues[intValueIndex++] = VarbitDefinition.getVarbitValue(operand);
+                        int operand = intOperands[pc];
+                        intStack[isp++] = VarbitDefinition.getVarbitValue(operand);
                         continue;
-                    }
-                    if(scriptOpcode == 27) {
+                    } else if (opcode == 27) {
                         // pop_varbit
-                        int operand = intOperands[scriptIndex];
-                        VarbitDefinition.setVarbitValue(scriptIntValues[--intValueIndex], operand);
+                        int operand = intOperands[pc];
+                        VarbitDefinition.setVarbitValue(intStack[--isp], operand);
                         continue;
-                    }
-                    if(scriptOpcode == 31) {
+                    } else if (opcode == 31) {
                         // branch_less_than_or_equals
-                        intValueIndex -= 2;
-                        if(scriptIntValues[intValueIndex] <= scriptIntValues[intValueIndex + 1]) {
-                            scriptIndex += intOperands[scriptIndex];
+                        isp -= 2;
+                        if (intStack[isp] <= intStack[isp + 1]) {
+                            pc += intOperands[pc];
                         }
                         continue;
-                    }
-                    if(scriptOpcode == 32) {
+                    } else if (opcode == 32) {
                         // branch_greater_than_or_equals
-                        intValueIndex -= 2;
-                        if(scriptIntValues[1 + intValueIndex] <= scriptIntValues[intValueIndex]) {
-                            scriptIndex += intOperands[scriptIndex];
+                        isp -= 2;
+                        if (intStack[1 + isp] <= intStack[isp]) {
+                            pc += intOperands[pc];
                         }
                         continue;
-                    }
-                    if(scriptOpcode == 33) {
+                    } else if (opcode == 33) {
                         // push_int_local
-                        scriptIntValues[intValueIndex++] = localInts[intOperands[scriptIndex]];
+                        intStack[isp++] = intLocals[intOperands[pc]];
                         continue;
-                    }
-                    if(scriptOpcode == 34) {
+                    } else if (opcode == 34) {
                         // pop_int_local
-                        localInts[intOperands[scriptIndex]] = scriptIntValues[--intValueIndex];
+                        intLocals[intOperands[pc]] = intStack[--isp];
                         continue;
-                    }
-                    if(scriptOpcode == 35) {
+                    } else if (opcode == 35) {
                         // push_string_local
-                        scriptStringValues[stringValueIndex++] = localStrings[intOperands[scriptIndex]];
+                        scriptStack[ssp++] = localStrings[intOperands[pc]];
                         continue;
-                    }
-                    if(scriptOpcode == 36) {
+                    } else if (opcode == 36) {
                         // pop_string_local
-                        localStrings[intOperands[scriptIndex]] = scriptStringValues[--stringValueIndex];
+                        localStrings[intOperands[pc]] = scriptStack[--ssp];
                         continue;
-                    }
-                    if(scriptOpcode == 37) {
+                    } else if (opcode == 37) {
                         // join_string
-                        int operand = intOperands[scriptIndex];
-                        stringValueIndex -= operand;
-                        System.out.println("THIS DOES SOMETHING, GO FIX!");
-                        // TODO: Figure out what this actually does
-//                        RSString class1 = (RSString.method627(operand, stringValueIndex, Class40_Sub11.aClass1Array2153));
-//                        Class40_Sub11.aClass1Array2153[stringValueIndex++] = class1;
+                        int operand = intOperands[pc];
+                        ssp -= operand;
+                        System.out.println("hey, go fix join_string!");
+                        // TODO: we know what this does now, but the references have been refactored since
+//                        RSString class1 = (RSString.method627(operand, ssp, Class40_Sub11.aClass1Array2153));
+//                        Class40_Sub11.aClass1Array2153[ssp++] = class1;
                         continue;
-                    }
-                    if(scriptOpcode == 38) {
+                    } else if (opcode == 38) {
                         // pop_int_discard
-                        intValueIndex--;
+                        isp--;
                         continue;
-                    }
-                    if(scriptOpcode == 39) {
+                    } else if (opcode == 39) {
                         // pop_string_discard
-                        stringValueIndex--;
+                        ssp--;
                         continue;
-                    }
-                    if(scriptOpcode == 40) {
+                    } else if (opcode == 40) {
                         // gosub_with_params
-                        int operand = intOperands[scriptIndex];
-                        ClientScript invokeScript = ClientScript.decodeClientScript(operand, 73);
-                        int[] invokeScriptInts = new int[invokeScript.localIntCount];
-                        String[] invokeScriptStrings = new String[invokeScript.localStringCount];
-                        for(int intIndex = 0; invokeScript.intStackCount > intIndex; intIndex++) {
-                            invokeScriptInts[intIndex] = scriptIntValues[intValueIndex - (invokeScript.intStackCount + -intIndex)];
+                        int scriptId = intOperands[pc];
+                        ClientScript callee = ClientScript.get(scriptId, 73);
+                        int[] calleeIntLocals = new int[callee.intLocalCount];
+                        String[] calleeStringLocals = new String[callee.stringLocalCount];
+                        for (int i = 0; callee.intArgCount > i; i++) {
+                            calleeIntLocals[i] = intStack[isp - (callee.intArgCount + -i)];
                         }
-                        for(int strIndex = 0; invokeScript.stringStackCount > strIndex; strIndex++) {
-                            invokeScriptStrings[strIndex] = scriptStringValues[stringValueIndex - invokeScript.stringStackCount + strIndex];
+                        for (int i = 0; callee.stringArgCount > i; i++) {
+                            calleeStringLocals[i] = scriptStack[ssp - callee.stringArgCount + i];
                         }
-                        stringValueIndex -= invokeScript.stringStackCount;
-                        intValueIndex -= invokeScript.intStackCount;
-                        InvokedScript invokedScript = new InvokedScript();
-                        invokedScript.localStrings = localStrings;
-                        invokedScript.script = clientScript;
-                        invokedScript.localInts = localInts;
-                        clientScript = invokeScript;
-                        invokedScript.scriptIndex = scriptIndex;
-                        invokedScripts[invokedScriptIndex++] = invokedScript;
-                        intOperands = clientScript.intOperands;
-                        localStrings = invokeScriptStrings;
-                        scriptIndex = -1;
-                        localInts = invokeScriptInts;
-                        scriptOpcodes = clientScript.opcodes;
+                        ssp -= callee.stringArgCount;
+                        isp -= callee.intArgCount;
+                        GoSubFrame frame = new GoSubFrame();
+                        frame.stringLocals = localStrings;
+                        frame.script = script;
+                        frame.intLocals = intLocals;
+                        script = callee;
+                        frame.pc = pc;
+                        callStack[fp++] = frame;
+                        intOperands = script.intOperands;
+                        localStrings = calleeStringLocals;
+                        pc = -1;
+                        intLocals = calleeIntLocals;
+                        opcodes = script.opcodes;
                         continue;
-                    }
-                    if(scriptOpcode == 42) {
+                    } else if (opcode == 42) {
                         // push_varc_int
-                        scriptIntValues[intValueIndex++] = anIntArray1847[intOperands[scriptIndex]];
+                        intStack[isp++] = varcs[intOperands[pc]];
                         continue;
-                    }
-                    if(scriptOpcode == 43) {
+                    } else if (opcode == 43) {
                         // pop_varc_int
-                        anIntArray1847[intOperands[scriptIndex]] = scriptIntValues[--intValueIndex];
+                        varcs[intOperands[pc]] = intStack[--isp];
                         continue;
                     }
                 }
 
-                boolean bool = intOperands[scriptIndex] == 1;
-                if(scriptOpcode < 1000) {
-                    if(scriptOpcode == 100) {
+                // secondary pointer access (prefixed with ., e.g .cc_ commands)
+                boolean secondary = intOperands[pc] == 1;
+
+                if (opcode < 1000) {
+                    if (opcode == 100) {
                         // cc_create
-                        intValueIndex -= 3;
-                        int interfaceData = scriptIntValues[intValueIndex];
-                        int interfaceType = scriptIntValues[intValueIndex + 1];
-                        int childCount = scriptIntValues[intValueIndex + 2];
-                        GameInterface gameInterface = GameInterface.getInterface(interfaceData);
-                        if(gameInterface.children == null) {
-                            gameInterface.children = new GameInterface[1 + childCount];
+                        isp -= 3;
+                        int componentId = intStack[isp];
+                        int type = intStack[isp + 1];
+                        int createdComponentId = intStack[isp + 2];
+                        GameInterface component = GameInterface.getInterface(componentId);
+                        if (component.createdComponents == null) {
+                            component.createdComponents = new GameInterface[createdComponentId + 1];
                         }
-                        if(gameInterface.children.length <= childCount) {
-                            GameInterface[] childInterfaces = new GameInterface[1 + childCount];
-                            for(int childId = 0; gameInterface.children.length > childId; childId++) {
-                                childInterfaces[childId] = gameInterface.children[childId];
+                        if (component.createdComponents.length <= createdComponentId) {
+                            GameInterface[] createdComponents = new GameInterface[createdComponentId + 1];
+                            for (int i = 0; i < component.createdComponents.length; i++) {
+                                createdComponents[i] = component.createdComponents[i];
                             }
-                            gameInterface.children = childInterfaces;
+                            component.createdComponents = createdComponents;
                         }
-                        GameInterface childInterface = new GameInterface();
-                        childInterface.parentId = gameInterface.id;
-                        childInterface.type = GameInterfaceType.get(interfaceType);
-                        childInterface.id = ((0xffff & gameInterface.id) << 15) + -2147483648 + childCount;
-                        gameInterface.children[childCount] = childInterface;
-                        if(bool) {
-                            MovedStatics.aGameInterface_2116 = childInterface;
+                        GameInterface createdComponent = new GameInterface();
+                        createdComponent.layer = component.id;
+                        createdComponent.type = GameInterfaceType.get(type);
+                        createdComponent.id = ((0xffff & component.id) << 15) + 0x80000000 + createdComponentId;
+                        component.createdComponents[createdComponentId] = createdComponent;
+                        if (secondary) {
+                            secondaryActiveComponent = createdComponent;
                         } else {
-                            aGameInterface_1887 = childInterface;
+                            primaryActiveComponent = createdComponent;
                         }
-                    } else if(scriptOpcode == 101) {
+                    } else if (opcode == 101) {
                         // cc_delete
-                        GameInterface gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
-                        GameInterface childInterface = GameInterface.getInterface(gameInterface.parentId);
-                        childInterface.children[BitUtils.bitWiseAND(gameInterface.id, 32767)] = null;
-                    } else {
-                        if(scriptOpcode != 102) {
-                            break;
-                        }
+                        GameInterface createdComponent = !secondary ? primaryActiveComponent : secondaryActiveComponent;
+                        GameInterface component = GameInterface.getInterface(createdComponent.layer);
+                        component.createdComponents[BitUtils.bitWiseAND(createdComponent.id, 32767)] = null;
+                    } else if (opcode == 102) {
                         // cc_deleteall
-                        GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
-                        gameInterface.children = null;
+                        GameInterface component = GameInterface.getInterface(intStack[--isp]);
+                        component.createdComponents = null;
                     }
-                } else if(scriptOpcode >= 1000 && scriptOpcode < 1100 || scriptOpcode >= 2000 && scriptOpcode < 2100) {
-                    GameInterface gameInterface;
-                    if(scriptOpcode >= 2000) {
+                } else if (opcode >= 1000 && opcode < 1100 || opcode >= 2000 && opcode < 2100) {
+                    GameInterface component;
+                    if (opcode >= 2000) {
                         // if_
-                        gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
-                        scriptOpcode -= 1000;
+                        component = GameInterface.getInterface(intStack[--isp]);
+                        opcode -= 1000;
                     } else {
                         // cc_
-                        gameInterface = bool ? MovedStatics.aGameInterface_2116 : aGameInterface_1887;
+                        component = secondary ? secondaryActiveComponent : primaryActiveComponent;
                     }
+
                     // add if/cc + name e.g. if_setposition
-                    if(scriptOpcode == 1000) {
+                    if (opcode == 1000) {
                         // setposition
-                        intValueIndex -= 2;
-                        gameInterface.currentX = scriptIntValues[intValueIndex];
-                        gameInterface.currentY = scriptIntValues[intValueIndex + 1];
-                    } else if(scriptOpcode == 1001) {
+                        isp -= 2;
+                        component.x = intStack[isp];
+                        component.y = intStack[isp + 1];
+                    } else if (opcode == 1001) {
                         // setsize
-                        intValueIndex -= 2;
-                        gameInterface.originalWidth = scriptIntValues[intValueIndex];
-                        gameInterface.originalHeight = scriptIntValues[1 + intValueIndex];
-                    } else if(scriptOpcode == 1003) {
+                        isp -= 2;
+                        component.width = intStack[isp];
+                        component.height = intStack[1 + isp];
+                    } else if (opcode == 1003) {
                         // sethide
-                        gameInterface.isHidden = scriptIntValues[--intValueIndex] == 1;
-                    } else {
-                        if(scriptOpcode != 1004) {
-                            break;
-                        }
-                        // setaspect
-                        gameInterface.hasListeners = scriptIntValues[--intValueIndex] == 1;
+                        component.hide = intStack[--isp] == 1;
+                    } else if (opcode == 1004) {
+                        // sethaslisteners (not official name)
+                        component.hasListeners = intStack[--isp] == 1;
                     }
-                } else if(scriptOpcode >= 1100 && scriptOpcode < 1200 || scriptOpcode >= 2100 && scriptOpcode < 2200) {
-                    GameInterface gameInterface;
-                    if(scriptOpcode < 2000) {
+                } else if (opcode >= 1100 && opcode < 1200 || opcode >= 2100 && opcode < 2200) {
+                    GameInterface component;
+                    if (opcode < 2000) {
                         // cc_
-                        gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                        component = !secondary ? primaryActiveComponent : secondaryActiveComponent;
                     } else {
                         // if_
-                        gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
-                        scriptOpcode -= 1000;
+                        component = GameInterface.getInterface(intStack[--isp]);
+                        opcode -= 1000;
                     }
+
                     // add if/cc + name e.g. if_setscrollpos
-                    if(scriptOpcode == 1100) {
+                    if (opcode == 1100) {
                         // setscrollpos
-                        intValueIndex -= 2;
-                        gameInterface.scrollWidth = scriptIntValues[intValueIndex];
-                        gameInterface.scrollDepth = scriptIntValues[1 + intValueIndex];
-                    } else if(scriptOpcode == 1101) {
+                        isp -= 2;
+                        component.scrollX = intStack[isp];
+                        component.scrollY = intStack[1 + isp];
+                    } else if (opcode == 1101) {
                         // setcolour
-                        int i_24_ = scriptIntValues[--intValueIndex];
-                        int i_25_ = (0x7e0b & i_24_) >> 10;
-                        int i_26_ = i_24_ & 0x1f;
-                        int i_27_ = i_24_ >> 5 & 0x1f;
-                        gameInterface.textColor = (i_27_ << 11) + (i_25_ << 19) + (i_26_ << 3);
-                    } else if(scriptOpcode == 1102) {
+                        int color = intStack[--isp];
+                        int i_25_ = (color & 0x7e0b) >> 10;
+                        int i_27_ = color >> 5 & 0x1f;
+                        int i_26_ = color & 0x1f;
+                        component.textColor = (i_27_ << 11) + (i_25_ << 19) + (i_26_ << 3);
+                    } else if (opcode == 1102) {
                         // setfill
-                        gameInterface.filled = scriptIntValues[--intValueIndex] == 1;
-                    } else if(scriptOpcode == 1103) {
+                        component.fill = intStack[--isp] == 1;
+                    } else if (opcode == 1103) {
                         // settrans
-                        gameInterface.opacity = scriptIntValues[--intValueIndex];
-                    } else if(scriptOpcode == 1104) {
-                        // setlinewid (guess not implemented)
-                        intValueIndex--;
-                    } else if(scriptOpcode == 1105) {
+                        component.transparency = intStack[--isp];
+                    } else if (opcode == 1104) {
+                        // setlinewid (later on, guess not implemented now)
+                        isp--;
+                    } else if (opcode == 1105) {
                         // setgraphic
-                        gameInterface.spriteId = scriptIntValues[--intValueIndex];
-                    } else if(scriptOpcode == 1106) {
+                        component.graphic = intStack[--isp];
+                    } else if (opcode == 1106) {
                         // todo
-                        gameInterface.textureId = scriptIntValues[--intValueIndex];
-                    } else if(scriptOpcode == 1107) {
+                        component.textureId = intStack[--isp];
+                    } else if (opcode == 1107) {
                         // settiling
-                        gameInterface.tiled = scriptIntValues[--intValueIndex] == 1;
-                    } else if(scriptOpcode == 1108) {
+                        component.tiled = intStack[--isp] == 1;
+                    } else if (opcode == 1108) {
                         // setmodel
-                        gameInterface.modelType = InterfaceModelType.MODEL;
-                        gameInterface.modelId = scriptIntValues[--intValueIndex];
-                    } else if(scriptOpcode == 1109) {
+                        component.modelType = InterfaceModelType.MODEL;
+                        component.modelId = intStack[--isp];
+                    } else if (opcode == 1109) {
                         // setmodelangle
-                        intValueIndex -= 6;
-                        gameInterface.offsetX2d = scriptIntValues[intValueIndex];
-                        gameInterface.offsetY2d = scriptIntValues[1 + intValueIndex];
-                        gameInterface.rotationX = scriptIntValues[intValueIndex + 2];
-                        gameInterface.rotationZ = scriptIntValues[3 + intValueIndex];
-                        gameInterface.rotationY = scriptIntValues[4 + intValueIndex];
-                        gameInterface.modelZoom = scriptIntValues[5 + intValueIndex];
-                    } else if(scriptOpcode == 1110) {
+                        isp -= 6;
+                        component.modelXOffset = intStack[isp];
+                        component.modelYOffset = intStack[1 + isp];
+                        component.modelXAngle = intStack[isp + 2];
+                        component.modelYAngle = intStack[3 + isp];
+                        component.modelZAngle = intStack[4 + isp];
+                        component.modelZoom = intStack[5 + isp];
+                    } else if (opcode == 1110) {
                         // setmodelanim
-                        gameInterface.animation = scriptIntValues[--intValueIndex];
-                    } else if(scriptOpcode == 1111) {
+                        component.modelSeqId = intStack[--isp];
+                    } else if (opcode == 1111) {
                         // setmodelorthog
-                        gameInterface.orthogonal = scriptIntValues[--intValueIndex] == 1;
-                    } else if(scriptOpcode == 1112) {
+                        component.modelOrthographic = intStack[--isp] == 1;
+                    } else if (opcode == 1112) {
                         // settext
-                        gameInterface.disabledText = scriptStringValues[--stringValueIndex];
-                    } else if(scriptOpcode == 1113) {
+                        component.text = scriptStack[--ssp];
+                    } else if (opcode == 1113) {
                         // settextfont
-                        gameInterface.fontId = scriptIntValues[--intValueIndex];
-                    } else if(scriptOpcode == 1114) {
+                        component.textFont = intStack[--isp];
+                    } else if (opcode == 1114) {
                         // settextalign
-                        intValueIndex -= 3;
-                        gameInterface.xTextAlignment = scriptIntValues[intValueIndex];
-                        gameInterface.yTextAlignment = scriptIntValues[intValueIndex + 1];
-                        gameInterface.lineHeight = scriptIntValues[intValueIndex + 2];
-                    } else {
-                        if(scriptOpcode != 1115) {
-                            break;
-                        }
+                        isp -= 3;
+                        component.textHorizontalAlignment = intStack[isp];
+                        component.textVerticalAlignment = intStack[isp + 1];
+                        component.textLineHeight = intStack[isp + 2];
+                    } else if (opcode == 1115) {
                         // settextshadow
-                        gameInterface.textShadowed = scriptIntValues[--intValueIndex] == 1;
+                        component.textShadow = intStack[--isp] == 1;
                     }
-                } else if((scriptOpcode < 1200 || scriptOpcode >= 1300) && (scriptOpcode < 2200 || scriptOpcode >= 2300)) {
-                    if((scriptOpcode < 1300 || scriptOpcode >= 1400) && (scriptOpcode < 2300 || scriptOpcode >= 2400)) {
-                        if(scriptOpcode < 1500) {
-                            if(scriptOpcode == 1400) {
+                } else if ((opcode < 1200 || opcode >= 1300) && (opcode < 2200 || opcode >= 2300)) {
+                    if ((opcode < 1300 || opcode >= 1400) && (opcode < 2300 || opcode >= 2400)) {
+                        if (opcode < 1500) {
+                            if (opcode == 1400) {
                                 // todo
-                                intValueIndex -= 2;
-                                int i_28_ = scriptIntValues[intValueIndex + 1];
-                                int i_29_ = scriptIntValues[intValueIndex];
-                                GameInterface gameInterface = GameInterface.getInterface(i_29_);
-                                if(gameInterface.children == null || gameInterface.children.length <= i_28_ || gameInterface.children[i_28_] == null) {
-                                    scriptIntValues[intValueIndex++] = 0;
+                                isp -= 2;
+                                int componentId = intStack[isp];
+                                int i_28_ = intStack[isp + 1];
+                                GameInterface component = GameInterface.getInterface(componentId);
+                                if (component.createdComponents == null || component.createdComponents.length <= i_28_ || component.createdComponents[i_28_] == null) {
+                                    intStack[isp++] = 0;
                                 } else {
-                                    scriptIntValues[intValueIndex++] = 1;
-                                    if(bool) {
-                                        MovedStatics.aGameInterface_2116 = gameInterface.children[i_28_];
+                                    intStack[isp++] = 1;
+                                    if (secondary) {
+                                        secondaryActiveComponent = component.createdComponents[i_28_];
                                     } else {
-                                        aGameInterface_1887 = gameInterface.children[i_28_];
+                                        primaryActiveComponent = component.createdComponents[i_28_];
                                     }
                                 }
-                            } else if(scriptOpcode == 1401) {
+                            } else if (opcode == 1401) {
                                 // todo
-                                intValueIndex -= 3;
-                                int i_30_ = scriptIntValues[intValueIndex];
-                                int i_31_ = scriptIntValues[2 + intValueIndex];
-                                int i_32_ = scriptIntValues[intValueIndex + 1];
-                                GameInterface gameInterface = GameInterface.method361(GameInterface.cachedInterfaces[i_30_], i_31_, true, 0, -1, 0, i_32_, 398);
-                                if(gameInterface == null) {
-                                    scriptIntValues[intValueIndex++] = 0;
+                                isp -= 3;
+                                int i_30_ = intStack[isp];
+                                int i_32_ = intStack[isp + 1];
+                                int i_31_ = intStack[2 + isp];
+                                GameInterface component = GameInterface.method361(GameInterface.components[i_30_], i_31_, true, 0, -1, 0, i_32_, 398);
+                                if (component == null) {
+                                    intStack[isp++] = 0;
                                 } else {
-                                    scriptIntValues[intValueIndex++] = 1;
-                                    if(bool) {
-                                        MovedStatics.aGameInterface_2116 = gameInterface;
+                                    intStack[isp++] = 1;
+                                    if (secondary) {
+                                        secondaryActiveComponent = component;
                                     } else {
-                                        aGameInterface_1887 = gameInterface;
+                                        primaryActiveComponent = component;
                                     }
                                 }
-                            } else {
-                                if(scriptOpcode != 1402) {
-                                    break;
-                                }
+                            } else if (opcode == 1402) {
                                 // todo
-                                intValueIndex -= 3;
-                                GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
-                                int i_33_ = scriptIntValues[2 + intValueIndex];
-                                int i_34_ = scriptIntValues[intValueIndex + 1];
-                                GameInterface gameInterface_35_ = GameInterface.method361(gameInterface.children, i_33_, true, gameInterface.scrollDepth, gameInterface.id, gameInterface.scrollWidth, i_34_, 398);
-                                if(gameInterface_35_ == null) {
-                                    scriptIntValues[intValueIndex++] = 0;
+                                isp -= 3;
+                                GameInterface component = GameInterface.getInterface(intStack[isp]);
+                                int i_34_ = intStack[isp + 1];
+                                int i_33_ = intStack[2 + isp];
+                                GameInterface gameInterface_35_ = GameInterface.method361(component.createdComponents, i_33_, true, component.scrollY, component.id, component.scrollX, i_34_, 398);
+                                if (gameInterface_35_ == null) {
+                                    intStack[isp++] = 0;
                                 } else {
-                                    scriptIntValues[intValueIndex++] = 1;
-                                    if(bool) {
-                                        MovedStatics.aGameInterface_2116 = gameInterface_35_;
+                                    intStack[isp++] = 1;
+                                    if (secondary) {
+                                        secondaryActiveComponent = gameInterface_35_;
                                     } else {
-                                        aGameInterface_1887 = gameInterface_35_;
+                                        primaryActiveComponent = gameInterface_35_;
                                     }
                                 }
                             }
-                        } else if(scriptOpcode < 1600) {
-                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : aGameInterface_1887;
-                            if(scriptOpcode == 1500) {
+                        } else if (opcode < 1600) {
+                            GameInterface component = secondary ? secondaryActiveComponent : primaryActiveComponent;
+                            if (opcode == 1500) {
                                 // cc_getx
-                                scriptIntValues[intValueIndex++] = gameInterface.currentX;
-                            } else if(scriptOpcode == 1501) {
+                                intStack[isp++] = component.x;
+                            } else if (opcode == 1501) {
                                 // cc_gety
-                                scriptIntValues[intValueIndex++] = gameInterface.currentY;
-                            } else if(scriptOpcode == 1502) {
+                                intStack[isp++] = component.y;
+                            } else if (opcode == 1502) {
                                 // cc_getwidth
-                                scriptIntValues[intValueIndex++] = gameInterface.originalWidth;
-                            } else if(scriptOpcode == 1503) {
+                                intStack[isp++] = component.width;
+                            } else if (opcode == 1503) {
                                 // cc_getheight
-                                scriptIntValues[intValueIndex++] = gameInterface.originalHeight;
-                            } else if(scriptOpcode == 1504) {
+                                intStack[isp++] = component.height;
+                            } else if (opcode == 1504) {
                                 // cc_gethide
-                                scriptIntValues[intValueIndex++] = !gameInterface.isHidden ? 0 : 1;
-                            } else {
-                                if(scriptOpcode != 1505) {
-                                    break;
-                                }
-                                // set_getlayer
-                                scriptIntValues[intValueIndex++] = gameInterface.parentId;
+                                intStack[isp++] = !component.hide ? 0 : 1;
+                            } else if (opcode == 1505) {
+                                // cc_setlayer
+                                intStack[isp++] = component.layer;
                             }
-                        } else if(scriptOpcode >= 1700) {
-                            if(scriptOpcode < 2500) {
-                                if(scriptOpcode == 2401) {
+                        } else if (opcode >= 1700) {
+                            if (opcode < 2500) {
+                                if (opcode == 2401) {
                                     // todo
-                                    intValueIndex -= 3;
-                                    int i_36_ = scriptIntValues[1 + intValueIndex];
-                                    int i_37_ = scriptIntValues[intValueIndex];
-                                    int i_38_ = scriptIntValues[intValueIndex + 2];
-                                    GameInterface gameInterface = GameInterface.method361(GameInterface.cachedInterfaces[i_37_], i_38_, false, 0, -1, 0, i_36_, 398);
-                                    if(gameInterface == null) {
-                                        scriptIntValues[intValueIndex++] = -1;
+                                    isp -= 3;
+                                    int i_36_ = intStack[1 + isp];
+                                    int i_37_ = intStack[isp];
+                                    int i_38_ = intStack[isp + 2];
+                                    GameInterface gameInterface = GameInterface.method361(GameInterface.components[i_37_], i_38_, false, 0, -1, 0, i_36_, 398);
+                                    if (gameInterface == null) {
+                                        intStack[isp++] = -1;
                                     } else {
-                                        scriptIntValues[intValueIndex++] = gameInterface.id;
+                                        intStack[isp++] = gameInterface.id;
                                     }
-                                } else {
-                                    if(scriptOpcode != 2402) {
-                                        break;
-                                    }
+                                } else if (opcode == 2402) {
                                     // todo
-                                    intValueIndex -= 3;
-                                    GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
-                                    int i_39_ = scriptIntValues[1 + intValueIndex];
-                                    int i_40_ = scriptIntValues[intValueIndex + 2];
-                                    GameInterface gameInterface_41_ = GameInterface.method361(GameInterface.cachedInterfaces[gameInterface.id >> 16], i_40_, false, gameInterface.scrollDepth, 0xffff & gameInterface.id, gameInterface.scrollWidth, i_39_, 398);
-                                    if(gameInterface_41_ == null) {
-                                        scriptIntValues[intValueIndex++] = -1;
+                                    isp -= 3;
+                                    GameInterface component = GameInterface.getInterface(intStack[isp]);
+                                    int i_39_ = intStack[1 + isp];
+                                    int i_40_ = intStack[isp + 2];
+                                    GameInterface gameInterface_41_ = GameInterface.method361(GameInterface.components[component.id >> 16], i_40_, false, component.scrollY, 0xffff & component.id, component.scrollX, i_39_, 398);
+                                    if (gameInterface_41_ == null) {
+                                        intStack[isp++] = -1;
                                     } else {
-                                        scriptIntValues[intValueIndex++] = gameInterface_41_.id;
+                                        intStack[isp++] = gameInterface_41_.id;
                                     }
                                 }
-                            } else if(scriptOpcode >= 2600) {
-                                if(scriptOpcode < 2700) {
-                                    GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
-                                    if(scriptOpcode == 2600) {
+                            } else if (opcode >= 2600) {
+                                if (opcode < 2700) {
+                                    GameInterface component = GameInterface.getInterface(intStack[--isp]);
+                                    if (opcode == 2600) {
                                         // if_getscrollx
-                                        scriptIntValues[intValueIndex++] = gameInterface.scrollWidth;
-                                    } else {
-                                        if(scriptOpcode != 2601) {
-                                            break;
-                                        }
+                                        intStack[isp++] = component.scrollX;
+                                    } else if (opcode == 2601) {
                                         // if_getscrolly
-                                        scriptIntValues[intValueIndex++] = gameInterface.scrollDepth;
+                                        intStack[isp++] = component.scrollY;
                                     }
                                 } else {
-                                    if(scriptOpcode < 2800) {
+                                    if (opcode < 2800) {
                                         break;
                                     }
-                                    if(scriptOpcode < 3100) {
-                                        if(scriptOpcode == 3000) {
+                                    if (opcode < 3100) {
+                                        if (opcode == 3000) {
                                             // todo
-                                            int i_42_ = scriptIntValues[--intValueIndex];
-                                            if(MovedStatics.lastContinueTextWidgetId == -1) {
+                                            int i_42_ = intStack[--isp];
+                                            if (MovedStatics.lastContinueTextWidgetId == -1) {
                                                 GameInterface.sendPleaseWaitOptionClick(0, i_42_);
                                                 MovedStatics.lastContinueTextWidgetId = i_42_;
                                             }
-                                        } else if(scriptOpcode == 3001 || scriptOpcode == 3003) {
+                                        } else if (opcode == 3001 || opcode == 3003) {
                                             // todo
-                                            intValueIndex -= 2;
-                                            int i_43_ = scriptIntValues[intValueIndex];
-                                            int i_44_ = scriptIntValues[intValueIndex + 1];
+                                            isp -= 2;
+                                            int i_43_ = intStack[isp];
+                                            int i_44_ = intStack[isp + 1];
                                             method406(0, i_44_, i_43_);
-                                        } else if(scriptOpcode == 3002) {
+                                        } else if (opcode == 3002) {
                                             // todo
-                                            GameInterface gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
-                                            if(MovedStatics.lastContinueTextWidgetId == -1) {
-                                                GameInterface.sendPleaseWaitOptionClick(gameInterface.id & 0x7fff, gameInterface.parentId);
+                                            GameInterface gameInterface = !secondary ? primaryActiveComponent : secondaryActiveComponent;
+                                            if (MovedStatics.lastContinueTextWidgetId == -1) {
+                                                GameInterface.sendPleaseWaitOptionClick(gameInterface.id & 0x7fff, gameInterface.layer);
                                                 MovedStatics.lastContinueTextWidgetId = gameInterface.id;
                                             }
-                                        } else {
-                                            if(scriptOpcode != 3003) {
-                                                break;
-                                            }
+                                        } else if (opcode == 3003) {
                                             // todo
-                                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : aGameInterface_1887;
-                                            int i_45_ = scriptIntValues[--intValueIndex];
-                                            method406(0x7fff & gameInterface.id, i_45_, gameInterface.parentId);
+                                            GameInterface gameInterface = secondary ? secondaryActiveComponent : primaryActiveComponent;
+                                            int i_45_ = intStack[--isp];
+                                            method406(0x7fff & gameInterface.id, i_45_, gameInterface.layer);
                                         }
-                                    } else if(scriptOpcode >= 3200) {
-                                        if(scriptOpcode < 3300) {
-                                            if(scriptOpcode == 3200) {
+                                    } else if (opcode >= 3200) {
+                                        if (opcode < 3300) {
+                                            if (opcode == 3200) {
                                                 // sound_synth
-                                                intValueIndex -= 3;
-                                                SoundSystem.play(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], scriptIntValues[2 + intValueIndex]);
-                                            } else if(scriptOpcode == 3201) {
+                                                isp -= 3;
+                                                SoundSystem.play(intStack[isp], intStack[isp + 1], intStack[2 + isp]);
+                                            } else if (opcode == 3201) {
                                                 // sound_song
-                                                MusicSystem.playSong(scriptIntValues[--intValueIndex]);
-                                            } else {
-                                                if(scriptOpcode != 3202) {
-                                                    break;
-                                                }
+                                                MusicSystem.playSong(intStack[--isp]);
+                                            } else if (opcode == 3202) {
                                                 // sound_jingle
-                                                intValueIndex -= 2;
-                                                MusicSystem.playSoundJingle(scriptIntValues[intValueIndex + 1], scriptIntValues[intValueIndex]);
+                                                isp -= 2;
+                                                MusicSystem.playSoundJingle(intStack[isp + 1], intStack[isp]);
                                             }
-                                        } else if(scriptOpcode < 3400) {
-                                            if(scriptOpcode != 3300) {
-                                                break;
+                                        } else if (opcode < 3400) {
+                                            if (opcode == 3300) {
+                                                // clientclock
+                                                intStack[isp++] = MovedStatics.pulseCycle;
                                             }
-                                            // clientclock
-                                            scriptIntValues[intValueIndex++] = MovedStatics.pulseCycle;
-                                        } else if(scriptOpcode < 4100) {
-                                            if(scriptOpcode == 4000) {
+                                        } else if (opcode < 4100) {
+                                            if (opcode == 4000) {
                                                 // add
-                                                intValueIndex -= 2;
-                                                int i_46_ = scriptIntValues[intValueIndex];
-                                                int i_47_ = scriptIntValues[intValueIndex + 1];
-                                                scriptIntValues[intValueIndex++] = i_46_ + i_47_;
-                                            } else if(scriptOpcode == 4001) {
+                                                isp -= 2;
+                                                int a = intStack[isp];
+                                                int b = intStack[isp + 1];
+                                                intStack[isp++] = a + b;
+                                            } else if (opcode == 4001) {
                                                 // sub
-                                                intValueIndex -= 2;
-                                                int i_48_ = scriptIntValues[1 + intValueIndex];
-                                                int i_49_ = scriptIntValues[intValueIndex];
-                                                scriptIntValues[intValueIndex++] = i_49_ + -i_48_;
-                                            } else if(scriptOpcode == 4002) {
+                                                isp -= 2;
+                                                int a = intStack[isp];
+                                                int b = intStack[1 + isp];
+                                                intStack[isp++] = a - b;
+                                            } else if (opcode == 4002) {
                                                 // multiply
-                                                intValueIndex -= 2;
-                                                int i_50_ = scriptIntValues[intValueIndex + 1];
-                                                int i_51_ = scriptIntValues[intValueIndex];
-                                                scriptIntValues[intValueIndex++] = i_51_ * i_50_;
-                                            } else if(scriptOpcode == 4003) {
+                                                isp -= 2;
+                                                int a = intStack[isp];
+                                                int b = intStack[isp + 1];
+                                                intStack[isp++] = a * b;
+                                            } else if (opcode == 4003) {
                                                 // divide
-                                                intValueIndex -= 2;
-                                                int i_52_ = scriptIntValues[intValueIndex];
-                                                int i_53_ = scriptIntValues[intValueIndex + 1];
-                                                scriptIntValues[intValueIndex++] = i_52_ / i_53_;
-                                            } else if(scriptOpcode == 4004) {
+                                                isp -= 2;
+                                                int a = intStack[isp];
+                                                int b = intStack[isp + 1];
+                                                intStack[isp++] = a / b;
+                                            } else if (opcode == 4004) {
                                                 // random
-                                                int i_54_ = scriptIntValues[--intValueIndex];
-                                                scriptIntValues[intValueIndex++] = (int) (Math.random() * (double) i_54_);
-                                            } else if(scriptOpcode == 4005) {
+                                                int max = intStack[--isp];
+                                                intStack[isp++] = (int) (Math.random() * (double) max);
+                                            } else if (opcode == 4005) {
                                                 // randominc
-                                                int i_55_ = scriptIntValues[--intValueIndex];
-                                                scriptIntValues[intValueIndex++] = (int) ((double) (1 + i_55_) * Math.random());
-                                            } else if(scriptOpcode == 4006) {
+                                                int max = intStack[--isp];
+                                                intStack[isp++] = (int) (Math.random() * (double) (1 + max));
+                                            } else if (opcode == 4006) {
                                                 // interpolate
-                                                intValueIndex -= 5;
-                                                int i_56_ = scriptIntValues[1 + intValueIndex];
-                                                int i_57_ = scriptIntValues[intValueIndex];
-                                                int i_58_ = scriptIntValues[intValueIndex + 3];
-                                                int i_59_ = scriptIntValues[intValueIndex + 4];
-                                                int i_60_ = scriptIntValues[2 + intValueIndex];
-                                                scriptIntValues[intValueIndex++] = i_57_ + (i_59_ + -i_60_) * (-i_57_ + i_56_) / (i_58_ - i_60_);
-                                            } else if(scriptOpcode == 4007) {
+                                                isp -= 5;
+                                                int y1 = intStack[isp];
+                                                int y2 = intStack[isp + 1];
+                                                int x1 = intStack[isp + 2];
+                                                int x2 = intStack[isp + 3];
+                                                int x = intStack[isp + 4];
+                                                intStack[isp++] = (x - x1) * (y2 - y1) / (x2 - x1) + y1;
+                                            } else if (opcode == 4007) {
                                                 // addpercent
-                                                intValueIndex -= 2;
-                                                int i_61_ = scriptIntValues[intValueIndex];
-                                                int i_62_ = scriptIntValues[intValueIndex + 1];
-                                                scriptIntValues[intValueIndex++] = i_61_ + i_62_ * i_61_ / 100;
-                                            } else if(scriptOpcode == 4008) {
+                                                isp -= 2;
+                                                int n = intStack[isp];
+                                                int percent = intStack[isp + 1];
+                                                intStack[isp++] = percent * n / 100 + n;
+                                            } else if (opcode == 4008) {
                                                 // setbit
-                                                intValueIndex -= 2;
-                                                int i_63_ = scriptIntValues[intValueIndex];
-                                                int i_64_ = scriptIntValues[intValueIndex + 1];
-                                                scriptIntValues[intValueIndex++] = BitUtils.bitWiseOR(1 << i_64_, i_63_);
-                                            } else if(scriptOpcode == 4009) {
+                                                isp -= 2;
+                                                int value = intStack[isp];
+                                                int bit = intStack[isp + 1];
+                                                intStack[isp++] = BitUtils.bitWiseOR(1 << bit, value);
+                                            } else if (opcode == 4009) {
                                                 // clearbit
-                                                intValueIndex -= 2;
-                                                int i_65_ = scriptIntValues[intValueIndex];
-                                                int i_66_ = scriptIntValues[1 + intValueIndex];
-                                                scriptIntValues[intValueIndex++] = BitUtils.bitWiseAND(i_65_, -1 + -(1 << i_66_));
-                                            } else if(scriptOpcode == 4010) {
+                                                isp -= 2;
+                                                int value = intStack[isp];
+                                                int bit = intStack[isp + 1];
+                                                intStack[isp++] = BitUtils.bitWiseAND(value, -1 + -(1 << bit));
+                                            } else if (opcode == 4010) {
                                                 // testbit
-                                                intValueIndex -= 2;
-                                                int i_67_ = scriptIntValues[intValueIndex];
-                                                int i_68_ = scriptIntValues[1 + intValueIndex];
-                                                scriptIntValues[intValueIndex++] = BitUtils.bitWiseAND(1 << i_68_, i_67_) != 0 ? 1 : 0;
-                                            } else if(scriptOpcode == 4011) {
+                                                isp -= 2;
+                                                int value = intStack[isp];
+                                                int bit = intStack[isp + 1];
+                                                intStack[isp++] = BitUtils.bitWiseAND(1 << bit, value) != 0 ? 1 : 0;
+                                            } else if (opcode == 4011) {
                                                 // modulo
-                                                intValueIndex -= 2;
-                                                int i_69_ = scriptIntValues[intValueIndex + 1];
-                                                int i_70_ = scriptIntValues[intValueIndex];
-                                                scriptIntValues[intValueIndex++] = i_70_ % i_69_;
-                                            } else if(scriptOpcode == 4012) {
+                                                isp -= 2;
+                                                int a = intStack[isp];
+                                                int b = intStack[isp + 1];
+                                                intStack[isp++] = a % b;
+                                            } else if (opcode == 4012) {
                                                 // pow
-                                                intValueIndex -= 2;
-                                                int i_71_ = scriptIntValues[intValueIndex];
-                                                int i_72_ = scriptIntValues[intValueIndex + 1];
-                                                if(i_71_ == 0) {
-                                                    scriptIntValues[intValueIndex++] = 0;
+                                                isp -= 2;
+                                                int a = intStack[isp];
+                                                int b = intStack[isp + 1];
+                                                if (a == 0) {
+                                                    intStack[isp++] = 0;
                                                 } else {
-                                                    scriptIntValues[intValueIndex++] = (int) Math.pow((double) i_71_, (double) i_72_);
+                                                    intStack[isp++] = (int) Math.pow(a, b);
                                                 }
-                                            } else {
-                                                if(scriptOpcode != 4013) {
-                                                    break;
-                                                }
+                                            } else if (opcode == 4013) {
                                                 // invpow
-                                                intValueIndex -= 2;
-                                                int i_73_ = scriptIntValues[intValueIndex];
-                                                int i_74_ = scriptIntValues[1 + intValueIndex];
-                                                if(i_73_ == 0) {
-                                                    scriptIntValues[intValueIndex++] = 0;
-                                                } else if(i_74_ == 0) {
-                                                    scriptIntValues[intValueIndex++] = Integer.MAX_VALUE;
+                                                isp -= 2;
+                                                int a = intStack[isp];
+                                                int b = intStack[isp + 1];
+                                                if (a == 0) {
+                                                    intStack[isp++] = 0;
+                                                } else if (b == 0) {
+                                                    intStack[isp++] = Integer.MAX_VALUE;
                                                 } else {
-                                                    scriptIntValues[intValueIndex++] = (int) Math.pow((double) i_73_, 1.0 / (double) i_74_);
+                                                    intStack[isp++] = (int) Math.pow(a, 1.0 / (double) b);
                                                 }
                                             }
-                                        } else {
-                                            if(scriptOpcode >= 4200) {
-                                                break;
-                                            }
-                                            if(scriptOpcode == 4100) {
+                                        } else if (opcode < 4200) {
+                                            if (opcode == 4100) {
                                                 // append_num
-                                                String class1 = scriptStringValues[--stringValueIndex];
-                                                int i_75_ = scriptIntValues[--intValueIndex];
-                                                scriptStringValues[stringValueIndex++] = class1 + i_75_;
-                                            } else if(scriptOpcode == 4101) {
+                                                String a = scriptStack[--ssp];
+                                                int b = intStack[--isp];
+                                                scriptStack[ssp++] = a + b;
+                                            } else if (opcode == 4101) {
                                                 // append
-                                                stringValueIndex -= 2;
-                                                String class1 = scriptStringValues[stringValueIndex + 1];
-                                                String class1_76_ = scriptStringValues[stringValueIndex];
-                                                scriptStringValues[stringValueIndex++] = class1_76_ + class1;
-                                            } else if(scriptOpcode == 4102) {
+                                                ssp -= 2;
+                                                String a = scriptStack[ssp];
+                                                String b = scriptStack[ssp + 1];
+                                                scriptStack[ssp++] = a + b;
+                                            } else if (opcode == 4102) {
                                                 // append_signnum
-                                                String class1 = scriptStringValues[--stringValueIndex];
-                                                int i_77_ = scriptIntValues[--intValueIndex];
-                                                scriptStringValues[stringValueIndex++] = class1 + method1024(true, i_77_);
-                                            } else if(scriptOpcode == 4103) {
+                                                String a = scriptStack[--ssp];
+                                                int b = intStack[--isp];
+                                                scriptStack[ssp++] = a + toString(true, b);
+                                            } else if (opcode == 4103) {
                                                 // lowercase
-                                                String class1 = scriptStringValues[--stringValueIndex];
-                                                scriptStringValues[stringValueIndex++] = class1.toLowerCase();
-                                            } else if(scriptOpcode == 4104) {
+                                                String value = scriptStack[--ssp];
+                                                scriptStack[ssp++] = value.toLowerCase();
+                                            } else if (opcode == 4104) {
                                                 // fromdate
-                                                int i_78_ = scriptIntValues[--intValueIndex];
-                                                long l = 86400000L * ((long) i_78_ + 11745L);
-                                                aCalendar279.setTime(new Date(l));
-                                                int i_79_ = aCalendar279.get(Calendar.DATE);
-                                                int i_80_ = aCalendar279.get(Calendar.MONTH);
-                                                int i_81_ = aCalendar279.get(Calendar.YEAR);
-                                                scriptStringValues[stringValueIndex++] = i_79_ + "-" + aClass1Array2964[i_80_] + "-" + i_81_;
-                                            } else if(scriptOpcode == 4105) {
+                                                int val = intStack[--isp];
+                                                long timestamp = 86400000L * ((long) val + 11745L);
+                                                calendar.setTime(new Date(timestamp));
+                                                int day = calendar.get(Calendar.DATE);
+                                                int month = calendar.get(Calendar.MONTH);
+                                                int year = calendar.get(Calendar.YEAR);
+                                                scriptStack[ssp++] = day + "-" + MONTHS[month] + "-" + year;
+                                            } else if (opcode == 4105) {
                                                 // text_gender
-                                                stringValueIndex -= 2;
-                                                String class1 = scriptStringValues[stringValueIndex];
-                                                String class1_82_ = scriptStringValues[stringValueIndex + 1];
-                                                if(Player.localPlayer.playerAppearance == null || !Player.localPlayer.playerAppearance.isFemale) {
-                                                    scriptStringValues[stringValueIndex++] = class1;
+                                                ssp -= 2;
+                                                String maleValue = scriptStack[ssp];
+                                                String femaleValue = scriptStack[ssp + 1];
+                                                if (Player.localPlayer.playerAppearance == null || !Player.localPlayer.playerAppearance.isFemale) {
+                                                    scriptStack[ssp++] = maleValue;
                                                 } else {
-                                                    scriptStringValues[stringValueIndex++] = class1_82_;
+                                                    scriptStack[ssp++] = femaleValue;
                                                 }
-                                            } else if(scriptOpcode == 4106) {
+                                            } else if (opcode == 4106) {
                                                 // tostring
-                                                int i_83_ = scriptIntValues[--intValueIndex];
-                                                scriptStringValues[stringValueIndex++] = Integer.toString(i_83_).toString();
-                                            } else {
-                                                if(scriptOpcode != 4107) {
-                                                    break;
-                                                }
+                                                int value = intStack[--isp];
+                                                scriptStack[ssp++] = Integer.toString(value);
+                                            } else if (opcode == 4107) {
                                                 // compare
-                                                stringValueIndex -= 2;
-                                                scriptIntValues[intValueIndex++] = scriptStringValues[stringValueIndex].compareTo(scriptStringValues[stringValueIndex + 1]);
+                                                ssp -= 2;
+                                                intStack[isp++] = scriptStack[ssp].compareTo(scriptStack[ssp + 1]);
                                             }
                                         }
-                                    } else if(scriptOpcode == 3100) {
+                                    } else if (opcode == 3100) {
                                         // mes
-                                        String str = scriptStringValues[--stringValueIndex];
+                                        String str = scriptStack[--ssp];
                                         ChatBox.addChatMessage("", str, 0);
-                                    } else {
-                                        if(scriptOpcode != 3101) {
-                                            break;
-                                        }
+                                    } else if (opcode == 3101) {
                                         // anim
-                                        intValueIndex -= 2;
-                                        Player.playAnimation(scriptIntValues[intValueIndex], scriptIntValues[intValueIndex + 1], Player.localPlayer);
+                                        isp -= 2;
+                                        Player.playAnimation(intStack[isp], intStack[isp + 1], Player.localPlayer);
                                     }
                                 }
                             } else {
-                                GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
-                                if(scriptOpcode == 2500) {
+                                GameInterface component = GameInterface.getInterface(intStack[--isp]);
+                                if (opcode == 2500) {
                                     // if_getx
-                                    scriptIntValues[intValueIndex++] = gameInterface.currentX;
-                                } else if(scriptOpcode == 2501) {
+                                    intStack[isp++] = component.x;
+                                } else if (opcode == 2501) {
                                     // if_gety
-                                    scriptIntValues[intValueIndex++] = gameInterface.currentY;
-                                } else if(scriptOpcode == 2502) {
+                                    intStack[isp++] = component.y;
+                                } else if (opcode == 2502) {
                                     // if_getwidth
-                                    scriptIntValues[intValueIndex++] = gameInterface.originalWidth;
-                                } else if(scriptOpcode == 2503) {
+                                    intStack[isp++] = component.width;
+                                } else if (opcode == 2503) {
                                     // if_getheight
-                                    scriptIntValues[intValueIndex++] = gameInterface.originalHeight;
-                                } else if(scriptOpcode == 2504) {
+                                    intStack[isp++] = component.height;
+                                } else if (opcode == 2504) {
                                     // if_gethide
-                                    scriptIntValues[intValueIndex++] = gameInterface.isHidden ? 1 : 0;
-                                } else {
-                                    if(scriptOpcode != 2505) {
-                                        break;
-                                    }
+                                    intStack[isp++] = component.hide ? 1 : 0;
+                                } else if (opcode == 2505) {
                                     // if_getlayer
-                                    scriptIntValues[intValueIndex++] = gameInterface.parentId;
+                                    intStack[isp++] = component.layer;
                                 }
                             }
                         } else {
-                            GameInterface gameInterface = bool ? MovedStatics.aGameInterface_2116 : aGameInterface_1887;
-                            if(scriptOpcode == 1600) {
+                            GameInterface component = secondary ? secondaryActiveComponent : primaryActiveComponent;
+                            if (opcode == 1600) {
                                 // cc_getscrollx
-                                scriptIntValues[intValueIndex++] = gameInterface.scrollWidth;
-                            } else {
-                                if(scriptOpcode != 1601) {
-                                    break;
-                                }
+                                intStack[isp++] = component.scrollX;
+                            } else if (opcode == 1601) {
                                 // cc_getscrolly
-                                scriptIntValues[intValueIndex++] = gameInterface.scrollDepth;
+                                intStack[isp++] = component.scrollY;
                             }
                         }
                     } else {
-                        GameInterface gameInterface;
-                        if(scriptOpcode >= 2000) {
+                        GameInterface component;
+                        if (opcode >= 2000) {
                             // if_
-                            gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
-                            scriptOpcode -= 1000;
+                            component = GameInterface.getInterface(intStack[--isp]);
+                            opcode -= 1000;
                         } else {
                             // cc_
-                            gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                            component = !secondary ? primaryActiveComponent : secondaryActiveComponent;
                         }
-                        if(scriptOpcode >= 1300 && scriptOpcode <= 1309 || scriptOpcode >= 1314 && scriptOpcode <= 1317) {
-                            String class1 = scriptStringValues[--stringValueIndex];
-                            Object[] objects = new Object[class1.length() + 1];
-                            for(int i_84_ = objects.length - 1; i_84_ >= 1; i_84_--) {
-                                if(class1.charAt(-1 + i_84_) == 115) {
-                                    objects[i_84_] = scriptStringValues[--stringValueIndex];
+
+                        if (opcode >= 1300 && opcode <= 1309 || opcode >= 1314 && opcode <= 1317) {
+                            String descriptor = scriptStack[--ssp];
+
+                            // no triggers in this rev?
+
+                            Object[] arguments = new Object[descriptor.length() + 1];
+                            for (int i = arguments.length - 1; i >= 1; i--) {
+                                if (descriptor.charAt(i - 1) == 115) { // ascii for 's'
+                                    arguments[i] = scriptStack[--ssp];
                                 } else {
-                                    objects[i_84_] = new Integer(scriptIntValues[--intValueIndex]);
+                                    arguments[i] = intStack[--isp];
                                 }
                             }
-                            objects[0] = new Integer(scriptIntValues[--intValueIndex]);
-                            if(scriptOpcode == 1303) {
+
+                            // script id
+                            arguments[0] = intStack[--isp];
+
+                            if (opcode == 1300) {
                                 // todo
-                                gameInterface.anObjectArray2707 = objects;
-                            }
-                            if(scriptOpcode == 1317) {
+                                component.onLoadListener = arguments;
+                            } else if (opcode == 1301) {
                                 // todo
-                                gameInterface.anObjectArray2680 = objects;
-                            }
-                            if(scriptOpcode == 1304) {
+                                component.anObjectArray2681 = arguments;
+                            } else if (opcode == 1302) {
                                 // todo
-                                gameInterface.anObjectArray2658 = objects;
-                            }
-                            if(scriptOpcode == 1302) {
+                                component.anObjectArray2644 = arguments;
+                            } else if (opcode == 1303) {
                                 // todo
-                                gameInterface.anObjectArray2644 = objects;
-                            }
-                            if(scriptOpcode == 1316) {
+                                component.anObjectArray2707 = arguments;
+                            } else if (opcode == 1304) {
                                 // todo
-                                gameInterface.anObjectArray2747 = objects;
-                            }
-                            if(scriptOpcode == 1301) {
+                                component.anObjectArray2658 = arguments;
+                            } else if (opcode == 1305) {
                                 // todo
-                                gameInterface.anObjectArray2681 = objects;
-                            }
-                            if(scriptOpcode == 1300) {
+                                component.anObjectArray2672 = arguments;
+                            } else if (opcode == 1306) {
                                 // todo
-                                gameInterface.onLoadListeners = objects;
-                            }
-                            if(scriptOpcode == 1315) {
+                                component.anObjectArray2669 = arguments;
+                            } else if (opcode == 1308) {
                                 // todo
-                                gameInterface.anObjectArray2695 = objects;
-                            }
-                            if(scriptOpcode == 1306) {
+                                component.anObjectArray2650 = arguments;
+                            } else if (opcode == 1309) {
                                 // todo
-                                gameInterface.anObjectArray2669 = objects;
-                            }
-                            if(scriptOpcode == 1305) {
+                                component.anObjectArray2712 = arguments;
+                            } else if (opcode == 1315) {
                                 // todo
-                                gameInterface.anObjectArray2672 = objects;
-                            }
-                            if(scriptOpcode == 1309) {
+                                component.anObjectArray2695 = arguments;
+                            } else if (opcode == 1316) {
                                 // todo
-                                gameInterface.anObjectArray2712 = objects;
-                            }
-                            if(scriptOpcode == 1308) {
+                                component.anObjectArray2747 = arguments;
+                            } else if (opcode == 1317) {
                                 // todo
-                                gameInterface.anObjectArray2650 = objects;
+                                component.anObjectArray2680 = arguments;
                             }
-                        } else if(scriptOpcode == 1310) {
+                        } else if (opcode == 1310) {
                             // todo
-                            int i_85_ = -1 + scriptIntValues[--intValueIndex];
-                            if(i_85_ >= 0 && i_85_ <= 9) {
-                                if(gameInterface.aClass1Array2661 == null || gameInterface.aClass1Array2661.length <= i_85_) {
+                            int i_85_ = -1 + intStack[--isp];
+                            if (i_85_ >= 0 && i_85_ <= 9) {
+                                if (component.aClass1Array2661 == null || component.aClass1Array2661.length <= i_85_) {
                                     String[] class1s = new String[1 + i_85_];
-                                    if(gameInterface.aClass1Array2661 != null) {
-                                        for(int i_86_ = 0; gameInterface.aClass1Array2661.length > i_86_; i_86_++) {
-                                            class1s[i_86_] = gameInterface.aClass1Array2661[i_86_];
+                                    if (component.aClass1Array2661 != null) {
+                                        for(int i_86_ = 0; component.aClass1Array2661.length > i_86_; i_86_++) {
+                                            class1s[i_86_] = component.aClass1Array2661[i_86_];
                                         }
                                     }
-                                    gameInterface.aClass1Array2661 = class1s;
+                                    component.aClass1Array2661 = class1s;
                                 }
-                                gameInterface.aClass1Array2661[i_85_] = scriptStringValues[--stringValueIndex];
+                                component.aClass1Array2661[i_85_] = scriptStack[--ssp];
                             } else {
-                                stringValueIndex--;
+                                ssp--;
                             }
-                        } else if(scriptOpcode == 1311) {
+                        } else if (opcode == 1311) {
                             // todo
-                            gameInterface.anInt2738 = scriptIntValues[--intValueIndex];
-                        } else if(scriptOpcode == 1312) {
+                            component.anInt2738 = intStack[--isp];
+                        } else if (opcode == 1312) {
                             // todo
-                            gameInterface.lockScroll = scriptIntValues[--intValueIndex] == 1;
-                        } else {
-                            if(scriptOpcode != 1313) {
-                                break;
-                            }
-                            // todo
-                            intValueIndex--;
+                            component.lockScroll = intStack[--isp] == 1;
+                        } else if (opcode == 1313) {
+                            // unused in this rev
+                            isp--;
                         }
                     }
                 } else {
-                    GameInterface gameInterface;
-                    if(scriptOpcode < 2000) {
+                    GameInterface component;
+                    if (opcode < 2000) {
                         // cc_
-                        gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
+                        component = !secondary ? primaryActiveComponent : secondaryActiveComponent;
                     } else {
                         // if_
-                        gameInterface = GameInterface.getInterface(scriptIntValues[--intValueIndex]);
-                        scriptOpcode -= 1000;
+                        component = GameInterface.getInterface(intStack[--isp]);
+                        opcode -= 1000;
                     }
+
                     // add if/cc + name e.g. if_setobject
-                    if(scriptOpcode == 1200) {
+                    if (opcode == 1200) {
                         // setobject
-                        intValueIndex -= 3;
-                        int i_87_ = scriptIntValues[intValueIndex];
-                        int i_88_ = scriptIntValues[intValueIndex + 2];
-                        if(i_87_ == -1) {
-                            gameInterface.modelType = InterfaceModelType.NULL;
+                        isp -= 3;
+                        int objId = intStack[isp];
+                        // [isp + 1] should be the obj count, guess it wasn't used yet
+                        int objZoom = intStack[isp + 2];
+                        if (objId == -1) {
+                            component.modelType = InterfaceModelType.NULL;
                         } else {
-                            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(i_87_, 10);
-                            gameInterface.modelType = InterfaceModelType.ITEM;
-                            gameInterface.rotationX = class40_sub5_sub16.xan2d;
-                            gameInterface.rotationY = class40_sub5_sub16.zan2d;
-                            gameInterface.modelZoom = 100 * class40_sub5_sub16.zoom2d / i_88_;
-                            gameInterface.rotationZ = class40_sub5_sub16.yan2d;
-                            gameInterface.offsetY2d = class40_sub5_sub16.yOffset2d;
-                            gameInterface.offsetX2d = class40_sub5_sub16.xOffset2d;
-                            gameInterface.modelId = i_87_;
+                            ItemDefinition objType = ItemDefinition.forId(objId, 10);
+                            component.modelType = InterfaceModelType.ITEM;
+                            component.modelXAngle = objType.xan2d;
+                            component.modelZAngle = objType.zan2d;
+                            component.modelZoom = 100 * objType.zoom2d / objZoom;
+                            component.modelYAngle = objType.yan2d;
+                            component.modelYOffset = objType.yOffset2d;
+                            component.modelXOffset = objType.xOffset2d;
+                            component.modelId = objId;
                         }
-                    } else if(scriptOpcode == 1201) {
+                    } else if (opcode == 1201) {
                         // setnpchead
-                        gameInterface.modelType = InterfaceModelType.NPC_CHATHEAD;
-                        gameInterface.modelId = scriptIntValues[--intValueIndex];
-                    } else if(scriptOpcode == 1202) {
+                        component.modelType = InterfaceModelType.NPC_CHATHEAD;
+                        component.modelId = intStack[--isp];
+                    } else if (opcode == 1202) {
                         // setplayerhead_self
-                        gameInterface.modelType = InterfaceModelType.LOCAL_PLAYER_CHATHEAD;
-                        gameInterface.modelId = Player.localPlayer.playerAppearance.getHeadModelId();
-                    } else {
-                        if(scriptOpcode != 1203) {
-                            break;
-                        }
-                        // setnpcmodel
-                        GameInterface desiredInterface = !bool ? MovedStatics.aGameInterface_2116 : aGameInterface_1887;
-                        gameInterface.anInt2738 = desiredInterface.id;
+                        component.modelType = InterfaceModelType.LOCAL_PLAYER_CHATHEAD;
+                        component.modelId = Player.localPlayer.playerAppearance.getHeadModelId();
+                    } else if (opcode == 1203) {
+                        // todo
+                        GameInterface activeComponent = !secondary ? secondaryActiveComponent : primaryActiveComponent;
+                        component.anInt2738 = activeComponent.id;
                     }
                 }
             }
-        } catch(Exception exception) {
+        } catch (Exception exception) {
             /* empty */
         }
-
     }
 
     private static Class stringToType(String typeCode) throws ClassNotFoundException {
@@ -1234,7 +1161,8 @@ public class ClientScriptRunner extends Node {
         return Class.forName(typeCode);
     }
 
-    private static RSString method1024(boolean arg0, int arg2) {
+    // should belong in something like IntUtils.toString
+    private static RSString toString(boolean arg0, int arg2) {
         return RSString.method521(arg0, 10, arg2);
     }
 
@@ -1297,31 +1225,31 @@ public class ClientScriptRunner extends Node {
                 int i = arg2.indexOf(Native.percentOne);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.parseClientScripts(0, gameInterface)) + arg2.substring(2 + i);
+                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.run(0, gameInterface)) + arg2.substring(2 + i);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.percentTwo);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.parseClientScripts(1, gameInterface)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.run(1, gameInterface)) + arg2.substring(i + 2);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.percentThree);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.parseClientScripts(2, gameInterface)) + arg2.substring(2 + i);
+                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.run(2, gameInterface)) + arg2.substring(2 + i);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.percentFour);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.parseClientScripts(3, gameInterface)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.run(3, gameInterface)) + arg2.substring(i + 2);
             }
             for (; ; ) {
                 int i = arg2.indexOf(Native.percentFive);
                 if (i == -1)
                     break;
-                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.parseClientScripts(4, gameInterface)) + arg2.substring(i + 2);
+                arg2 = arg2.substring(0, i) + method872(999999999, ClientScript.run(4, gameInterface)) + arg2.substring(i + 2);
             }
             for (; ; ) {
                 // check client script results for value

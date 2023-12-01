@@ -9,7 +9,7 @@ public class SetWidgetPositionMessageHandler implements MessageHandler<SetWidget
     public void handle(SetWidgetPositionInboundMessage message) {
         GameInterface gameInterface = GameInterface.getInterface((message.widgetId << 16) | message.childId);
 
-        gameInterface.currentX = gameInterface.originalX + message.x;
-        gameInterface.currentY = gameInterface.originalY + message.y;
+        gameInterface.x = gameInterface.baseX + message.x;
+        gameInterface.y = gameInterface.baseY + message.y;
     }
 }

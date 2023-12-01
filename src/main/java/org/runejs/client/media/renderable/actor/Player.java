@@ -30,9 +30,9 @@ public class Player extends Actor {
     public static boolean inTutorialIsland = false;
     public static Buffer chatBuffer = new Buffer(new byte[5000]);
     public static boolean cutsceneActive = false;
-    public static int[] playerExperience = new int[25];
-    public static int[] playerLevels = new int[25];
-    public static int[] nextLevels = new int[25];
+    public static int[] experience = new int[25];
+    public static int[] boostedLevels = new int[25];
+    public static int[] baseLevels = new int[25];
     public static int[] experienceForLevels = new int[99];
     public static long[] privateMessageIds = new long[100];
     public static int privateMessageIndex = 0;

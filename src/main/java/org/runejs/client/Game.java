@@ -182,10 +182,10 @@ public class Game {
      * @return The status of the drawing cycle, true for success and false for failure
      */
     public static boolean drawParentInterface(int areaId, int minX, int minY, int maxX, int maxY, int widgetId) {
-        if(!GameInterface.decodeGameInterface(widgetId))
+        if(!GameInterface.load(widgetId))
             return false;
 
-        return drawInterface(areaId, minX, minY, maxX, maxY, 0, 0, GameInterface.cachedInterfaces[widgetId], -1, true);
+        return drawInterface(areaId, minX, minY, maxX, maxY, 0, 0, GameInterface.components[widgetId], -1, true);
     }
 
     /**
@@ -215,16 +215,16 @@ public class Game {
         boolean result = drawSuccess;
         for (int i = 0; interfaceCollection.length > i; i++) {
             GameInterface gameInterface = interfaceCollection[i];
-            if (gameInterface != null && gameInterface.parentId == parentId) {
+            if (gameInterface != null && gameInterface.layer == parentId) {
                 if (gameInterface.contentType > 0)
                     GameInterface.updateGameInterface(gameInterface);
-                int absoluteX = minX + gameInterface.currentX;
+                int absoluteX = minX + gameInterface.x;
                 if (!gameInterface.lockScroll)
                     absoluteX -= scrollWidth;
-                int absoluteY = minY + gameInterface.currentY;
+                int absoluteY = minY + gameInterface.y;
                 if (!gameInterface.lockScroll)
                     absoluteY -= scrollPosition;
-                int opacity = gameInterface.opacity;
+                int opacity = gameInterface.transparency;
                 if (gameInterface == GameInterface.aGameInterface_353) {
                     opacity = 128;
                     GameInterface gameInterface_3_ = GameInterface.method878(gameInterface);
@@ -233,48 +233,48 @@ public class Game {
                     int i_5_ = MouseHandler.mouseY + -MovedStatics.anInt2621 + positionA[1] - positionB[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
-                    if (i_5_ + gameInterface.originalHeight > gameInterface_3_.originalHeight)
-                        i_5_ = gameInterface_3_.originalHeight + -gameInterface.originalHeight;
+                    if (i_5_ + gameInterface.height > gameInterface_3_.height)
+                        i_5_ = gameInterface_3_.height + -gameInterface.height;
                     absoluteY = i_5_ + positionB[1];
                     int i_6_ = MouseHandler.mouseX + -MovedStatics.anInt1996 + -positionB[0] + positionA[0];
                     if (i_6_ < 0)
                         i_6_ = 0;
-                    if (i_6_ + gameInterface.originalWidth > gameInterface_3_.originalWidth)
-                        i_6_ = -gameInterface.originalWidth + gameInterface_3_.originalWidth;
+                    if (i_6_ + gameInterface.width > gameInterface_3_.width)
+                        i_6_ = -gameInterface.width + gameInterface_3_.width;
                     absoluteX = positionB[0] + i_6_;
                 }
-                if (!gameInterface.isNewInterfaceFormat || Rasterizer.viewportRight >= absoluteX && Rasterizer.viewportBottom >= absoluteY && Rasterizer.viewportLeft <= absoluteX + gameInterface.originalWidth && absoluteY + gameInterface.originalHeight >= Rasterizer.viewportTop) {
+                if (!gameInterface.if3 || Rasterizer.viewportRight >= absoluteX && Rasterizer.viewportBottom >= absoluteY && Rasterizer.viewportLeft <= absoluteX + gameInterface.width && absoluteY + gameInterface.height >= Rasterizer.viewportTop) {
                     if (gameInterface.type == GameInterfaceType.LAYER) {
-                        if (gameInterface.isHidden && !GameInterface.isHovering(areaId, i))
+                        if (gameInterface.hide && !GameInterface.isHovering(areaId, i))
                             continue;
-                        if (!gameInterface.isNewInterfaceFormat) {
-                            if (-gameInterface.originalHeight + gameInterface.scrollHeight < gameInterface.scrollDepth)
-                                gameInterface.scrollDepth = -gameInterface.originalHeight + gameInterface.scrollHeight;
-                            if (gameInterface.scrollDepth < 0)
-                                gameInterface.scrollDepth = 0;
+                        if (!gameInterface.if3) {
+                            if (-gameInterface.height + gameInterface.scrollableHeight < gameInterface.scrollY)
+                                gameInterface.scrollY = -gameInterface.height + gameInterface.scrollableHeight;
+                            if (gameInterface.scrollY < 0)
+                                gameInterface.scrollY = 0;
                         }
-                        result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.scrollDepth, gameInterface.scrollWidth, interfaceCollection, i, drawSuccess);
-                        if (gameInterface.children != null)
-                            result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, absoluteY + gameInterface.originalHeight, gameInterface.scrollDepth, gameInterface.scrollWidth, gameInterface.children, gameInterface.id, true);
+                        result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.width + absoluteX, gameInterface.height + absoluteY, gameInterface.scrollY, gameInterface.scrollX, interfaceCollection, i, drawSuccess);
+                        if (gameInterface.createdComponents != null)
+                            result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.width + absoluteX, absoluteY + gameInterface.height, gameInterface.scrollY, gameInterface.scrollX, gameInterface.createdComponents, gameInterface.id, true);
                         Rasterizer.setBounds(minX, minY, maxX, maxY);
-                        if (gameInterface.originalHeight < gameInterface.scrollHeight)
-                            GameInterface.drawScrollBar(absoluteX + gameInterface.originalWidth, absoluteY, gameInterface.originalHeight, gameInterface.scrollDepth, gameInterface.scrollHeight);
+                        if (gameInterface.height < gameInterface.scrollableHeight)
+                            GameInterface.drawScrollBar(absoluteX + gameInterface.width, absoluteY, gameInterface.height, gameInterface.scrollY, gameInterface.scrollableHeight);
                     }
                     if (gameInterface.type == GameInterfaceType.UNKNOWN) {
                         continue;
                     }
                     if (gameInterface.type == GameInterfaceType.INVENTORY) {
                         int i_7_ = 0;
-                        for (int i_8_ = 0; i_8_ < gameInterface.originalHeight; i_8_++) {
-                            for (int i_9_ = 0; gameInterface.originalWidth > i_9_; i_9_++) {
-                                int i_10_ = (gameInterface.itemSpritePadsX + 32) * i_9_ + absoluteX;
-                                int i_11_ = (32 + gameInterface.itemSpritePadsY) * i_8_ + absoluteY;
+                        for (int i_8_ = 0; i_8_ < gameInterface.height; i_8_++) {
+                            for (int i_9_ = 0; gameInterface.width > i_9_; i_9_++) {
+                                int i_10_ = (gameInterface.invMarginX + 32) * i_9_ + absoluteX;
+                                int i_11_ = (32 + gameInterface.invMarginY) * i_8_ + absoluteY;
                                 if (i_7_ < 20) {
-                                    i_10_ += gameInterface.images[i_7_];
-                                    i_11_ += gameInterface.imageX[i_7_];
+                                    i_10_ += gameInterface.invSlotImage[i_7_];
+                                    i_11_ += gameInterface.invSlotOffsetX[i_7_];
                                 }
-                                if (gameInterface.items[i_7_] <= 0) {
-                                    if (gameInterface.imageY != null && i_7_ < 20) {
+                                if (gameInterface.invSlotObjId[i_7_] <= 0) {
+                                    if (gameInterface.invSlotOffsetY != null && i_7_ < 20) {
                                         ImageRGB imageRGB = gameInterface.method638(i_7_);
                                         if (imageRGB == null) {
                                             if (GameInterface.aBoolean2177)
@@ -284,13 +284,13 @@ public class Game {
                                     }
                                 } else {
                                     int i_12_ = 0;
-                                    int i_13_ = -1 + gameInterface.items[i_7_];
+                                    int i_13_ = -1 + gameInterface.invSlotObjId[i_7_];
                                     int i_14_ = 0;
                                     if (-32 + Rasterizer.viewportLeft < i_10_ && Rasterizer.viewportRight > i_10_ && Rasterizer.viewportTop + -32 < i_11_ && Rasterizer.viewportBottom > i_11_ || GameInterface.activeInterfaceType != 0 && GameInterface.selectedInventorySlot == i_7_) {
                                         int i_15_ = 0;
                                         if (GameInterface.itemCurrentlySelected == 1 && i_7_ == GameInterface.itemSelectedContainerSlot && gameInterface.id == GameInterface.itemSelectedWidgetId)
                                             i_15_ = 16777215;
-                                        ImageRGB imageRGB = ItemDefinition.sprite(gameInterface.itemAmounts[i_7_], i_13_, i_15_);
+                                        ImageRGB imageRGB = ItemDefinition.sprite(gameInterface.invSlotObjCount[i_7_], i_13_, i_15_);
                                         if (imageRGB == null)
                                             result = false;
                                         else {
@@ -308,31 +308,31 @@ public class Game {
                                                 imageRGB.drawImageWithOpacity(i_12_ + i_10_, i_11_ + i_14_, 128);
                                                 if (parentId != -1) {
                                                     GameInterface gameInterface_16_ = interfaceCollection[parentId];
-                                                    if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollDepth > 0) {
+                                                    if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollY > 0) {
                                                         int i_17_ = deltaT * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
                                                         if (10 * deltaT < i_17_)
                                                             i_17_ = 10 * deltaT;
-                                                        if (gameInterface_16_.scrollDepth < i_17_)
-                                                            i_17_ = gameInterface_16_.scrollDepth;
-                                                        gameInterface_16_.scrollDepth -= i_17_;
+                                                        if (gameInterface_16_.scrollY < i_17_)
+                                                            i_17_ = gameInterface_16_.scrollY;
+                                                        gameInterface_16_.scrollY -= i_17_;
                                                         MovedStatics.anInt2798 += i_17_;
                                                     }
-                                                    if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollDepth) {
+                                                    if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.height + gameInterface_16_.scrollableHeight > gameInterface_16_.scrollY) {
                                                         int i_18_ = deltaT * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
                                                         if (deltaT * 10 < i_18_)
                                                             i_18_ = 10 * deltaT;
-                                                        if (-gameInterface_16_.scrollDepth + gameInterface_16_.scrollHeight + -gameInterface_16_.originalHeight < i_18_)
-                                                            i_18_ = -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight + -gameInterface_16_.scrollDepth;
+                                                        if (-gameInterface_16_.scrollY + gameInterface_16_.scrollableHeight + -gameInterface_16_.height < i_18_)
+                                                            i_18_ = -gameInterface_16_.height + gameInterface_16_.scrollableHeight + -gameInterface_16_.scrollY;
                                                         MovedStatics.anInt2798 -= i_18_;
-                                                        gameInterface_16_.scrollDepth += i_18_;
+                                                        gameInterface_16_.scrollY += i_18_;
                                                     }
                                                 }
                                             } else if (GameInterface.atInventoryInterfaceType == 0 || GameInterface.anInt1233 != i_7_ || gameInterface.id != GameInterface.anInt704)
                                                 imageRGB.drawImage(i_10_, i_11_);
                                             else
                                                 imageRGB.drawImageWithOpacity(i_10_, i_11_, 128);
-                                            if (imageRGB.maxWidth == 33 || gameInterface.itemAmounts[i_7_] != 1) {
-                                                int i_19_ = gameInterface.itemAmounts[i_7_];
+                                            if (imageRGB.maxWidth == 33 || gameInterface.invSlotObjCount[i_7_] != 1) {
+                                                int i_19_ = gameInterface.invSlotObjCount[i_7_];
 //                                                TypeFace.fontSmall.drawString(GameInterface.getShortenedAmountText(i_19_), i_12_ + 1 + i_10_, i_11_ + 10 + i_14_, 0);
                                                 TypeFace.fontSmall.drawShadowedString(GameInterface.getShortenedAmountText(i_19_), i_10_ + i_12_, i_14_ + i_11_ + 9, true, 16776960);
                                             }
@@ -345,43 +345,43 @@ public class Game {
                     } else if (gameInterface.type == GameInterfaceType.RECTANGLE) {
                         int rectangleColor;
                         if (GameInterface.checkForAlternateAction(gameInterface)) {
-                            rectangleColor = gameInterface.alternateTextColor;
-                            if (GameInterface.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
-                                rectangleColor = gameInterface.alternateHoveredTextColor;
+                            rectangleColor = gameInterface.activeColor;
+                            if (GameInterface.isHovering(areaId, i) && gameInterface.activeHoverColor != 0)
+                                rectangleColor = gameInterface.activeHoverColor;
                         } else {
                             rectangleColor = gameInterface.textColor;
-                            if (GameInterface.isHovering(areaId, i) && gameInterface.hoveredTextColor != 0)
-                                rectangleColor = gameInterface.hoveredTextColor;
+                            if (GameInterface.isHovering(areaId, i) && gameInterface.hoverColor != 0)
+                                rectangleColor = gameInterface.hoverColor;
                         }
                         if (opacity == 0) {
-                            if (!gameInterface.filled)
-                                Rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor);
+                            if (!gameInterface.fill)
+                                Rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.width, gameInterface.height, rectangleColor);
                             else
-                                Rasterizer.drawFilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor);
-                        } else if (!gameInterface.filled)
-                            Rasterizer.drawUnfilledRectangleAlpha(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor, -(0xff & opacity) + 256);
+                                Rasterizer.drawFilledRectangle(absoluteX, absoluteY, gameInterface.width, gameInterface.height, rectangleColor);
+                        } else if (!gameInterface.fill)
+                            Rasterizer.drawUnfilledRectangleAlpha(absoluteX, absoluteY, gameInterface.width, gameInterface.height, rectangleColor, -(0xff & opacity) + 256);
                         else
-                            Rasterizer.drawFilledRectangleAlpha(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, rectangleColor, -(0xff & opacity) + 256);
+                            Rasterizer.drawFilledRectangleAlpha(absoluteX, absoluteY, gameInterface.width, gameInterface.height, rectangleColor, -(0xff & opacity) + 256);
                     } else if (gameInterface.type == GameInterfaceType.TEXT) {
                         TypeFace font = gameInterface.getTypeFace();
                         if (font == null) {
                             if (GameInterface.aBoolean2177)
                                 result = false;
                         } else {
-                            String text = gameInterface.disabledText;
+                            String text = gameInterface.text;
                             int textColor;
                             if (GameInterface.checkForAlternateAction(gameInterface)) {
-                                textColor = gameInterface.alternateTextColor;
-                                if (GameInterface.isHovering(areaId, i) && gameInterface.alternateHoveredTextColor != 0)
-                                    textColor = gameInterface.alternateHoveredTextColor;
-                                if (gameInterface.alternateText.length() > 0)
-                                    text = gameInterface.alternateText;
+                                textColor = gameInterface.activeColor;
+                                if (GameInterface.isHovering(areaId, i) && gameInterface.activeHoverColor != 0)
+                                    textColor = gameInterface.activeHoverColor;
+                                if (gameInterface.activeText.length() > 0)
+                                    text = gameInterface.activeText;
                             } else {
                                 textColor = gameInterface.textColor;
-                                if (GameInterface.isHovering(areaId, i) && gameInterface.hoveredTextColor != 0)
-                                    textColor = gameInterface.hoveredTextColor;
+                                if (GameInterface.isHovering(areaId, i) && gameInterface.hoverColor != 0)
+                                    textColor = gameInterface.hoverColor;
                             }
-                            if (gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1) {
+                            if (gameInterface.if3 && gameInterface.itemId != -1) {
                                 ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
                                 text = itemDefinition.name;
                                 if (text == null)
@@ -389,7 +389,7 @@ public class Game {
                                 if (itemDefinition.stackable == 1 || gameInterface.itemAmount != 1)
                                     text = text + Native.amountPrefixX + TextUtils.formatAmountString(gameInterface.itemAmount);
                             }
-                            if (gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == gameInterface.id) {
+                            if (gameInterface.buttonType == 6 && MovedStatics.lastContinueTextWidgetId == gameInterface.id) {
                                 textColor = gameInterface.textColor;
                                 text = English.pleaseWait;
                             }
@@ -401,10 +401,10 @@ public class Game {
                             }
 
                             text = ClientScriptRunner.method532(gameInterface, text);
-                            font.drawText(text, absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, textColor, gameInterface.textShadowed, gameInterface.xTextAlignment, gameInterface.yTextAlignment, gameInterface.lineHeight);
+                            font.drawText(text, absoluteX, absoluteY, gameInterface.width, gameInterface.height, textColor, gameInterface.textShadow, gameInterface.textHorizontalAlignment, gameInterface.textVerticalAlignment, gameInterface.textLineHeight);
                         }
                     } else if (gameInterface.type == GameInterfaceType.GRAPHIC) {
-                        if (gameInterface.isNewInterfaceFormat) {
+                        if (gameInterface.if3) {
                             int maxWidth = 0;
                             int maxHeight = 0;
                             ImageRGB spriteRgb;
@@ -436,16 +436,16 @@ public class Game {
                                     int spriteTopY = absoluteY;
                                     if (viewportDimensions[1] > spriteTopY)
                                         spriteTopY = viewportDimensions[1];
-                                    int spriteBottomX = gameInterface.originalWidth + absoluteX;
+                                    int spriteBottomX = gameInterface.width + absoluteX;
                                     if (viewportDimensions[2] < spriteBottomX)
                                         spriteBottomX = viewportDimensions[2];
-                                    int spriteBottomY = gameInterface.originalHeight + absoluteY;
+                                    int spriteBottomY = gameInterface.height + absoluteY;
                                     if (spriteBottomY > viewportDimensions[3])
                                         spriteBottomY = viewportDimensions[3];
 
                                     Rasterizer.setBounds(spriteTopX, spriteTopY, spriteBottomX, spriteBottomY);
-                                    int i_31_ = (gameInterface.originalWidth - (1 + -spriteWidth)) / spriteWidth;
-                                    int i_32_ = (gameInterface.originalHeight - (1 + -spriteHeight)) / spriteHeight;
+                                    int i_31_ = (gameInterface.width - (1 + -spriteWidth)) / spriteWidth;
+                                    int i_32_ = (gameInterface.height - (1 + -spriteHeight)) / spriteHeight;
                                     for (int row = 0; i_31_ > row; row++) {
                                         for (int col = 0; i_32_ > col; col++) {
                                             if (gameInterface.textureId == 0) {
@@ -459,17 +459,17 @@ public class Game {
                                     }
                                     Rasterizer.setViewportDimensions(viewportDimensions);
                                 } else {
-                                    int i_26_ = 4096 * gameInterface.originalWidth / spriteWidth;
+                                    int i_26_ = 4096 * gameInterface.width / spriteWidth;
                                     if (gameInterface.textureId == 0) {
                                         if (opacity == 0) {
-                                            if (gameInterface.originalWidth == spriteWidth && gameInterface.originalHeight == spriteHeight)
+                                            if (gameInterface.width == spriteWidth && gameInterface.height == spriteHeight)
                                                 spriteRgb.drawImage(absoluteX, absoluteY);
                                             else
-                                                spriteRgb.method732(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight);
+                                                spriteRgb.method732(absoluteX, absoluteY, gameInterface.width, gameInterface.height);
                                         } else
-                                            spriteRgb.method716(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, 256 + -(0xff & opacity));
+                                            spriteRgb.method716(absoluteX, absoluteY, gameInterface.width, gameInterface.height, 256 + -(0xff & opacity));
                                     } else
-                                        spriteRgb.drawImageWithTexture(gameInterface.originalWidth / 2 + absoluteX, gameInterface.originalHeight / 2 + absoluteY, gameInterface.textureId, i_26_);
+                                        spriteRgb.drawImageWithTexture(gameInterface.width / 2 + absoluteX, gameInterface.height / 2 + absoluteY, gameInterface.textureId, i_26_);
                                 }
                             } else if (GameInterface.aBoolean2177)
                                 result = false;
@@ -493,9 +493,9 @@ public class Game {
                         boolean applyAlternateAction = GameInterface.checkForAlternateAction(gameInterface);
                         int animationId;
                         if (!applyAlternateAction)
-                            animationId = gameInterface.animation;
+                            animationId = gameInterface.modelSeqId;
                         else
-                            animationId = gameInterface.alternateAnimation;
+                            animationId = gameInterface.activeModelSeqId;
 
                         Model model;
                         if (gameInterface.modelType != InterfaceModelType.PLAYER) {
@@ -514,11 +514,11 @@ public class Game {
                             model = Player.activePlayerAppearance.getAnimatedModel(null, null, -1, -1);
                         }
 
-                        int rotationX = gameInterface.rotationX;
-                        int rotationY = gameInterface.rotationY;
-                        int offsetY2d = gameInterface.offsetY2d;
-                        int rotationZ = gameInterface.rotationZ;
-                        int offsetX2d = gameInterface.offsetX2d;
+                        int rotationX = gameInterface.modelXAngle;
+                        int rotationY = gameInterface.modelZAngle;
+                        int offsetY2d = gameInterface.modelYOffset;
+                        int rotationZ = gameInterface.modelYAngle;
+                        int offsetX2d = gameInterface.modelXOffset;
                         int modelZoom = gameInterface.modelZoom;
                         if (gameInterface.itemId != -1) {
                             ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
@@ -530,18 +530,18 @@ public class Game {
                             rotationX = itemDefinition.xan2d;
                             modelZoom = itemDefinition.zoom2d;
                             rotationZ = itemDefinition.yan2d;
-                            if (gameInterface.originalWidth > 0)
-                                modelZoom = 32 * modelZoom / gameInterface.originalWidth;
+                            if (gameInterface.width > 0)
+                                modelZoom = 32 * modelZoom / gameInterface.width;
                         }
-                        Rasterizer3D.setBounds(absoluteX + gameInterface.originalWidth / 2, gameInterface.originalHeight / 2 + absoluteY);
+                        Rasterizer3D.setBounds(absoluteX + gameInterface.width / 2, gameInterface.height / 2 + absoluteY);
 
                         int camHeight = modelZoom * Rasterizer3D.sinetable[rotationX] >> 16;
                         int camDistance = modelZoom * Rasterizer3D.cosinetable[rotationX] >> 16;
                         if (model != null) {
-                            if (gameInterface.isNewInterfaceFormat) {
+                            if (gameInterface.if3) {
                                 model.method799();
                                 // For some reason, drawOrthogonalModel does the same thing as drawModel
-                                if (gameInterface.orthogonal)
+                                if (gameInterface.modelOrthographic)
                                     model.drawOrthogonalModel(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + camHeight + model.modelHeight / 2, camDistance + offsetY2d, modelZoom);
                                 else
                                     model.drawModel(0, rotationZ, rotationY, rotationX, offsetX2d, offsetY2d + model.modelHeight / 2 + camHeight, camDistance + offsetY2d);
@@ -559,23 +559,23 @@ public class Game {
                                 continue;
                             }
                             int itemSlot = 0;
-                            for (int row = 0; row < gameInterface.originalHeight; row++) {
-                                for (int col = 0; col < gameInterface.originalWidth; col++) {
-                                    if (gameInterface.items[itemSlot] > 0) {
-                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[itemSlot], 10);
+                            for (int row = 0; row < gameInterface.height; row++) {
+                                for (int col = 0; col < gameInterface.width; col++) {
+                                    if (gameInterface.invSlotObjId[itemSlot] > 0) {
+                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.invSlotObjId[itemSlot], 10);
                                         String itemName = itemDefinition.name;
                                         if (itemName == null)
                                             itemName = "null";
-                                        if (itemDefinition.stackable == 1 || gameInterface.itemAmounts[itemSlot] != 1)
-                                            itemName = itemName + Native.amountPrefixX + TextUtils.formatAmountString(gameInterface.itemAmounts[itemSlot]);
-                                        int itemX = col * (gameInterface.itemSpritePadsX + 115) + absoluteX;
-                                        int itemY = row * (gameInterface.itemSpritePadsY + 12) + absoluteY;
-                                        if (gameInterface.xTextAlignment == 0)
-                                            font.drawShadowedString(itemName, itemX, itemY, gameInterface.textShadowed, gameInterface.textColor);
-                                        else if (gameInterface.xTextAlignment == 1)
-                                            font.drawShadowedStringCenter(itemName, itemX + gameInterface.originalWidth / 2, itemY, gameInterface.textColor, gameInterface.textShadowed);
+                                        if (itemDefinition.stackable == 1 || gameInterface.invSlotObjCount[itemSlot] != 1)
+                                            itemName = itemName + Native.amountPrefixX + TextUtils.formatAmountString(gameInterface.invSlotObjCount[itemSlot]);
+                                        int itemX = col * (gameInterface.invMarginX + 115) + absoluteX;
+                                        int itemY = row * (gameInterface.invMarginY + 12) + absoluteY;
+                                        if (gameInterface.textHorizontalAlignment == 0)
+                                            font.drawShadowedString(itemName, itemX, itemY, gameInterface.textShadow, gameInterface.textColor);
+                                        else if (gameInterface.textHorizontalAlignment == 1)
+                                            font.drawShadowedStringCenter(itemName, itemX + gameInterface.width / 2, itemY, gameInterface.textColor, gameInterface.textShadow);
                                         else
-                                            font.drawShadowedStringRight(itemName, -1 + gameInterface.originalWidth + itemX, itemY, gameInterface.textColor, gameInterface.textShadowed);
+                                            font.drawShadowedStringRight(itemName, -1 + gameInterface.width + itemX, itemY, gameInterface.textColor, gameInterface.textShadow);
                                     }
                                     itemSlot++;
                                 }
@@ -585,7 +585,7 @@ public class Game {
                             int textWidth = 0;
                             int textHeight = 0;
                             TypeFace class40_sub5_sub14_sub1 = MovedStatics.fontNormal;
-                            String text = gameInterface.disabledText;
+                            String text = gameInterface.text;
                             text = ClientScriptRunner.method532(gameInterface, text);
                             while (text.length() > 0) {
                                 int lineBreakCharacter = text.indexOf(Native.lineBreak);
@@ -605,18 +605,18 @@ public class Game {
                                     textWidth = lineWidth;
                             }
                             textHeight += 7;
-                            int tooltipY = 5 + gameInterface.originalHeight + absoluteY;
+                            int tooltipY = 5 + gameInterface.height + absoluteY;
                             if (tooltipY + textHeight > maxY)
                                 tooltipY = maxY + -textHeight;
                             textWidth += 6;
-                            int tooltipX = -5 + gameInterface.originalWidth + absoluteX - textWidth;
+                            int tooltipX = -5 + gameInterface.width + absoluteX - textWidth;
                             if (tooltipX < 5 + absoluteX)
                                 tooltipX = 5 + absoluteX;
                             if (textWidth + tooltipX > maxX)
                                 tooltipX = -textWidth + maxX;
                             Rasterizer.drawFilledRectangle(tooltipX, tooltipY, textWidth, textHeight, 16777120);
                             Rasterizer.drawUnfilledRectangle(tooltipX, tooltipY, textWidth, textHeight, 0);
-                            text = gameInterface.disabledText;
+                            text = gameInterface.text;
                             int tooltipTitleY = 2 + tooltipY + class40_sub5_sub14_sub1.characterDefaultHeight;
                             text = ClientScriptRunner.method532(gameInterface, text);
                             while (text.length() > 0) {
@@ -634,12 +634,12 @@ public class Game {
                             }
                         }
                         if (gameInterface.type == GameInterfaceType.LINE)
-                            Rasterizer.drawDiagonalLine(absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.textColor);
+                            Rasterizer.drawDiagonalLine(absoluteX, absoluteY, gameInterface.width + absoluteX, gameInterface.height + absoluteY, gameInterface.textColor);
                     }
 
                     // Draw debug information for non layer widgets and non tooltip widgets
                     if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.LAYER && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && MovedStatics.hoveredWidgetId == gameInterface.id) {
-                        Rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.originalWidth, gameInterface.originalHeight, 0xffff00);
+                        Rasterizer.drawUnfilledRectangle(absoluteX, absoluteY, gameInterface.width, gameInterface.height, 0xffff00);
                     }
                 }
             }
@@ -935,11 +935,11 @@ public class Game {
             MovedStatics.method763(gameCanvas, CacheArchive.gameImageCacheArchive);
         }
         if(GameInterface.chatboxInterfaceId == -1) {
-            chatboxInterface.scrollDepth = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
+            chatboxInterface.scrollY = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
             if(MouseHandler.mouseX > 448 && MouseHandler.mouseX < 560 && MouseHandler.mouseY > 332) {
                 GameInterface.scrollInterface(77, MouseHandler.mouseY + -357, -17 + MouseHandler.mouseX, ChatBox.chatboxScrollMax, chatboxInterface, 463, -1, 0);
             }
-            int currentScroll = ChatBox.chatboxScrollMax - 77 - chatboxInterface.scrollDepth;
+            int currentScroll = ChatBox.chatboxScrollMax - 77 - chatboxInterface.scrollY;
             if(currentScroll < 0) {
                 currentScroll = 0;
             }
@@ -952,12 +952,12 @@ public class Game {
             }
         }
         if(GameInterface.chatboxInterfaceId == -1 && ChatBox.inputType == 3) {
-            chatboxInterface.scrollDepth = ChatBox.itemSearchScroll;
+            chatboxInterface.scrollY = ChatBox.itemSearchScroll;
             int scrollMax = 14 * ChatBox.itemSearchResultCount + 7;
             if(MouseHandler.mouseX > 448 && MouseHandler.mouseX < 560 && MouseHandler.mouseY > 332) {
                 GameInterface.scrollInterface(77, MouseHandler.mouseY - 357, -17 + MouseHandler.mouseX, scrollMax, chatboxInterface, 463, -1, 0);
             }
-            int currentScroll = chatboxInterface.scrollDepth;
+            int currentScroll = chatboxInterface.scrollY;
             if(currentScroll < 0) {
                 currentScroll = 0;
             }
@@ -1384,15 +1384,15 @@ public class Game {
                                         int moveItemInsertionMode = 0;
                                         if(MovedStatics.bankInsertMode == 1 && childInterface.contentType == 206)
                                             moveItemInsertionMode = 1;
-                                        if(childInterface.items[mouseInvInterfaceIndex] <= 0)
+                                        if(childInterface.invSlotObjId[mouseInvInterfaceIndex] <= 0)
                                             moveItemInsertionMode = 0;
-                                        if(childInterface.itemDeletesDraged) {
+                                        if(childInterface.invClearDragged) {
                                             int i_16_ = mouseInvInterfaceIndex;
                                             int i_17_ = GameInterface.selectedInventorySlot;
-                                            childInterface.items[i_16_] = childInterface.items[i_17_];
-                                            childInterface.itemAmounts[i_16_] = childInterface.itemAmounts[i_17_];
-                                            childInterface.items[i_17_] = -1;
-                                            childInterface.itemAmounts[i_17_] = 0;
+                                            childInterface.invSlotObjId[i_16_] = childInterface.invSlotObjId[i_17_];
+                                            childInterface.invSlotObjCount[i_16_] = childInterface.invSlotObjCount[i_17_];
+                                            childInterface.invSlotObjId[i_17_] = -1;
+                                            childInterface.invSlotObjCount[i_17_] = 0;
                                         } else if(moveItemInsertionMode == 1) {
                                             int slotStart = GameInterface.selectedInventorySlot;
                                             int slotEnd = mouseInvInterfaceIndex;

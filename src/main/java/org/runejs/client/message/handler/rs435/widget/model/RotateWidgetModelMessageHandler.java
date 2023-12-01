@@ -9,8 +9,8 @@ public class RotateWidgetModelMessageHandler implements MessageHandler<RotateWid
     public void handle(RotateWidgetModelInboundMessage message) {
         GameInterface gameInterface = GameInterface.getInterface((message.widgetId << 16) | message.childId);
 
-        gameInterface.rotationZ = message.rotationZ;
+        gameInterface.modelYAngle = message.rotationZ;
         gameInterface.modelZoom = message.zoom;
-        gameInterface.rotationX = message.rotationX;
+        gameInterface.modelXAngle = message.rotationX;
     }
 }

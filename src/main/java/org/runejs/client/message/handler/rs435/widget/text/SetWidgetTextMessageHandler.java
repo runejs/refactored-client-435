@@ -9,7 +9,7 @@ public class SetWidgetTextMessageHandler implements MessageHandler<SetWidgetText
     @Override
     public void handle(SetWidgetTextInboundMessage message) {
         GameInterface gameInterface = GameInterface.getInterface((message.widgetId << 16) | message.childId);
-        gameInterface.disabledText = message.text;
+        gameInterface.text = message.text;
         if(Game.tabWidgetIds[Game.currentTabId] == message.widgetId) {
             GameInterface.redrawTabArea = true;
         }
