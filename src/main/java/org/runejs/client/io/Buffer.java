@@ -180,28 +180,38 @@ public class Buffer extends Node {
         }
     }
 
-    // ???
-    public void method483(int[] arg0, int arg2, int arg3) {
-        int i = (-arg3 + arg2) / 8;
-        int i_3_ = currentPosition;
-        currentPosition = arg3;
-        int i_4_ = 0;
-        for(/**/; i > i_4_; i_4_++) {
-            int i_5_ = getIntBE();
-            int i_6_ = getIntBE();
-            int i_7_ = 32;
-            int i_8_ = -957401312;
-            int i_9_ = -1640531527;
-            while(i_7_-- > 0) {
-                i_6_ -= (i_5_ >>> 5 ^ i_5_ << 4) + i_5_ ^ i_8_ + arg0[~0x71dffffc & i_8_ >>> 11];
-                i_8_ -= i_9_;
-                i_5_ -= (i_6_ >>> 5 ^ i_6_ << 4) + i_6_ ^ arg0[0x3 & i_8_] + i_8_;
+    /**
+     * Decrypt a number of bytes from a given position using the provided XTEA keys.
+     *
+     * @param xteaKeys The keys to decrypt with.
+     * @param bufferStart The starting position for the decrpytion.
+     * @param bufferLength The amount of bytes to decrypt.
+     */
+    public void decryptXTEA(int[] xteaKeys, int bufferStart, int bufferLength) {
+        int ROUND_COUNT = 32;
+
+        int blockCount = (bufferLength - bufferStart) / 8;
+        int originalPosition = currentPosition;
+        currentPosition = bufferStart;
+
+        for(int block = 0; blockCount > block; block++) {
+            int v0 = getIntBE();
+            int v1 = getIntBE();
+
+            int delta = 0x9E3779B9;
+            int sum = delta * ROUND_COUNT;
+
+            for (int i = 0; i < ROUND_COUNT; i++) {
+                v1 -= (v0 >>> 5 ^ v0 << 4) + v0 ^ sum + xteaKeys[~0x71dffffc & sum >>> 11];
+                sum -= delta;
+                v0 -= (v1 >>> 5 ^ v1 << 4) + v1 ^ xteaKeys[0x3 & sum] + sum;
             }
+
             currentPosition -= 8;
-            putIntBE(i_5_);
-            putIntBE(i_6_);
+            putIntBE(v0);
+            putIntBE(v1);
         }
-        currentPosition = i_3_;
+        currentPosition = originalPosition;
     }
 
     public int getIntLE() {

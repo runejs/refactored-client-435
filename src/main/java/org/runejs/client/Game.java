@@ -10,9 +10,9 @@ import org.runejs.client.frame.*;
 import org.runejs.client.frame.console.Console;
 import org.runejs.client.input.KeyFocusListener;
 import org.runejs.client.input.MouseHandler;
-import org.runejs.client.io.Buffer;
 import org.runejs.client.language.English;
 import org.runejs.client.language.Native;
+import org.runejs.client.login.*;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
@@ -25,6 +25,8 @@ import org.runejs.client.message.outbound.widget.container.DragWidgetItemOutboun
 import org.runejs.client.net.*;
 import org.runejs.client.net.codec.MessagePacketCodec;
 import org.runejs.client.net.codec.runejs435.RuneJS435PacketCodec;
+import org.runejs.client.ondemand.js5.JS5UpdateServerConnectionManager;
+import org.runejs.client.ondemand.js5.exceptions.*;
 import org.runejs.client.renderer.ScreenRenderer;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.Camera;
@@ -43,12 +45,10 @@ import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
 import org.runejs.client.cache.media.gameInterface.InterfaceModelType;
 import org.runejs.Configuration;
-import org.runejs.client.util.SignlinkNode;
+import org.runejs.client.util.TextUtils;
 import org.runejs.client.util.Timer;
 
 import java.awt.*;
-import java.io.IOException;
-import java.net.Socket;
 
 public class Game {
 
@@ -76,46 +76,42 @@ public class Game {
      */
     public static final CutsceneCamera cutsceneCamera = new CutsceneCamera();
 
-    /**
-     * TODO use interface
-     */
-    public static final UpdateServer updateServer = new UpdateServer();
-
     public static FriendList friendList;
 
     public static final SocialList ignoreList = new SocialList(100);
 
-    public static int anInt784 = 0;
     public static GameInterface chatboxInterface;
-    public static GameSocket updateServerSocket;
-    public static boolean aBoolean1735 = true;
     public static boolean aBoolean871 = false;
-    public static int loginStatus = 0;
     public static int modewhat = 0;
     public static int modewhere = 0;
     public static long lastClickTime = 0L;
     public static int mouseInvInterfaceIndex = 0;
-    public static int updateServerConnectAttemptCounter = 0;
-    public static boolean aBoolean519 = true;
+    public static boolean isLoadingUpdates = true;
     public static MouseCapturer mouseCapturer;
-    public static int anInt2591 = 0;
-    public static int anInt874 = 0;
+    /**
+     * Region loading type:
+     *
+     * - 0: ???
+     * - 1: landscape files
+     * - 2: game object definitions
+     */
+    public static int regionLoadingType = 0;
+    public static int missingGameObjectFiles = 0;
+    public static int totalMissingGameObjectFiles = 1;
+    public static int missingLandscapeFiles = 0;
+    public static int totalMissingLandscapeFiles = 1;
     public static int destinationY = 0;
     public static SceneRenderer sceneRenderer;
     public static Scene currentScene;
     public static int gameStatusCode = 0;
     public static KeyFocusListener keyFocusListener = new KeyFocusListener();
-    public static SignlinkNode updateServerSignlinkNode;
     public static int oneMouseButton = 0;
     public static int currentTabId = 3;
     public static int[] tabWidgetIds = new int[]{-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
     public static int flashingTabId = -1;
     public static MouseHandler mouseHandler = new MouseHandler();
     public static Canvas gameCanvas;
-    public static int connectionStage = 0;
-    public static int anInt292 = 0;
     public static boolean accountFlagged = false;
-    public static long updateServerHandshakeSentAtMs;
     public static int clientVersion;
     public static int playerRights = 0;
     public static Timer gameTimer;
@@ -123,8 +119,25 @@ public class Game {
     /**
      * Backup port if the first one fails?
      */
-    private static int someOtherPort;
-    private static int gameServerPort;
+    public static int someOtherPort;
+    public static int gameServerPort;
+    /**
+     * Was the client focused last cycle?
+     */
+    public static boolean isClientFocused;
+    /**
+     * When the last 'focus' packet was sent, was the client focused?
+     */
+    public static boolean lastFocusTrackWasFocused = true;
+    public static int currentHintIconType = 0;
+    /**
+     * Amount of mouse clicks since the last draw
+     */
+    public static int mouseClicksSinceLastDraw = 0;
+    /**
+     * Cycles between the last update and the current draw.
+     */
+    public static int deltaT = 0;
     private static int duplicateClickCount = 0;
     private static int lastClickY = 0;
     private static int lastClickX = 0;
@@ -136,9 +149,7 @@ public class Game {
         return playerCamera.getRotation().yaw;
     }
 
-    public static int anInt1756 = 0;
     public static int menuOffsetY;
-    public static int anInt1769 = -1;
     public static int widgetSelected = 0;
     public static Signlink signlink;
     public static CacheIndex metaIndex;
@@ -147,6 +158,8 @@ public class Game {
     public static CacheFileChannel[] indexChannels = new CacheFileChannel[13];
     public static int currentPort;
     private static int drawCount = 0;
+
+    public static GameStartup gameStartup = new GameStartup();
 
     private GameErrorHandler errorHandler;
 
@@ -215,37 +228,37 @@ public class Game {
                 if (gameInterface == GameInterface.aGameInterface_353) {
                     opacity = 128;
                     GameInterface gameInterface_3_ = GameInterface.method878(gameInterface);
-                    int[] is = GameInterface.method247(gameInterface_3_);
-                    int[] is_4_ = GameInterface.method247(gameInterface);
-                    int i_5_ = MouseHandler.mouseY + -MovedStatics.anInt2621 + is_4_[1] - is[1];
+                    int[] positionB = GameInterface.getAdjustedPosition(gameInterface_3_);
+                    int[] positionA = GameInterface.getAdjustedPosition(gameInterface);
+                    int i_5_ = MouseHandler.mouseY + -MovedStatics.anInt2621 + positionA[1] - positionB[1];
                     if (i_5_ < 0)
                         i_5_ = 0;
                     if (i_5_ + gameInterface.originalHeight > gameInterface_3_.originalHeight)
                         i_5_ = gameInterface_3_.originalHeight + -gameInterface.originalHeight;
-                    absoluteY = i_5_ + is[1];
-                    int i_6_ = MouseHandler.mouseX + -MovedStatics.anInt1996 + -is[0] + is_4_[0];
+                    absoluteY = i_5_ + positionB[1];
+                    int i_6_ = MouseHandler.mouseX + -MovedStatics.anInt1996 + -positionB[0] + positionA[0];
                     if (i_6_ < 0)
                         i_6_ = 0;
                     if (i_6_ + gameInterface.originalWidth > gameInterface_3_.originalWidth)
                         i_6_ = -gameInterface.originalWidth + gameInterface_3_.originalWidth;
-                    absoluteX = is[0] + i_6_;
+                    absoluteX = positionB[0] + i_6_;
                 }
                 if (!gameInterface.isNewInterfaceFormat || Rasterizer.viewportRight >= absoluteX && Rasterizer.viewportBottom >= absoluteY && Rasterizer.viewportLeft <= absoluteX + gameInterface.originalWidth && absoluteY + gameInterface.originalHeight >= Rasterizer.viewportTop) {
                     if (gameInterface.type == GameInterfaceType.LAYER) {
                         if (gameInterface.isHidden && !GameInterface.isHovering(areaId, i))
                             continue;
                         if (!gameInterface.isNewInterfaceFormat) {
-                            if (-gameInterface.originalHeight + gameInterface.scrollHeight < gameInterface.scrollPosition)
-                                gameInterface.scrollPosition = -gameInterface.originalHeight + gameInterface.scrollHeight;
-                            if (gameInterface.scrollPosition < 0)
-                                gameInterface.scrollPosition = 0;
+                            if (-gameInterface.originalHeight + gameInterface.scrollHeight < gameInterface.scrollDepth)
+                                gameInterface.scrollDepth = -gameInterface.originalHeight + gameInterface.scrollHeight;
+                            if (gameInterface.scrollDepth < 0)
+                                gameInterface.scrollDepth = 0;
                         }
-                        result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.scrollPosition, gameInterface.scrollWidth, interfaceCollection, i, drawSuccess);
+                        result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, gameInterface.originalHeight + absoluteY, gameInterface.scrollDepth, gameInterface.scrollWidth, interfaceCollection, i, drawSuccess);
                         if (gameInterface.children != null)
-                            result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, absoluteY + gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollWidth, gameInterface.children, gameInterface.id, true);
+                            result &= drawInterface(areaId, absoluteX, absoluteY, gameInterface.originalWidth + absoluteX, absoluteY + gameInterface.originalHeight, gameInterface.scrollDepth, gameInterface.scrollWidth, gameInterface.children, gameInterface.id, true);
                         Rasterizer.setBounds(minX, minY, maxX, maxY);
                         if (gameInterface.originalHeight < gameInterface.scrollHeight)
-                            GameInterface.drawScrollBar(absoluteX + gameInterface.originalWidth, absoluteY, gameInterface.originalHeight, gameInterface.scrollPosition, gameInterface.scrollHeight);
+                            GameInterface.drawScrollBar(absoluteX + gameInterface.originalWidth, absoluteY, gameInterface.originalHeight, gameInterface.scrollDepth, gameInterface.scrollHeight);
                     }
                     if (gameInterface.type == GameInterfaceType.UNKNOWN) {
                         continue;
@@ -295,23 +308,23 @@ public class Game {
                                                 imageRGB.drawImageWithOpacity(i_12_ + i_10_, i_11_ + i_14_, 128);
                                                 if (parentId != -1) {
                                                     GameInterface gameInterface_16_ = interfaceCollection[parentId];
-                                                    if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollPosition > 0) {
-                                                        int i_17_ = MovedStatics.anInt199 * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
-                                                        if (10 * MovedStatics.anInt199 < i_17_)
-                                                            i_17_ = 10 * MovedStatics.anInt199;
-                                                        if (gameInterface_16_.scrollPosition < i_17_)
-                                                            i_17_ = gameInterface_16_.scrollPosition;
-                                                        gameInterface_16_.scrollPosition -= i_17_;
+                                                    if (Rasterizer.viewportTop > i_14_ + i_11_ && gameInterface_16_.scrollDepth > 0) {
+                                                        int i_17_ = deltaT * (Rasterizer.viewportTop + -i_11_ - i_14_) / 3;
+                                                        if (10 * deltaT < i_17_)
+                                                            i_17_ = 10 * deltaT;
+                                                        if (gameInterface_16_.scrollDepth < i_17_)
+                                                            i_17_ = gameInterface_16_.scrollDepth;
+                                                        gameInterface_16_.scrollDepth -= i_17_;
                                                         MovedStatics.anInt2798 += i_17_;
                                                     }
-                                                    if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollPosition) {
-                                                        int i_18_ = MovedStatics.anInt199 * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
-                                                        if (MovedStatics.anInt199 * 10 < i_18_)
-                                                            i_18_ = 10 * MovedStatics.anInt199;
-                                                        if (-gameInterface_16_.scrollPosition + gameInterface_16_.scrollHeight + -gameInterface_16_.originalHeight < i_18_)
-                                                            i_18_ = -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight + -gameInterface_16_.scrollPosition;
+                                                    if (32 + i_11_ + i_14_ > Rasterizer.viewportBottom && -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight > gameInterface_16_.scrollDepth) {
+                                                        int i_18_ = deltaT * (-Rasterizer.viewportBottom + 32 + i_11_ + i_14_) / 3;
+                                                        if (deltaT * 10 < i_18_)
+                                                            i_18_ = 10 * deltaT;
+                                                        if (-gameInterface_16_.scrollDepth + gameInterface_16_.scrollHeight + -gameInterface_16_.originalHeight < i_18_)
+                                                            i_18_ = -gameInterface_16_.originalHeight + gameInterface_16_.scrollHeight + -gameInterface_16_.scrollDepth;
                                                         MovedStatics.anInt2798 -= i_18_;
-                                                        gameInterface_16_.scrollPosition += i_18_;
+                                                        gameInterface_16_.scrollDepth += i_18_;
                                                     }
                                                 }
                                             } else if (GameInterface.atInventoryInterfaceType == 0 || GameInterface.anInt1233 != i_7_ || gameInterface.id != GameInterface.anInt704)
@@ -374,7 +387,7 @@ public class Game {
                                 if (text == null)
                                     text = "null";
                                 if (itemDefinition.stackable == 1 || gameInterface.itemAmount != 1)
-                                    text = text + Native.amountPrefixX + MovedStatics.method903(gameInterface.itemAmount);
+                                    text = text + Native.amountPrefixX + TextUtils.formatAmountString(gameInterface.itemAmount);
                             }
                             if (gameInterface.actionType == 6 && MovedStatics.lastContinueTextWidgetId == gameInterface.id) {
                                 textColor = gameInterface.textColor;
@@ -554,7 +567,7 @@ public class Game {
                                         if (itemName == null)
                                             itemName = "null";
                                         if (itemDefinition.stackable == 1 || gameInterface.itemAmounts[itemSlot] != 1)
-                                            itemName = itemName + Native.amountPrefixX + MovedStatics.method903(gameInterface.itemAmounts[itemSlot]);
+                                            itemName = itemName + Native.amountPrefixX + TextUtils.formatAmountString(gameInterface.itemAmounts[itemSlot]);
                                         int itemX = col * (gameInterface.itemSpritePadsX + 115) + absoluteX;
                                         int itemY = row * (gameInterface.itemSpritePadsY + 12) + absoluteY;
                                         if (gameInterface.xTextAlignment == 0)
@@ -639,8 +652,8 @@ public class Game {
         lastClickTime = 0L;
         mouseCapturer.coord = 0;
         duplicateClickCount = 0;
-        aBoolean1735 = true;
-        MovedStatics.aBoolean571 = true;
+        lastFocusTrackWasFocused = true;
+        isClientFocused = true;
         ClientScriptRunner.clearClientScriptRunnerCache();
         IncomingPackets.secondLastOpcode = -1;
         MovedStatics.menuOpen = false;
@@ -648,7 +661,7 @@ public class Game {
         IncomingPackets.opcode = -1;
         MovedStatics.systemUpdateTime = 0;
         IncomingPackets.cyclesSinceLastPacket = 0;
-        Player.headIconDrawType = 0;
+        currentHintIconType = 0;
         OutgoingPackets.buffer.currentPosition = 0;
         idleLogout = 0;
         IncomingPackets.thirdLastOpcode = -1;
@@ -686,7 +699,7 @@ public class Game {
         MovedStatics.interactiveObjectTemporaryNodeCache = new LinkedList();
 
         // friends list size depends on membership status
-        int friendsListSize = MovedStatics.anInt1049 == 1 ? 200 : 100;
+        int friendsListSize = MovedStatics.isLocalPlayerMember == 1 ? 200 : 100;
         Game.friendList = new FriendList(200, friendsListSize);
 
         Player.friendListStatus = 0;
@@ -717,7 +730,7 @@ public class Game {
             Player.playerActions[i] = null;
             Player.playerActionsLowPriority[i] = false;
         }
-        aBoolean519 = true;
+        isLoadingUpdates = true;
     }
 
     public Game(String[] args) {
@@ -860,7 +873,7 @@ public class Game {
         currentScene.clearInteractiveObjectCache();
         MovedStatics.draw2DActorAttachments();
         MovedStatics.drawPositionHintIcon();
-        ((Class35) Rasterizer3D.interface3).animateTextures(MovedStatics.anInt199);
+        ((Class35) Rasterizer3D.interface3).animateTextures(deltaT);
         MovedStatics.draw3dScreen();
 
         DebugTools.drawWalkPath();
@@ -876,13 +889,13 @@ public class Game {
         }
 
 
-        if(aBoolean519 && updateServer.getActiveTaskCount(false, true) == 0) {
-            aBoolean519 = false;
+        if(isLoadingUpdates && updateServerConnectionManager.updateServer.getActiveTaskCount(false, true) == 0) {
+            isLoadingUpdates = false;
         }
-        if(aBoolean519) {
+        if(isLoadingUpdates) {
             MovedStatics.method1018();
             Rasterizer.resetPixels();
-            MovedStatics.method940(English.loadingPleaseWait, false, null);
+            MovedStatics.drawLoadingBox(English.loadingPleaseWait, null, false);
         }
 
         MovedStatics.drawGameScreenGraphics();
@@ -895,17 +908,17 @@ public class Game {
         return Player.cutsceneActive ? Game.cutsceneCamera : Game.playerCamera;
     }
 
-    public static IndexedImage method359(String arg0, String arg1, CacheArchive arg2) {
-        int i = arg2.getHash(arg0);
-        int i_23_ = arg2.method179(i, arg1);
-        return method363(arg2, i_23_, i);
+    public static IndexedImage method359(String arg0, String always_empty, CacheArchive arg2) {
+        int i = arg2.getGroupIdByName(arg0);
+        int i_23_ = arg2.getFileIdByName(i, always_empty);
+        return method363(arg2, i, i_23_);
     }
 
-    public static IndexedImage method363(CacheArchive arg0, int arg2, int arg3) {
-        if(!ImageRGB.spriteExists(arg2, arg3, arg0)) {
+    public static IndexedImage method363(CacheArchive archive, int groupId, int fileId) {
+        if(!MovedStatics.decodeImageFromArchive(archive, groupId, fileId)) {
             return null;
         }
-        return MovedStatics.method538();
+        return MovedStatics.createIndexedImageFromDecodedData();
 
     }
 
@@ -922,11 +935,11 @@ public class Game {
             MovedStatics.method763(gameCanvas, CacheArchive.gameImageCacheArchive);
         }
         if(GameInterface.chatboxInterfaceId == -1) {
-            chatboxInterface.scrollPosition = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
+            chatboxInterface.scrollDepth = -77 + -ChatBox.chatboxScroll + ChatBox.chatboxScrollMax;
             if(MouseHandler.mouseX > 448 && MouseHandler.mouseX < 560 && MouseHandler.mouseY > 332) {
                 GameInterface.scrollInterface(77, MouseHandler.mouseY + -357, -17 + MouseHandler.mouseX, ChatBox.chatboxScrollMax, chatboxInterface, 463, -1, 0);
             }
-            int currentScroll = ChatBox.chatboxScrollMax - 77 - chatboxInterface.scrollPosition;
+            int currentScroll = ChatBox.chatboxScrollMax - 77 - chatboxInterface.scrollDepth;
             if(currentScroll < 0) {
                 currentScroll = 0;
             }
@@ -939,12 +952,12 @@ public class Game {
             }
         }
         if(GameInterface.chatboxInterfaceId == -1 && ChatBox.inputType == 3) {
-            chatboxInterface.scrollPosition = ChatBox.itemSearchScroll;
+            chatboxInterface.scrollDepth = ChatBox.itemSearchScroll;
             int scrollMax = 14 * ChatBox.itemSearchResultCount + 7;
             if(MouseHandler.mouseX > 448 && MouseHandler.mouseX < 560 && MouseHandler.mouseY > 332) {
                 GameInterface.scrollInterface(77, MouseHandler.mouseY - 357, -17 + MouseHandler.mouseX, scrollMax, chatboxInterface, 463, -1, 0);
             }
-            int currentScroll = chatboxInterface.scrollPosition;
+            int currentScroll = chatboxInterface.scrollDepth;
             if(currentScroll < 0) {
                 currentScroll = 0;
             }
@@ -1032,8 +1045,8 @@ public class Game {
                 method943(ChatBox.tradeMode, MovedStatics.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
 
-            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
-            MovedStatics.anInt199 = 0;
+            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, deltaT, Player.localPlayer.worldY);
+            deltaT = 0;
 
         } else {
             method353();
@@ -1059,74 +1072,17 @@ public class Game {
                 method943(ChatBox.tradeMode, MovedStatics.fontNormal, ChatBox.privateChatMode, ChatBox.publicChatMode);
             }
 
-            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, MovedStatics.anInt199, Player.localPlayer.worldY);
-            MovedStatics.anInt199 = 0;
+            SoundSystem.updateObjectSounds(Player.localPlayer.worldX, Player.worldLevel, deltaT, Player.localPlayer.worldY);
+            deltaT = 0;
         }
 
     }
 
-    public static void displayMessageForResponseCode(int responseCode) {
-        if(responseCode == -3) {
-            Class60.setLoginScreenMessage(English.connectionTimedOut, English.pleaseTryUsingDifferentWorld, "");
-        } else if(responseCode == -2) {
-            Class60.setLoginScreenMessage("", English.errorConnectingToServer, "");
-        } else if(responseCode == -1) {
-            Class60.setLoginScreenMessage(English.noResponseFromServer, English.pleaseTryUsingDifferentWorld, "");
-        } else if(responseCode == 3) {
-            Class60.setLoginScreenMessage("", English.invalidUsernameOrPassword, "");
-        } else if(responseCode == 4) {
-            Class60.setLoginScreenMessage(English.yourAccountHasBeenDisabled, English.pleaseCheckYourMessageCenterForDetails, "");
-        } else if(responseCode == 5) {
-            Class60.setLoginScreenMessage(English.yourAccountIsAlreadyLoggedIn, English.tryAgainIn60Secs, "");
-        } else if(responseCode == 6) {
-            Class60.setLoginScreenMessage(English.gameHasBeenUpdated, English.pleaseReloadThisPage, "");
-        } else if(responseCode == 7) {
-            Class60.setLoginScreenMessage(English.theWorldIsFull, English.pleaseUseADifferentWorld, "");
-        } else if(responseCode == 8) {
-            Class60.setLoginScreenMessage(English.unableToConnect, English.loginServerOffline, "");
-        } else if(responseCode == 9) {
-            Class60.setLoginScreenMessage(English.loginLimitExceeded, English.tooManyConnectionsFromYourAddress, "");
-        } else if(responseCode == 10) {
-            Class60.setLoginScreenMessage(English.unableToConnect, English.badSessionId, "");
-        } else if(responseCode == 11) {
-            Class60.setLoginScreenMessage(English.weSuspectSomeoneKnowsYourPassword, English.pressChangeYourPasswordOnFrontPage, "");
-        } else if(responseCode == 12) {
-            Class60.setLoginScreenMessage(English.youNeedMembersAccountToLoginToThisWorld, English.pleaseSubscribeOrUseDifferentWorld, "");
-        } else if(responseCode == 13) {
-            Class60.setLoginScreenMessage(English.couldNotCompleteLogin, English.pleaseTryUsingDifferentWorld, "");
-        } else if(responseCode == 14) {
-            Class60.setLoginScreenMessage(English.theServerIsBeingUpdated, English.pleaseWait1MinuteAndTryAgain, "");
-        } else if(responseCode == 16) {
-            Class60.setLoginScreenMessage(English.tooManyIncorrectLoginsFromYourAddress, English.pleaseWait5MinutesBeforeTryingAgain, "");
-        } else if(responseCode == 17) {
-            Class60.setLoginScreenMessage(English.youAreStandingInMembersOnlyArea, English.toPlayOnThisWorldMoveToFreeArea, "");
-        } else if(responseCode == 18) {
-            Class60.setLoginScreenMessage(English.accountLockedAsWeSuspectItHasBeenStolen, English.pressRecoverLockedAccountOnFrontPage, "");
-        } else if(responseCode == 20) {
-            Class60.setLoginScreenMessage(English.invalidLoginserverRequested, English.pleaseTryUsingDifferentWorld, "");
-        } else if(responseCode == 22) {
-            Class60.setLoginScreenMessage(English.malformedLoginPacket, English.pleaseTryAgain, "");
-        } else if(responseCode == 23) {
-            Class60.setLoginScreenMessage(English.noReplyFromLoginserver, English.pleaseWait1MinuteAndTryAgain, "");
-        } else if(responseCode == 24) {
-            Class60.setLoginScreenMessage(English.errorLoadingYourProfile, English.pleaseContactCustomerSupport, "");
-        } else if(responseCode == 25) {
-            Class60.setLoginScreenMessage(English.unexpectedLoginserverResponse, English.pleaseTryUsingDifferentWorld, "");
-        } else if(responseCode == 26) {
-            Class60.setLoginScreenMessage(English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules, "");
-        } else if(responseCode == 27) {
-            Class60.setLoginScreenMessage("", English.serviceUnavailable, "");
-        } else {
-            Class60.setLoginScreenMessage(English.unexpectedServerResponse, English.pleaseTryUsingDifferentWorld, "");
-        }
-        MovedStatics.processGameStatus(10);
-    }
-
-    public static void method164() {
+    public static void drawFullScreenWidget() {
         GameInterface.handleSequences(GameInterface.fullscreenInterfaceId);
         if(GameInterface.fullscreenSiblingInterfaceId != -1)
             GameInterface.handleSequences(GameInterface.fullscreenSiblingInterfaceId);
-        MovedStatics.anInt199 = 0;
+        deltaT = 0;
         MovedStatics.aProducingGraphicsBuffer_2213.prepareRasterizer();
         Player.viewportOffsets = Rasterizer3D.setLineOffsets(Player.viewportOffsets);
         Rasterizer.resetPixels();
@@ -1262,7 +1218,7 @@ public class Game {
                     break;
             }
             if(gameStatusCode == 30 || gameStatusCode == 35) {
-                if(aBoolean519 && gameStatusCode == 30) {
+                if(isLoadingUpdates && gameStatusCode == 30) {
                     MouseHandler.currentMouseButtonPressed = 0;
                     MouseHandler.clickType = 0;
                     while(MovedStatics.method416()) {
@@ -1372,13 +1328,13 @@ public class Game {
                     OutgoingPackets.buffer.putShortBE(Game.playerCamera.getYaw());
                     OutgoingPackets.buffer.putShortBE(Game.playerCamera.getPitch());
                 }
-                if(MovedStatics.aBoolean571 && !aBoolean1735) {
-                    aBoolean1735 = true;
+                if(isClientFocused && !lastFocusTrackWasFocused) {
+                    lastFocusTrackWasFocused = true;
                     OutgoingPackets.buffer.putPacket(160);
                     OutgoingPackets.buffer.putByte(1);
                 }
-                if(!MovedStatics.aBoolean571 && aBoolean1735) {
-                    aBoolean1735 = false;
+                if(!isClientFocused && lastFocusTrackWasFocused) {
+                    lastFocusTrackWasFocused = false;
                     OutgoingPackets.buffer.putPacket(160);
                     OutgoingPackets.buffer.putByte(0);
                 }
@@ -1409,7 +1365,7 @@ public class Game {
                                 GameInterface.atInventoryInterfaceType = 0;
                             }
                         }
-                        MovedStatics.anInt199++;
+                        deltaT++;
                         if(GameInterface.activeInterfaceType != 0) {
                             GameInterface.lastItemDragTime++;
                             if(MouseHandler.mouseX > MovedStatics.anInt2869 + 5 || MovedStatics.anInt2869 + -5 > MouseHandler.mouseX || MovedStatics.anInt2798 + 5 < MouseHandler.mouseY || MovedStatics.anInt2798 - 5 > MouseHandler.mouseY)
@@ -1499,7 +1455,7 @@ public class Game {
                         }
 
                         if(MouseHandler.currentMouseButtonPressed == 1 || MouseHandler.clickType == 1)
-                            MovedStatics.anInt3294++;
+                            mouseClicksSinceLastDraw++;
 
                         int i = 34;
                         if(GameInterface.gameScreenInterfaceId != -1)
@@ -1531,13 +1487,13 @@ public class Game {
                             GameInterface.runClientScriptsForParentInterface(496, i ^ 0xffffffff, 453, ChatBox.dialogueId, 357, 17);
 
                         // If hovering over a widget
-                        if(MovedStatics.anInt1586 != -1 || MovedStatics.anInt614 != -1 || MovedStatics.anInt573 != -1) {
+                        if(MovedStatics.anInt1586 != -1 || MovedStatics.openTabWidgetChildTooltipId != -1 || MovedStatics.openWidgetChildTooltipId != -1) {
                             if(MovedStatics.tooltipDelay > MovedStatics.durationHoveredOverWidget) {
                                 MovedStatics.durationHoveredOverWidget++;
                                 if(MovedStatics.tooltipDelay == MovedStatics.durationHoveredOverWidget) {
                                     if(MovedStatics.anInt1586 != -1)
                                         ChatBox.redrawChatbox = true;
-                                    if(MovedStatics.anInt614 != -1)
+                                    if(MovedStatics.openTabWidgetChildTooltipId != -1)
                                         GameInterface.redrawTabArea = true;
                                 }
                             }
@@ -1585,235 +1541,6 @@ public class Game {
     public static void printHelp() {
         System.out.println("Usage: worldid, [live/office/local], [live/rc/wip], [lowmem/highmem], [free/members]");
         System.exit(1);
-    }
-
-    public static void handleLoginScreenActions() {
-        try {
-            if (loginStatus == 0) { // Initialize
-                if (MovedStatics.gameServerSocket != null) {
-                    MovedStatics.gameServerSocket.kill();
-                    MovedStatics.gameServerSocket = null;
-                }
-                aBoolean871 = false;
-                loginStatus = 1;
-                anInt1756 = 0;
-                MovedStatics.gameServerSignlinkNode = null;
-            }
-            if (loginStatus == 1) { // Create connection to server, and wait for it to become available
-                if (MovedStatics.gameServerSignlinkNode == null) {
-                    MovedStatics.gameServerSignlinkNode = signlink.putSocketNode(currentPort);
-                }
-                if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.ERRORED) {
-                    throw new IOException();
-                }
-                if (MovedStatics.gameServerSignlinkNode.status == SignlinkNode.Status.INITIALIZED) {
-                    MovedStatics.gameServerSocket = new GameSocket((Socket) MovedStatics.gameServerSignlinkNode.value, signlink);
-                    loginStatus = 2;
-                    MovedStatics.gameServerSignlinkNode = null;
-                }
-            }
-            if (loginStatus == 2) {
-                long l = MovedStatics.aLong853 = MovedStatics.nameToLong(Native.username.toString());
-                OutgoingPackets.buffer.currentPosition = 0;
-                OutgoingPackets.buffer.putByte(14);
-                int i = (int) (0x1fL & l >> 16);
-                OutgoingPackets.buffer.putByte(i);
-                MovedStatics.gameServerSocket.sendDataFromBuffer(2, 0, OutgoingPackets.buffer.buffer);
-                loginStatus = 3;
-                IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-            }
-            if (loginStatus == 3) {
-                int i = MovedStatics.gameServerSocket.read();
-                if (i != 0) {
-                    displayMessageForResponseCode(i);
-                    return;
-                }
-                IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                loginStatus = 4;
-            }
-            if (loginStatus == 4) {
-
-                if (IncomingPackets.incomingPacketBuffer.currentPosition < 8) {
-                    int i = MovedStatics.gameServerSocket.inputStreamAvailable();
-                    if (i > -IncomingPackets.incomingPacketBuffer.currentPosition + 8) {
-                        i = -IncomingPackets.incomingPacketBuffer.currentPosition + 8;
-                    }
-                    if (i > 0) {
-                        MovedStatics.gameServerSocket.readDataToBuffer(IncomingPackets.incomingPacketBuffer.currentPosition, i, IncomingPackets.incomingPacketBuffer.buffer);
-                        IncomingPackets.incomingPacketBuffer.currentPosition += i;
-                    }
-                }
-                if (IncomingPackets.incomingPacketBuffer.currentPosition == 8) {
-                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    MovedStatics.aLong2858 = IncomingPackets.incomingPacketBuffer.getLongBE();
-                    loginStatus = 5;
-                }
-            }
-            if (loginStatus == 5) {
-                int[] seeds = new int[4];
-                seeds[0] = (int) (Math.random() * 9.9999999E7);
-                seeds[1] = (int) (Math.random() * 9.9999999E7);
-                seeds[2] = (int) (MovedStatics.aLong2858 >> 32);
-                seeds[3] = (int) MovedStatics.aLong2858;
-                OutgoingPackets.buffer.currentPosition = 0;
-                OutgoingPackets.buffer.putByte(10);
-                OutgoingPackets.buffer.putIntBE(seeds[0]);
-                OutgoingPackets.buffer.putIntBE(seeds[1]);
-                OutgoingPackets.buffer.putIntBE(seeds[2]);
-                OutgoingPackets.buffer.putIntBE(seeds[3]);
-                OutgoingPackets.buffer.putIntBE(signlink.uid);
-                OutgoingPackets.buffer.putLongBE(MovedStatics.nameToLong(Native.username.toString()));
-                OutgoingPackets.buffer.method505(Native.password);
-                if (Configuration.RSA_ENABLED) {
-                    OutgoingPackets.buffer.applyRSA(Configuration.RSA_MODULUS, Configuration.RSA_PUBLIC_KEY);
-                }
-
-
-                // The actual login packet starts here
-
-                MovedStatics.packetBuffer.currentPosition = 0;
-                if (gameStatusCode == 40) {
-                    // Reconnecting session
-                    MovedStatics.packetBuffer.putByte(18);
-                } else {
-                    // New session
-                    MovedStatics.packetBuffer.putByte(16);
-                }
-                MovedStatics.packetBuffer.putByte(57 + OutgoingPackets.buffer.currentPosition);
-                MovedStatics.packetBuffer.putIntBE(435);
-                MovedStatics.packetBuffer.putByte(VertexNormal.lowMemory ? 1 : 0);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.skeletonCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.skinDefinitionCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameDefinitionsCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameInterfaceCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.soundEffectCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameWorldMapCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.musicCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.modelCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameImageCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.gameTextureCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.huffmanCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.jingleCacheArchive.crc8);
-                MovedStatics.packetBuffer.putIntBE(CacheArchive.clientScriptCacheArchive.crc8);
-                MovedStatics.packetBuffer.putBytes(0, OutgoingPackets.buffer.currentPosition, OutgoingPackets.buffer.buffer);
-                MovedStatics.gameServerSocket.sendDataFromBuffer(MovedStatics.packetBuffer.currentPosition, 0, MovedStatics.packetBuffer.buffer);
-                OutgoingPackets.buffer.initOutCipher(seeds);
-
-                // TODO (Jameskmonger) this allows the OutgoingPackets to access the ISAAC cipher. This is a hack and should be fixed.
-                OutgoingPackets.init(OutgoingPackets.buffer.outCipher);
-
-                for (int i = 0; i < 4; i++) {
-                    seeds[i] += 50;
-                }
-                IncomingPackets.incomingPacketBuffer.initInCipher(seeds);
-                loginStatus = 6;
-            }
-
-
-
-            if (loginStatus == 6 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
-                int responseCode = MovedStatics.gameServerSocket.read();
-                if (responseCode != 21 || gameStatusCode != 20) {
-                    if (responseCode == 2) {
-                        loginStatus = 9;
-                    } else {
-                        if (responseCode == 15 && gameStatusCode == 40) {
-                            MovedStatics.method434();
-                            return;
-                        }
-                        if (responseCode == 23 && MovedStatics.anInt2321 < 1) {
-                            MovedStatics.anInt2321++;
-                            loginStatus = 0;
-                        } else {
-                            displayMessageForResponseCode(responseCode);
-                            return;
-                        }
-                    }
-                } else {
-                    loginStatus = 7;
-                }
-            }
-            if (loginStatus == 7 && MovedStatics.gameServerSocket.inputStreamAvailable() > 0) {
-                anInt784 = 180 + MovedStatics.gameServerSocket.read() * 60;
-                loginStatus = 8;
-
-            }
-            if (loginStatus == 8) {
-                anInt1756 = 0;
-                Class60.setLoginScreenMessage(English.youHaveJustLeftAnotherWorld, English.yourProfileWillBeTransferredIn, (anInt784 / 60) + English.suffixSeconds);
-                if (--anInt784 <= 0) {
-                    loginStatus = 0;
-                }
-            } else {
-                if (loginStatus == 9 && MovedStatics.gameServerSocket.inputStreamAvailable() >= 8) {
-                    Configuration.USERNAME = Native.username.toString();
-                    Configuration.PASSWORD = Native.password.toString();
-                    playerRights = MovedStatics.gameServerSocket.read();
-                    accountFlagged = MovedStatics.gameServerSocket.read() == 1;
-                    Player.localPlayerId = MovedStatics.gameServerSocket.read();
-                    Player.localPlayerId <<= 8;
-                    Player.localPlayerId += MovedStatics.gameServerSocket.read();
-                    MovedStatics.anInt1049 = MovedStatics.gameServerSocket.read();
-                    MovedStatics.gameServerSocket.readDataToBuffer(0, 1, IncomingPackets.incomingPacketBuffer.buffer);
-                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    IncomingPackets.opcode = IncomingPackets.incomingPacketBuffer.getPacket();
-                    MovedStatics.gameServerSocket.readDataToBuffer(0, 2, IncomingPackets.incomingPacketBuffer.buffer);
-                    IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                    IncomingPackets.incomingPacketSize = IncomingPackets.incomingPacketBuffer.getUnsignedShortBE();
-                    loginStatus = 10;
-                }
-                if (loginStatus == 10) {
-                    if (MovedStatics.gameServerSocket.inputStreamAvailable() >= IncomingPackets.incomingPacketSize) {
-                        IncomingPackets.incomingPacketBuffer.currentPosition = 0;
-                        MovedStatics.gameServerSocket.readDataToBuffer(0, IncomingPackets.incomingPacketSize, IncomingPackets.incomingPacketBuffer.buffer);
-                        setConfigToDefaults();
-                        MovedStatics.regionX = -1;
-                        currentScene.landscape.constructMapRegion(false);
-                        IncomingPackets.opcode = -1;
-                    }
-                } else {
-                    anInt1756++;
-                    if (anInt1756 > 2000) {
-                        if (MovedStatics.anInt2321 < 1) {
-                            MovedStatics.anInt2321++;
-                            if (gameServerPort == currentPort) {
-                                currentPort = someOtherPort;
-                            } else {
-                                currentPort = gameServerPort;
-                            }
-                            loginStatus = 0;
-                        } else {
-                            displayMessageForResponseCode(-3);
-                        }
-                    }
-                }
-            }
-        } catch (IOException ioexception) {
-            if (MovedStatics.anInt2321 < 1) {
-                if (currentPort == gameServerPort) {
-                    currentPort = someOtherPort;
-                } else {
-                    currentPort = gameServerPort;
-                }
-                MovedStatics.anInt2321++;
-                loginStatus = 0;
-            } else {
-                displayMessageForResponseCode(-2);
-            }
-        }
-    }
-
-    private static void method947(int arg0) {
-        synchronized(MovedStatics.anObject162) {
-            if((MovedStatics.anInt1987 ^ 0xffffffff) != arg0) {
-                MovedStatics.anInt1987 = 1;
-                try {
-                    MovedStatics.anObject162.wait();
-                } catch(InterruptedException interruptedexception) {
-                    /* empty */
-                }
-            }
-        }
     }
 
     private static void renderNPCs(boolean arg0) {
@@ -2071,18 +1798,18 @@ public class Game {
         GameInterface.clearInterfaceCaches();
         ((Class35) Rasterizer3D.interface3).clearTextures();
         ClientScript.clearClientScriptCache();
-        CacheArchive.skeletonCacheArchive.clearCache();
-        CacheArchive.skinDefinitionCacheArchive.clearCache();
-        CacheArchive.gameInterfaceCacheArchive.clearCache();
-        CacheArchive.soundEffectCacheArchive.clearCache();
-        CacheArchive.gameWorldMapCacheArchive.clearCache();
-        CacheArchive.musicCacheArchive.clearCache();
-        CacheArchive.modelCacheArchive.clearCache();
-        CacheArchive.gameImageCacheArchive.clearCache();
-        CacheArchive.gameTextureCacheArchive.clearCache();
-        CacheArchive.huffmanCacheArchive.clearCache();
-        CacheArchive.jingleCacheArchive.clearCache();
-        CacheArchive.clientScriptCacheArchive.clearCache();
+        CacheArchive.skeletonCacheArchive.clearFileContentCache();
+        CacheArchive.skinDefinitionCacheArchive.clearFileContentCache();
+        CacheArchive.gameInterfaceCacheArchive.clearFileContentCache();
+        CacheArchive.soundEffectCacheArchive.clearFileContentCache();
+        CacheArchive.gameWorldMapCacheArchive.clearFileContentCache();
+        CacheArchive.musicCacheArchive.clearFileContentCache();
+        CacheArchive.modelCacheArchive.clearFileContentCache();
+        CacheArchive.gameImageCacheArchive.clearFileContentCache();
+        CacheArchive.gameTextureCacheArchive.clearFileContentCache();
+        CacheArchive.huffmanCacheArchive.clearFileContentCache();
+        CacheArchive.jingleCacheArchive.clearFileContentCache();
+        CacheArchive.clientScriptCacheArchive.clearFileContentCache();
     }
 
     public static void renderProjectiles() {
@@ -2105,7 +1832,7 @@ public class Game {
                         if (player != null && player.worldX >= 0 && player.worldX < 13312 && player.worldY >= 0 && player.worldY < 13312)
                             projectile.trackTarget(MovedStatics.pulseCycle, 0, player.worldY, Game.currentScene.getFloorDrawHeight(projectile.anInt2981, player.worldX, player.worldY) - projectile.endHeight, player.worldX);
                     }
-                    projectile.move(MovedStatics.anInt199);
+                    projectile.move(deltaT);
                     currentScene.method134(Player.worldLevel, (int) projectile.currentX, (int) projectile.currentY, (int) projectile.currentHeight, 60, projectile, projectile.anInt3013, -1, false);
                 }
             } else
@@ -2117,7 +1844,7 @@ public class Game {
         for (SpotAnim spotAnim = (SpotAnim) MovedStatics.spotAnimQueue.peekFirst(); spotAnim != null; spotAnim = (SpotAnim) MovedStatics.spotAnimQueue.pollFirst()) {
             if (Player.worldLevel == spotAnim.plane && !spotAnim.animationFinished) {
                 if (MovedStatics.pulseCycle >= spotAnim.startCycle) {
-                    spotAnim.method834(MovedStatics.anInt199);
+                    spotAnim.method834(deltaT);
                     if (spotAnim.animationFinished)
                         spotAnim.unlink();
                     else
@@ -2128,56 +1855,41 @@ public class Game {
         }
     }
 
-    public void method35(int arg1) {
-        if (currentPort != gameServerPort)
-            currentPort = gameServerPort;
-        else
-            currentPort = someOtherPort;
-        updateServerSocket = null;
-        updateServerSignlinkNode = null;
-        anInt292++;
-        connectionStage = 0;
-        if (anInt292 < 2 || arg1 != 7 && arg1 != 9) {
-            if (anInt292 < 2 || arg1 != 6) {
-                if (anInt292 >= 4) {
-                    if (gameStatusCode <= 5) {
-                        this.openErrorPage("js5connect");
-                        updateServerConnectAttemptCounter = 3000;
-                    } else
-                        updateServerConnectAttemptCounter = 3000;
-                }
-            } else {
-                this.openErrorPage("js5connect_outofdate");
-                gameStatusCode = 1000;
-            }
-        } else if (gameStatusCode > 5)
-            updateServerConnectAttemptCounter = 3000;
-        else {
-            this.openErrorPage("js5connect_full");
-            gameStatusCode = 1000;
+    public static LoginProtocol loginProtocol = new RS435LoginProtocol();
+    public static JS5UpdateServerConnectionManager updateServerConnectionManager;
+
+    public static CacheArchive loadArchive(int cacheIndexId, boolean clearGroupContentCache, boolean clearFileContentCache, boolean forceHighPriority) {
+        CacheIndex dataIndex = null;
+        if(dataChannel != null) {
+            dataIndex = new CacheIndex(cacheIndexId, indexChannels[cacheIndexId], dataChannel, 1000000);
         }
+        return new CacheArchive(cacheIndexId, metaIndex, dataIndex, clearGroupContentCache, clearFileContentCache, forceHighPriority);
     }
 
     public void processGameLoop() {
         MovedStatics.pulseCycle++;
-        handleUpdateServer();
-        MovedStatics.handleRequests();
+
+        if (gameStatusCode != 1000) {
+            processJS5Connection(updateServerConnectionManager);
+        }
+
+        OnDemandRequestProcessor.handleRequests();
         MusicSystem.handleMusic();
         SoundSystem.handleSounds();
         GameInterface.method639();
         MouseHandler.method1015();
 
         if (gameStatusCode == 0) {
-            MovedStatics.startup();
+            Game.gameStartup.process();
             method992();
         } else if (gameStatusCode == 5) {
-            MovedStatics.startup();
+            Game.gameStartup.process();
             method992();
         } else if (gameStatusCode == 10) {
-            Class60.updateLogin();
+            LoginScreen.updateLogin();
         } else if (gameStatusCode == 20) {
-            Class60.updateLogin();
-            handleLoginScreenActions();
+            LoginScreen.updateLogin();
+            loginProtocol.process();
         } else if (gameStatusCode == 25)
             currentScene.landscape.loadRegion();
         if (gameStatusCode == 30) {
@@ -2188,22 +1900,14 @@ public class Game {
             updateGame();
         } else if (gameStatusCode == 40) {
             // Connection lost
-            handleLoginScreenActions();
-        }
-    }
-
-    public void handleUpdateServer() {
-        if (gameStatusCode != 1000) {
-            boolean bool = updateServer.poll();
-            if (!bool)
-                connectUpdateServer();
+            loginProtocol.process();
         }
     }
 
     /**
-     * Sets the text that is shown in the middle of the screen depending on the current status code
+     * Draw the game screen
      */
-    public void updateStatusText() {
+    public void draw() {
         if (MovedStatics.aBoolean1575) {
             KeyFocusListener.removeListeners(gameCanvas);
             MouseHandler.removeListeners(gameCanvas);
@@ -2212,107 +1916,62 @@ public class Game {
             MouseHandler.addListeners(gameCanvas);
         }
         if (gameStatusCode == 0)
-            renderer.drawLoadingText(MovedStatics.anInt1607, null, Native.currentLoadingText);
+            renderer.drawLoadingText(gameStartup.loadingBarPercentage, null, Game.gameStartup.currentLoadingText);
         else if (gameStatusCode == 5) {
-            Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
+            LoginScreen.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (gameStatusCode == 10) {
-            Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
+            LoginScreen.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (gameStatusCode == 20) {
-            Class60.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
+            LoginScreen.drawLoadingScreen(TypeFace.fontBold, TypeFace.fontSmall);
         } else if (gameStatusCode == 25) {
-            if (MovedStatics.anInt1634 == 1) {
-                if (anInt874 > MovedStatics.anInt2231)
-                    MovedStatics.anInt2231 = anInt874;
-                int i = (-anInt874 + MovedStatics.anInt2231) * 50 / MovedStatics.anInt2231;
-                MovedStatics.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
-            } else if (MovedStatics.anInt1634 == 2) {
-                if (anInt2591 > MovedStatics.anInt3048)
-                    MovedStatics.anInt3048 = anInt2591;
-                int i = 50 * (-anInt2591 + MovedStatics.anInt3048) / MovedStatics.anInt3048 + 50;
-                MovedStatics.method940(English.loadingPleaseWait, true, Native.leftParenthesis + i + Native.percent_b);
+            if (regionLoadingType == 1) {
+                if (missingLandscapeFiles > totalMissingLandscapeFiles)
+                    totalMissingLandscapeFiles = missingLandscapeFiles;
+                int i = (-missingLandscapeFiles + totalMissingLandscapeFiles) * 50 / totalMissingLandscapeFiles;
+                MovedStatics.drawLoadingBox(English.loadingPleaseWait, Native.leftParenthesis + i + Native.percent_b, true);
+            } else if (regionLoadingType == 2) {
+                if (missingGameObjectFiles > totalMissingGameObjectFiles)
+                    totalMissingGameObjectFiles = missingGameObjectFiles;
+                int i = 50 * (-missingGameObjectFiles + totalMissingGameObjectFiles) / totalMissingGameObjectFiles + 50;
+                MovedStatics.drawLoadingBox(English.loadingPleaseWait, Native.leftParenthesis + i + Native.percent_b, true);
             } else
-                MovedStatics.method940(English.loadingPleaseWait, false, null);
+                MovedStatics.drawLoadingBox(English.loadingPleaseWait, null, false);
         } else if (gameStatusCode == 30) {
             drawGameScreen();
-
         } else if (gameStatusCode == 35) {
-            method164();
+            drawFullScreenWidget();
         } else if (gameStatusCode == 40)
-            MovedStatics.method940(English.connectionLost, false, English.pleaseWaitAttemptingToReestablish);
-        MovedStatics.anInt3294 = 0;
+            MovedStatics.drawLoadingBox(English.connectionLost, English.pleaseWaitAttemptingToReestablish, false);
+        mouseClicksSinceLastDraw = 0;
     }
 
-    public void connectUpdateServer() {
-        if (updateServer.crcMismatchesCount >= 4) {
+    /**
+     * Processes the JS5 connection by deferring to the manager,
+     * this method is responsible for changing the game state based on errors.
+     *
+     * TODO (jkm) get this further away from the Game class so we can support non-JS5
+     *            update servers more easily
+     */
+    private void processJS5Connection(JS5UpdateServerConnectionManager manager) {
+        try {
+            manager.process(gameStatusCode);
+        } catch (JS5CRCException e) {
             this.openErrorPage("js5crc");
             gameStatusCode = 1000;
-        } else {
-            if (updateServer.ioExceptionsCount >= 4) {
-                if (gameStatusCode > 5) {
-                    updateServer.ioExceptionsCount = 3;
-                    updateServerConnectAttemptCounter = 3000;
-                } else {
-                    this.openErrorPage("js5io");
-                    gameStatusCode = 1000;
-                    return;
-                }
-            }
-            if (updateServerConnectAttemptCounter-- <= 0) {
-                do {
-                    try {
-                        if (connectionStage == 0) {
-                            updateServerSignlinkNode = signlink.putSocketNode(currentPort);
-                            connectionStage++;
-                        }
-                        if (connectionStage == 1) {
-                            if (updateServerSignlinkNode.status == SignlinkNode.Status.ERRORED) {
-                                method35(-1);
-                                break;
-                            }
-                            if (updateServerSignlinkNode.status == SignlinkNode.Status.INITIALIZED)
-                                connectionStage++;
-                        }
-                        if (connectionStage == 2) {
-                            updateServerSocket = new GameSocket((Socket) updateServerSignlinkNode.value, signlink);
-                            Buffer buffer = new Buffer(5);
-                            buffer.putByte(15);
-                            buffer.putIntBE(435); // Cache revision
-                            updateServerSocket.sendDataFromBuffer(5, 0, buffer.buffer);
-                            connectionStage++;
-                            updateServerHandshakeSentAtMs = System.currentTimeMillis();
-                        }
-                        if (connectionStage == 3) {
-                            if (gameStatusCode > 5 && updateServerSocket.inputStreamAvailable() <= 0) {
-                                if (System.currentTimeMillis() - updateServerHandshakeSentAtMs > 30000L) {
-                                    method35(-2);
-                                    break;
-                                }
-                            } else {
-                                int i = updateServerSocket.read();
-                                if (i != 0) {
-                                    method35(i);
-                                    break;
-                                }
-                                connectionStage++;
-                            }
-                        }
-                        if (connectionStage != 4)
-                            break;
-
-                        updateServer.receiveConnection(updateServerSocket, gameStatusCode > 20);
-
-                        updateServerSignlinkNode = null;
-                        connectionStage = 0;
-                        updateServerSocket = null;
-                        anInt292 = 0;
-                    } catch (java.io.IOException ioexception) {
-                        ioexception.printStackTrace();
-                        method35(-3);
-                        break;
-                    }
-                    break;
-                } while (false);
-            }
+        } catch (JS5IOException e) {
+            this.openErrorPage("js5io");
+            gameStatusCode = 1000;
+        } catch (JS5ConnectException e) {
+            // we don't set game to error state for this one
+            this.openErrorPage("js5connect");
+        } catch (JS5ConnectOutOfDateException e) {
+            this.openErrorPage("js5connect_outofdate");
+            gameStatusCode = 1000;
+        } catch (JS5ConnectFullException e) {
+            this.openErrorPage("js5connect_full");
+            gameStatusCode = 1000;
+        } catch (Exception e) {
+            throw new RuntimeException("Unrecognised exception within JS5 connection", e);
         }
     }
 
@@ -2340,8 +1999,8 @@ public class Game {
         method249();
         MusicSystem.syncedStop(false);
         SoundSystem.stop();
-        updateServer.close();
-        method947(-1);
+        updateServerConnectionManager.close();
+        OnDemandRequestProcessor.wait(-1);
         do {
             try {
                 if (dataChannel != null)
@@ -2366,8 +2025,14 @@ public class Game {
     public void startup() {
         // Define ports
         someOtherPort = modewhere == 0 ? 443 : 50000 + Player.worldId;
-        gameServerPort = modewhere != 0 ? Player.worldId + 40000 : Configuration.GAME_PORT;
+        gameServerPort = modewhere == 0 ? Configuration.GAME_PORT : Player.worldId + 40000;
         currentPort = gameServerPort;
+
+        updateServerConnectionManager = new JS5UpdateServerConnectionManager(
+                signlink,
+                gameServerPort,
+                someOtherPort
+        );
 
         KeyFocusListener.method997();
         KeyFocusListener.addListeners(gameCanvas);
@@ -2379,7 +2044,7 @@ public class Game {
                 for (int i = 0; i < 13; i++)
                     indexChannels[i] = new CacheFileChannel(signlink.dataIndexAccessFiles[i], 6000);
                 metaChannel = new CacheFileChannel(signlink.metaIndexAccessFile, 6000);
-                metaIndex = new CacheIndex(255, dataChannel, metaChannel, 500000);
+                metaIndex = new CacheIndex(255, metaChannel, dataChannel, 500000);
                 signlink.dataIndexAccessFiles = null;
                 signlink.metaIndexAccessFile = null;
                 signlink.cacheDataAccessFile = null;

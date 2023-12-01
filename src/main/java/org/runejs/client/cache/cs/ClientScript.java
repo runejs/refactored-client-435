@@ -30,13 +30,13 @@ public class ClientScript extends CachedNode {
 
 
     public static void clientScriptDebugger() {
-        int len = CacheArchive.clientScriptCacheArchive.getLength();
-        for(int ll = 0; ll < len; ll++) {
-            if(CacheArchive.clientScriptCacheArchive.loaded(ll, 0)) {
-                byte[] data = CacheArchive.clientScriptCacheArchive.getFile(0, ll);
+        int fileCount = CacheArchive.clientScriptCacheArchive.getLength();
+        for(int fileId = 0; fileId < fileCount; fileId++) {
+            if(CacheArchive.clientScriptCacheArchive.loaded(fileId, 0)) {
+                byte[] data = CacheArchive.clientScriptCacheArchive.getFile(0, fileId);
                 System.out.println(data.length);
             } else {
-                System.out.println(ll + " not loaded");
+                System.out.println(fileId + " not loaded");
             }
         }
     }
@@ -48,7 +48,7 @@ public class ClientScript extends CachedNode {
             return clientScript;
         }
 
-        Buffer buffer = new Buffer(CacheArchive.clientScriptCacheArchive.method170(Native.emptyString, arg1 + Native.comma + arg0));
+        Buffer buffer = new Buffer(CacheArchive.clientScriptCacheArchive.getFileByName(arg1 + Native.comma + arg0, Native.emptyString));
         clientScript = new ClientScript();
         buffer.currentPosition = buffer.buffer.length - 12;
         int opcodeCount = buffer.getIntBE();

@@ -27,7 +27,7 @@ public class IncomingPackets {
 
             if(opcode == -1) {
                 // This will always run first. It fetches the incoming packet ID which should have a size of 1
-                MovedStatics.gameServerSocket.readDataToBuffer(0, 1, incomingPacketBuffer.buffer);
+                MovedStatics.gameServerSocket.readDataToBuffer(incomingPacketBuffer.buffer, 0, 1);
                 incomingPacketBuffer.currentPosition = 0;
                 availableBytes--;
                 opcode = incomingPacketBuffer.getPacket();
@@ -37,7 +37,7 @@ public class IncomingPackets {
             if(incomingPacketSize == -1) {
                 // Server-defined packet size between 0 and 255
                 if(availableBytes > 0) {
-                    MovedStatics.gameServerSocket.readDataToBuffer(0, 1, incomingPacketBuffer.buffer);
+                    MovedStatics.gameServerSocket.readDataToBuffer(incomingPacketBuffer.buffer, 0, 1);
                     incomingPacketSize = incomingPacketBuffer.buffer[0] & 0xff;
                     availableBytes--;
                 } else
@@ -49,7 +49,7 @@ public class IncomingPackets {
                 if(availableBytes <= 1)
                     return false;
                 availableBytes -= 2;
-                MovedStatics.gameServerSocket.readDataToBuffer(0, 2, incomingPacketBuffer.buffer);
+                MovedStatics.gameServerSocket.readDataToBuffer(incomingPacketBuffer.buffer, 0, 2);
                 incomingPacketBuffer.currentPosition = 0;
                 incomingPacketSize = incomingPacketBuffer.getUnsignedShortBE();
             }
@@ -72,7 +72,7 @@ public class IncomingPackets {
             if (decoder != null) {
                 // create a new packet buffer with the correct size, and read the data into it
                 PacketBuffer packetBuffer = new PacketBuffer(incomingPacketSize);
-                MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, packetBuffer.buffer);
+                MovedStatics.gameServerSocket.readDataToBuffer(packetBuffer.buffer, 0, incomingPacketSize);
 
                 // decode the packet and handle it
                 InboundMessage message = decoder.decode(packetBuffer);
@@ -90,7 +90,7 @@ public class IncomingPackets {
             // if we get here, we have no decoder for this packet
             // and it is left to be handled by the old system
 
-            MovedStatics.gameServerSocket.readDataToBuffer(0, incomingPacketSize, incomingPacketBuffer.buffer);
+            MovedStatics.gameServerSocket.readDataToBuffer(incomingPacketBuffer.buffer, 0, incomingPacketSize);
 
             if(opcode == 240) {
                 ClientScriptRunner.parseClientScriptPacket(Game.signlink, incomingPacketBuffer);

@@ -611,7 +611,7 @@ public class ClientScriptRunner extends Node {
                         // setscrollpos
                         intValueIndex -= 2;
                         gameInterface.scrollWidth = scriptIntValues[intValueIndex];
-                        gameInterface.scrollPosition = scriptIntValues[1 + intValueIndex];
+                        gameInterface.scrollDepth = scriptIntValues[1 + intValueIndex];
                     } else if(scriptOpcode == 1101) {
                         // setcolour
                         int i_24_ = scriptIntValues[--intValueIndex];
@@ -720,7 +720,7 @@ public class ClientScriptRunner extends Node {
                                 GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
                                 int i_33_ = scriptIntValues[2 + intValueIndex];
                                 int i_34_ = scriptIntValues[intValueIndex + 1];
-                                GameInterface gameInterface_35_ = GameInterface.method361(gameInterface.children, i_33_, true, gameInterface.scrollPosition, gameInterface.id, gameInterface.scrollWidth, i_34_, 398);
+                                GameInterface gameInterface_35_ = GameInterface.method361(gameInterface.children, i_33_, true, gameInterface.scrollDepth, gameInterface.id, gameInterface.scrollWidth, i_34_, 398);
                                 if(gameInterface_35_ == null) {
                                     scriptIntValues[intValueIndex++] = 0;
                                 } else {
@@ -779,7 +779,7 @@ public class ClientScriptRunner extends Node {
                                     GameInterface gameInterface = GameInterface.getInterface(scriptIntValues[intValueIndex]);
                                     int i_39_ = scriptIntValues[1 + intValueIndex];
                                     int i_40_ = scriptIntValues[intValueIndex + 2];
-                                    GameInterface gameInterface_41_ = GameInterface.method361(GameInterface.cachedInterfaces[gameInterface.id >> 16], i_40_, false, gameInterface.scrollPosition, 0xffff & gameInterface.id, gameInterface.scrollWidth, i_39_, 398);
+                                    GameInterface gameInterface_41_ = GameInterface.method361(GameInterface.cachedInterfaces[gameInterface.id >> 16], i_40_, false, gameInterface.scrollDepth, 0xffff & gameInterface.id, gameInterface.scrollWidth, i_39_, 398);
                                     if(gameInterface_41_ == null) {
                                         scriptIntValues[intValueIndex++] = -1;
                                     } else {
@@ -797,7 +797,7 @@ public class ClientScriptRunner extends Node {
                                             break;
                                         }
                                         // if_getscrolly
-                                        scriptIntValues[intValueIndex++] = gameInterface.scrollPosition;
+                                        scriptIntValues[intValueIndex++] = gameInterface.scrollDepth;
                                     }
                                 } else {
                                     if(scriptOpcode < 2800) {
@@ -808,7 +808,7 @@ public class ClientScriptRunner extends Node {
                                             // todo
                                             int i_42_ = scriptIntValues[--intValueIndex];
                                             if(MovedStatics.lastContinueTextWidgetId == -1) {
-                                                GameInterface.method517(0, i_42_);
+                                                GameInterface.sendPleaseWaitOptionClick(0, i_42_);
                                                 MovedStatics.lastContinueTextWidgetId = i_42_;
                                             }
                                         } else if(scriptOpcode == 3001 || scriptOpcode == 3003) {
@@ -821,7 +821,7 @@ public class ClientScriptRunner extends Node {
                                             // todo
                                             GameInterface gameInterface = !bool ? aGameInterface_1887 : MovedStatics.aGameInterface_2116;
                                             if(MovedStatics.lastContinueTextWidgetId == -1) {
-                                                GameInterface.method517(gameInterface.id & 0x7fff, gameInterface.parentId);
+                                                GameInterface.sendPleaseWaitOptionClick(gameInterface.id & 0x7fff, gameInterface.parentId);
                                                 MovedStatics.lastContinueTextWidgetId = gameInterface.id;
                                             }
                                         } else {
@@ -992,7 +992,7 @@ public class ClientScriptRunner extends Node {
                                                 stringValueIndex -= 2;
                                                 String class1 = scriptStringValues[stringValueIndex];
                                                 String class1_82_ = scriptStringValues[stringValueIndex + 1];
-                                                if(Player.localPlayer.playerAppearance == null || !Player.localPlayer.playerAppearance.gender) {
+                                                if(Player.localPlayer.playerAppearance == null || !Player.localPlayer.playerAppearance.isFemale) {
                                                     scriptStringValues[stringValueIndex++] = class1;
                                                 } else {
                                                     scriptStringValues[stringValueIndex++] = class1_82_;
@@ -1058,7 +1058,7 @@ public class ClientScriptRunner extends Node {
                                     break;
                                 }
                                 // cc_getscrolly
-                                scriptIntValues[intValueIndex++] = gameInterface.scrollPosition;
+                                scriptIntValues[intValueIndex++] = gameInterface.scrollDepth;
                             }
                         }
                     } else {
@@ -1235,7 +1235,7 @@ public class ClientScriptRunner extends Node {
     }
 
     private static RSString method1024(boolean arg0, int arg2) {
-        return MovedStatics.method521(arg0, 10, arg2);
+        return RSString.method521(arg0, 10, arg2);
     }
 
     public static void method406(int arg0, int arg1, int arg2) {

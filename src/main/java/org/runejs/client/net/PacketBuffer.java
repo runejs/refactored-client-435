@@ -1,9 +1,12 @@
 package org.runejs.client.net;
 
-import org.runejs.client.MovedStatics;
 import org.runejs.client.io.Buffer;
 
 public class PacketBuffer extends Buffer {
+    /**
+     * Bit masks for packet buffer
+     */
+    public static int[] BITMASK = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647, -1};
     public ISAAC inCipher;
     public ISAAC outCipher;
     public int bitoffset;
@@ -52,18 +55,17 @@ public class PacketBuffer extends Buffer {
         int i_1_ = 8 - (0x7 & bitoffset);
         bitoffset += arg0;
         for(/**/; i_1_ < arg0; i_1_ = 8) {
-            i_0_ += (MovedStatics.anIntArray2361[i_1_] & buffer[i++]) << -i_1_ + arg0;
+            i_0_ += (BITMASK[i_1_] & buffer[i++]) << -i_1_ + arg0;
             arg0 -= i_1_;
         }
         if(arg0 != i_1_)
-            i_0_ += MovedStatics.anIntArray2361[arg0] & buffer[i] >> -arg0 + i_1_;
+            i_0_ += BITMASK[arg0] & buffer[i] >> -arg0 + i_1_;
         else
-            i_0_ += buffer[i] & MovedStatics.anIntArray2361[i_1_];
+            i_0_ += buffer[i] & BITMASK[i_1_];
         return i_0_;
     }
 
     public void putPacket(int packetId) {
-        //System.out.println("putPacket: " + packetId);
         buffer[currentPosition++] = (byte) (packetId + outCipher.nextInt() & 0xff);
     }
 

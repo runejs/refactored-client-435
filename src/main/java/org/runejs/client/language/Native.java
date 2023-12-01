@@ -12,7 +12,6 @@ public class Native {
     public static RSString username = RSString.CreateString("");
     public static String amountPrefixX = " x";
     public static RSString string_blank = RSString.CreateString("");
-    public static String currentLoadingText = "";
     public static String loginScreenMessageLineOne = "";
     public static String loginScreenMessageLineThree = "";
     public static String loginScreenMessageLineTwo = "";

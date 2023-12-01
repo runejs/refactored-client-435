@@ -49,18 +49,18 @@ public class AnimationSequence extends CachedNode {
 
     private static Class40_Sub5_Sub15 method421(CacheArchive skeletonArchive, int arg2, CacheArchive skinArchive, boolean arg4) {
         boolean bool = true;
-        int[] is = skeletonArchive.method192(arg2, true);
+        int[] is = skeletonArchive.getFileIds(arg2);
         for(int i = 0; is.length > i; i++) {
-            byte[] is_0_ = skeletonArchive.method182(is[i], arg2);
+            byte[] is_0_ = skeletonArchive.getFileContents(arg2, is[i]);
             if(is_0_ == null)
                 bool = false;
             else {
                 int i_1_ = 0xff & is_0_[1] | (0xff & is_0_[0]) << 8;
                 byte[] is_2_;
                 if(arg4)
-                    is_2_ = skinArchive.method182(i_1_, 0);
+                    is_2_ = skinArchive.getFileContents(0, i_1_);
                 else
-                    is_2_ = skinArchive.method182(0, i_1_);
+                    is_2_ = skinArchive.getFileContents(i_1_, 0);
                 if(is_2_ == null)
                     bool = false;
             }
@@ -74,17 +74,17 @@ public class AnimationSequence extends CachedNode {
         }
     }
 
-    public static AnimationSequence getAnimationSequence(int animationId) {
-        AnimationSequence animationSequence = (AnimationSequence) animationSequenceCache.get((long) animationId);
+    public static AnimationSequence getAnimationSequence(int id) {
+        AnimationSequence animationSequence = (AnimationSequence) animationSequenceCache.get((long) id);
 
         if(animationSequence != null)
             return animationSequence;
-        byte[] is = definitionArchive.getFile(12, animationId);
+        byte[] data = definitionArchive.getFile(12, id);
         animationSequence = new AnimationSequence();
-        if(is != null)
-            animationSequence.decodeAllAnimationSequences(new Buffer(is));
+        if(data != null)
+            animationSequence.decodeAllAnimationSequences(new Buffer(data));
         animationSequence.method591();
-        animationSequenceCache.put((long) animationId, animationSequence);
+        animationSequenceCache.put((long) id, animationSequence);
         return animationSequence;
     }
 

@@ -34,7 +34,7 @@ public class GameSocket implements Runnable {
     }
 
 
-    public void readDataToBuffer(int currentPosition, int packetSize, byte[] buffer) throws IOException {
+    public void readDataToBuffer(byte[] buffer, int currentPosition, int packetSize) throws IOException {
         if (!socketDisconnected) {
             while (packetSize > 0) {
                 int i = socketInputStream.read(buffer, currentPosition, packetSize);

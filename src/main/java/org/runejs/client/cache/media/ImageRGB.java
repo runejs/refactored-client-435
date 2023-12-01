@@ -233,45 +233,37 @@ public class ImageRGB extends Rasterizer {
         }
     }
 
-    public static boolean spriteExists(int arg0, int arg1, CacheArchive cacheArchive) {
-        byte[] is = cacheArchive.getFile(arg1, arg0);
-        if(is == null)
-            return false;
-        MovedStatics.method184(is, 0);
-        return true;
-    }
-
     public static ImageRGB[] method319() {
-	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[MovedStatics.anInt2581];
-	    for(int i = 0; i < MovedStatics.anInt2581; i++) {
+	    ImageRGB[] class40_sub5_sub14_sub4s = new ImageRGB[MovedStatics.childCount];
+	    for(int i = 0; i < MovedStatics.childCount; i++) {
 	        ImageRGB class40_sub5_sub14_sub4 = class40_sub5_sub14_sub4s[i] = new ImageRGB();
 	        class40_sub5_sub14_sub4.maxWidth = MovedStatics.imageMaxWidth;
 	        class40_sub5_sub14_sub4.maxHeight = MovedStatics.imageMaxHeight;
-	        class40_sub5_sub14_sub4.offsetX = MovedStatics.anIntArray1347[i];
-	        class40_sub5_sub14_sub4.offsetY = MovedStatics.anIntArray3111[i];
-	        class40_sub5_sub14_sub4.imageWidth = MovedStatics.anIntArray456[i];
-	        class40_sub5_sub14_sub4.imageHeight = MovedStatics.anIntArray3312[i];
-	        byte[] is = MovedStatics.aByteArrayArray1370[i];
+	        class40_sub5_sub14_sub4.offsetX = MovedStatics.spriteOffsetX[i];
+	        class40_sub5_sub14_sub4.offsetY = MovedStatics.spriteOffsetY[i];
+	        class40_sub5_sub14_sub4.imageWidth = MovedStatics.spriteWidth[i];
+	        class40_sub5_sub14_sub4.imageHeight = MovedStatics.spriteHeight[i];
+	        byte[] is = MovedStatics.spritePixels[i];
 	        int i_4_ = class40_sub5_sub14_sub4.imageHeight * class40_sub5_sub14_sub4.imageWidth;
 	        class40_sub5_sub14_sub4.pixels = new int[i_4_];
 	        for(int i_5_ = 0; i_5_ < i_4_; i_5_++)
-	            class40_sub5_sub14_sub4.pixels[i_5_] = MovedStatics.anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
+	            class40_sub5_sub14_sub4.pixels[i_5_] = MovedStatics.spritePalette[BitUtils.bitWiseAND(255, is[i_5_])];
 	    }
-	    MovedStatics.method569();
+	    MovedStatics.clearDecodedSpriteData();
 	    return class40_sub5_sub14_sub4s;
 	}
 
-    public static ImageRGB[] method944(byte arg0, int arg1, CacheArchive arg2, int arg3) {
-        if(!spriteExists(arg3, arg1, arg2))
+    public static ImageRGB[] method944(CacheArchive archive, int groupId, int fileId, byte arg0) {
+        if(!MovedStatics.decodeImageFromArchive(archive, groupId, fileId))
             return null;
         int i = -59 % ((-60 - arg0) / 34);
         return method319();
     }
 
-    public static ImageRGB[] method526(CacheArchive arg0, String arg2, String arg3) {
-        int i = arg0.getHash(arg2);
-        int i_4_ = arg0.method179(i, arg3);
-        return method944((byte) -3, i, arg0, i_4_);
+    public static ImageRGB[] method526(CacheArchive arg0, String arg2, String always_empty) {
+        int i = arg0.getGroupIdByName(arg2);
+        int i_4_ = arg0.getFileIdByName(i, always_empty);
+        return method944(arg0, i, i_4_, (byte) -3);
     }
 
     public void method716(int arg0, int arg1, int arg2, int arg3, int arg4) {

@@ -27,11 +27,13 @@ public class Effect {
         instruments = new Instrument[10];
     }
 
-    public static Effect readSoundEffect(CacheArchive arg0, int arg1, int arg2) {
-        byte[] is = arg0.getFile(arg1, arg2);
-        if(is == null)
+    public static Effect readSoundEffect(CacheArchive archive, int groupId, int fileId) {
+        byte[] data = archive.getFile(groupId, fileId);
+
+        if(data == null)
             return null;
-        return new Effect(new Buffer(is));
+
+        return new Effect(new Buffer(data));
     }
 
     public byte[] method426() {

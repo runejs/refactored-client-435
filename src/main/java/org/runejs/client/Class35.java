@@ -20,7 +20,7 @@ public class Class35 implements Interface3 {
         brightness = arg3;
         textureSize = arg4;
         anInt1753 = anInt1752;
-        int[] cacheTextures = gameTextureCacheArchive.method192(0, true);
+        int[] cacheTextures = gameTextureCacheArchive.getFileIds(0);
         int textureCount = cacheTextures.length;
         textures = new Texture[gameTextureCacheArchive.fileLength(0)];
         for(int texturePointer = 0; textureCount > texturePointer; texturePointer++) {
@@ -65,7 +65,7 @@ public class Class35 implements Interface3 {
 
     public int getAverageTextureColour(int arg1) {
         if(textures[arg1] != null)
-            return textures[arg1].anInt2137;
+            return textures[arg1].averageColour;
         return 0;
     }
 
@@ -78,12 +78,12 @@ public class Class35 implements Interface3 {
         clearTextures();
     }
 
-    public void animateTextures(int arg1) {
+    public void animateTextures(int deltaT) {
         int i = 0;
         for (/**/; i < textures.length; i++) {
             Texture texture = textures[i];
             if (texture != null && texture.animateDirection != 0 && texture.aBoolean2146) {
-                texture.animate(arg1);
+                texture.animate(deltaT);
                 texture.aBoolean2146 = false;
             }
         }

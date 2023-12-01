@@ -1,7 +1,5 @@
 package org.runejs.client;
 
-import org.runejs.client.cache.CacheIndex;
-import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.media.ImageRGB;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -11,7 +9,6 @@ import org.runejs.client.chat.ChatShapeEffect;
 import org.runejs.client.frame.Minimap;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.frame.ScreenMode;
-import org.runejs.client.frame.console.Console;
 import org.runejs.client.frame.tab.parts.TabParts;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.io.Buffer;
@@ -19,7 +16,6 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.renderable.Item;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.net.*;
-import org.runejs.client.node.Class40_Sub6;
 import org.runejs.client.node.HashTable;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.media.IndexedImage;
@@ -31,7 +27,6 @@ import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.VertexNormal;
 import org.runejs.client.scene.*;
 import org.runejs.client.scene.camera.CameraRotation;
-import org.runejs.client.scene.util.CollisionMap;
 import org.runejs.client.sound.MusicSystem;
 import org.runejs.client.sound.SoundSystem;
 import org.runejs.client.util.BitUtils;
@@ -57,9 +52,7 @@ public class MovedStatics {
     public static int chatEffectsDisabled = 0;
     public static int anInt321 = 5063219;
     public static boolean redrawChatbox = false;
-    public static int[] anIntArray666 = new int[]{1, 0, -1, 0};
     public static int pulseCycle = 0;
-    public static int anInt938 = 500;
     public static boolean aBoolean2083 = false;
     public static ProducingGraphicsBuffer tabImageProducer;
     /**
@@ -69,8 +62,7 @@ public class MovedStatics {
      */
     public static IndexedImage tabHighlightImageBottomLeft;
     public static boolean aBoolean565 = false;
-    public static boolean aBoolean571;
-    public static int anInt573 = -1;
+    public static int openWidgetChildTooltipId = -1;
     public static boolean menuOpen = false;
     public static volatile long aLong174 = 0L;
 
@@ -79,11 +71,9 @@ public class MovedStatics {
      */
     public static int hintIconPosY = 0;
     public static int[] chatboxLineOffsets;
-    public static int anInt199 = 0;
     public static volatile boolean aBoolean1575 = false;
     public static int anInt1586 = -1;
     public static boolean reportMutePlayer = false;
-    public static int anInt1607 = 10;
     public static long[] tickSamples = new long[32];
     /**
      * The image used for the highlighted (selected) tab button,
@@ -116,30 +106,25 @@ public class MovedStatics {
     public static int onBuildTimePlane = 0;
     public static int anInt1996 = 0;
     public static HashTable aClass23_805;
-    public static int anInt848 = 0;
+    /**
+     * Whether to draw the right-click menu with item name separated
+     *
+     * TODO (jkm) what is this? it's never modified in code
+     */
+    public static int drawMenuSeparateName = 0;
     public static int[] anIntArray852;
-    public static long aLong853;
+    public static long localUsernameId;
     public static int anInt2621 = 0;
     public static volatile int eventClickY = 0;
     public static int anInt2628 = 0;
     public static volatile boolean clearScreen = true;
     public static ProducingGraphicsBuffer gameScreenImageProducer;
-    /**
-     * Bit masks for packet buffer
-     */
-    public static int[] anIntArray2361 = new int[]{0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575, 2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823, 2147483647, -1};
     public static int destinationX = 0;
-    public static int anInt1511 = -1;
     /**
      * The hint (arrow) icon sprites.
      */
     public static ImageRGB[] hintIconSprites;
-    public static int anInt2581;
-    public static ImageRGB minimapEdge;
-    /**
-     * Images for scenery on the minimap (e.g. trees, ladders, etc)
-     */
-    public static IndexedImage[] mapSceneIcons;
+    public static int childCount;
     public static int baseX;
     public static IndexedImage[] moderatorIcon;
     public static int[] anIntArray2764 = new int[128];
@@ -158,31 +143,22 @@ public class MovedStatics {
     public static boolean membersServer;
     public static HuffmanEncoding aHuffmanEncoding_2590;
     public static int anInt2598 = 0;
-    public static LinkedList aLinkedList_2604 = new LinkedList();
     public static int height;
     public static int anInt2798 = 0;
     public static int selectedMask;
     public static int imageMaxWidth;
-    /**
-     * Something to do with widgets.
-     */
-    public static int anInt2850 = -1;
+    public static int hoveredWidgetChildId = -1;
     /**
      * Something to do with key presses.
      */
     public static int anInt2854;
     public static int placementY;
     public static int crossIndex = 0;
-    /**
-     * Related to login errors
-     */
-    public static int anInt2321 = 0;
     public static byte[][][] tile_flags = new byte[4][104][104];
-    public static int hoveredWidgetChildId = -1;
+    public static int tempHoveredWidgetChildId = -1;
     public static int[] directions = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
     public static int menuScreenArea;
     public static ProducingGraphicsBuffer framePieceTop;
-    public static int[] anIntArray3253;
     public static TypeFace fontNormal;
     /**
      * The image used for the highlighted (selected) tab button,
@@ -192,16 +168,16 @@ public class MovedStatics {
     public static IndexedImage tabHighlightImageTopRight;
     public static int durationHoveredOverWidget = 0;
     public static IndexedImage bottomChatBack;
-    public static int[] anIntArray1347;
+    public static int[] spriteOffsetX;
     public static LinkedList spotAnimQueue = new LinkedList();
     public static int carryWeight = 0;
     public static int anInt1214 = 0;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static SignlinkNode gameServerSignlinkNode;
-    public static int anInt614 = -1;
+    public static int openTabWidgetChildTooltipId = -1;
     public static LinkedList[][][] groundItems = new LinkedList[4][104][104];
     public static String[] menuActionTexts = new String[500];
-    public static int anInt3065 = -1;
+    public static int tempOpenWidgetChildTooltipId = -1;
     public static int currentHoveredWidgetChildId = -1;
     public static int currentHoveredChatboxWidgetChildId = -1;
     public static int[] firstMenuOperand = new int[500];
@@ -239,7 +215,7 @@ public class MovedStatics {
     public static IndexedImage tabHighlightImageBottomRight;
     public static ProducingGraphicsBuffer chatboxTop;
     public static int deregisterActorCount = 0;
-    public static int[] anIntArray456;
+    public static int[] spriteWidth;
     public static int regionY;
     public static int[] fullScreenTextureArray;
     public static Image loadingBoxImage;
@@ -258,9 +234,10 @@ public class MovedStatics {
     public static ProducingGraphicsBuffer mapBackRight;
     public static IndexedImage chatboxBackgroundImage;
     /**
-     * Membership status?
+     * Local player's membership status, used to allow for
+     * increased friend limit sizes in non-member worlds.
      */
-    public static int anInt1049 = 0;
+    public static int isLocalPlayerMember = 0;
     public static int regionX;
     /**
      * Last pressed key? maybe
@@ -277,47 +254,25 @@ public class MovedStatics {
      */
     public static int[] anIntArray1186;
     /**
-     * Loading state? maybe
-     */
-    public static int anInt1634 = 0;
-    /**
      * Overhead icon sprites, e.g. overhead prayers
      */
     public static ImageRGB[] headIconSprites;
-    /**
-     * Something to do with orientations?
-     */
-    public static int[] anIntArray2207 = {0, -1, 0, 1};
     public static ProducingGraphicsBuffer aProducingGraphicsBuffer_2213;
-    /**
-     * Cache archive cache?
-     */
-    public static LinkedList aLinkedList_53 = new LinkedList();
     public static int anInt57;
     public static ProducingGraphicsBuffer tabBottom;
-    /**
-     * Relates to minimap
-     */
-    public static int[] anIntArray62;
-    /**
-     * Relates to minimap
-     */
-    public static int[] anIntArray66;
     public static int[] keyCodes = new int[128];
     public static int tooltipDelay = 50;
-    public static int anInt2231 = 1;
     /**
      * The image used for the highlighted (selected) tab button,
      * for the furthest-right tab on the bottom.
      */
     public static IndexedImage tabHighlightImageBottomRightEdge;
     public static boolean aBoolean512;
-    public static int[] anIntArray3111;
+    public static int[] spriteOffsetY;
     public static Signlink signlink;
     public static ProducingGraphicsBuffer tabPieveLowerRight;
     public static GameSocket lostConnectionSocket;
     public static ProducingGraphicsBuffer tabPieceLeft;
-    public static int anInt3048 = 1;
     public static boolean[] obfuscatedKeyStatus = new boolean[112];
     public static int[] crc8LookupTable = new int[256];
     public static int currentTickSample;
@@ -327,31 +282,21 @@ public class MovedStatics {
      * Top row of sideicon tabs
      */
     public static ProducingGraphicsBuffer tabTop;
-    public static byte[][] aByteArrayArray1370;
-    public static Object anObject162 = new Object();
+    public static byte[][] spritePixels;
     /**
      * Last varp handle cycle?
      */
     public static int anInt2480 = 0;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array2474;
-    public static int anInt1987 = 0;
     public static IndexedImage tabTopBack;
     /**
      * Some kind of colour palette
      */
-    public static int[] anIntArray1972;
+    public static int[] spritePalette;
     /**
      * Sprite heights?
      */
-    public static int[] anIntArray3312;
-    /**
-     * Some kind of mouse information
-     */
-    public static int anInt3294 = 0;
-    /**
-     * ISAAC key?
-     */
-    public static long aLong2858 = 0L;
+    public static int[] spriteHeight;
     /**
      * The image used for the highlighted (selected) tab button,
      * for the furthest-left tab on the bottom.
@@ -364,30 +309,30 @@ public class MovedStatics {
 
     public static void method440() {
         if (aBoolean512) {
-            Class60.anIntArray1198 = null;
-            Class60.flameRightBackground = null;
-            Class60.aProducingGraphicsBuffer_1631 = null;
-            Class60.aProducingGraphicsBuffer_1206 = null;
-            Class60.anIntArray1168 = null;
-            Class60.anIntArray3255 = null;
-            Class60.imgLoginScreenButton = null;
-            Class60.anIntArray1445 = null;
-            Class60.loginScreenBox = null;
-            Class60.anIntArray2865 = null;
-            Class60.flameLeftBackground = null;
-            Class60.aProducingGraphicsBuffer_907 = null;
-            Class60.aProducingGraphicsBuffer_2524 = null;
-            Class60.aClass40_Sub5_Sub14_Sub4_918 = null;
-            Class60.aClass40_Sub5_Sub14_Sub2Array535 = null;
-            Class60.anIntArray3248 = null;
-            Class60.loginBoxGraphics = null;
-            Class60.aClass40_Sub5_Sub14_Sub4_2043 = null;
-            Class60.anIntArray178 = null;
-            Class60.aProducingGraphicsBuffer_1285 = null;
-            Class60.aProducingGraphicsBuffer_463 = null;
-            Class60.anIntArray1013 = null;
+            LoginScreen.anIntArray1198 = null;
+            LoginScreen.flameRightBackground = null;
+            LoginScreen.aProducingGraphicsBuffer_1631 = null;
+            LoginScreen.aProducingGraphicsBuffer_1206 = null;
+            LoginScreen.anIntArray1168 = null;
+            LoginScreen.anIntArray3255 = null;
+            LoginScreen.imgLoginScreenButton = null;
+            LoginScreen.anIntArray1445 = null;
+            LoginScreen.loginScreenBox = null;
+            LoginScreen.anIntArray2865 = null;
+            LoginScreen.flameLeftBackground = null;
+            LoginScreen.aProducingGraphicsBuffer_907 = null;
+            LoginScreen.aProducingGraphicsBuffer_2524 = null;
+            LoginScreen.aClass40_Sub5_Sub14_Sub4_918 = null;
+            LoginScreen.aClass40_Sub5_Sub14_Sub2Array535 = null;
+            LoginScreen.anIntArray3248 = null;
+            LoginScreen.loginBoxGraphics = null;
+            LoginScreen.aClass40_Sub5_Sub14_Sub4_2043 = null;
+            LoginScreen.anIntArray178 = null;
+            LoginScreen.aProducingGraphicsBuffer_1285 = null;
+            LoginScreen.aProducingGraphicsBuffer_463 = null;
+            LoginScreen.anIntArray1013 = null;
             MusicSystem.method405(10);
-            Game.updateServer.resetRequests(true);
+            Game.updateServerConnectionManager.updateServer.resetRequests(true);
             aBoolean512 = false;
         }
     }
@@ -475,30 +420,22 @@ public class MovedStatics {
         return 3;
     }
 
-    public static IndexedImage method538() {
-        IndexedImage class40_sub5_sub14_sub2 = new IndexedImage();
-        class40_sub5_sub14_sub2.maxWidth = imageMaxWidth;
-        class40_sub5_sub14_sub2.maxHeight = imageMaxHeight;
-        class40_sub5_sub14_sub2.xDrawOffset = anIntArray1347[0];
-        class40_sub5_sub14_sub2.yDrawOffset = anIntArray3111[0];
-        class40_sub5_sub14_sub2.imgWidth = anIntArray456[0];
-        class40_sub5_sub14_sub2.imgHeight = anIntArray3312[0];
-        class40_sub5_sub14_sub2.palette = anIntArray1972;
-        class40_sub5_sub14_sub2.imgPixels = aByteArrayArray1370[0];
-        method569();
-        return class40_sub5_sub14_sub2;
-    }
-
-    public static void method332(int arg0) {
-        synchronized (anObject162) {
-            if (anInt1987 == 0)
-                Game.signlink.putThreadNode(5, new Class44());
-            anInt1987 = arg0;
-        }
+    public static IndexedImage createIndexedImageFromDecodedData() {
+        IndexedImage image = new IndexedImage();
+        image.maxWidth = imageMaxWidth;
+        image.maxHeight = imageMaxHeight;
+        image.xDrawOffset = spriteOffsetX[0];
+        image.yDrawOffset = spriteOffsetY[0];
+        image.imgWidth = spriteWidth[0];
+        image.imgHeight = spriteHeight[0];
+        image.palette = spritePalette;
+        image.imgPixels = spritePixels[0];
+        clearDecodedSpriteData();
+        return image;
     }
 
     public static RSString intToStr(int arg0) {
-        return method521(false, 10, arg0);
+        return RSString.method521(false, 10, arg0);
     }
 
     public static int calculateCrc8(int offset, int size, byte[] data) {
@@ -545,7 +482,7 @@ public class MovedStatics {
                 string = string.replace('@', '_');
                 string = string.replace('&', '_');
                 string = string.replace('#', '_');
-                SignlinkNode signlinkNode = signlink.putDataInputStreamNode(new URL(signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Game.clientVersion + "&u=" + aLong853 + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
+                SignlinkNode signlinkNode = signlink.putDataInputStreamNode(new URL(signlink.gameShell.getCodeBase(), "clienterror.ws?c=" + Game.clientVersion + "&u=" + localUsernameId + "&v1=" + Signlink.javaVendor + "&v2=" + Signlink.javaVersion + "&e=" + string));
                 while (signlinkNode.status == SignlinkNode.Status.NOT_INITIALIZED)
                     threadSleep(1L);
                 if (signlinkNode.status != SignlinkNode.Status.INITIALIZED)
@@ -556,51 +493,53 @@ public class MovedStatics {
             } catch (Exception ignored) { }
     }
 
-    public static void method184(byte[] data, int arg1) {
+    public static void decodeImageData(byte[] data) {
         Buffer buffer = new Buffer(data);
         buffer.currentPosition = -2 + data.length;
-        anInt2581 = buffer.getUnsignedShortBE();
-        anIntArray3111 = new int[anInt2581];
-        aByteArrayArray1370 = new byte[anInt2581][];
-        anIntArray456 = new int[anInt2581];
-        anIntArray3312 = new int[anInt2581];
-        anIntArray1347 = new int[anInt2581];
+        childCount = buffer.getUnsignedShortBE();
+        spriteOffsetY = new int[childCount];
+        spritePixels = new byte[childCount][];
+        spriteWidth = new int[childCount];
+        spriteHeight = new int[childCount];
+        spriteOffsetX = new int[childCount];
 
-        buffer.currentPosition = data.length + -7 + -(anInt2581 * 8);
+        buffer.currentPosition = data.length - 7 - (childCount * 8);
         imageMaxWidth = buffer.getUnsignedShortBE();
         imageMaxHeight = buffer.getUnsignedShortBE();
-        int i = 1 + (buffer.getUnsignedByte() & 0xff);
-        for (int i_34_ = 0; i_34_ < anInt2581; i_34_++)
-            anIntArray1347[i_34_] = buffer.getUnsignedShortBE();
-        for (int i_35_ = arg1; i_35_ < anInt2581; i_35_++)
-            anIntArray3111[i_35_] = buffer.getUnsignedShortBE();
-        for (int i_36_ = 0; i_36_ < anInt2581; i_36_++)
-            anIntArray456[i_36_] = buffer.getUnsignedShortBE();
-        for (int i_37_ = 0; anInt2581 > i_37_; i_37_++)
-            anIntArray3312[i_37_] = buffer.getUnsignedShortBE();
+        int paletteSize = 1 + (buffer.getUnsignedByte() & 0xff);
+        for (int c = 0; c < childCount; c++)
+            spriteOffsetX[c] = buffer.getUnsignedShortBE();
+        for (int c = 0; c < childCount; c++)
+            spriteOffsetY[c] = buffer.getUnsignedShortBE();
+        for (int c = 0; c < childCount; c++)
+            spriteWidth[c] = buffer.getUnsignedShortBE();
+        for (int c = 0; childCount > c; c++)
+            spriteHeight[c] = buffer.getUnsignedShortBE();
 
-        buffer.currentPosition = data.length - (7 + anInt2581 * 8 + -3 + i * 3);
-        anIntArray1972 = new int[i];
-        for (int i_38_ = 1; i > i_38_; i_38_++) {
-            anIntArray1972[i_38_] = buffer.getMediumBE();
-            if (anIntArray1972[i_38_] == 0)
-                anIntArray1972[i_38_] = 1;
+        buffer.currentPosition = data.length - (7 + childCount * 8 + -3 + paletteSize * 3);
+        spritePalette = new int[paletteSize];
+        for (int p = 1; paletteSize > p; p++) {
+            spritePalette[p] = buffer.getMediumBE();
+            if (spritePalette[p] == 0)
+                spritePalette[p] = 1;
         }
         buffer.currentPosition = 0;
-        for (int i_39_ = 0; anInt2581 > i_39_; i_39_++) {
-            int i_40_ = anIntArray3312[i_39_];
-            int i_41_ = anIntArray456[i_39_];
-            int i_42_ = i_40_ * i_41_;
-            byte[] is = new byte[i_42_];
-            aByteArrayArray1370[i_39_] = is;
-            int i_43_ = buffer.getUnsignedByte();
-            if (i_43_ == 0) {
-                for (int i_46_ = 0; i_42_ > i_46_; i_46_++)
-                    is[i_46_] = buffer.getByte();
-            } else if (i_43_ == 1) {
-                for (int i_44_ = 0; i_41_ > i_44_; i_44_++) {
-                    for (int i_45_ = 0; i_40_ > i_45_; i_45_++)
-                        is[i_41_ * i_45_ + i_44_] = buffer.getByte();
+        for (int c = 0; childCount > c; c++) {
+            int h = spriteHeight[c];
+            int w = spriteWidth[c];
+            int area = h * w;
+            byte[] pixels = new byte[area];
+            spritePixels[c] = pixels;
+            int pixelOrder = buffer.getUnsignedByte();
+            if (pixelOrder == 0) {
+                for (int p = 0; area > p; p++) {
+                    pixels[p] = buffer.getByte();
+                }
+            } else if (pixelOrder == 1) {
+                for (int x = 0; w > x; x++) {
+                    for (int y = 0; h > y; y++) {
+                        pixels[w * y + x] = buffer.getByte();
+                    }
                 }
             }
         }
@@ -888,9 +827,7 @@ public class MovedStatics {
             if (Game.gameStatusCode == 0)
                 Game.renderer.disposeLoadingText();
             if (statusCode == 20 || statusCode == 40) {
-                Game.anInt1756 = 0;
-                anInt2321 = 0;
-                Game.loginStatus = 0;
+                Game.loginProtocol.reset();
             }
             if (statusCode != 20 && statusCode != 40 && lostConnectionSocket != null) {
                 lostConnectionSocket.kill();
@@ -901,11 +838,11 @@ public class MovedStatics {
                 Rasterizer.resetPixels();
             }
             if (Game.gameStatusCode == 25) {
-                Game.anInt874 = 0;
-                anInt2231 = 1;
-                Game.anInt2591 = 0;
-                anInt3048 = 1;
-                anInt1634 = 0;
+                Game.missingLandscapeFiles = 0;
+                Game.totalMissingLandscapeFiles = 1;
+                Game.missingGameObjectFiles = 0;
+                Game.totalMissingGameObjectFiles = 1;
+                Game.regionLoadingType = 0;
             }
             if (statusCode == 0 || statusCode == 35) {
                 method344(-40);
@@ -916,7 +853,7 @@ public class MovedStatics {
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
                 aProducingGraphicsBuffer_2213 = null;
                 method344(-69);
-                Class60.renderLoginScreen(Game.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
+                LoginScreen.renderLoginScreen(Game.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
                 aProducingGraphicsBuffer_2213 = null;
@@ -982,10 +919,10 @@ public class MovedStatics {
         }
     }
 
-    public static ImageRGB method927(int arg0, CacheArchive arg1, int arg3) {
-	    if(!ImageRGB.spriteExists(arg0, arg3, arg1))
+    public static ImageRGB method927(CacheArchive archive, int groupId, int fileId) {
+	    if(!decodeImageFromArchive(archive, groupId, fileId))
 	        return null;
-	    return method578();
+	    return createImageRGBFromDecodedData();
 	}
 
     public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, GameInterface[] gameInterfaces, int parentId, int scrollPosition, int scrollWidth) {
@@ -994,34 +931,40 @@ public class MovedStatics {
 	        for(int i = 0; gameInterfaces.length > i; i++) {
 	            GameInterface gameInterface = gameInterfaces[i];
 	            if(gameInterface != null && parentId == gameInterface.parentId) {
-	                int i_1_ = gameInterface.currentY - (-minY + scrollPosition);
-	                int i_2_ = -scrollWidth + gameInterface.currentX + minX;
-	                if(gameInterface.type == GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_)
-	                    anInt3065 = i;
-	                if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
+                    int adjustedX = gameInterface.currentX - scrollWidth + minX;
+                    int adjustedY = gameInterface.currentY - (scrollPosition - minY);
+
+                    boolean isTooltip = gameInterface.type == GameInterfaceType.IF1_TOOLTIP;
+                    boolean isMouseWithinXBounds = mouseX >= adjustedX && mouseX < adjustedX + gameInterface.originalWidth;
+                    boolean isMouseWithinYBounds = mouseY >= adjustedY && mouseY < adjustedY + gameInterface.originalHeight;
+
+                    if (isTooltip && isMouseWithinXBounds && isMouseWithinYBounds) {
+                        tempOpenWidgetChildTooltipId = i;
+                    }
+	                if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && adjustedX <= mouseX && adjustedY <= mouseY && mouseX < adjustedX + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + adjustedY) {
 	                    if(gameInterface.hoveredSiblingId >= 0)
-	                        hoveredWidgetChildId = gameInterface.hoveredSiblingId;
+	                        tempHoveredWidgetChildId = gameInterface.hoveredSiblingId;
 	                    else
-	                        hoveredWidgetChildId = i;
+	                        tempHoveredWidgetChildId = i;
 	                }
 	                if(gameInterface.type == GameInterfaceType.LAYER) {
                         int areaId = area.getId();
 
 	                    if(!gameInterface.isHidden || GameInterface.isHovering(areaId, i) || GameInterface.hiddenButtonTest) {
-	                        handleInterfaceActions(area, mouseX, mouseY, i_2_, i_1_, i_2_ + gameInterface.originalWidth, i_1_ + gameInterface.originalHeight, gameInterfaces, i, gameInterface.scrollPosition, gameInterface.scrollWidth);
+	                        handleInterfaceActions(area, mouseX, mouseY, adjustedX, adjustedY, adjustedX + gameInterface.originalWidth, adjustedY + gameInterface.originalHeight, gameInterfaces, i, gameInterface.scrollDepth, gameInterface.scrollWidth);
 	                        if(gameInterface.children != null)
-	                            handleInterfaceActions(area, mouseX, mouseY, i_2_, i_1_, gameInterface.originalWidth + i_2_, i_1_ + gameInterface.originalHeight, gameInterface.children, gameInterface.id, gameInterface.scrollPosition, gameInterface.scrollWidth);
+	                            handleInterfaceActions(area, mouseX, mouseY, adjustedX, adjustedY, gameInterface.originalWidth + adjustedX, adjustedY + gameInterface.originalHeight, gameInterface.children, gameInterface.id, gameInterface.scrollDepth, gameInterface.scrollWidth);
 	                        if(gameInterface.originalHeight < gameInterface.scrollHeight)
-	                            GameInterface.scrollInterface(gameInterface.originalHeight, mouseY, mouseX, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + i_2_, areaId, i_1_);
+	                            GameInterface.scrollInterface(gameInterface.originalHeight, mouseY, mouseX, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + adjustedX, areaId, adjustedY);
 	                    }
 	                } else {
-	                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
+	                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && adjustedX <= mouseX && adjustedY <= mouseY && gameInterface.originalWidth + adjustedX > mouseX && gameInterface.originalHeight + adjustedY > mouseY) {
 	                        hoveredWidgetId = gameInterface.id;
 	                    }
 
                         // standard button type? this is used for 'Open House Options'
                         // also used for clickable text (e.g. music list)
-	                    if(gameInterface.actionType == 1 && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && gameInterface.originalHeight + i_1_ > mouseY) {
+	                    if(gameInterface.actionType == 1 && adjustedX <= mouseX && adjustedY <= mouseY && gameInterface.originalWidth + adjustedX > mouseX && gameInterface.originalHeight + adjustedY > mouseY) {
 	                        boolean bool = false;
 
                             // is this text vs not text? contentType is definitely 0 for text on music player
@@ -1034,12 +977,12 @@ public class MovedStatics {
 	                    }
 
                         // spells
-	                    if(gameInterface.actionType == 2 && Game.widgetSelected == 0 && mouseX >= i_2_ && mouseY >= i_1_ && mouseX < gameInterface.originalWidth + i_2_ && mouseY < i_1_ + gameInterface.originalHeight) {
+	                    if(gameInterface.actionType == 2 && Game.widgetSelected == 0 && mouseX >= adjustedX && mouseY >= adjustedY && mouseX < gameInterface.originalWidth + adjustedX && mouseY < adjustedY + gameInterface.originalHeight) {
 	                        addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, ActionRowType.SELECT_SPELL_ON_WIDGET.getId(), Native.green + gameInterface.spellName);
 	                    }
 
                         // close button
-	                    if(gameInterface.actionType == 3 && mouseX >= i_2_ && mouseY >= i_1_ && i_2_ + gameInterface.originalWidth > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
+	                    if(gameInterface.actionType == 3 && mouseX >= adjustedX && mouseY >= adjustedY && adjustedX + gameInterface.originalWidth > mouseX && mouseY < adjustedY + gameInterface.originalHeight) {
 	                        int actionType;
 	                        if(area != GameInterfaceArea.PERMANENT_CHAT_BOX_WIDGET)
 	                            actionType = ActionRowType.CLOSE_WIDGET.getId();
@@ -1049,17 +992,17 @@ public class MovedStatics {
 	                    }
 
                         // toggle varp
-	                    if(gameInterface.actionType == 4 && mouseX >= i_2_ && i_1_ <= mouseY && mouseX < gameInterface.originalWidth + i_2_ && gameInterface.originalHeight + i_1_ > mouseY) {
+	                    if(gameInterface.actionType == 4 && mouseX >= adjustedX && adjustedY <= mouseY && mouseX < gameInterface.originalWidth + adjustedX && gameInterface.originalHeight + adjustedY > mouseY) {
 	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, ActionRowType.BUTTON_TOGGLE_VARP.getId(), "");
 	                    }
 
                         // sets the varp to another value (stored in the `alternateRhs` of the button) when clicked
-	                    if(gameInterface.actionType == 5 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && i_1_ + gameInterface.originalHeight > mouseY) {
+	                    if(gameInterface.actionType == 5 && adjustedX <= mouseX && adjustedY <= mouseY && mouseX < adjustedX + gameInterface.originalWidth && adjustedY + gameInterface.originalHeight > mouseY) {
 	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, ActionRowType.BUTTON_SET_VARP_VALUE.getId(), "");
 	                    }
 
                         // "Please wait..." buttons
-	                    if(gameInterface.actionType == 6 && lastContinueTextWidgetId == -1 && i_2_ <= mouseX && i_1_ <= mouseY && mouseX < i_2_ + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + i_1_) {
+	                    if(gameInterface.actionType == 6 && lastContinueTextWidgetId == -1 && adjustedX <= mouseX && adjustedY <= mouseY && mouseX < adjustedX + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + adjustedY) {
 	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
 	                    }
 	
@@ -1067,8 +1010,8 @@ public class MovedStatics {
 	                        int i_4_ = 0;
 	                        for(int i_5_ = 0; i_5_ < gameInterface.originalHeight; i_5_++) {
 	                            for(int i_6_ = 0; i_6_ < gameInterface.originalWidth; i_6_++) {
-	                                int i_7_ = i_6_ * (gameInterface.itemSpritePadsX + 32) + i_2_;
-	                                int i_8_ = i_1_ + (32 + gameInterface.itemSpritePadsY) * i_5_;
+	                                int i_7_ = i_6_ * (gameInterface.itemSpritePadsX + 32) + adjustedX;
+	                                int i_8_ = adjustedY + (32 + gameInterface.itemSpritePadsY) * i_5_;
 	                                if(i_4_ < 20) {
 	                                    i_7_ += gameInterface.images[i_4_];
 	                                    i_8_ += gameInterface.imageX[i_4_];
@@ -1161,7 +1104,7 @@ public class MovedStatics {
 	                            }
 	                        }
 	                    }
-	                    if(gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1 && mouseX >= i_2_ && mouseY >= i_1_ && mouseX < gameInterface.originalWidth + i_2_ && mouseY < i_1_ + gameInterface.originalHeight) {
+	                    if(gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1 && mouseX >= adjustedX && mouseY >= adjustedY && mouseX < gameInterface.originalWidth + adjustedX && mouseY < adjustedY + gameInterface.originalHeight) {
 	                        ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
 	                        if(gameInterface.isInventory) {
 	                            String[] class1s = itemDefinition.interfaceOptions;
@@ -1185,7 +1128,7 @@ public class MovedStatics {
 	                        else
 	                            addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.parentId, ActionRowType.EXAMINE_ITEM_ON_V2_WIDGET.getId(), Native.lightRed + itemDefinition.name);
 	                    }
-	                    if(gameInterface.hasListeners && gameInterface.aClass1Array2661 != null && i_2_ <= mouseX && i_1_ <= mouseY && gameInterface.originalWidth + i_2_ > mouseX && mouseY < i_1_ + gameInterface.originalHeight) {
+	                    if(gameInterface.hasListeners && gameInterface.aClass1Array2661 != null && adjustedX <= mouseX && adjustedY <= mouseY && gameInterface.originalWidth + adjustedX > mouseX && mouseY < adjustedY + gameInterface.originalHeight) {
 	                        String class1 = "";
 	                        if(gameInterface.itemId != -1) {
 	                            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, 0);
@@ -1258,8 +1201,6 @@ public class MovedStatics {
 	        TypeFace.fontBold.drawShadowedString(menuActionTexts[action], offsetX + 3, actionY, true, actionColour);
 	    }
 	}
-
-    public static int loadingPercent = 0;
 
 	public static void handleVarPlayers(int varPlayerIndex) {
 	    do {
@@ -1358,7 +1299,7 @@ public class MovedStatics {
      * Draws the 2d yellow arrow hint icon in the world.
      */
     public static void drawPositionHintIcon() {
-        if (Player.headIconDrawType != 2) {
+        if (Game.currentHintIconType != 2) {
             return;
         }
 
@@ -1422,7 +1363,7 @@ public class MovedStatics {
         if(aBoolean2083) {
             chatboxLineOffsets = null;
             aBoolean2083 = false;
-            anIntArray66 = null;
+            Minimap.anIntArray66 = null;
             Minimap.minimapBackgroundImage = null;
             anIntArray1186 = null;
             chatboxTop = null;
@@ -1434,7 +1375,7 @@ public class MovedStatics {
             tabIcons = null;
             tabHighlightImageBottomRight = null;
             Minimap.mapbackProducingGraphicsBuffer = null;
-            anIntArray62 = null;
+            Minimap.anIntArray62 = null;
             sidebarOffsets = null;
             mapbackLeft = null;
             tabHighlightImageBottomMiddle = null;
@@ -1857,10 +1798,10 @@ public class MovedStatics {
         }
     }
 
-    public static ImageRGB method1028(CacheArchive arg0, String arg1, String arg3) {
-        int i = arg0.getHash(arg1);
-        int i_13_ = arg0.method179(i, arg3);
-        return method927(i_13_, arg0, i);
+    public static ImageRGB method1028(CacheArchive arg0, String arg1, String always_empty) {
+        int i = arg0.getGroupIdByName(arg1);
+        int i_13_ = arg0.getFileIdByName(i, always_empty);
+        return method927(arg0, i, i_13_);
     }
 
     public static void spawnGroundItem(int arg1, int arg2) {
@@ -1998,8 +1939,8 @@ public class MovedStatics {
             tabIcons = IndexedImage.getMultipleIndexedImages(arg2, Native.sideIcons, Native.aClass1_305);
             anIntArray1186 = new int[151];
             anIntArray852 = new int[151];
-            anIntArray66 = new int[33];
-            anIntArray62 = new int[33];
+            Minimap.anIntArray66 = new int[33];
+            Minimap.anIntArray62 = new int[33];
             for(int y = 0; y < 33; y++) {
                 int i_15_ = 0;
                 int i_16_ = 999;
@@ -2012,8 +1953,8 @@ public class MovedStatics {
                         break;
                     }
                 }
-                anIntArray62[y] = i_16_;
-                anIntArray66[y] = -i_16_ + i_15_;
+                Minimap.anIntArray62[y] = i_16_;
+                Minimap.anIntArray66[y] = -i_16_ + i_15_;
             }
             for(int y = 5; y < 156; y++) {
                 int maxWidth = 0;
@@ -2127,7 +2068,7 @@ public class MovedStatics {
 
     }
 
-    public static void method940(String arg1, boolean arg2, String arg3) {
+    public static void drawLoadingBox(String topLine, String bottomLine, boolean blackBackground) {
         if(clearScreen) {
             clearScreen = false;
             drawWelcomeScreenGraphics();
@@ -2140,20 +2081,25 @@ public class MovedStatics {
             showIconsRedrawnText = true;
             showChatPanelRedrawnText = true;
         }
-        int i = 151;
+
+        int y = 151;
         method1018();
-        i -= 3;
-        fontNormal.drawStringLeft(arg1, 257, i, 0);
-        fontNormal.drawStringLeft(arg1, 256, i + -1, 16777215);
-        if(arg3 != null) {
-            i += 15;
-            if(arg2) {
-                int i_0_ = 4 + fontNormal.getStringWidth(arg3);
-                Rasterizer.drawFilledRectangle(257 - i_0_ / 2, -11 + i, i_0_, 11, 0);
+        y -= 3;
+        fontNormal.drawStringLeft(topLine, 257, y, 0);
+        fontNormal.drawStringLeft(topLine, 256, y + -1, 16777215);
+
+        if(bottomLine != null) {
+            y += 15;
+
+            if(blackBackground) {
+                int bottomWidth = 4 + fontNormal.getStringWidth(bottomLine);
+                Rasterizer.drawFilledRectangle(257 - bottomWidth / 2, -11 + y, bottomWidth, 11, 0);
             }
-            fontNormal.drawStringLeft(arg3, 257, i, 0);
-            fontNormal.drawStringLeft(arg3, 256, i - 1, 16777215);
+
+            fontNormal.drawStringLeft(bottomLine, 257, y, 0);
+            fontNormal.drawStringLeft(bottomLine, 256, y - 1, 16777215);
         }
+
         drawGameScreenGraphics();
     }
 
@@ -2243,17 +2189,6 @@ public class MovedStatics {
         return string;
     }
 
-    public static String method903(int arg0) {
-        String class1 = Integer.toString(arg0);
-        for(int i = -3 + class1.length(); i > 0; i -= 3)
-            class1 = class1.substring(0, i) + Native.comma_b + class1.substring(i);
-        if(class1.length() > 8)
-            class1 = Native.green + class1.substring(0, -8 + class1.length()) + English.suffixMillion + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
-        else if(class1.length() > 4)
-            class1 = Native.cyan + class1.substring(0, class1.length() + -4) + Native.suffixK + Native.whiteOpeningParenthesis + class1 + Native.rightParenthesis;
-        return Native.whitespace_b + class1;
-    }
-
     public static void threadSleep(long ms) {
         if (ms <= 0L) {
             return;
@@ -2279,8 +2214,8 @@ public class MovedStatics {
                 GameInterface.redrawTabArea = true;
         }
         if(menuOpen && menuScreenArea == 1) {
-            if(anInt848 == 1)
-                method398();
+            if(drawMenuSeparateName == 1)
+                drawMenuItemSeparateName();
             else if(ScreenController.frameMode == ScreenMode.FIXED)
                 drawMenu(0,0);
         }
@@ -2297,8 +2232,8 @@ public class MovedStatics {
             menuActionRow = 1;
             if(GameInterface.fullscreenInterfaceId == -1) {
                 addSplitPrivateChatActionRows();
-                anInt3065 = -1;
-                hoveredWidgetChildId = -1;
+                tempOpenWidgetChildTooltipId = -1;
+                tempHoveredWidgetChildId = -1;
                 boolean bool = false;
                 // Right game screen
                 if(ScreenController.isCoordinatesIn3dScreen(MouseHandler.mouseX , MouseHandler.mouseY )) {
@@ -2315,38 +2250,38 @@ public class MovedStatics {
                     }
                 }
 
-                anInt573 = anInt3065;
-                anInt2850 = hoveredWidgetChildId;
-                anInt3065 = -1;
-                hoveredWidgetChildId = -1;
+                openWidgetChildTooltipId = tempOpenWidgetChildTooltipId;
+                hoveredWidgetChildId = tempHoveredWidgetChildId;
+                tempOpenWidgetChildTooltipId = -1;
+                tempHoveredWidgetChildId = -1;
                 // Right click tab
                 if(ScreenController.isCoordinatesInTabArea(MouseHandler.mouseX, MouseHandler.mouseY)) {
                     ScreenController.handleTabClick(MouseHandler.mouseX, MouseHandler.mouseY);
                 }
-                if(hoveredWidgetChildId != currentHoveredWidgetChildId) {
+                if(tempHoveredWidgetChildId != currentHoveredWidgetChildId) {
                     GameInterface.redrawTabArea = true;
-                    currentHoveredWidgetChildId = hoveredWidgetChildId;
+                    currentHoveredWidgetChildId = tempHoveredWidgetChildId;
                 }
-                hoveredWidgetChildId = -1;
-                if(anInt3065 != anInt614) {
-                    anInt614 = anInt3065;
+                tempHoveredWidgetChildId = -1;
+                if(tempOpenWidgetChildTooltipId != openTabWidgetChildTooltipId) {
+                    openTabWidgetChildTooltipId = tempOpenWidgetChildTooltipId;
                     GameInterface.redrawTabArea = true;
                 }
-                anInt3065 = -1;
+                tempOpenWidgetChildTooltipId = -1;
                 // right click chatbox
                 if(ScreenController.isCoordinatesInChatArea(MouseHandler.mouseX , MouseHandler.mouseY)) {
                     ScreenController.handleChatBoxMouse(MouseHandler.mouseX , MouseHandler.mouseY);
                 }
 
                 // Set hovering for chat widgets
-                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && currentHoveredChatboxWidgetChildId != hoveredWidgetChildId) {
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && currentHoveredChatboxWidgetChildId != tempHoveredWidgetChildId) {
                     ChatBox.redrawChatbox = true;
-                    currentHoveredChatboxWidgetChildId = hoveredWidgetChildId;
+                    currentHoveredChatboxWidgetChildId = tempHoveredWidgetChildId;
                 }
 
-                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && anInt3065 != anInt1586) {
+                if((GameInterface.chatboxInterfaceId != -1 || ChatBox.dialogueId != -1) && tempOpenWidgetChildTooltipId != anInt1586) {
                     ChatBox.redrawChatbox = true;
-                    anInt1586 = anInt3065;
+                    anInt1586 = tempOpenWidgetChildTooltipId;
                 }
                 while(!bool) {
                     bool = true;
@@ -2356,81 +2291,93 @@ public class MovedStatics {
                             String class1 = menuActionTexts[i];
                             menuActionTexts[i] = menuActionTexts[i + 1];
                             menuActionTexts[i + 1] = class1;
-                            int i_90_ = menuActionTypes[i];
+                            int type = menuActionTypes[i];
                             menuActionTypes[i] = menuActionTypes[i + 1];
-                            menuActionTypes[i + 1] = i_90_;
-                            i_90_ = firstMenuOperand[i];
+                            menuActionTypes[i + 1] = type;
+                            int firstOperand = firstMenuOperand[i];
                             firstMenuOperand[i] = firstMenuOperand[1 + i];
-                            firstMenuOperand[1 + i] = i_90_;
-                            i_90_ = secondMenuOperand[i];
+                            firstMenuOperand[1 + i] = firstOperand;
+                            int secondOperand = secondMenuOperand[i];
                             secondMenuOperand[i] = secondMenuOperand[1 + i];
-                            secondMenuOperand[i + 1] = i_90_;
-                            i_90_ = selectedMenuActions[i];
+                            secondMenuOperand[i + 1] = secondOperand;
+                            int action = selectedMenuActions[i];
                             selectedMenuActions[i] = selectedMenuActions[i + 1];
-                            selectedMenuActions[1 + i] = i_90_;
+                            selectedMenuActions[1 + i] = action;
                         }
                     }
                 }
             } else {
-                anInt3065 = -1;
-                hoveredWidgetChildId = -1;
+                tempOpenWidgetChildTooltipId = -1;
+                tempHoveredWidgetChildId = -1;
                 handleInterfaceActions(GameInterfaceArea.GAME_AREA, MouseHandler.mouseX, MouseHandler.mouseY, 0, 0, 765, 503, GameInterface.fullscreenInterfaceId);
-                anInt2850 = hoveredWidgetChildId;
-                anInt573 = anInt3065;
+                hoveredWidgetChildId = tempHoveredWidgetChildId;
+                openWidgetChildTooltipId = tempOpenWidgetChildTooltipId;
             }
         }
     }
 
-    public static void method398() {
-        String class1 = null;
+    public static void drawMenuItemSeparateName() {
+        String itemName = null;
+
+        // find the item name by looking for coloured text within the options
         for(int i = 0; menuActionRow > i; i++) {
             if(menuActionTexts[i].contains(Native.lightRed)) {
-                class1 = menuActionTexts[i].substring(menuActionTexts[i].indexOf(Native.lightRed));
+                itemName = menuActionTexts[i].substring(menuActionTexts[i].indexOf(Native.lightRed));
                 break;
             }
         }
-        if(class1 == null)
+
+        // if no name then draw the standard menu
+        if(itemName == null)
             drawMenu(0,0);
         else {
-            int i = menuWidth;
-            int i_0_ = menuOffsetX;
-            if(i > 190)
-                i = 190;
-            int i_1_ = menuHeight;
-            int i_2_ = Game.menuOffsetY;
-            if(i_0_ < 0)
-                i_0_ = 0;
-            int i_3_ = 6116423;
-            Rasterizer.drawFilledRectangle(i_0_, i_2_, i, i_1_, i_3_);
-            Rasterizer.drawFilledRectangle(i_0_ + 1, i_2_ + 1, -2 + i, 16, 0);
-            Rasterizer.drawUnfilledRectangle(i_0_ + 1, 18 + i_2_, -2 + i, i_1_ + -19, 0);
-            TypeFace.fontBold.drawShadowedString(class1, 3 + i_0_, 14 + i_2_, false, i_3_);
-            int i_4_ = MouseHandler.mouseX;
-            int i_5_ = MouseHandler.mouseY;
+            int width = menuWidth;
+            int x = menuOffsetX;
+            if(width > 190)
+                width = 190;
+            int height = menuHeight;
+            int y = Game.menuOffsetY;
+            if(x < 0)
+                x = 0;
+
+            int background = 0x5D5447;
+
+            Rasterizer.drawFilledRectangle(x, y, width, height, background);
+            Rasterizer.drawFilledRectangle(x + 1, y + 1, -2 + width, 16, 0);
+            Rasterizer.drawUnfilledRectangle(x + 1, 18 + y, -2 + width, height + -19, 0);
+            TypeFace.fontBold.drawShadowedString(itemName, 3 + x, 14 + y, false, background);
+
+            int mouseX = MouseHandler.mouseX;
+            int mouseY = MouseHandler.mouseY;
+
             if(menuScreenArea == 0) {
-                i_4_ -= 4;
-                i_5_ -= 4;
+                mouseX -= 4;
+                mouseY -= 4;
             }
             if(menuScreenArea == 1) {
-                i_4_ -= 553;
-                i_5_ -= 205;
+                mouseX -= 553;
+                mouseY -= 205;
             }
             if(menuScreenArea == 2) {
-                i_5_ -= 357;
-                i_4_ -= 17;
+                mouseY -= 357;
+                mouseX -= 17;
             }
-            for(int i_6_ = 0; i_6_ < menuActionRow; i_6_++) {
-                int i_7_ = 31 + i_2_ + (menuActionRow + -1 + -i_6_) * 15;
-                String class1_8_ = menuActionTexts[i_6_];
-                int i_9_ = 16777215;
-                if(class1_8_.endsWith(class1)) {
-                    class1_8_ = class1_8_.substring(0, class1_8_.length() - class1.length());
-                    if(class1_8_.endsWith(Native.whitespace))
-                        class1_8_ = class1_8_.substring(0, class1_8_.length() + -Native.whitespace.length());
+
+            for(int row = 0; row < menuActionRow; row++) {
+                int rowY = 31 + y + (menuActionRow - row - 1) * 15;
+                String rowText = menuActionTexts[row];
+                int rowBackground = 0xFFFFFF;
+
+                if(rowText.endsWith(itemName)) {
+                    rowText = rowText.substring(0, rowText.length() - itemName.length());
+                    if(rowText.endsWith(Native.whitespace))
+                        rowText = rowText.substring(0, rowText.length() + -Native.whitespace.length());
                 }
-                if(i_0_ < i_4_ && i_4_ < i_0_ + i && -13 + i_7_ < i_5_ && 3 + i_7_ > i_5_)
-                    i_9_ = 16776960;
-                TypeFace.fontBold.drawShadowedString(class1_8_, 3 + i_0_, i_7_, true, i_9_);
+
+                if(x < mouseX && mouseX < x + width && -13 + rowY < mouseY && 3 + rowY > mouseY)
+                    rowBackground = 0xFFFF00;
+
+                TypeFace.fontBold.drawShadowedString(rowText, 3 + x, rowY, true, rowBackground);
             }
         }
     }
@@ -2438,18 +2385,6 @@ public class MovedStatics {
     public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, int widgetId) {
         if(GameInterface.decodeGameInterface(widgetId)) {
             handleInterfaceActions(area, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
-        }
-    }
-
-    public static void handleRequests() {
-        for(; ; ) {
-            Class40_Sub6 class40_sub6;
-            synchronized(aLinkedList_53) {
-                class40_sub6 = (Class40_Sub6) aLinkedList_2604.removeFirst();
-            }
-            if(class40_sub6 == null)
-                break;
-            class40_sub6.cacheArchive.method198(false, class40_sub6.aByteArray2102, (int) class40_sub6.key, class40_sub6.cacheIndex);
         }
     }
 
@@ -2466,47 +2401,47 @@ public class MovedStatics {
         }
     }
 
-    public static void method278(byte[] arg0, int arg1, byte[] buffer, int arg3, int arg4) {
-        if(arg0 == buffer) {
-            if(arg1 == arg3)
+    public static void copyBytes(byte[] source, int sourceStart, byte[] destination, int destinationStart, int numBytes) {
+        if(source == destination) {
+            if(sourceStart == destinationStart)
                 return;
-            if(arg3 > arg1 && arg3 < arg1 + arg4) {
-                arg4--;
-                arg1 += arg4;
-                arg3 += arg4;
-                arg4 = arg1 - arg4;
-                arg4 += 7;
-                while(arg1 >= arg4) {
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
-                    buffer[arg3--] = arg0[arg1--];
+            if(destinationStart > sourceStart && destinationStart < sourceStart + numBytes) {
+                numBytes--;
+                sourceStart += numBytes;
+                destinationStart += numBytes;
+                numBytes = sourceStart - numBytes;
+                numBytes += 7;
+                while(sourceStart >= numBytes) {
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
+                    destination[destinationStart--] = source[sourceStart--];
                 }
-                arg4 -= 7;
-                while(arg1 >= arg4)
-                    buffer[arg3--] = arg0[arg1--];
+                numBytes -= 7;
+                while(sourceStart >= numBytes)
+                    destination[destinationStart--] = source[sourceStart--];
                 return;
             }
         }
-        arg4 += arg1;
-        arg4 -= 7;
-        while(arg1 < arg4) {
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
-            buffer[arg3++] = arg0[arg1++];
+        numBytes += sourceStart;
+        numBytes -= 7;
+        while(sourceStart < numBytes) {
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
+            destination[destinationStart++] = source[sourceStart++];
         }
-        arg4 += 7;
-        while(arg1 < arg4)
-            buffer[arg3++] = arg0[arg1++];
+        numBytes += 7;
+        while(sourceStart < numBytes)
+            destination[destinationStart++] = source[sourceStart++];
     }
 
     public static boolean menuHasAddFriend(int arg1) {
@@ -2547,7 +2482,7 @@ public class MovedStatics {
                         if(screenPos != null)
                             headIconSprites[npcDefinition.headIcon].drawImage(-12 + screenPos.x, screenPos.y + -30);
                     }
-                    if(Player.headIconDrawType == 1 && hintIconNpcTarget == Player.npcIds[-Player.localPlayerCount + i] && pulseCycle % 20 < 10) {
+                    if(Game.currentHintIconType == 1 && hintIconNpcTarget == Player.npcIds[-Player.localPlayerCount + i] && pulseCycle % 20 < 10) {
                         Point2d screenPos = getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
                         if(screenPos != null)
                             hintIconSprites[0].drawImage(screenPos.x + -12, screenPos.y + -28);
@@ -2569,7 +2504,7 @@ public class MovedStatics {
                             }
                         }
                     }
-                    if(i >= 0 && Player.headIconDrawType == 10 && hintIconPlayerTarget == Player.trackedPlayerIndices[i]) {
+                    if(i >= 0 && Game.currentHintIconType == 10 && hintIconPlayerTarget == Player.trackedPlayerIndices[i]) {
                         Point2d screenPos = getProjectedScreenPosition(actor.anInt3117 + 15, actor.worldY, actor.worldX);
 
                         if (screenPos != null) {
@@ -2732,9 +2667,9 @@ public class MovedStatics {
 
     public static boolean method438(int areaId, int arg1) {
         // (Jameskmonger) something to do with right clicking
-        if(areaId == 0 && arg1 == anInt573)
+        if(areaId == 0 && arg1 == openWidgetChildTooltipId)
             return true;
-        if(areaId == 1 && anInt614 == arg1)
+        if(areaId == 1 && openTabWidgetChildTooltipId == arg1)
             return true;
         if((areaId == 2 || areaId == 3) && anInt1586 == arg1)
             return true;
@@ -2766,30 +2701,6 @@ public class MovedStatics {
         processGameStatus(30);
     }
 
-    public static void storeTemporaryObject(InteractiveObjectTemporary obj) {
-        int i = 0;
-        int id = -1;
-        int type = 0;
-        if(obj.typeKey == 0)
-            i = Game.currentScene.getWallHash(obj.plane, obj.x, obj.y);
-        int orientation = 0;
-        if(obj.typeKey == 1)
-            i = Game.currentScene.getWallDecorationHash(obj.plane, obj.x, obj.y);
-        if(obj.typeKey == 2)
-            i = Game.currentScene.getLocationHash(obj.plane, obj.x, obj.y);
-        if(obj.typeKey == 3)
-            i = Game.currentScene.getFloorDecorationHash(obj.plane, obj.x, obj.y);
-        if (i != 0) {
-            int i_3_ = Game.currentScene.getArrangement(obj.plane, obj.x, obj.y, i);
-            id = (0x1fffe692 & i) >> 14;
-            orientation = (i_3_ & 0xde) >> 6;
-            type = i_3_ & 0x1f;
-        }
-        obj.previousOrientation = orientation;
-        obj.previousId = id;
-        obj.previousType = type;
-    }
-
     public static boolean method735(int arg1) {
         if(arg1 >= 97 && arg1 <= 122)
             return true;
@@ -2800,14 +2711,12 @@ public class MovedStatics {
         return false;
     }
 
-    public static int getVisibilityPlaneFor(int arg0, int arg1, int arg2, int arg3) {
-        if(arg2 != 0)
-            getVisibilityPlaneFor(-73, 123, 115, 98);
-        if((tile_flags[arg0][arg3][arg1] & 0x8) != 0)
+    public static int getVisibilityPlaneFor(int plane, int y, int x) {
+        if((tile_flags[plane][x][y] & 0x8) != 0)
             return 0;
-        if(arg0 > 0 && (tile_flags[1][arg3][arg1] & 0x2) != 0)
-            return -1 + arg0;
-        return arg0;
+        if(plane > 0 && (tile_flags[1][x][y] & 0x2) != 0)
+            return plane - 1;
+        return plane;
     }
 
     public static void determineMenuSize() {
@@ -2939,17 +2848,17 @@ public class MovedStatics {
 //        }
     }
 
-    public static int method988(CacheArchive arg0, CacheArchive arg1) {
+    public static int getLoadedTitleImageCount(CacheArchive huffmanArchive, CacheArchive imageArchive) {
         int i = 0;
-        if(arg0.method194(Native.titleImage, ""))
+        if(huffmanArchive.loaded(Native.titleImage, ""))
             i++;
-        if(arg1.method194(Native.logo, ""))
+        if(imageArchive.loaded(Native.logo, ""))
             i++;
-        if(arg1.method194(Native.titleBox, ""))
+        if(imageArchive.loaded(Native.titleBox, ""))
             i++;
-        if(arg1.method194(Native.titleButton, ""))
+        if(imageArchive.loaded(Native.titleButton, ""))
             i++;
-        if(arg1.method194(Native.runes, ""))
+        if(imageArchive.loaded(Native.runes, ""))
             i++;
         return i;
     }
@@ -2995,72 +2904,6 @@ public class MovedStatics {
 
     }
 
-    public static long nameToLong(String arg0) {
-        long l = 0L;
-        for(int i = 0; i < arg0.length(); i++) {
-            if(i >= 12)
-                break;
-            l *= 37L;
-            int i_1_ = arg0.charAt(i);
-            if(i_1_ >= 65 && i_1_ <= 90)
-                l += (long) (i_1_ + 1 + -65);
-            else if(i_1_ >= 97 && i_1_ <= 122)
-                l += (long) (1 + i_1_ + -97);
-            else if(i_1_ >= 48 && i_1_ <= 57)
-                l += (long) (27 - (-i_1_ + 48));
-        }
-        for(/**/; l % 37L == 0 && l != 0; l /= 37L) {
-            /* empty */
-        }
-        return l;
-    }
-
-    public static void method513(int arg0, CacheArchive arg1, CacheIndex arg2, byte arg3) {
-        Class40_Sub6 class40_sub6 = new Class40_Sub6();
-        class40_sub6.anInt2112 = 1;
-        class40_sub6.key = (long) arg0;
-        class40_sub6.cacheIndex = arg2;
-        class40_sub6.cacheArchive = arg1;
-        synchronized(aLinkedList_53) {
-            if(arg3 != -28)
-                method521(false, -84, -120);
-            aLinkedList_53.addLast(class40_sub6);
-        }
-        method332(600);
-    }
-
-    public static RSString method521(boolean arg0, int arg2, int arg3) {
-        if(arg2 < 1 || arg2 > 36)
-            arg2 = 10;
-        int i = 1;
-        int i_2_ = arg3 / arg2;
-        while(i_2_ != 0) {
-            i_2_ /= arg2;
-            i++;
-        }
-        int i_3_ = i;
-        if(arg3 < 0 || arg0)
-            i_3_++;
-        byte[] is = new byte[i_3_];
-        if(arg3 < 0)
-            is[0] = (byte) 45;
-        else if(arg0)
-            is[0] = (byte) 43;
-        for(int i_4_ = 0; i > i_4_; i_4_++) {
-            int i_5_ = arg3 % arg2;
-            arg3 /= arg2;
-            if(i_5_ < 0)
-                i_5_ = -i_5_;
-            if(i_5_ > 9)
-                i_5_ += 39;
-            is[-1 + i_3_ - i_4_] = (byte) (48 + i_5_);
-        }
-        RSString class1 = new RSString();
-        class1.chars = is;
-        class1.length = i_3_;
-        return class1;
-    }
-
     public static void drawGameScreenGraphics() {
         try {
             Graphics graphics = Game.gameCanvas.getGraphics();
@@ -3071,9 +2914,13 @@ public class MovedStatics {
     }
 
     /**
-     * something to do with checking for valid (typable?) keycodes
+     * Something to do with checking validity of input characters,
+     * if this returns false then chat/console/interface input is not accepted
+     *
+     * TODO (jkm) assign a better name to `arg1` when we understand the
+     *            keypress obfuscation/mapping thing
      */
-    public static boolean method793(int arg1) {
+    public static boolean isValidInputCharacter(int arg1) {
         if(arg1 < 32)
             return false;
         if(arg1 == 127)
@@ -3081,10 +2928,10 @@ public class MovedStatics {
         return arg1 < 129 || arg1 > 159;
     }
 
-    public static IndexedImage method769(int arg0, CacheArchive imageArchive, int arg2) {
-        if(!method472(imageArchive, arg2))
+    public static IndexedImage loadIndexedImageFromArchive(CacheArchive imageArchive, int id) {
+        if(!decodeImageFromArchive(imageArchive, id))
             return null;
-        return method538();
+        return createIndexedImageFromDecodedData();
     }
 
 
@@ -3092,63 +2939,63 @@ public class MovedStatics {
         aHuffmanEncoding_2590 = arg1;
     }
 
-    public static int method955(CacheArchive arg0) {
+    public static int getLoadedFrameImageCount(CacheArchive archive) {
         int i = 0;
-        if (arg0.method194(Native.invback, Native.aClass1_305)) {
+        if (archive.loaded(Native.invback, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.chatback, Native.aClass1_305)) {
+        if (archive.loaded(Native.chatback, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.mapBack, Native.aClass1_305)) {
+        if (archive.loaded(Native.mapBack, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackbase1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackbase1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackbase2, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackbase2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackhmid1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackhmid1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackleft1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackleft1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackleft2, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackleft2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackright1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackright1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackright2, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackright2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBacktop1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBacktop1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackvmid1, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackvmid1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackvmid2, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackvmid2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackvmid3, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackvmid3, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.imgBackhmid2, Native.aClass1_305)) {
+        if (archive.loaded(Native.imgBackhmid2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.redstone1, Native.aClass1_305)) {
+        if (archive.loaded(Native.redstone1, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.redstone2, Native.aClass1_305)) {
+        if (archive.loaded(Native.redstone2, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.redstone3, Native.aClass1_305)) {
+        if (archive.loaded(Native.redstone3, Native.aClass1_305)) {
             i++;
         }
-        if (arg0.method194(Native.sideIcons, Native.aClass1_305)) {
+        if (archive.loaded(Native.sideIcons, Native.aClass1_305)) {
             i++;
         }
         return i;
@@ -3263,7 +3110,7 @@ public class MovedStatics {
         }
     }
 
-    public static void method1057() {
+    public static void resetGameTimer() {
         Game.gameTimer.reset();
         for(int i = 0; i < 32; i++)
             GameShell.tickSamples[i] = 0L;
@@ -3272,339 +3119,87 @@ public class MovedStatics {
         ticksPerLoop = 0;
     }
 
-
-
-    public static ImageRGB method578() {
-        ImageRGB class40_sub5_sub14_sub4 = new ImageRGB();
-        class40_sub5_sub14_sub4.maxWidth = imageMaxWidth;
-        class40_sub5_sub14_sub4.maxHeight = imageMaxHeight;
-        class40_sub5_sub14_sub4.offsetX = anIntArray1347[0];
-        class40_sub5_sub14_sub4.offsetY = anIntArray3111[0];
-        class40_sub5_sub14_sub4.imageWidth = anIntArray456[0];
-        class40_sub5_sub14_sub4.imageHeight = anIntArray3312[0];
-        byte[] is = aByteArrayArray1370[0];
-        int i = class40_sub5_sub14_sub4.imageWidth * class40_sub5_sub14_sub4.imageHeight;
-        class40_sub5_sub14_sub4.pixels = new int[i];
+    public static ImageRGB createImageRGBFromDecodedData() {
+        ImageRGB image = new ImageRGB();
+        image.maxWidth = imageMaxWidth;
+        image.maxHeight = imageMaxHeight;
+        image.offsetX = spriteOffsetX[0];
+        image.offsetY = spriteOffsetY[0];
+        image.imageWidth = spriteWidth[0];
+        image.imageHeight = spriteHeight[0];
+        byte[] is = spritePixels[0];
+        int i = image.imageWidth * image.imageHeight;
+        image.pixels = new int[i];
         for(int i_5_ = 0; i_5_ < i; i_5_++) {
-            class40_sub5_sub14_sub4.pixels[i_5_] = anIntArray1972[BitUtils.bitWiseAND(255, is[i_5_])];
+            image.pixels[i_5_] = spritePalette[BitUtils.bitWiseAND(255, is[i_5_])];
         }
-        method569();
-        return class40_sub5_sub14_sub4;
+        clearDecodedSpriteData();
+        return image;
     }
 
-    public static void method569() {
-        anIntArray456 = null;
-        aByteArrayArray1370 = null;
-        anIntArray3312 = null;
-        anIntArray3111 = null;
-        anIntArray1972 = null;
-        anIntArray1347 = null;
+    public static void clearDecodedSpriteData() {
+        spriteWidth = null;
+        spritePixels = null;
+        spriteHeight = null;
+        spriteOffsetY = null;
+        spritePalette = null;
+        spriteOffsetX = null;
     }
 
-    /**
-     * walk to object
-     */
-    public static boolean method596(int arg0, int arg1, byte junk, int arg3) {
-        int i = 0x7fff & arg1 >> 14;
-        int i_14_ = Game.currentScene.getArrangement(Player.worldLevel, arg0, arg3, arg1);
-        if(i_14_ == -1)
+    public static boolean walkToObject(int offsetX, int offsetY, int objectInfo) {
+        int objectId = 0x7fff & objectInfo >> 14;
+
+        int arrangement = Game.currentScene.getArrangement(Player.worldLevel, offsetX, offsetY, objectInfo);
+        if(arrangement == -1) {
             return false;
-        int orientation = 0x3 & i_14_ >> 6;
-        int type = 0x1f & i_14_;
-        if(type != 10 && type != 11 && type != 22)
-            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, 0, 0, 0, 1 + type, orientation);
-        else {
-            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(i);
-            int i_17_ = gameObjectDefinition.blockingMask;
-            if(orientation != 0)
-                i_17_ = (i_17_ >> 4 + -orientation) + (0xf & i_17_ << orientation);
-            int i_18_;
-            int i_19_;
-            if(orientation == 0 || orientation == 2) {
-                i_19_ = gameObjectDefinition.sizeY;
-                i_18_ = gameObjectDefinition.sizeX;
-            } else {
-                i_18_ = gameObjectDefinition.sizeY;
-                i_19_ = gameObjectDefinition.sizeX;
-            }
-            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], arg0, arg3, i_18_, i_19_, i_17_, 0, 0);
         }
-        GameInterface.crossX = MouseHandler.clickX;
-        crossType = 2;
-        GameInterface.crossY = MouseHandler.clickY;
-        crossIndex = 0;
-        return true;
-    }
 
-    public static void startup() {
-        if (loadingPercent == 0) {
-            Game.currentScene = new Scene();
-            Game.sceneRenderer = new SceneRenderer(Game.currentScene);
-            for (int i = 0; i < 4; i++)
-                Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
-            Minimap.minimapImage = new ImageRGB(512, 512);
-            anInt1607 = 5;
-            loadingPercent = 20;
-            Native.currentLoadingText = English.startingGameEngine;
-        } else if (loadingPercent == 20) {
-//            int[] is = new int[9];
-//            for (int i = 0; i < 9; i++) {
-//                int i_0_ = 15 + 32 * i + 128;
-//                int i_1_ = 3 * i_0_ + 600;
-//                int i_2_ = Rasterizer3D.sinetable[i_0_];
-//                is[i] = i_2_ * i_1_ >> 16;
-//            }
-//            Scene.method95(500, 800, 512, 334, is);
-            ScreenController.setBounds();
-            anInt1607 = 10;
-            Native.currentLoadingText = English.preparedVisibilityMap;
-            loadingPercent = 30;
-        } else if (loadingPercent == 30) {
-            CacheArchive.skeletonCacheArchive = CacheArchive.loadArchive(0, true, false, true);
-            CacheArchive.skinDefinitionCacheArchive = CacheArchive.loadArchive(1, true, false, true);
-            CacheArchive.gameDefinitionsCacheArchive = CacheArchive.loadArchive(2, true, true, false);
-            CacheArchive.gameInterfaceCacheArchive = CacheArchive.loadArchive(3, true, false, true);
-            CacheArchive.soundEffectCacheArchive = CacheArchive.loadArchive(4, true, false, true);
-            CacheArchive.gameWorldMapCacheArchive = CacheArchive.loadArchive(5, true, true, true);
-            CacheArchive.musicCacheArchive = CacheArchive.loadArchive(6, false, true, true);
-            CacheArchive.modelCacheArchive = CacheArchive.loadArchive(7, true, false, true);
-            CacheArchive.gameImageCacheArchive = CacheArchive.loadArchive(8, true, false, true);
-            CacheArchive.gameTextureCacheArchive = CacheArchive.loadArchive(9, true, false, true);
-            CacheArchive.huffmanCacheArchive = CacheArchive.loadArchive(10, true, false, true);
-            CacheArchive.jingleCacheArchive = CacheArchive.loadArchive(11, true, false, true);
-            CacheArchive.clientScriptCacheArchive = CacheArchive.loadArchive(12, true, false, true);
-            loadingPercent = 40;
-            Native.currentLoadingText = English.connectingToUpdateServer;
-            anInt1607 = 20;
-        } else if (loadingPercent == 40) {
-            int i = 0;
-            i += CacheArchive.skeletonCacheArchive.getPercentLoaded() * 5 / 100;
-            i += 5 * CacheArchive.skinDefinitionCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.gameDefinitionsCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.gameInterfaceCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.soundEffectCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.gameWorldMapCacheArchive.getPercentLoaded() / 100;
-            i += CacheArchive.musicCacheArchive.getPercentLoaded() * 5 / 100;
-            i += 40 * CacheArchive.modelCacheArchive.getPercentLoaded() / 100;
-            i += CacheArchive.gameImageCacheArchive.getPercentLoaded() * 5 / 100;
-            i += CacheArchive.gameTextureCacheArchive.getPercentLoaded() * 5 / 100;
-            i += 5 * CacheArchive.huffmanCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.jingleCacheArchive.getPercentLoaded() / 100;
-            i += 5 * CacheArchive.clientScriptCacheArchive.getPercentLoaded() / 100;
-            if (i == 100) {
-                loadingPercent = 45;
-                Native.currentLoadingText = English.loadedUpdateList;
-                anInt1607 = 30;
-            } else {
-                if (i != 0)
-                    Native.currentLoadingText = English.checkingForUpdates + i + Native.percent;
-                anInt1607 = 30;
-            }
-        } else if (loadingPercent == 45) {
-            MusicSystem.initialiseMusic(0);
-            SoundSystem.initialiseSound(Game.signlink);
-            loadingPercent = 50;
-            Native.currentLoadingText = English.preparedSoundEngine;
-            anInt1607 = 35;
-        } else if (loadingPercent == 50) {
-            int i = 0;
-            if (TypeFace.fontSmall != null)
-                i++;
-            else
-                TypeFace.fontSmall = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP11Full);
-            if (fontNormal != null)
-                i++;
-            else
-                fontNormal = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontP12Full);
-            if (TypeFace.fontBold != null)
-                i++;
-            else
-                TypeFace.fontBold = TypeFace.loadTypeFace(CacheArchive.gameImageCacheArchive, "", Native.fontB12Full);
-            if (i < 3) {
-                Native.currentLoadingText = English.loadingFonts + (i * 100 / 3) + Native.percent;
-                anInt1607 = 40;
-            } else {
-                loadingPercent = 60;
-                anInt1607 = 40;
-                Native.currentLoadingText = English.loadedFonts;
-            }
-        } else if (loadingPercent == 60) {
-            int i = method988(CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
-            int i_3_ = 5;
-            if (i < 5) {
-                Native.currentLoadingText = English.loadingTitleScreen + (100 * i / 5) + Native.percent;
-                anInt1607 = 50;
-            } else {
-                org.runejs.client.frame.console.Console.console = new Console();
-                Native.currentLoadingText = English.loadedTitleScreen;
-                anInt1607 = 50;
-                processGameStatus(5);
-                loadingPercent = 70;
-            }
-        } else if (loadingPercent == 70) {
-            if (CacheArchive.gameDefinitionsCacheArchive.method185()) {
-                OverlayDefinition.initializeOverlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
-                UnderlayDefinition.initializeUnderlayDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
-                IdentityKit.initializeIdentityKitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, CacheArchive.modelCacheArchive);
-                GameObjectDefinition.initializeGameObjectDefinitionCache(CacheArchive.modelCacheArchive, VertexNormal.lowMemory, CacheArchive.gameDefinitionsCacheArchive);
-                ActorDefinition.initializeActorCache(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
-                ItemDefinition.initializeItemDefinitionCache(CacheArchive.gameDefinitionsCacheArchive, membersWorld, CacheArchive.modelCacheArchive);
-                AnimationSequence.initializeAnimationCaches(CacheArchive.skinDefinitionCacheArchive, CacheArchive.gameDefinitionsCacheArchive, CacheArchive.skeletonCacheArchive);
-                SpotAnimDefinition.initializeSpotAnimCache(CacheArchive.modelCacheArchive, CacheArchive.gameDefinitionsCacheArchive);
-                VarbitDefinition.initializeVarbitDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
-                VarPlayerDefinition.initializeVarPlayerDefinitionCache(CacheArchive.gameDefinitionsCacheArchive);
-                GameInterface.createInterfaceMemoryBuffers();
-                loadingPercent = 80;
-                anInt1607 = 60;
-                Native.currentLoadingText = English.loadedConfig;
-            } else {
-                Native.currentLoadingText = English.loadingConfig + CacheArchive.gameDefinitionsCacheArchive.method202() + Native.percent;
-                anInt1607 = 60;
-            }
-        } else if (loadingPercent == 80) {
-            int i = 0;
-            if (Minimap.minimapCompass != null)
-                i++;
-            else
-                Minimap.minimapCompass = method1028(CacheArchive.gameImageCacheArchive, Native.compass, "");
-            if (minimapEdge == null)
-                minimapEdge = method1028(CacheArchive.gameImageCacheArchive, Native.mapEdge, "");
-            else
-                i++;
-            if (mapSceneIcons != null)
-                i++;
-            else
-                mapSceneIcons = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.mapScene, "");
-            if (Minimap.mapFunctionIcons == null)
-                Minimap.mapFunctionIcons = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.mapFunction, "");
-            else
-                i++;
-            if (aClass40_Sub5_Sub14_Sub4Array2474 != null)
-                i++;
-            else
-                aClass40_Sub5_Sub14_Sub4Array2474 = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.hitmarks, "");
-            if (aClass40_Sub5_Sub14_Sub4Array603 == null)
-                aClass40_Sub5_Sub14_Sub4Array603 = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPK, "");
-            else
-                i++;
-            if (headIconSprites != null)
-                i++;
-            else
-                headIconSprites = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.headiconsPrayer, "");
-            if (hintIconSprites == null)
-                hintIconSprites = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.headiconsHint, "");
-            else
-                i++;
-            if (multiCombatIcon == null)
-                multiCombatIcon = method1028(CacheArchive.gameImageCacheArchive, Native.overlayMultiway, "");
-            else
-                i++;
-            if (Minimap.minimapMarkers == null)
-                Minimap.minimapMarkers = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.mapMarker, "");
-            else
-                i++;
-            if (cursorCross != null)
-                i++;
-            else
-                cursorCross = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.cursorCross, "");
-            if (Minimap.mapDots == null)
-                Minimap.mapDots = ImageRGB.method526(CacheArchive.gameImageCacheArchive, Native.mapDots, "");
-            else
-                i++;
-            if (scrollbarArrowImages == null)
-                scrollbarArrowImages = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.scrollbar, "");
-            else
-                i++;
-            if (moderatorIcon != null)
-                i++;
-            else
-                moderatorIcon = IndexedImage.getMultipleIndexedImages(CacheArchive.gameImageCacheArchive, Native.modIcons, "");
-            if (i < 14) {
-                Native.currentLoadingText = English.loadingSprites + (100 * i / 14) + Native.percent;
-                anInt1607 = 70;
-            } else {
-                minimapEdge.trim();
-                int i_4_ = (int) (Math.random() * 21.0) - 10;
-                int i_5_ = (int) (21.0 * Math.random()) - 10;
-                int i_6_ = (int) (41.0 * Math.random()) - 20;
-                int i_7_ = -10 + (int) (21.0 * Math.random());
-                for (int i_8_ = 0; Minimap.mapFunctionIcons.length > i_8_; i_8_++)
-                    Minimap.mapFunctionIcons[i_8_].method717(i_6_ + i_4_, i_5_ + i_6_, i_7_ + i_6_);
-                mapSceneIcons[0].mixPalette(i_4_ + i_6_, i_5_ + i_6_, i_6_ + i_7_);
-                Native.currentLoadingText = English.loadedSprites;
-                anInt1607 = 70;
-                loadingPercent = 85;
-            }
-        } else if (loadingPercent == 85) {
-            int i = method955(CacheArchive.gameImageCacheArchive);
-            if (i < 19) {
-                Native.currentLoadingText = English.loadingGameScreen + (i * 100 / 19) + Native.percent;
-                anInt1607 = 80;
-            } else {
-                Native.currentLoadingText = English.loadedGamescreen;
-                loadingPercent = 90;
-                anInt1607 = 80;
-            }
-        } else if (loadingPercent == 90) {
-            if (CacheArchive.gameTextureCacheArchive.method185()) {
-                Class35 class35 = new Class35(CacheArchive.gameTextureCacheArchive, CacheArchive.gameImageCacheArchive, 20, 0.8, !VertexNormal.lowMemory ? 128 : 64);
-                Rasterizer3D.method703(class35);
-                Rasterizer3D.createPalette(0.8);
-                loadingPercent = 110;
-                anInt1607 = 90;
-                Native.currentLoadingText = English.loadedTextures;
-            } else {
-                Native.currentLoadingText = English.loadingTextures + CacheArchive.gameTextureCacheArchive.method202() + Native.percent;
-                anInt1607 = 90;
-            }
-        } else if (loadingPercent == 110) {
-            Game.mouseCapturer = new MouseCapturer();
-            Game.signlink.putThreadNode(10, Game.mouseCapturer);
-            Native.currentLoadingText = English.loadedInputHandler;
-            loadingPercent = 120;
-            anInt1607 = 94;
-        } else if (loadingPercent == 120) {
-            if (CacheArchive.huffmanCacheArchive.method194(Native.huffman, "")) {
-                HuffmanEncoding huffmanEncoding = new HuffmanEncoding(CacheArchive.huffmanCacheArchive.method170("", Native.huffman));
-                method778(huffmanEncoding);
-                loadingPercent = 130;
-                Native.currentLoadingText = English.loadedWordpack;
-                anInt1607 = 96;
-            } else {
-                Native.currentLoadingText = English.loadingWordPack + Native.zeroPercent;
-                anInt1607 = 96;
-            }
-        } else if (loadingPercent == 130) {
-            if (!CacheArchive.gameInterfaceCacheArchive.method185()) {
-                Native.currentLoadingText = English.loadingInterfaces + (4 * CacheArchive.gameInterfaceCacheArchive.method202() / 5) + Native.percent;
-                anInt1607 = 100;
-            } else if (CacheArchive.clientScriptCacheArchive.method185()) {
-                Native.currentLoadingText = English.loadedInterfaces;
-                loadingPercent = 140;
-                anInt1607 = 100;
-            } else {
-                Native.currentLoadingText = English.loadingInterfaces + (80 + CacheArchive.clientScriptCacheArchive.method202() / 5) + Native.percent;
-                anInt1607 = 100;
-            }
+        int orientation = 0x3 & arrangement >> 6;
+        int type = 0x1f & arrangement;
+
+        if(type != 10 && type != 11 && type != 22) {
+            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], offsetX, offsetY, 0, 0, 0, 1 + type, orientation);
         } else {
-            if (loadingPercent == 140)
-                processGameStatus(10);
+            GameObjectDefinition gameObjectDefinition = GameObjectDefinition.getDefinition(objectId);
+            int blockingMask = gameObjectDefinition.blockingMask;
+            if(orientation != 0)
+                blockingMask = (blockingMask >> 4 + -orientation) + (0xf & blockingMask << orientation);
+            int sizeX;
+            int sizeY;
+            if(orientation == 0 || orientation == 2) {
+                sizeY = gameObjectDefinition.sizeY;
+                sizeX = gameObjectDefinition.sizeX;
+            } else {
+                sizeX = gameObjectDefinition.sizeY;
+                sizeY = gameObjectDefinition.sizeX;
+            }
+            Pathfinding.doObjectWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], offsetX, offsetY, sizeX, sizeY, blockingMask, 0, 0);
         }
+
+        GameInterface.crossX = MouseHandler.clickX;
+        GameInterface.crossY = MouseHandler.clickY;
+
+        crossType = 2;
+        crossIndex = 0;
+
+        return true;
     }
 
-    /**
-     * Reading some kind of cache
-     *
-     * TODO what is this? sprites?
-     */
-    public static boolean method472(CacheArchive arg1, int arg2) {
-        byte[] is = arg1.method187(arg2);
-        if(is == null) {
+    public static boolean decodeImageFromArchive(CacheArchive cacheArchive, int groupId, int fileId) {
+        byte[] imageData = cacheArchive.getFile(groupId, fileId);
+        if(imageData == null)
+            return false;
+        decodeImageData(imageData);
+        return true;
+    }
+
+    public static boolean decodeImageFromArchive(CacheArchive imageArchive, int id) {
+        byte[] imageData = imageArchive.getFile(id);
+        if(imageData == null) {
             return false;
         }
-        method184(is, 0);
+        decodeImageData(imageData);
         return true;
-
     }
 
     public static void method789(int chunkLocalX, int chunkY, int chunkX, int chunkLocalY, int level) {
@@ -3615,7 +3210,7 @@ public class MovedStatics {
                 onBuildTimePlane = 0;
             regionY = chunkY;
             processGameStatus(25);
-            method940(English.loadingPleaseWait, false, null);
+            drawLoadingBox(English.loadingPleaseWait, null, false);
             int i = baseY;
             int i_33_ = baseX;
             baseX = (chunkX - 6) * 8;

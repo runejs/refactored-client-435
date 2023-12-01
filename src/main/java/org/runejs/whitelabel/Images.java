@@ -29,9 +29,7 @@ public class Images {
     private static void CreateParts() {
         try {
             String classResource = Images.class.getResource("Images.class").toString();
-            System.out.println(classResource);
             InputStream resource = Images.class.getClassLoader().getResourceAsStream("logo.png");
-            System.out.println(resource);
             BufferedImage bufferedImage = ImageIO.read(resource);
 
 

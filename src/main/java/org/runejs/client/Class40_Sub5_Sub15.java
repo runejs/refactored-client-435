@@ -3,6 +3,9 @@ package org.runejs.client;
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.FrameDefinition;
 import org.runejs.client.cache.def.FramemapDefinition;
+import org.runejs.client.cache.def.loading.DefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.FrameDefinitionLoader;
+import org.runejs.client.cache.def.loading.rs435.FramemapDefinitionLoader;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.cache.def.SpotAnimDefinition;
 import org.runejs.client.media.renderable.actor.Actor;
@@ -12,17 +15,20 @@ import org.runejs.client.node.CachedNode;
  * anim skeleton?
  */
 public class Class40_Sub5_Sub15 extends CachedNode {
+    public static DefinitionLoader<FramemapDefinition> framemapDefinitionLoader = new FramemapDefinitionLoader();
+    public static DefinitionLoader<FrameDefinition> frameDefinitionLoader = new FrameDefinitionLoader();
+
     public FrameDefinition[] aFrameDefinitionArray2794;
 
-    public Class40_Sub5_Sub15(CacheArchive arg0, CacheArchive arg1, int arg2, boolean arg3) {
+    public Class40_Sub5_Sub15(CacheArchive skeletonArchive, CacheArchive skinArchive, int groupId, boolean arg3) {
         LinkedList linkedList = new LinkedList();
-        int i = arg0.fileLength(arg2);
+        int i = skeletonArchive.fileLength(groupId);
         aFrameDefinitionArray2794 = new FrameDefinition[i];
-        int[] is = arg0.method192(arg2, true);
-        for(int i_0_ = 0; is.length > i_0_; i_0_++) {
-            byte[] is_1_ = arg0.getFile(arg2, is[i_0_]);
+        int[] skeletonFileIds = skeletonArchive.getFileIds(groupId);
+        for(int i_0_ = 0; skeletonFileIds.length > i_0_; i_0_++) {
+            byte[] skeleton = skeletonArchive.getFile(groupId, skeletonFileIds[i_0_]);
             FramemapDefinition framemapDefinition = null;
-            int i_2_ = is_1_[1] & 0xff | is_1_[0] << 8 & 0xff00;
+            int i_2_ = skeleton[1] & 0xff | skeleton[0] << 8 & 0xff00;
             for(FramemapDefinition framemapDefinition_3_ = (FramemapDefinition) linkedList.peekFirst(); framemapDefinition_3_ != null; framemapDefinition_3_ = (FramemapDefinition) linkedList.pollFirst()) {
                 if(i_2_ == framemapDefinition_3_.id) {
                     framemapDefinition = framemapDefinition_3_;
@@ -30,15 +36,18 @@ public class Class40_Sub5_Sub15 extends CachedNode {
                 }
             }
             if(framemapDefinition == null) {
-                byte[] is_4_;
+                byte[] framemapData;
                 if(!arg3)
-                    is_4_ = arg1.method182(0, i_2_);
+                    framemapData = skinArchive.getFileContents(i_2_, 0);
                 else
-                    is_4_ = arg1.method182(i_2_, 0);
-                framemapDefinition = new FramemapDefinition(i_2_, is_4_);
+                    framemapData = skinArchive.getFileContents(0, i_2_);
+                framemapDefinition = new FramemapDefinition(i_2_, framemapDefinitionLoader, framemapData);
                 linkedList.addLast(framemapDefinition);
             }
-            aFrameDefinitionArray2794[is[i_0_]] = new FrameDefinition(is_1_, framemapDefinition);
+
+            int frameDefinitionId = skeletonFileIds[i_0_];
+
+            aFrameDefinitionArray2794[skeletonFileIds[i_0_]] = new FrameDefinition(frameDefinitionId, frameDefinitionLoader, skeleton, framemapDefinition);
         }
     }
 
