@@ -11,7 +11,7 @@ public class SetWidgetItemModelMessageHandler implements MessageHandler<SetWidge
     public void handle(SetWidgetItemModelInboundMessage message) {
         GameInterface gameInterface = GameInterface.getInterface((message.widgetId << 16) | message.childId);
 
-        if(gameInterface.isNewInterfaceFormat) {
+        if(gameInterface.if3) {
             gameInterface.itemAmount = 1;
             gameInterface.itemId = message.itemId;
         } else {
@@ -20,11 +20,11 @@ public class SetWidgetItemModelMessageHandler implements MessageHandler<SetWidge
                 return;
             }
             ItemDefinition itemDefinition = ItemDefinition.forId(message.itemId, 10);
-            gameInterface.rotationX = itemDefinition.xan2d;
+            gameInterface.modelXAngle = itemDefinition.xan2d;
             gameInterface.modelId = message.itemId;
             gameInterface.modelType = InterfaceModelType.ITEM;
             gameInterface.modelZoom = 100 * itemDefinition.zoom2d / message.itemZoom;
-            gameInterface.rotationZ = itemDefinition.yan2d;
+            gameInterface.modelYAngle = itemDefinition.yan2d;
         }
     }
 }

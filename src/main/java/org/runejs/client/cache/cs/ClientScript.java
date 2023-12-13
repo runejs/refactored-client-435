@@ -14,18 +14,18 @@ import org.runejs.client.node.CachedNode;
 
 public class ClientScript extends CachedNode {
 
-    private static NodeCache clientScriptCache = new NodeCache(128);
+    private static NodeCache scriptCache = new NodeCache(128);
 
     public int[] intOperands;
-    public int intStackCount;
-    public int stringStackCount;
-    public int localStringCount;
+    public int intArgCount;
+    public int stringArgCount;
+    public int stringLocalCount;
     public String[] stringOperands;
-    public int localIntCount;
+    public int intLocalCount;
     public int[] opcodes;
 
     public static void clearClientScriptCache() {
-        clientScriptCache.clear();
+        scriptCache.clear();
     }
 
 
@@ -41,165 +41,163 @@ public class ClientScript extends CachedNode {
         }
     }
 
-    public static ClientScript decodeClientScript(int arg0, int arg1) {
+    public static ClientScript get(int arg0, int arg1) {
         long scriptId = arg0 + (arg1 << 16);
-        ClientScript clientScript = (ClientScript) clientScriptCache.get(scriptId);
-        if(clientScript != null) {
-            return clientScript;
+        ClientScript script = (ClientScript) scriptCache.get(scriptId);
+        if (script != null) {
+            return script;
         }
 
         Buffer buffer = new Buffer(CacheArchive.clientScriptCacheArchive.getFileByName(arg1 + Native.comma + arg0, Native.emptyString));
-        clientScript = new ClientScript();
+        script = new ClientScript();
         buffer.currentPosition = buffer.buffer.length - 12;
         int opcodeCount = buffer.getIntBE();
         int operandIndex = 0;
-        clientScript.localIntCount = buffer.getUnsignedShortBE();
-        clientScript.localStringCount = buffer.getUnsignedShortBE();
-        clientScript.intStackCount = buffer.getUnsignedShortBE();
-        clientScript.stringStackCount = buffer.getUnsignedShortBE();
-        clientScript.stringOperands = new String[opcodeCount];
-        clientScript.intOperands = new int[opcodeCount];
+        script.intLocalCount = buffer.getUnsignedShortBE();
+        script.stringLocalCount = buffer.getUnsignedShortBE();
+        script.intArgCount = buffer.getUnsignedShortBE();
+        script.stringArgCount = buffer.getUnsignedShortBE();
+        script.stringOperands = new String[opcodeCount];
+        script.intOperands = new int[opcodeCount];
         buffer.currentPosition = 0;
-        clientScript.opcodes = new int[opcodeCount];
-        while(buffer.currentPosition < -12 + buffer.buffer.length) {
+        script.opcodes = new int[opcodeCount];
+        while (buffer.currentPosition < -12 + buffer.buffer.length) {
             int opcode = buffer.getUnsignedShortBE();
-            if(opcode == 3) {
-                clientScript.stringOperands[operandIndex] = buffer.getString();
-            } else if(opcode >= 100 || opcode == 21 || opcode == 38 || opcode == 39) {
-                clientScript.intOperands[operandIndex] = buffer.getUnsignedByte();
+            if (opcode == 3) {
+                script.stringOperands[operandIndex] = buffer.getString();
+            } else if (opcode >= 100 || opcode == 21 || opcode == 38 || opcode == 39) {
+                script.intOperands[operandIndex] = buffer.getUnsignedByte();
             } else {
-                clientScript.intOperands[operandIndex] = buffer.getIntBE();
+                script.intOperands[operandIndex] = buffer.getIntBE();
             }
-            clientScript.opcodes[operandIndex++] = opcode;
+            script.opcodes[operandIndex++] = opcode;
         }
         System.out.println("Caching script " + scriptId);
-        clientScriptCache.put(scriptId, clientScript);
-        return clientScript;
+        scriptCache.put(scriptId, script);
+        return script;
     }
 
-
-    public static int parseClientScripts(int scriptIndex, GameInterface gameInterface1) {
-        if (gameInterface1.clientScripts == null || scriptIndex >= gameInterface1.clientScripts.length) {
+    // execute if1 scripts (would be ideal to put this into another class ala Cs1ScriptRunner)
+    public static int run(int id, GameInterface component) {
+        if (component.scripts == null || id >= component.scripts.length) {
             return -2;
         }
+
         try {
-            int[] opcodes = gameInterface1.clientScripts[scriptIndex];
-            int i = 0;
-            int scriptDataIndex = 0;
+            int[] script = component.scripts[id];
+            int accumulator = 0;
+            int pc = 0;
             int operator = 0;
+
             while (true) {
-                int operand = 0;
-                int nextOperator = 0;
-                int opcode = opcodes[scriptDataIndex++];
+                int value = 0;
+                int nextAccumulatorMode = 0;
+                int opcode = script[pc++];
+
                 if (opcode == 0) {
-                    return i;
+                    return accumulator;
                 }
-                if (opcode == 15) {
-                    nextOperator = 1;
-                }
-                if (opcode == 16) {
-                    nextOperator = 2;
-                }
+
                 if (opcode == 1) {
-                    operand = Player.playerLevels[opcodes[scriptDataIndex++]];
-                }
-                if (opcode == 2) {
-                    operand = Player.nextLevels[opcodes[scriptDataIndex++]];
-                }
-                if (opcode == 3) {
-                    operand = Player.playerExperience[opcodes[scriptDataIndex++]];
-                }
-                if (opcode == 17) {
-                    nextOperator = 3;
-                }
-                if (opcode == 4) {
-                    int i_19_ = opcodes[scriptDataIndex++] << 16;
-                    i_19_ += opcodes[scriptDataIndex++];
-                    GameInterface gameInterface = GameInterface.getInterface(i_19_);
-                    int i_20_ = opcodes[scriptDataIndex++];
-                    if (i_20_ != -1 && (!ItemDefinition.forId(i_20_, 10).members || MovedStatics.membersWorld)) {
-                        for (int i_21_ = 0; i_21_ < gameInterface.items.length; i_21_++) {
-                            if (1 + i_20_ == gameInterface.items[i_21_]) {
-                                operand += gameInterface.itemAmounts[i_21_];
+                    // stat_level
+                    value = Player.boostedLevels[script[pc++]];
+                } else if (opcode == 2) {
+                    // stat_base_level
+                    value = Player.baseLevels[script[pc++]];
+                } else if (opcode == 3) {
+                    // stat_xp
+                    value = Player.experience[script[pc++]];
+                } else if (opcode == 4) {
+                    // inv_count
+                    int componentId = script[pc++] << 16;
+                    componentId += script[pc++];
+                    GameInterface otherComponent = GameInterface.getInterface(componentId);
+                    int objType = script[pc++];
+                    if (objType != -1 && (!ItemDefinition.forId(objType, 10).members || MovedStatics.membersWorld)) {
+                        for (int slot = 0; slot < otherComponent.invSlotObjId.length; slot++) {
+                            if (otherComponent.invSlotObjId[slot] == objType + 1) {
+                                value += otherComponent.invSlotObjCount[slot];
                             }
                         }
                     }
-                }
-                if (opcode == 5) {
-                    int temp = opcodes[scriptDataIndex++];
-                    operand = VarPlayerDefinition.varPlayers[temp];
-                }
-                if (opcode == 6) {
-                    operand = Player.experienceForLevels[-1 + Player.nextLevels[opcodes[scriptDataIndex++]]];
-                }
-                if (opcode == 7) {
-                    int varPlayerIndex = opcodes[scriptDataIndex++];
-                    operand = 100 * VarPlayerDefinition.varPlayers[varPlayerIndex] / 46875;
-                }
-                if (opcode == 8) {
-                    operand = Player.localPlayer.combatLevel;
-                }
-                if (opcode == 9) {
-                    for (int i_22_ = 0; i_22_ < 25; i_22_++) {
-                        if (ClientScriptRunner.aBooleanArray548[i_22_]) {
-                            operand += Player.nextLevels[i_22_];
+                } else if (opcode == 5) {
+                    // testvar
+                    int temp = script[pc++];
+                    value = VarPlayerDefinition.varPlayers[temp];
+                } else if (opcode == 6) {
+                    // stat_xp_remaining
+                    value = Player.experienceForLevels[-1 + Player.baseLevels[script[pc++]]];
+                } else if (opcode == 7) {
+                    int varPlayerIndex = script[pc++];
+                    value = 100 * VarPlayerDefinition.varPlayers[varPlayerIndex] / 46875;
+                } else if (opcode == 8) {
+                    // comlevel
+                    value = Player.localPlayer.combatLevel;
+                } else if (opcode == 9) {
+                    // stat_total
+                    for (int skill = 0; skill < 25; skill++) {
+                        if (ClientScriptRunner.ENABLED_SKILLS[skill]) {
+                            value += Player.baseLevels[skill];
                         }
                     }
-                }
-                if (opcode == 10) {
-                    int i_23_ = opcodes[scriptDataIndex++] << 16;
-                    i_23_ += opcodes[scriptDataIndex++];
-                    GameInterface gameInterface = GameInterface.getInterface(i_23_);
-                    int i_24_ = opcodes[scriptDataIndex++];
-                    if (i_24_ != -1 && (!ItemDefinition.forId(i_24_, 10).members || MovedStatics.membersWorld)) {
-                        for (int i_25_ = 0; gameInterface.items.length > i_25_; i_25_++) {
-                            if (i_24_ + 1 == gameInterface.items[i_25_]) {
-                                operand = 999999999;
+                } else if (opcode == 10) {
+                    // inv_contains
+                    int componentId = script[pc++] << 16;
+                    componentId += script[pc++];
+                    GameInterface otherComponent = GameInterface.getInterface(componentId);
+                    int objType = script[pc++];
+                    if (objType != -1 && (!ItemDefinition.forId(objType, 10).members || MovedStatics.membersWorld)) {
+                        for (int slot = 0; otherComponent.invSlotObjId.length > slot; slot++) {
+                            if (objType + 1 == otherComponent.invSlotObjId[slot]) {
+                                value = 999999999;
                                 break;
                             }
                         }
                     }
+                } else if (opcode == 11) {
+                    // runenergy
+                    value = ClientScriptRunner.runEnergy;
+                } else if (opcode == 12) {
+                    // runweight
+                    value = MovedStatics.runWeight;
+                } else if (opcode == 13) {
+                    // testbit
+                    int varpValue = VarPlayerDefinition.varPlayers[script[pc++]];
+                    int bit = script[pc++];
+                    value = (1 << bit & varpValue) != 0 ? 1 : 0;
+                } else if (opcode == 14) {
+                    // getvarbit
+                    int varbit = script[pc++];
+                    value = VarbitDefinition.getVarbitValue(varbit);
+                } else if (opcode == 15) {
+                    nextAccumulatorMode = 1;
+                } else if (opcode == 16) {
+                    nextAccumulatorMode = 2;
+                } else if (opcode == 17) {
+                    nextAccumulatorMode = 3;
+                } else if (opcode == 18) {
+                    value = (Player.localPlayer.worldX >> 7) + MovedStatics.baseX;
+                } else if (opcode == 19) {
+                    value = (Player.localPlayer.worldY >> 7) + MovedStatics.baseY;
+                } else if (opcode == 20) {
+                    // push_int
+                    value = script[pc++];
                 }
-                if (opcode == 11) {
-                    operand = ClientScriptRunner.runEnergy;
-                }
-                if (opcode == 12) {
-                    operand = MovedStatics.carryWeight;
-                }
-                if (opcode == 13) {
-                    int varPlayerValue = VarPlayerDefinition.varPlayers[opcodes[scriptDataIndex++]];
-                    int leastSignificantBit = opcodes[scriptDataIndex++];
-                    operand = (1 << leastSignificantBit & varPlayerValue) != 0 ? 1 : 0;
-                }
-                if (opcode == 14) {
-                    int varbitId = opcodes[scriptDataIndex++];
-                    operand = VarbitDefinition.getVarbitValue(varbitId);
-                }
-                if (opcode == 18) {
-                    operand = (Player.localPlayer.worldX >> 7) + MovedStatics.baseX;
-                }
-                if (opcode == 19) {
-                    operand = (Player.localPlayer.worldY >> 7) + MovedStatics.baseY;
-                }
-                if (opcode == 20) {
-                    operand = opcodes[scriptDataIndex++];
-                }
-                if (nextOperator == 0) {
+
+                if (nextAccumulatorMode == 0) {
                     if (operator == 0) {
-                        i += operand;
+                        accumulator += value;
+                    } else if (operator == 1) {
+                        accumulator -= value;
+                    } else if (operator == 2 && value != 0) {
+                        accumulator /= value;
+                    } else if (operator == 3) {
+                        accumulator *= value;
                     }
-                    if (operator == 1) {
-                        i -= operand;
-                    }
-                    if (operator == 2 && operand != 0) {
-                        i /= operand;
-                    }
-                    if (operator == 3) {
-                        i *= operand;
-                    }
+
                     operator = 0;
                 } else {
-                    operator = nextOperator;
+                    operator = nextAccumulatorMode;
                 }
             }
         } catch (Exception exception) {

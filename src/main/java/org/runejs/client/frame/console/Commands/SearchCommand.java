@@ -67,12 +67,12 @@ public class SearchCommand extends Command {
             case "widgets":
             case "w":
                 for (int qq = 0; qq < 469; qq++) {
-                    if (GameInterface.decodeGameInterface(qq)) {
-                        GameInterface[] gameInterfaces = GameInterface.cachedInterfaces[qq];
+                    if (GameInterface.load(qq)) {
+                        GameInterface[] gameInterfaces = GameInterface.components[qq];
                         for (int y = 0; gameInterfaces.length > y; y++) {
                             GameInterface gameInterface = gameInterfaces[y];
-                            if (gameInterface.disabledText != null) {
-                                String text = gameInterface.disabledText.toString().toLowerCase();
+                            if (gameInterface.text != null) {
+                                String text = gameInterface.text.toString().toLowerCase();
                                 for(int indx = 2; indx < cmdInput.length; indx++) {
                                     if(text.contains(cmdInput[indx].toLowerCase())) {
                                         console.log("<col=FFFF00>" + text + " - " + qq + ":"+y+"</col>");

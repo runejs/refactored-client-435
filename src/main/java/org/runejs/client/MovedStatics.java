@@ -100,7 +100,6 @@ public class MovedStatics {
      */
     public static int[] OVERHEAD_CHAT_COLORS = {16776960, 16711680, 65280, 65535, 16711935, 16777215};
     public static int[] anIntArray2113 = new int[128];
-    public static GameInterface aGameInterface_2116;
     public static int multiCombatState = 0;
     public static int placementX;
     public static int onBuildTimePlane = 0;
@@ -170,7 +169,7 @@ public class MovedStatics {
     public static IndexedImage bottomChatBack;
     public static int[] spriteOffsetX;
     public static LinkedList spotAnimQueue = new LinkedList();
-    public static int carryWeight = 0;
+    public static int runWeight = 0;
     public static int anInt1214 = 0;
     public static ImageRGB[] aClass40_Sub5_Sub14_Sub4Array603;
     public static SignlinkNode gameServerSignlinkNode;
@@ -930,41 +929,41 @@ public class MovedStatics {
 	    if(minX <= mouseX && mouseY >= minY && maxX > mouseX && maxY > mouseY) {
 	        for(int i = 0; gameInterfaces.length > i; i++) {
 	            GameInterface gameInterface = gameInterfaces[i];
-	            if(gameInterface != null && parentId == gameInterface.parentId) {
-                    int adjustedX = gameInterface.currentX - scrollWidth + minX;
-                    int adjustedY = gameInterface.currentY - (scrollPosition - minY);
+	            if(gameInterface != null && parentId == gameInterface.layer) {
+                    int adjustedX = gameInterface.x - scrollWidth + minX;
+                    int adjustedY = gameInterface.y - (scrollPosition - minY);
 
                     boolean isTooltip = gameInterface.type == GameInterfaceType.IF1_TOOLTIP;
-                    boolean isMouseWithinXBounds = mouseX >= adjustedX && mouseX < adjustedX + gameInterface.originalWidth;
-                    boolean isMouseWithinYBounds = mouseY >= adjustedY && mouseY < adjustedY + gameInterface.originalHeight;
+                    boolean isMouseWithinXBounds = mouseX >= adjustedX && mouseX < adjustedX + gameInterface.width;
+                    boolean isMouseWithinYBounds = mouseY >= adjustedY && mouseY < adjustedY + gameInterface.height;
 
                     if (isTooltip && isMouseWithinXBounds && isMouseWithinYBounds) {
                         tempOpenWidgetChildTooltipId = i;
                     }
-	                if((gameInterface.hoveredSiblingId >= 0 || gameInterface.hoveredTextColor != 0) && adjustedX <= mouseX && adjustedY <= mouseY && mouseX < adjustedX + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + adjustedY) {
-	                    if(gameInterface.hoveredSiblingId >= 0)
-	                        tempHoveredWidgetChildId = gameInterface.hoveredSiblingId;
+	                if((gameInterface.delegateHover >= 0 || gameInterface.hoverColor != 0) && adjustedX <= mouseX && adjustedY <= mouseY && mouseX < adjustedX + gameInterface.width && mouseY < gameInterface.height + adjustedY) {
+	                    if(gameInterface.delegateHover >= 0)
+	                        tempHoveredWidgetChildId = gameInterface.delegateHover;
 	                    else
 	                        tempHoveredWidgetChildId = i;
 	                }
 	                if(gameInterface.type == GameInterfaceType.LAYER) {
                         int areaId = area.getId();
 
-	                    if(!gameInterface.isHidden || GameInterface.isHovering(areaId, i) || GameInterface.hiddenButtonTest) {
-	                        handleInterfaceActions(area, mouseX, mouseY, adjustedX, adjustedY, adjustedX + gameInterface.originalWidth, adjustedY + gameInterface.originalHeight, gameInterfaces, i, gameInterface.scrollDepth, gameInterface.scrollWidth);
-	                        if(gameInterface.children != null)
-	                            handleInterfaceActions(area, mouseX, mouseY, adjustedX, adjustedY, gameInterface.originalWidth + adjustedX, adjustedY + gameInterface.originalHeight, gameInterface.children, gameInterface.id, gameInterface.scrollDepth, gameInterface.scrollWidth);
-	                        if(gameInterface.originalHeight < gameInterface.scrollHeight)
-	                            GameInterface.scrollInterface(gameInterface.originalHeight, mouseY, mouseX, gameInterface.scrollHeight, gameInterface, gameInterface.originalWidth + adjustedX, areaId, adjustedY);
+	                    if(!gameInterface.hide || GameInterface.isHovering(areaId, i) || GameInterface.hiddenButtonTest) {
+	                        handleInterfaceActions(area, mouseX, mouseY, adjustedX, adjustedY, adjustedX + gameInterface.width, adjustedY + gameInterface.height, gameInterfaces, i, gameInterface.scrollY, gameInterface.scrollX);
+	                        if(gameInterface.createdComponents != null)
+	                            handleInterfaceActions(area, mouseX, mouseY, adjustedX, adjustedY, gameInterface.width + adjustedX, adjustedY + gameInterface.height, gameInterface.createdComponents, gameInterface.id, gameInterface.scrollY, gameInterface.scrollX);
+	                        if(gameInterface.height < gameInterface.scrollableHeight)
+	                            GameInterface.scrollInterface(gameInterface.height, mouseY, mouseX, gameInterface.scrollableHeight, gameInterface, gameInterface.width + adjustedX, areaId, adjustedY);
 	                    }
 	                } else {
-	                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && adjustedX <= mouseX && adjustedY <= mouseY && gameInterface.originalWidth + adjustedX > mouseX && gameInterface.originalHeight + adjustedY > mouseY) {
+	                    if (Configuration.DEBUG_WIDGETS && gameInterface.type != GameInterfaceType.IF1_TOOLTIP && adjustedX <= mouseX && adjustedY <= mouseY && gameInterface.width + adjustedX > mouseX && gameInterface.height + adjustedY > mouseY) {
 	                        hoveredWidgetId = gameInterface.id;
 	                    }
 
                         // standard button type? this is used for 'Open House Options'
                         // also used for clickable text (e.g. music list)
-	                    if(gameInterface.actionType == 1 && adjustedX <= mouseX && adjustedY <= mouseY && gameInterface.originalWidth + adjustedX > mouseX && gameInterface.originalHeight + adjustedY > mouseY) {
+	                    if(gameInterface.buttonType == 1 && adjustedX <= mouseX && adjustedY <= mouseY && gameInterface.width + adjustedX > mouseX && gameInterface.height + adjustedY > mouseY) {
 	                        boolean bool = false;
 
                             // is this text vs not text? contentType is definitely 0 for text on music player
@@ -972,17 +971,17 @@ public class MovedStatics {
 	                            bool = method1051(300, gameInterface);
 
 	                        if(!bool) {
-	                            addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 42, "");
+	                            addActionRow(gameInterface.option, 0, 0, gameInterface.id, 42, "");
 	                        }
 	                    }
 
                         // spells
-	                    if(gameInterface.actionType == 2 && Game.widgetSelected == 0 && mouseX >= adjustedX && mouseY >= adjustedY && mouseX < gameInterface.originalWidth + adjustedX && mouseY < adjustedY + gameInterface.originalHeight) {
-	                        addActionRow(gameInterface.targetVerb, 0, 0, gameInterface.id, ActionRowType.SELECT_SPELL_ON_WIDGET.getId(), Native.green + gameInterface.spellName);
+	                    if(gameInterface.buttonType == 2 && Game.widgetSelected == 0 && mouseX >= adjustedX && mouseY >= adjustedY && mouseX < gameInterface.width + adjustedX && mouseY < adjustedY + gameInterface.height) {
+	                        addActionRow(gameInterface.spellAction, 0, 0, gameInterface.id, ActionRowType.SELECT_SPELL_ON_WIDGET.getId(), Native.green + gameInterface.spellName);
 	                    }
 
                         // close button
-	                    if(gameInterface.actionType == 3 && mouseX >= adjustedX && mouseY >= adjustedY && adjustedX + gameInterface.originalWidth > mouseX && mouseY < adjustedY + gameInterface.originalHeight) {
+	                    if(gameInterface.buttonType == 3 && mouseX >= adjustedX && mouseY >= adjustedY && adjustedX + gameInterface.width > mouseX && mouseY < adjustedY + gameInterface.height) {
 	                        int actionType;
 	                        if(area != GameInterfaceArea.PERMANENT_CHAT_BOX_WIDGET)
 	                            actionType = ActionRowType.CLOSE_WIDGET.getId();
@@ -992,37 +991,37 @@ public class MovedStatics {
 	                    }
 
                         // toggle varp
-	                    if(gameInterface.actionType == 4 && mouseX >= adjustedX && adjustedY <= mouseY && mouseX < gameInterface.originalWidth + adjustedX && gameInterface.originalHeight + adjustedY > mouseY) {
-	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, ActionRowType.BUTTON_TOGGLE_VARP.getId(), "");
+	                    if(gameInterface.buttonType == 4 && mouseX >= adjustedX && adjustedY <= mouseY && mouseX < gameInterface.width + adjustedX && gameInterface.height + adjustedY > mouseY) {
+	                        addActionRow(gameInterface.option, 0, 0, gameInterface.id, ActionRowType.BUTTON_TOGGLE_VARP.getId(), "");
 	                    }
 
                         // sets the varp to another value (stored in the `alternateRhs` of the button) when clicked
-	                    if(gameInterface.actionType == 5 && adjustedX <= mouseX && adjustedY <= mouseY && mouseX < adjustedX + gameInterface.originalWidth && adjustedY + gameInterface.originalHeight > mouseY) {
-	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, ActionRowType.BUTTON_SET_VARP_VALUE.getId(), "");
+	                    if(gameInterface.buttonType == 5 && adjustedX <= mouseX && adjustedY <= mouseY && mouseX < adjustedX + gameInterface.width && adjustedY + gameInterface.height > mouseY) {
+	                        addActionRow(gameInterface.option, 0, 0, gameInterface.id, ActionRowType.BUTTON_SET_VARP_VALUE.getId(), "");
 	                    }
 
                         // "Please wait..." buttons
-	                    if(gameInterface.actionType == 6 && lastContinueTextWidgetId == -1 && adjustedX <= mouseX && adjustedY <= mouseY && mouseX < adjustedX + gameInterface.originalWidth && mouseY < gameInterface.originalHeight + adjustedY) {
-	                        addActionRow(gameInterface.tooltip, 0, 0, gameInterface.id, 54, "");
+	                    if(gameInterface.buttonType == 6 && lastContinueTextWidgetId == -1 && adjustedX <= mouseX && adjustedY <= mouseY && mouseX < adjustedX + gameInterface.width && mouseY < gameInterface.height + adjustedY) {
+	                        addActionRow(gameInterface.option, 0, 0, gameInterface.id, 54, "");
 	                    }
 	
 	                    if(gameInterface.type == GameInterfaceType.INVENTORY) {
 	                        int i_4_ = 0;
-	                        for(int i_5_ = 0; i_5_ < gameInterface.originalHeight; i_5_++) {
-	                            for(int i_6_ = 0; i_6_ < gameInterface.originalWidth; i_6_++) {
-	                                int i_7_ = i_6_ * (gameInterface.itemSpritePadsX + 32) + adjustedX;
-	                                int i_8_ = adjustedY + (32 + gameInterface.itemSpritePadsY) * i_5_;
+	                        for(int i_5_ = 0; i_5_ < gameInterface.height; i_5_++) {
+	                            for(int i_6_ = 0; i_6_ < gameInterface.width; i_6_++) {
+	                                int i_7_ = i_6_ * (gameInterface.invMarginX + 32) + adjustedX;
+	                                int i_8_ = adjustedY + (32 + gameInterface.invMarginY) * i_5_;
 	                                if(i_4_ < 20) {
-	                                    i_7_ += gameInterface.images[i_4_];
-	                                    i_8_ += gameInterface.imageX[i_4_];
+	                                    i_7_ += gameInterface.invSlotImage[i_4_];
+	                                    i_8_ += gameInterface.invSlotOffsetX[i_4_];
 	                                }
 	                                if(mouseX >= i_7_ && i_8_ <= mouseY && i_7_ + 32 > mouseX && mouseY < 32 + i_8_) {
 	                                    GameInterface.lastActiveInvInterface = gameInterface.id;
 	                                    Game.mouseInvInterfaceIndex = i_4_;
-	                                    if(gameInterface.items[i_4_] > 0) {
-	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.items[i_4_], 10);
-	                                        if(GameInterface.itemCurrentlySelected != 1 || !gameInterface.isInventory) {
-	                                            if(Game.widgetSelected == 1 && gameInterface.isInventory) {
+	                                    if(gameInterface.invSlotObjId[i_4_] > 0) {
+	                                        ItemDefinition itemDefinition = ItemDefinition.forId(-1 + gameInterface.invSlotObjId[i_4_], 10);
+	                                        if(GameInterface.itemCurrentlySelected != 1 || !gameInterface.invInteractable) {
+	                                            if(Game.widgetSelected == 1 && gameInterface.invInteractable) {
 	                                                if((selectedMask & 0x10) == 16) {
 	                                                    addActionRow(Native.selectedSpellVerb, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.CAST_MAGIC_ON_WIDGET_ITEM.getId(), Native.selectedSpellName + Native.toLightRed + itemDefinition.name);
 	                                                }
@@ -1030,7 +1029,7 @@ public class MovedStatics {
 	                                                String[] class1s = itemDefinition.interfaceOptions;
 	                                                if(DEBUG_DISPLAY_ALL_ACTION_ROWS)
 	                                                    class1s = getAllOptionsWithIndices(class1s);
-	                                                if(gameInterface.isInventory) {
+	                                                if(gameInterface.invInteractable) {
 	                                                    for(int i_9_ = 4; i_9_ >= 3; i_9_--) {
 	                                                        if(class1s != null && class1s[i_9_] != null) {
 	                                                            int actionType;
@@ -1044,10 +1043,10 @@ public class MovedStatics {
 	                                                        }
 	                                                    }
 	                                                }
-	                                                if(gameInterface.itemUsable) {
+	                                                if(gameInterface.invUsable) {
 	                                                    addActionRow(English.use, itemDefinition.id, i_4_, gameInterface.id, ActionRowType.SELECT_ITEM_ON_WIDGET.getId(), Native.lightRed + itemDefinition.name);
 	                                                }
-	                                                if(gameInterface.isInventory && class1s != null) {
+	                                                if(gameInterface.invInteractable && class1s != null) {
 	                                                    for(int i_11_ = 2; i_11_ >= 0; i_11_--) {
 	                                                        if(class1s[i_11_] != null) {
 	                                                            int actionType = 0;
@@ -1061,7 +1060,7 @@ public class MovedStatics {
 	                                                        }
 	                                                    }
 	                                                }
-	                                                class1s = gameInterface.configActions;
+	                                                class1s = gameInterface.invOptions;
 	                                                if(DEBUG_DISPLAY_ALL_ACTION_ROWS)
 	                                                    class1s = getAllOptionsWithIndices(class1s);
 	                                                if(class1s != null) {
@@ -1104,9 +1103,9 @@ public class MovedStatics {
 	                            }
 	                        }
 	                    }
-	                    if(gameInterface.isNewInterfaceFormat && gameInterface.itemId != -1 && mouseX >= adjustedX && mouseY >= adjustedY && mouseX < gameInterface.originalWidth + adjustedX && mouseY < adjustedY + gameInterface.originalHeight) {
+	                    if(gameInterface.if3 && gameInterface.itemId != -1 && mouseX >= adjustedX && mouseY >= adjustedY && mouseX < gameInterface.width + adjustedX && mouseY < adjustedY + gameInterface.height) {
 	                        ItemDefinition itemDefinition = ItemDefinition.forId(gameInterface.itemId, 10);
-	                        if(gameInterface.isInventory) {
+	                        if(gameInterface.invInteractable) {
 	                            String[] class1s = itemDefinition.interfaceOptions;
 	                            if(DEBUG_DISPLAY_ALL_ACTION_ROWS)
 	                                class1s = getAllOptionsWithIndices(class1s);
@@ -1126,9 +1125,9 @@ public class MovedStatics {
 	                        if(gameInterface.id >= 0)
 	                            addActionRow(English.examine, itemDefinition.id, -1, gameInterface.id, ActionRowType.EXAMINE_ITEM_ON_V2_WIDGET.getId(), Native.lightRed + itemDefinition.name);
 	                        else
-	                            addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.parentId, ActionRowType.EXAMINE_ITEM_ON_V2_WIDGET.getId(), Native.lightRed + itemDefinition.name);
+	                            addActionRow(English.examine, itemDefinition.id, gameInterface.id & 0x7fff, gameInterface.layer, ActionRowType.EXAMINE_ITEM_ON_V2_WIDGET.getId(), Native.lightRed + itemDefinition.name);
 	                    }
-	                    if(gameInterface.hasListeners && gameInterface.aClass1Array2661 != null && adjustedX <= mouseX && adjustedY <= mouseY && gameInterface.originalWidth + adjustedX > mouseX && mouseY < adjustedY + gameInterface.originalHeight) {
+	                    if(gameInterface.hasListeners && gameInterface.aClass1Array2661 != null && adjustedX <= mouseX && adjustedY <= mouseY && gameInterface.width + adjustedX > mouseX && mouseY < adjustedY + gameInterface.height) {
 	                        String class1 = "";
 	                        if(gameInterface.itemId != -1) {
 	                            ItemDefinition class40_sub5_sub16 = ItemDefinition.forId(gameInterface.itemId, 0);
@@ -1137,7 +1136,7 @@ public class MovedStatics {
 	                        for(int i_15_ = gameInterface.aClass1Array2661.length - 1; i_15_ >= 0; i_15_--) {
 	                            if(gameInterface.aClass1Array2661[i_15_] != null) {
 	                                if(gameInterface.id < 0)
-	                                    addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0x7fff & gameInterface.id, gameInterface.parentId, 50, class1);
+	                                    addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0x7fff & gameInterface.id, gameInterface.layer, 50, class1);
 	                                else
 	                                    addActionRow(gameInterface.aClass1Array2661[i_15_], i_15_ + 1, 0, gameInterface.id, 50, class1);
 	                            }
@@ -1622,7 +1621,7 @@ public class MovedStatics {
             GameInterface[] parentInterface;
             GameInterface childInterface = null;
             if (widgetParentId >= 0 && widgetChildId < 469) {
-                parentInterface = GameInterface.cachedInterfaces[widgetParentId];
+                parentInterface = GameInterface.components[widgetParentId];
 
                 if (parentInterface != null) {
                     childInterface = parentInterface[widgetChildId];
@@ -1666,7 +1665,7 @@ public class MovedStatics {
             fontNormal.drawStringRight("Widget " + widgetParentId + ":" + widgetChildId, x, y, 0xffff00);
             y+= 15;
             if (childInterface != null) {
-                fontNormal.drawStringRight("Parent ID: " + childInterface.parentId, x, y, 0xffff00);
+                fontNormal.drawStringRight("Parent ID: " + childInterface.layer, x, y, 0xffff00);
                 y+= 15;
                 fontNormal.drawStringRight("Type: " + typeAsString, x, y, 0xffff00);
                 y+= 15;
@@ -2383,8 +2382,8 @@ public class MovedStatics {
     }
 
     public static void handleInterfaceActions(GameInterfaceArea area, int mouseX, int mouseY, int minX, int minY, int maxX, int maxY, int widgetId) {
-        if(GameInterface.decodeGameInterface(widgetId)) {
-            handleInterfaceActions(area, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.cachedInterfaces[widgetId], -1, 0, 0);
+        if(GameInterface.load(widgetId)) {
+            handleInterfaceActions(area, mouseX, mouseY, minX, minY, maxX, maxY, GameInterface.components[widgetId], -1, 0, 0);
         }
     }
 
@@ -2889,7 +2888,7 @@ public class MovedStatics {
             return true;
         }
         if(i >= 401 && i <= 500) {
-            addActionRow(English.remove, 0, 0, 0, ActionRowType.REMOVE_IGNORE.getId(), Native.white + gameInterface.disabledText);
+            addActionRow(English.remove, 0, 0, 0, ActionRowType.REMOVE_IGNORE.getId(), Native.white + gameInterface.text);
             return true;
         }
         return false;
@@ -3085,7 +3084,7 @@ public class MovedStatics {
                     int item = firstMenuOperand[menuActionRow - 1];
                     int id = secondMenuOperand[-1 + menuActionRow];
                     GameInterface gameInterface = GameInterface.getInterface(id);
-                    if(gameInterface.itemSwapable || gameInterface.itemDeletesDraged) {
+                    if(gameInterface.invDraggable || gameInterface.invClearDragged) {
                         anInt2869 = MouseHandler.clickX;
                         lastItemDragged = false;
                         GameInterface.activeInterfaceType = 2;

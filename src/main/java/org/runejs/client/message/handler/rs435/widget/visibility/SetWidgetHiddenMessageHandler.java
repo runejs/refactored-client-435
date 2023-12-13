@@ -9,6 +9,6 @@ public class SetWidgetHiddenMessageHandler implements MessageHandler<SetWidgetHi
     public void handle(SetWidgetHiddenInboundMessage message) {
         GameInterface gameInterface = GameInterface.getInterface((message.widgetId << 16) | message.childId);
 
-        gameInterface.isHidden = message.isHidden;
+        gameInterface.hide = message.isHidden;
     }
 }
