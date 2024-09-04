@@ -1,0 +1,47 @@
+name: Build and publish artifacts
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "v*"
+
+permissions:
+  contents: write # Required to create releases and modify repository contents
+  deployments: write # Required for creating deployments associated with releases
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "adopt"
+          java-version: 8
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build with Gradle
+        run: ./gradlew jar
+
+      # https://github.com/marketplace/actions/create-release
+      #
+      # This will only get triggered when creating a tag, such as via the
+      # commands:
+      #
+      # git tag -a v0.0.1 && git push origin v0.0.1
+      #
+      # For good measure, tags should be signed with your GPG key, such as:
+      #
+      # git tag -s -a v0.0.1 && git push origin v0.0.1
+      - uses: ncipollo/release-action@v1
+        if: startsWith(github.ref, 'refs/tags/v')
+        with:
+          artifacts: "build/libs/*.jar"
+          bodyFile: ".github/workflows/release-body.md"
