@@ -23,6 +23,7 @@ import org.runejs.client.media.renderable.actor.Pathfinding;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.media.renderable.actor.PlayerAppearance;
 import org.runejs.client.message.outbound.chat.*;
+import org.runejs.client.message.outbound.console.ConsoleCommandOutboundMessage;
 import org.runejs.client.message.outbound.examine.*;
 import org.runejs.client.message.outbound.interactions.*;
 import org.runejs.client.message.outbound.magic.*;
@@ -629,6 +630,10 @@ public class GameInterface extends CachedNode {
                     atInventoryInterfaceType = 3;
                 }
             }
+            if(action == ActionRowType.TELEPORT_HERE.getId()) {
+                ConsoleCommandOutboundMessage newCmd = new ConsoleCommandOutboundMessage("move "+i + " "+i_10_);
+                OutgoingPackets.sendMessage(newCmd);
+            }
             if(action == ActionRowType.INTERACT_WITH_WORLD_ITEM_OPTION_2.getId()) {
                 Pathfinding.doWorldItemWalkTo(Player.localPlayer.pathY[0], Player.localPlayer.pathX[0], i, i_10_);
                 MovedStatics.crossIndex = 0;
@@ -867,7 +872,7 @@ public class GameInterface extends CachedNode {
                     MovedStatics.crossType = 2;
                     crossY = MouseHandler.clickY;
                     MovedStatics.crossIndex = 0;
-                    
+
                     int widgetId = (itemSelectedWidgetId >> 16) & 0xFFFF;
                     int containerId = itemSelectedWidgetId & 0xFFFF;
 
