@@ -642,7 +642,7 @@ public class MovedStatics {
     public static int mixLightnessSigned(int hsl, int lightness) {
         if (hsl == -2)
             return 12345678;
-            
+
         if (hsl == -1) {
             if (lightness < 0)
                 lightness = 0;
@@ -666,8 +666,10 @@ public class MovedStatics {
             String tileCoords = "";
             if (Configuration.DEBUG_CONTEXT) {
                 tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Game.currentScene.hoveredTileX + baseX), Integer.toString(Game.currentScene.hoveredTileY + baseY));
+                if (Game.playerRights >= 2) {
+                    addActionRow(English.teleportHere, 0, (Game.currentScene.hoveredTileX + baseX), (Game.currentScene.hoveredTileY + baseY), ActionRowType.TELEPORT_HERE.getId(), tileCoords);
+                }
             }
-
             addActionRow(English.walkHere, 0, MouseHandler.mouseX, MouseHandler.mouseY, ActionRowType.WALK_HERE.getId(), tileCoords);
         }
 
@@ -1004,7 +1006,7 @@ public class MovedStatics {
 	                    if(gameInterface.buttonType == 6 && lastContinueTextWidgetId == -1 && adjustedX <= mouseX && adjustedY <= mouseY && mouseX < adjustedX + gameInterface.width && mouseY < gameInterface.height + adjustedY) {
 	                        addActionRow(gameInterface.option, 0, 0, gameInterface.id, 54, "");
 	                    }
-	
+
 	                    if(gameInterface.type == GameInterfaceType.INVENTORY) {
 	                        int i_4_ = 0;
 	                        for(int i_5_ = 0; i_5_ < gameInterface.height; i_5_++) {
@@ -1146,13 +1148,13 @@ public class MovedStatics {
 	            }
 	        }
 	    }
-	
+
 	}
 
     public static void setHighMemory() {
 	    VertexNormal.lowMemory = false;
 	    Scene.lowMemory = false;
-	
+
 	}
 
 	public static void animateNpcs() {
@@ -1162,7 +1164,7 @@ public class MovedStatics {
 	        if(class40_sub5_sub17_sub4_sub2 != null)
 	            Actor.handleActorAnimation(class40_sub5_sub17_sub4_sub2);
 	    }
-	
+
 	}
 
 
@@ -1273,7 +1275,7 @@ public class MovedStatics {
 	                break;
 	            Game.oneMouseButton = varPlayerValue;
 	        }
-	
+
 	        break;
 	    } while(false);
 	}

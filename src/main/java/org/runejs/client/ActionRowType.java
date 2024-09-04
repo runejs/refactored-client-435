@@ -7,7 +7,7 @@ package org.runejs.client;
  * These codes are used to determine the behaviour associated with a row
  * when a user clicks on it (or when a user left-clicks the entity, if the
  * row is the highest priority).
- * 
+ *
  * @author jameskmonger
  */
 public enum ActionRowType {
@@ -41,6 +41,11 @@ public enum ActionRowType {
      * Walk to a tile.
      */
     WALK_HERE(7),
+
+    /**
+     * Teleport to a tile.
+     */
+    TELEPORT_HERE(1009),
 
     /**
      * Drop an item from the inventory.
@@ -86,10 +91,10 @@ public enum ActionRowType {
      * Report a player for abuse.
      */
     REPORT_ABUSE(28),
-    
+
     /**
      * The initial 'use' to select an item on a widget
-     * 
+     *
      * TODO TODO TODO is this inventory or widget ??
      */
     SELECT_ITEM_ON_WIDGET(19),
@@ -138,7 +143,7 @@ public enum ActionRowType {
 
     /**
      * Cast a spell on a widget item.
-     * 
+     *
      * TODO TODO TODO inventory or widget?
      */
     CAST_MAGIC_ON_WIDGET_ITEM(37),
@@ -157,28 +162,28 @@ public enum ActionRowType {
      * Interact with a player and choose option 1.
      */
     INTERACT_WITH_PLAYER_OPTION_1(10),
-    
+
     /**
      * Interact with a player and choose option 2.
      */
     INTERACT_WITH_PLAYER_OPTION_2(39),
-    
+
     /**
      * Interact with a player and choose option 3.
      */
     INTERACT_WITH_PLAYER_OPTION_3(44),
-    
+
     /**
      * Interact with a player and choose option 4.
      */
     INTERACT_WITH_PLAYER_OPTION_4(14),
-    
+
     /**
      * Interact with a player and choose option 5.
      */
     INTERACT_WITH_PLAYER_OPTION_5(41),
 
-    
+
     /**
      * Interact with an NPC and choose option 1.
      *
@@ -212,17 +217,17 @@ public enum ActionRowType {
      * Interact with an object and choose option 1.
      */
     INTERACT_WITH_OBJECT_OPTION_1(16),
-    
+
     /**
      * Interact with an object and choose option 2.
      */
     INTERACT_WITH_OBJECT_OPTION_2(29),
-    
+
     /**
      * Interact with an object and choose option 3.
      */
     INTERACT_WITH_OBJECT_OPTION_3(17),
-    
+
     /**
      * Interact with an object and choose option 4.
      */
@@ -244,17 +249,17 @@ public enum ActionRowType {
      * Interact with a world item and choose option 2.
      */
     INTERACT_WITH_WORLD_ITEM_OPTION_2(38),
-    
+
     /**
      * Interact with a world item and choose option 3.
      */
     INTERACT_WITH_WORLD_ITEM_OPTION_3(3),
-    
+
     /**
      * Interact with a world item and choose option 4.
      */
     INTERACT_WITH_WORLD_ITEM_OPTION_4(8),
-    
+
     /**
      * Interact with a world item and choose option 5.
      */
@@ -262,7 +267,7 @@ public enum ActionRowType {
 
     /**
      * Interact with an item on a V1 widget and choose option 1.
-     * 
+     *
      * For example, the left-click option on an item on a shop interface.
      */
     INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1(53),
@@ -275,10 +280,10 @@ public enum ActionRowType {
      * Interact with an item on a V1 widget and choose option 2.
      */
     INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_1(52),
-    
+
     /**
      * Interact with an item on a V1 widget and choose option 3.
-     * 
+     *
      * (jameskmongeR) this one is read on the server as 'option 5' - which is correct?
      */
     INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_2(6),
@@ -287,7 +292,7 @@ public enum ActionRowType {
      * Interact with an item on a V1 widget and choose option 3.
      */
     INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_3(31),
-    
+
     /**
      * Interact with an item on a V1 widget and choose option 4.
      */
@@ -297,7 +302,7 @@ public enum ActionRowType {
      * Examine an NPC.
      */
     EXAMINE_NPC(1001),
-    
+
     /**
      * Examine an item.
      */
@@ -327,7 +332,7 @@ public enum ActionRowType {
      * TODO (Jameskmonger) document this
      */
     CLOSE_WIDGET(9),
-    
+
     /**
      * TODO (Jameskmonger) document this
      */
@@ -338,7 +343,7 @@ public enum ActionRowType {
     /**
      * Used to mark actions that are lower priority, i.e.
      * they should be displayed lower in the menu.
-     * 
+     *
      * This is used to ensure that left-click is not "Attack" on
      * high-level NPCs, for example.
      */

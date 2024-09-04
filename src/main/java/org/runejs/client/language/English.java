@@ -110,6 +110,7 @@ public class English {
     public static String unexpectedServerResponse = "Unexpected server response";
     public static String username = "Username: ";
     public static String walkHere = "Walk here";
+    public static String teleportHere = "Teleport here";
     public static String weSuspectSomeoneKnowsYourPassword = "We suspect someone knows your password.";
     public static String suffixWishesToDuelWithYou = "wishes to duel with you.";
     public static String world = "World";
