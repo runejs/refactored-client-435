@@ -1,0 +1,8 @@
+{
+    // do not autoformat java files in this repository
+    "[java]": {
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+        "editor.formatOnType": false,
+    },
+}
