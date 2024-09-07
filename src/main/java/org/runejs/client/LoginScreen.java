@@ -313,7 +313,9 @@ public class LoginScreen {
             Rasterizer.drawDiagonalLine(0,0, 42,42, 0xFF0000);
         }
 
-        renderFlames();
+        if (Configuration.RENDER_FLAMES) {
+            renderFlames();
+        }
 
         try {
             int offsetX = 0;
