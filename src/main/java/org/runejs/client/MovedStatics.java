@@ -660,17 +660,30 @@ public class MovedStatics {
         return (0xff80 & hsl) + lightness;
     }
 
-    public static void method1013() {
+    /**
+     * The menu items for interacting with NPC's/objects/tiles are compiled
+     * here.
+     */
+    public static void buildRightClickMenu() {
         int lasthash = -1;
         if (GameInterface.itemCurrentlySelected == 0 && Game.widgetSelected == 0) {
             String tileCoords = "";
+
+            int actionTeleportId = ActionRowType.TELEPORT_HERE.getId();
+            int actionWalkId = ActionRowType.WALK_HERE.getId();
+
+            if (Game.isShiftModifierActive()) {
+                actionWalkId += ActionRowType.LOW_PRIORITY_MODIFIER;
+            }
+
             if (Configuration.DEBUG_CONTEXT) {
                 tileCoords = MessageFormat.format("<col=8F8FFF>({0}, {1})</col>", Integer.toString(Game.currentScene.hoveredTileX + baseX), Integer.toString(Game.currentScene.hoveredTileY + baseY));
                 if (Game.playerRights >= 2) {
-                    addActionRow(English.teleportHere, 0, (Game.currentScene.hoveredTileX + baseX), (Game.currentScene.hoveredTileY + baseY), ActionRowType.TELEPORT_HERE.getId(), tileCoords);
+                    addActionRow(English.teleportHere, 0, (Game.currentScene.hoveredTileX + baseX), (Game.currentScene.hoveredTileY + baseY), actionTeleportId, tileCoords);
                 }
             }
-            addActionRow(English.walkHere, 0, MouseHandler.mouseX, MouseHandler.mouseY, ActionRowType.WALK_HERE.getId(), tileCoords);
+
+            addActionRow(English.walkHere, 0, MouseHandler.mouseX, MouseHandler.mouseY, actionWalkId, tileCoords);
         }
 
         for (int idx = 0; Model.resourceCount > idx; idx++) {
@@ -2127,17 +2140,32 @@ public class MovedStatics {
 
     public static void drawMenuTooltip(int arg0) {
         if (menuActionRow >= 2 || GameInterface.itemCurrentlySelected != 0 || Game.widgetSelected != 0) {
-            String class1;
+            String tooltipText;
             if (GameInterface.itemCurrentlySelected == 1 && menuActionRow < 2)
-                class1 = English.use + Native.whitespace + Native.selectedItemName + Native.targetThingArrow;
-            else if (Game.widgetSelected != 1 || menuActionRow >= 2)
-                class1 = menuActionTexts[-1 + menuActionRow];
+                tooltipText = English.use + Native.whitespace + Native.selectedItemName + Native.targetThingArrow;
+            else if (Game.widgetSelected != 1 || menuActionRow >= 2) {
+                // if shift is pressed, use the next item in the list instead of
+                // the first, or "Drop" if it's available
+                if (Game.isShiftModifierActive() && menuActionRow >= 2) {
+                    int i = -1 + menuActionRow - 1; // second item in the list
+                    // first, attempt to find Drop in the list
+                    for (int j = 0; j < menuActionRow; j++) {
+                        if (menuActionTypes[j] == ActionRowType.DROP_ITEM.getId()) {
+                            i = j;
+                            break;
+                        }
+                    }
+                    tooltipText = menuActionTexts[i];
+                } else {
+                    tooltipText = menuActionTexts[-1 + menuActionRow];
+                }
+            }
             else
-                class1 = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.targetThingArrow;
+                tooltipText = Native.selectedSpellVerb + Native.whitespace + Native.selectedSpellName + Native.targetThingArrow;
             if (menuActionRow > 2)
-                class1 = class1 + Native.whiteSlash + (menuActionRow + -2) + English.suffixMoreOptions;
+                tooltipText = tooltipText + Native.whiteSlash + (menuActionRow + -2) + English.suffixMoreOptions;
             if (arg0 == 4)
-                TypeFace.fontBold.drawShadowedSeededAlphaString(class1, 4, 15, 16777215, true, pulseCycle / 1000);
+                TypeFace.fontBold.drawShadowedSeededAlphaString(tooltipText, 4, 15, 16777215, true, pulseCycle / 1000);
         }
     }
 
@@ -2239,7 +2267,7 @@ public class MovedStatics {
                 // Right game screen
                 if(ScreenController.isCoordinatesIn3dScreen(MouseHandler.mouseX , MouseHandler.mouseY )) {
                     if(GameInterface.gameScreenInterfaceId == -1) {
-                        method1013();
+                        buildRightClickMenu();
                     } else {
                         int yOffset = (ScreenController.drawHeight /2) - (334/2) - (184/2);
                         int xOffset = (ScreenController.drawWidth /2) - (512/2) - (234/3);
@@ -3010,8 +3038,8 @@ public class MovedStatics {
         int meta = MouseHandler.clickType;
         if(Game.widgetSelected == 1 && MouseHandler.clickX >= 516 && MouseHandler.clickY >= 160 && MouseHandler.clickX <= 765 && MouseHandler.clickY <= 205)
             meta = 0;
-        if(menuOpen) {
-            if(meta != 1) {
+        if(menuOpen || Game.isShiftModifierActive()) {
+            if(meta != 1 && !Game.isShiftModifierActive()) {
                 int x = MouseHandler.mouseX;
                 int y = MouseHandler.mouseY;
                 if(menuScreenArea == 0) {
@@ -3052,23 +3080,66 @@ public class MovedStatics {
                     x -= 17;
                     y -= 357;
                 }
+
                 int id = -1;
-                for(int row = 0; row < menuActionRow; row++) {
-                    int k3 = 31 + menuY + 15 * (menuActionRow + -1 - row);
-                    if(x > menuX && x < dx + menuX && y > -13 + k3 && y < 3 + k3)
-                        id = row;
+                // attempt to find "Drop" in the list of available actions
+                // if shift is pressed
+                int dropActionId = ActionRowType.DROP_ITEM.getId();
+                int indexOfDropIdInMenu = -1;
+
+                // if the shift modifier is pressed, and there are two or more
+                // options in the menu, use the second menu item instead of the
+                // first. Don't worry - we'll try to find Drop next.
+                if (Game.isShiftModifierActive() && menuActionRow >= 2) {
+                    id = menuActionRow - 2;
                 }
-                if(id != -1)
-                    GameInterface.processMenuActions(id);
+
+                for(int row = 0; row < menuActionRow; row++) {
+                    // if the user is pressing shift, and there is a Drop option
+                    // present, use it.
+                    if (Game.isShiftModifierActive() && menuActionTypes[row] == dropActionId) {
+                        indexOfDropIdInMenu = row;
+                        id = row;
+                    } else {
+                        // if not, assume the user has the menu open, and
+                        // calculate which menu item where they're clicking on.
+                        int k3 = 31 + menuY + 15 * (menuActionRow + -1 - row);
+                        if(x > menuX && x < dx + menuX && y > -13 + k3 && y < 3 + k3)
+                            id = row;
+                    }
+                }
+
+                // at this point, either the "drop" or second menu item has been
+                // selected as the action item to use if the user is pressing
+                // the shift key. If the user isn't pressing the shift key,
+                // then the menu is presumed to be open instead, and the menu
+                // option that they're hovering over gets executed.
+                if(id != -1) {
+                    if (Game.isShiftModifierActive()) {
+                        if (indexOfDropIdInMenu != -1) {
+                            GameInterface.processMenuActions(indexOfDropIdInMenu);
+                        } else {
+                            GameInterface.processMenuActions(menuActionRow - 2);
+                        }
+                    } else {
+                        GameInterface.processMenuActions(id);
+                    }
+                }
+
                 if(menuScreenArea == 1)
                     GameInterface.redrawTabArea = true;
+
                 menuOpen = false;
+
                 if(menuScreenArea == 2)
                     ChatBox.redrawChatbox = true;
             }
         } else {
             if(meta == 1 && menuActionRow > 0) {
                 int action = menuActionTypes[menuActionRow - 1];
+                if (Game.isShiftModifierActive() && menuActionRow >= 2) {
+                    action = menuActionTypes[menuActionRow - 2];
+                }
                 if(
                     action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1.getId()
                         || action == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2.getId()
@@ -3104,8 +3175,13 @@ public class MovedStatics {
             }
             if(meta == 1 && (Game.oneMouseButton == 1 || menuHasAddFriend(-1 + menuActionRow)) && menuActionRow > 2)
                 meta = 2;
-            if(meta == 1 && menuActionRow > 0)
-                GameInterface.processMenuActions(menuActionRow - 1);
+            if(meta == 1 && menuActionRow > 0) {
+                if (Game.isShiftModifierActive() && menuActionRow >= 2) {
+                    GameInterface.processMenuActions(menuActionRow - 2);
+                } else {
+                    GameInterface.processMenuActions(menuActionRow - 1);
+                }
+            }
             if(meta == 2 && menuActionRow > 0)
                 determineMenuSize();
         }

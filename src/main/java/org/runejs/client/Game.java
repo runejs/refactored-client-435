@@ -116,6 +116,14 @@ public class Game {
     public static int playerRights = 0;
     public static Timer gameTimer;
     public static int idleLogout = 0;
+
+    /**
+     * If the shift key has been pressed, this reflects the state, but only
+     * `Game.isShiftModifierActive()` should be used for confirming that the key
+     * is pressed as well as checking that player's client's configuration
+     * allows shift modifiers to be leveraged.
+     */
+    public static boolean shiftPressed = false;
     /**
      * Backup port if the first one fails?
      */
@@ -990,7 +998,7 @@ public class Game {
                 ChatBox.redrawChatbox = true;
             }
         }
-        
+
         if(flashingTabId != -1) {
             GameInterface.drawTabIcons = true;
         }
@@ -2057,5 +2065,15 @@ public class Game {
         if (modewhere != 0)
             MovedStatics.showFps = true;
         chatboxInterface = new GameInterface();
+    }
+
+    /**
+     * Checks if the shift modifiers are enabled and active.
+     *
+     * @return true if the player is currently pressing the shift key and if
+     * player has configured their client to accept shift modifiers.
+     */
+    public static boolean isShiftModifierActive() {
+        return Game.shiftPressed == true && Configuration.SHIFT_CLICK_MODIFIER;
     }
 }

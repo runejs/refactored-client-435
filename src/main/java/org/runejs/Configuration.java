@@ -39,6 +39,7 @@ public class Configuration {
             USERNAME = (String) login.get("username");
             PASSWORD = (String) login.get("password");
             ROOFS_ENABLED = (boolean) game.get("roofsEnabled");
+            SHIFT_CLICK_MODIFIER = (boolean) game.get("shiftClickModifier");
             SOUND_MUTED = (boolean) game.get("soundMuted");
             FREE_TELEPORTS = (boolean) game.get("freeTeleports");
             DEBUG_CONTEXT = (boolean) game.get("debugContextMenu");
@@ -80,6 +81,7 @@ public class Configuration {
 
             Map<String, Object> game = new HashMap<String, Object>();
             game.put("roofsEnabled", ROOFS_ENABLED);
+            game.put("shiftClickModifier", SHIFT_CLICK_MODIFIER);
             game.put("freeTeleports", FREE_TELEPORTS);
             game.put("debugContextMenu", DEBUG_CONTEXT);
             game.put("soundMuted", SOUND_MUTED);
@@ -174,6 +176,13 @@ public class Configuration {
      * Do you want to render roofs
      */
     public static boolean ROOFS_ENABLED = true;
+
+    /**
+     * If true, the shift key will cause the second-highest menu item to be
+     * shown instead of the first, and if there is a "Drop" value present, it
+     * will be prioritized.
+     */
+    public static boolean SHIFT_CLICK_MODIFIER = true;
 
     /**
      * Always light up teleports

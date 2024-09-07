@@ -41,3 +41,7 @@ artifacts/
 .classpath
 .project
 .settings/org.eclipse.jdt.core.prefs
+
+# as of 2024-09-04, prebuilt dir is deprecated in favor of releases due to
+# increasing binary blob file sizes
+/prebuilt
