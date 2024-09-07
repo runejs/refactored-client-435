@@ -25,7 +25,13 @@ public class English {
     public static final String login = "Login";
     public static final String welcomeTo = "Welcome to " + Configuration.SERVER_DISPLAY_NAME;
     public static final String createAFreeAccount = "Create a free account";
+    public static final String createAccount = "Create account";
     public static final String enterYourUsernameAndPassword = "Enter your username & password.";
+    public static final String usernameMinLength = "Username needs to be at least 3 characters.";
+    public static final String passwordMinLength = "Password needs to be at least 5 characters.";
+    public static final String accountCreationSuccessful = "Account has been created";
+    public static final String youMayNowLogIn = "You may now log in.";
+
 
 
     public static String suffixFromYourIgnoreListFirst = " from your ignore list first";

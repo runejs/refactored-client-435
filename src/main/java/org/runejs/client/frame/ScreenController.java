@@ -66,6 +66,7 @@ public class ScreenController {
     public static void refreshFrameSize() {
         if(Game.gameStatusCode == 5 || Game.gameStatusCode == 10 || Game.gameStatusCode == 20) {
             MovedStatics.clearScreen = true;
+//            LoginScreen.recalculateOffsets();
         }
         MovedStatics.width = drawWidth;
         MovedStatics.height = drawHeight;
@@ -73,10 +74,12 @@ public class ScreenController {
             if (frameWidth != GameShell.clientFrame.getWidth()) {
                 frameWidth = GameShell.clientFrame.getWidth();
                 setBounds();
+//                LoginScreen.recalculateOffsets();
             }
             if (frameHeight != GameShell.clientFrame.getHeight()) {
                 frameHeight = GameShell.clientFrame.getHeight();
                 setBounds();
+//                LoginScreen.recalculateOffsets();
             }
         }
     }
@@ -113,7 +116,8 @@ public class ScreenController {
         if (Game.gameStatusCode <= 35 && Game.gameStatusCode >= 30) {
             MovedStatics.gameScreenImageProducer = MovedStatics.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
         } else {
-            Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
+//            Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
+            Game.gameCanvas.setSize(ScreenController.drawWidth, ScreenController.drawHeight);
             Game.gameCanvas.setVisible(true);
             if (GameShell.clientFrame == null)
                 Game.gameCanvas.setLocation(0, 0);

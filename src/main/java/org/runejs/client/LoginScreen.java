@@ -19,11 +19,23 @@ import org.runejs.whitelabel.Images;
 
 import java.awt.*;
 
+import static org.runejs.client.MovedStatics.*;
+import static org.runejs.client.cache.media.TypeFace.fontBold;
+
 /**
  * The class that handles the login screen.
  */
 public class LoginScreen {
-    public static int loginScreenState = 0;
+
+    // Define the LoginScreenState enum
+    public enum LoginScreenState {
+        INITIAL,
+        LOGIN_INPUT,
+        CREATE_ACCOUNT
+    }
+
+    private static LoginScreenState loginScreenState = LoginScreenState.INITIAL;
+
     public static int loginScreenFocus = 0;
     public static ProducingGraphicsBuffer muteButton;
     /**
@@ -39,7 +51,7 @@ public class LoginScreen {
     /**
      * Something to do with flames, maybe
      */
-	public static int anInt2452 = 0;
+    public static int anInt2452 = 0;
     /**
      * Something to do with flames, maybe
      */
@@ -80,277 +92,523 @@ public class LoginScreen {
     public static IndexedImage[] aClass40_Sub5_Sub14_Sub2Array535;
     public static int[] anIntArray1445;
 
+    private static final boolean SHOW_CREATE_ACCOUNT = false;
+
+    private static int offsetX = 0;
+    private static int offsetY = 0;
+
+
+    /**
+     * Sets the login screen state.
+     *
+     * @param state The new login screen state
+     */
+    public static void setLoginScreenState(LoginScreenState state) {
+        loginScreenState = state;
+        switch (state) {
+            case INITIAL:
+                break;
+            case LOGIN_INPUT:
+                break;
+            case CREATE_ACCOUNT:
+                break;
+        }
+    }
+
+    /**
+     * Recalculates the offsets for centering the login screen in resizable mode.
+     */
+    public static void recalculateOffsets() {
+        if (ScreenController.frameMode == ScreenMode.RESIZABLE) {
+            int drawWidth = ScreenController.drawWidth;
+            int loginScreenWidth = 765; // Original login screen width
+            offsetX = (drawWidth - loginScreenWidth) / 2;
+            // Y offset remains 0 to keep the login screen at the top
+        } else {
+            offsetX = 0;
+            offsetY = 0;
+        }
+    }
+
+    /**
+     * Updates the login screen state and handles user interactions.
+     * This method is called every game tick when the login screen is active.
+     */
     public static void updateLogin() {
+        // Update login screen animations or effects
         method836(1);
-
-        if(MouseHandler.clickType == 1 && MouseHandler.clickY >= ScreenController.drawHeight-42 && MouseHandler.clickX>=ScreenController.drawWidth-42 ){
-            int newVolume = 0;
-            if(MusicSystem.musicVolume == 0) {
-                newVolume = 255;
-            }
-
-            if(MusicSystem.musicVolume != 0 || MusicSystem.currentSongId == -1) {
-                if(newVolume == 0) {
-                    MusicSystem.method402(false);
-                    MusicSystem.songTimeout = 0;
-                } else {
-                    MusicSystem.playLoginScreenMusic(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
-                    MusicSystem.method456(newVolume);
-                }
-            } else {
-                MusicSystem.playMusicTrack(false, 0, MusicSystem.currentSongId, newVolume, 0, CacheArchive.musicCacheArchive);
-                MusicSystem.songTimeout = 0;
-            }
-
-            MusicSystem.musicVolume = newVolume;
-            Configuration.setSoundMuted(newVolume == 0);
-
+        // Calculate offsets for centering in resizable mode
+        recalculateOffsets();
+        if (ScreenController.frameMode == ScreenMode.RESIZABLE) {
+            int drawWidth = ScreenController.drawWidth;
+            int loginScreenWidth = 765; // Original login screen width
+            offsetX = (drawWidth - loginScreenWidth) / 2;
+            // Y offset remains 0 to keep the login screen at the top
         }
 
-        if(Game.gameStatusCode == 10) {
-            int i = MouseHandler.clickX + -202;
+        // Handle mute button click
+        if (MouseHandler.clickType == 1 && MouseHandler.clickY >= ScreenController.drawHeight - 42 && MouseHandler.clickX >= ScreenController.drawWidth - 42) {
+            toggleMusicMute();
+        }
+
+        // Main login screen logic
+        if (Game.gameStatusCode == 10) {
+            int mouseX = MouseHandler.clickX - offsetX - 202;
             int clickType = MouseHandler.clickType;
-            int clickY = -171 + MouseHandler.clickY;
-            if(loginScreenState == 0) {
-                /*int i_14_ = 100;
-                int i_15_ = 120;
-                if(clickType == 1 && i >= i_14_ - 75 && i_14_ + 75 >= i && clickY >= -20 + i_15_ && i_15_ + 20 >= clickY) {
-                    MovedStatics.loginScreenFocus = 0;
-                    Class26.loginScreenState = 3;
-                }
-                i_14_ = 260;
-                if(clickType == 1 && i >= -75 + i_14_ && i <= 75 + i_14_ && clickY >= -20 + i_15_ && 20 + i_15_ >= clickY) {
-                    Class26.loginScreenState = 2;
-                    MovedStatics.loginScreenFocus = 0;
-                    Native.loginScreenMessageLineOne = "";
-                    Native.loginScreenMessageLineTwo = English.enterYourUsernameAndPassword;
-                    Native.loginScreenMessageLineThree = "";
-                }*/
-                int i_20_ = 150;
-                int i_21_ = 180;
-                if(clickType == 1 && i >= -75 + i_21_ && 75 + i_21_ >= i && -20 + i_20_ <= clickY && 20 + i_20_ >= clickY) {
-                    loginScreenState = 2;
-                    loginScreenFocus = 0;
-                    Native.loginScreenMessageLineOne = "";
-                    Native.loginScreenMessageLineTwo = English.enterYourUsernameAndPassword;
-                    Native.loginScreenMessageLineThree = "";
-                }
-            } else if(loginScreenState == 2) {
-                int y = 60;
-                int clickX = 100;
-                y += 30;
-                if(clickType == 1 && -15 + y <= clickY && clickY < y)
-                    loginScreenFocus = 0;
-                int i_18_ = 150;
-                y += 15;
-                if(clickType == 1 && -15 + y <= clickY && y > clickY)
-                    loginScreenFocus = 1;
-                y += 15;
-                if(clickType == 1 && clickX + -75 <= i && i <= clickX + 75 && clickY >= i_18_ + -20 && clickY <= i_18_ + 20) {
-                    Native.username = Native.username.method62().method85();
-                    setLoginScreenMessage("", English.connectingToServer, "");
-                    MovedStatics.processGameStatus(20);
-                } else {
-                    clickX = 260;
-                    if(clickType == 1 && i >= -75 + clickX && clickX + 75 >= i && clickY >= -20 + i_18_ && clickY <= i_18_ + 20) {
-                        Native.username = Configuration.getUsername();
-                        Native.password = Configuration.getPassword();
-                        loginScreenState = 0;
-                    }
-                    while(MovedStatics.method416()) {
-                        boolean bool = false;
-                        for(int i_19_ = 0; Native.supportedCharacters.length() > i_19_; i_19_++) {
-                            if(Native.supportedCharacters.charAt(i_19_) == MovedStatics.anInt1388) {
-                                bool = true;
-                                break;
-                            }
-                        }
-                        if(loginScreenFocus == 0) {
-                            if(MovedStatics.anInt2854 == 85 && Native.username.length() > 0)
-                                Native.username = Native.username.substring(0, -1 + Native.username.length());
-                            if(MovedStatics.anInt2854 == 84 || MovedStatics.anInt2854 == 80)
-                                loginScreenFocus = 1;
-                            if(bool && Native.username.length() < 18)
-                                Native.username = Native.username.addChar(MovedStatics.anInt1388);
-                        } else if(loginScreenFocus == 1) {
-                            if(MovedStatics.anInt2854 == 85 && Native.password.length() > 0)
-                                Native.password = Native.password.substring(0, Native.password.length() + -1);
-                            if(MovedStatics.anInt2854 == 80)
-                                loginScreenFocus = 0;
-                            if(MovedStatics.anInt2854 == 84) {
-                                Native.username = Native.username.method62().method85();
-                                setLoginScreenMessage("", English.connectingToServer, "");
-                                MovedStatics.processGameStatus(20);
-                            }
-                            if(bool && Native.password.length() < 20)
-                                Native.password = Native.password.addChar(MovedStatics.anInt1388);
-                        }
-                    }
-                }
-            } else if(loginScreenState == 3) {
-                int i_20_ = 150;
-                int i_21_ = 180;
-                if(clickType == 1 && i >= -75 + i_21_ && 75 + i_21_ >= i && -20 + i_20_ <= clickY && 20 + i_20_ >= clickY)
-                    loginScreenState = 0;
+            int mouseY = MouseHandler.clickY - offsetY - 171;
+
+            // Handle different login screen states
+            switch (loginScreenState) {
+                case INITIAL:
+                    handleInitialLoginState(mouseX, mouseY, clickType);
+                    break;
+                case LOGIN_INPUT:
+                    handleLoginInputState(mouseX, mouseY, clickType);
+                    break;
+                case CREATE_ACCOUNT:
+                    handleCreateAccountState(mouseX, mouseY, clickType);
+                    break;
             }
         }
     }
 
+
+    /**
+     * Handles the login input state where the user enters username and password.
+     */
+    private static void handleLoginInputState(int mouseX, int mouseY, int clickType) {
+        int inputStartY = 60;
+        int loginButtonX = 100;
+        int loginButtonY = 150;
+
+        // Handle username field focus
+        if (clickType == 1 && mouseY >= inputStartY - 15 && mouseY < inputStartY) {
+            loginScreenFocus = 0;
+        }
+
+        inputStartY += 15;
+
+        // Handle password field focus
+        if (clickType == 1 && mouseY >= inputStartY - 15 && mouseY < inputStartY) {
+            loginScreenFocus = 1;
+        }
+
+        inputStartY += 15;
+
+        // Handle login button click
+        if (clickType == 1 && mouseX >= loginButtonX - 75 && mouseX <= loginButtonX + 75
+                && mouseY >= loginButtonY - 20 && mouseY <= loginButtonY + 20) {
+            attemptLogin();
+        }
+
+        // Handle cancel button click
+        loginButtonX = 260;
+        if (clickType == 1 && mouseX >= loginButtonX - 75 && mouseX <= loginButtonX + 75
+                && mouseY >= loginButtonY - 20 && mouseY <= loginButtonY + 20) {
+            // Return to initial login state
+            setLoginScreenState(LoginScreenState.INITIAL);
+            Native.username = Configuration.getUsername();
+            Native.password = Configuration.getPassword();
+        }
+
+        // Handle keyboard input for username and password fields
+        handleLoginKeyboardInput();
+    }
+
+    /**
+     * Handles the initial login screen state, showing options to log in or create an account.
+     *
+     * @param mouseX    The x-coordinate of the mouse click
+     * @param mouseY    The y-coordinate of the mouse click
+     * @param clickType The type of mouse click (1 for left-click)
+     */
+    private static void handleInitialLoginState(int mouseX, int mouseY, int clickType) {
+        int loginButtonY = 150;
+        int loginButtonX = 180;
+
+        // Check if the login button is clicked
+        if (clickType == 1 && mouseX >= loginButtonX - 75 && mouseX <= loginButtonX + 75
+                && mouseY >= loginButtonY - 20 && mouseY <= loginButtonY + 20) {
+            // Transition to login input state
+            setLoginScreenState(LoginScreenState.LOGIN_INPUT);
+
+            loginScreenFocus = 0;
+            Native.loginScreenMessageLineOne = "";
+            Native.loginScreenMessageLineTwo = English.enterYourUsernameAndPassword;
+            Native.loginScreenMessageLineThree = "";
+        }
+
+        // Create account logic
+        if (SHOW_CREATE_ACCOUNT) {
+            int createAccountButtonY = 200; // Position it below the login button
+            int createAccountButtonX = 180;
+
+            // Check if the create account button is clicked
+            if (clickType == 1 && mouseX >= createAccountButtonX - 75 && mouseX <= createAccountButtonX + 75
+                    && mouseY >= createAccountButtonY - 20 && mouseY <= createAccountButtonY + 20) {
+                // Transition to create account state
+                setLoginScreenState(LoginScreenState.CREATE_ACCOUNT);
+
+                Native.loginScreenMessageLineOne = "";
+                Native.loginScreenMessageLineTwo = English.createAFreeAccount;
+                Native.loginScreenMessageLineThree = "";
+            }
+
+            // Draw the create account button
+            imgLoginScreenButton.drawImage(createAccountButtonX - 73, createAccountButtonY - 20);
+            fontBold.drawShadowedStringCenter(English.createAccount, createAccountButtonX, createAccountButtonY + 5, 16777215, true);
+        }
+    }
+
+
+    /**
+     * Handles the create account state, allowing users to input information for a new account.
+     *
+     * @param mouseX    The x-coordinate of the mouse click
+     * @param mouseY    The y-coordinate of the mouse click
+     * @param clickType The type of mouse click (1 for left-click)
+     */
+    private static void handleCreateAccountState(int mouseX, int mouseY, int clickType) {
+        int buttonY = 250;
+        int buttonX = 180;
+
+        // Handle input fields (username, password, etc.) here
+        // This is a simplified version; you may need more fields and logic
+
+        // Example: Username input field
+        if (clickType == 1 && mouseY >= 100 && mouseY < 120) {
+            loginScreenFocus = 0; // Focus on username field
+        }
+
+        // Example: Password input field
+        if (clickType == 1 && mouseY >= 140 && mouseY < 160) {
+            loginScreenFocus = 1; // Focus on password field
+        }
+
+        // Handle "Create Account" button click
+        if (clickType == 1 && mouseX >= buttonX - 75 && mouseX <= buttonX + 75
+                && mouseY >= buttonY - 20 && mouseY <= buttonY + 20) {
+            // Attempt to create the account
+            attemptCreateAccount();
+        }
+
+        // Handle "Back" or "Cancel" button click
+        int cancelButtonY = 290;
+        if (clickType == 1 && mouseX >= buttonX - 75 && mouseX <= buttonX + 75
+                && mouseY >= cancelButtonY - 20 && mouseY <= cancelButtonY + 20) {
+            // Return to initial login state
+            setLoginScreenState(LoginScreenState.INITIAL);
+
+            clearCreateAccountFields();
+        }
+
+        // Handle keyboard input for create account fields
+        handleCreateAccountKeyboardInput();
+    }
+
+    /**
+     * Attempts to create a new account with the provided information.
+     */
+    private static void attemptCreateAccount() {
+        // Validate input fields
+        if (Native.newUsername.length() < 3) {
+            setLoginScreenMessage(English.usernameMinLength, "", "");
+            return;
+        }
+        if (Native.newPassword.length() < 5) {
+            setLoginScreenMessage(English.passwordMinLength, "", "");
+            return;
+        }
+        // Add more validation as needed (e.g., email format, password strength)
+
+        // TODO: Implement actual account creation logic here
+        // This might involve sending a request to the server
+
+        // For now, we'll just show a success message and return to the login screen
+        setLoginScreenMessage(English.accountCreationSuccessful, English.youMayNowLogIn, "");
+        setLoginScreenState(LoginScreenState.INITIAL);
+
+        clearCreateAccountFields();
+    }
+
+    /**
+     * Clears the input fields used for account creation.
+     */
+    private static void clearCreateAccountFields() {
+        Native.newUsername = "";
+        Native.newPassword = "";
+        // Clear any other fields you might have for account creation
+    }
+
+    /**
+     * Handles keyboard input for the create account fields.
+     */
+    private static void handleCreateAccountKeyboardInput() {
+        while (MovedStatics.method416()) {
+            boolean validChar = false;
+            char typedChar = (char) MovedStatics.anInt1388;
+
+            // Check if the typed character is valid
+            if (Native.supportedCharacters.indexOf(typedChar) != -1) {
+                validChar = true;
+            }
+
+            // Handle input for username field
+            if (loginScreenFocus == 0) {
+                if (MovedStatics.anInt2854 == 85 && Native.newUsername.length() > 0) {
+                    Native.newUsername = Native.newUsername.substring(0, Native.newUsername.length() - 1);
+                }
+                if (MovedStatics.anInt2854 == 84 || MovedStatics.anInt2854 == 80) {
+                    loginScreenFocus = 1;
+                }
+                if (validChar && Native.newUsername.length() < 18) {
+                    Native.newUsername += typedChar;
+                }
+            }
+            // Handle input for password field
+            else if (loginScreenFocus == 1) {
+                if (MovedStatics.anInt2854 == 85 && Native.newPassword.length() > 0) {
+                    Native.newPassword = Native.newPassword.substring(0, Native.newPassword.length() - 1);
+                }
+                if (MovedStatics.anInt2854 == 80) {
+                    loginScreenFocus = 0;
+                }
+                if (MovedStatics.anInt2854 == 84) {
+                    attemptCreateAccount();
+                }
+                if (validChar && Native.newPassword.length() < 20) {
+                    Native.newPassword += typedChar;
+                }
+            }
+        }
+    }
+
+    /**
+     * Toggles the music mute state.
+     */
+    private static void toggleMusicMute() {
+        int newVolume = MusicSystem.musicVolume == 0 ? 255 : 0;
+
+        if (newVolume == 0) {
+            MusicSystem.method402(false);
+            MusicSystem.songTimeout = 0;
+        } else {
+            MusicSystem.playLoginScreenMusic(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
+            MusicSystem.method456(newVolume);
+        }
+
+        MusicSystem.musicVolume = newVolume;
+        Configuration.setSoundMuted(newVolume == 0);
+    }
+
+    /**
+     * Attempts to log in with the current username and password.
+     */
+    private static void attemptLogin() {
+        Native.username = Native.username.method62().method85();
+        setLoginScreenMessage("", English.connectingToServer, "");
+        MovedStatics.processGameStatus(20);
+    }
+
+    /**
+     * Handles keyboard input for the username and password fields.
+     */
+    private static void handleLoginKeyboardInput() {
+        while (MovedStatics.method416()) {
+            boolean validChar = false;
+
+            // Check if the typed character is valid
+            for (int i = 0; i < Native.supportedCharacters.length(); i++) {
+                if (Native.supportedCharacters.charAt(i) == MovedStatics.anInt1388) {
+                    validChar = true;
+                    break;
+                }
+            }
+
+            // Handle input for username field
+            if (loginScreenFocus == 0) {
+                if (MovedStatics.anInt2854 == 85 && Native.username.length() > 0) {
+                    Native.username = Native.username.substring(0, Native.username.length() - 1);
+                }
+                if (MovedStatics.anInt2854 == 84 || MovedStatics.anInt2854 == 80) {
+                    loginScreenFocus = 1;
+                }
+                if (validChar && Native.username.length() < 18) {
+                    Native.username = Native.username.addChar(MovedStatics.anInt1388);
+                }
+            }
+            // Handle input for password field
+            else if (loginScreenFocus == 1) {
+                if (MovedStatics.anInt2854 == 85 && Native.password.length() > 0) {
+                    Native.password = Native.password.substring(0, Native.password.length() - 1);
+                }
+                if (MovedStatics.anInt2854 == 80) {
+                    loginScreenFocus = 0;
+                }
+                if (MovedStatics.anInt2854 == 84) {
+                    attemptLogin();
+                }
+                if (validChar && Native.password.length() < 20) {
+                    Native.password = Native.password.addChar(MovedStatics.anInt1388);
+                }
+            }
+        }
+    }
+
+
+    /**
+     * Draws the loading screen, including the login box, flames, and other UI elements.
+     * This method handles both fixed and resizable screen modes.
+     *
+     * @param fontBold  The bold typeface used for text rendering
+     * @param fontSmall The small typeface used for text rendering (unused in this method)
+     */
     public static void drawLoadingScreen(TypeFace fontBold, TypeFace fontSmall) {
+        // Prepare the login box graphics buffer for drawing
         loginBoxGraphics.prepareRasterizer();
-//            Rasterizer.drawFilledRectangle(0,0, ScreenController.frameWidth, ScreenController.frameHeight, 0);
+
+        recalculateOffsets();
+
+        // Draw loading progress (game status 0 or 5)
         if (Game.gameStatusCode == 0 || Game.gameStatusCode == 5) {
-            int i = 20;
-            fontBold.drawStringLeft(English.gameIsLoadingPleaseWait, 180, 74 + -i, 16777215);
-            int i_89_ = -i + 82;
-            Rasterizer.drawUnfilledRectangle(28, i_89_, 304, 34, 9179409);
-            Rasterizer.drawUnfilledRectangle(29, 1 + i_89_, 302, 32, 0);
-            Rasterizer.drawFilledRectangle(30, 2 + i_89_, Game.gameStartup.loadingBarPercentage * 3, 30, 9179409);
-            Rasterizer.drawFilledRectangle(3 * Game.gameStartup.loadingBarPercentage + 30, i_89_ + 2, -(Game.gameStartup.loadingBarPercentage * 3) + 300, 30, 0);
-            fontBold.drawStringLeft(Game.gameStartup.currentLoadingText, 180, -i + 105, 16777215);
+            int yOffset = 20;
+            // Draw "Game is loading" text
+            fontBold.drawStringLeft(English.gameIsLoadingPleaseWait, offsetX + 180, offsetY + 74 - yOffset, 16777215);
+
+            // Draw loading bar outline
+            int loadingBarY = offsetY + -yOffset + 82;
+            Rasterizer.drawUnfilledRectangle(offsetX + 28, loadingBarY, 304, 34, 9179409);
+            Rasterizer.drawUnfilledRectangle(offsetX + 29, 1 + loadingBarY, 302, 32, 0);
+
+            // Draw loading bar fill
+            Rasterizer.drawFilledRectangle(offsetX + 30, 2 + loadingBarY, Game.gameStartup.loadingBarPercentage * 3, 30, 9179409);
+            Rasterizer.drawFilledRectangle(offsetX + 3 * Game.gameStartup.loadingBarPercentage + 30, loadingBarY + 2, -(Game.gameStartup.loadingBarPercentage * 3) + 300, 30, 0);
+
+            // Draw loading status text
+            fontBold.drawStringLeft(Game.gameStartup.currentLoadingText, offsetX + 180, offsetY + -yOffset + 105, 16777215);
         }
-        if (Game.gameStatusCode == 20) {
-            int drawY = 40;
-            loginScreenBox.drawImage(0, 0);
-            fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, drawY, 16776960, true);
-            drawY += 15;
-            fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, drawY, 16776960, true);
-            drawY += 15;
-            fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, drawY, 16776960, true);
-            drawY += 15;
-            drawY += 10;
-            fontBold.drawShadowedString(English.username + Native.username, 90, drawY, true, 16777215);
-            drawY += 15;
-            fontBold.drawShadowedString(English.password + Native.password.method61(), 92, drawY, true, 16777215);
-            drawY += 15;
-        }
+
+        // Draw login screen (game status 10)
         if (Game.gameStatusCode == 10) {
+            // Draw the login box background
             loginScreenBox.drawImage(0, 0);
-            if (loginScreenState == 0) {
-                /*fontBold.drawShadowedStringCenter(English.welcomeTo, 180, 80, 16776960, true);
-                int drawX = 100;
-                int drawY = 120;
-                Class59.imgLoginScreenButton.drawImage(drawX - 73, drawY - 20);
-                fontBold.drawText(English.newUser, drawX + -73, -20 + drawY, 144, 40, 16777215, true, 1, 1, 0);
-                drawX = 260;
-                Class59.imgLoginScreenButton.drawImage(drawX - 73, drawY + -20);
-                fontBold.drawText(English.existingUser, drawX - 73, -20 + drawY, 144, 40, 16777215, true, 1, 1, 0);*/
 
+            // Draw login messages
+            int textY = 40;
+
+            if (loginScreenState == LoginScreenState.INITIAL) {
                 fontBold.drawShadowedStringCenter(English.welcomeTo, 180, 40, 16776960, true);
-                int i = 180;
-                int i_92_ = 150;
                 int i_93_ = 65;
-
-                for(int textIndex = 0; textIndex < English.customLoginText.length; textIndex++) {
+                for (int textIndex = 0; textIndex < English.customLoginText.length; textIndex++) {
                     fontBold.drawShadowedStringCenter(English.customLoginText[textIndex], 180, i_93_, 16777215, true);
                     i_93_ += 15;
                 }
+            }
+            if (loginScreenState != LoginScreenState.INITIAL) {
+                fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, textY, 16776960, true);
+                textY += 15;
+                fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, textY, 16776960, true);
+                textY += 15;
+                fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, textY, 16776960, true);
+                textY += 15;
+            }
 
-                imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
-                fontBold.drawShadowedStringCenter(English.login, i, 5 + i_92_, 16777215, true);
 
-            } else if (loginScreenState == 2) {
-                int y1 = 40;
-                int drawX = 100;
-                fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineOne, 180, y1, 16776960, true);
-                y1 += 15;
-                int y2 = 150;
-                fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineTwo, 180, y1, 16776960, true);
-                y1 += 15;
-                fontBold.drawShadowedStringCenter(Native.loginScreenMessageLineThree, 180, y1, 16776960, true);
-                y1 += 15;
-                y1 += 10;
-                int width = fontBold.getStringWidth(English.username + Native.username + Native.justAnotherYellowBar);
-                int offset = 0;
-                while (width > 250) {
-                    offset++;
-                    width = fontBold.getStringWidth(English.username + Native.username.substring(offset) + Native.justAnotherYellowBar);
-                }
-                fontBold.drawShadowedString(English.username + Native.username.substring(offset) + (MovedStatics.pulseCycle % 40 < 20 & loginScreenFocus == 0 ? Native.justAnotherYellowBar : ""), 90, y1, true, 16777215);
-                y1 += 15;
+            // Draw username and password fields
+            if (loginScreenState == LoginScreenState.LOGIN_INPUT) {
                 String starredPassword = Native.password.method61().toString();
-                width = fontBold.getStringWidth(English.password + starredPassword + Native.justAnotherYellowBar);
-                offset = 0;
-                while (width > 250) {
-                    offset++;
-                    width = fontBold.getStringWidth(English.password + starredPassword.substring(offset) + Native.justAnotherYellowBar);
-                }
-                fontBold.drawShadowedString(English.password + starredPassword.substring(offset) + (MovedStatics.pulseCycle % 40 < 20 & loginScreenFocus == 1 ? Native.justAnotherYellowBar : ""), 92, y1, true, 16777215);
-                imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
-                y1 += 15;
-                fontBold.drawShadowedStringCenter(English.login, drawX, y2 + 5, 16777215, true);
-                drawX = 260;
-                imgLoginScreenButton.drawImage(-73 + drawX, y2 + -20);
-                fontBold.drawShadowedStringCenter(English.cancel, drawX, 5 + y2, 16777215, true);
-            } else if (loginScreenState == 3) {
-                fontBold.drawShadowedStringCenter(English.createAFreeAccount, 180, 40, 16776960, true);
-                int i = 180;
-                int i_92_ = 150;
-                int i_93_ = 65;
 
-                for(int textIndex = 0; textIndex < English.createAccountText.length; textIndex++) {
-                    fontBold.drawShadowedStringCenter(English.createAccountText[textIndex], 180, i_93_, 16777215, true);
-                    i_93_ += 15;
-                }
+                fontBold.drawShadowedString(English.username + Native.username + ((MovedStatics.pulseCycle % 40 < 20 && loginScreenFocus == 0) ? Native.justAnotherYellowBar : ""), 90, textY, true, 16777215);
+                textY += 15;
+                fontBold.drawShadowedString(English.password + starredPassword + ((MovedStatics.pulseCycle % 40 < 20 && loginScreenFocus == 1) ? Native.justAnotherYellowBar : ""), 92, textY, true, 16777215);
+                textY += 15;
+            }
+            int centerX = 180;
+            int buttonWidth = 73;
+            int leftButtonCenter = 100;
+            int rightButtonCenter = 260;
+            // Draw login button
+            imgLoginScreenButton.drawImage((loginScreenState == LoginScreenState.INITIAL ? centerX : leftButtonCenter) - buttonWidth,  130);
+            fontBold.drawShadowedStringCenter(English.login, (loginScreenState == LoginScreenState.INITIAL ? centerX : leftButtonCenter),  155, 16777215, true);
 
-                imgLoginScreenButton.drawImage(-73 + i, i_92_ - 20);
-                fontBold.drawShadowedStringCenter(English.cancel, i, 5 + i_92_, 16777215, true);
+            // Draw cancel button (for existing user login)
+            if (loginScreenState == LoginScreenState.LOGIN_INPUT) {
+                imgLoginScreenButton.drawImage(rightButtonCenter - buttonWidth, 130);
+                fontBold.drawShadowedStringCenter(English.cancel, rightButtonCenter, 155, 16777215, true);
             }
         }
-
-        muteButton.prepareRasterizer();
-        ImageRGB musicIcon = TabParts.GetPart("music");
-
-        if(ScreenController.frameMode == ScreenMode.RESIZABLE) {
-            Rasterizer.drawFilledRectangle(0, 0, ScreenController.drawWidth, ScreenController.drawHeight, 0);
-        }
-
-        Rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
-        Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
-        musicIcon.drawImage(4, 3);
-
-        if(MusicSystem.musicVolume == 0) {
-            Rasterizer.drawDiagonalLine(0,0, 42,42, 0xFF0000);
-        }
-
         if (Configuration.RENDER_FLAMES) {
             renderFlames();
         }
-
+        // Draw the flame backgrounds and other UI elements
         try {
-            int offsetX = 0;
-            int offsetY = 0;
-            if(ScreenController.frameMode == ScreenMode.RESIZABLE) {
-                int drawWidth = ScreenController.drawWidth;
-                int drawHeight = ScreenController.drawHeight;
-                int middleX = drawWidth / 2;
-                int middleY = drawHeight / 2;
-                int loginScreenOffsetX = 765 / 2;
-                int loginScreenOffsetY = 503 / 2;
-                offsetX = middleX - loginScreenOffsetX;
-                offsetY = middleY - loginScreenOffsetY;
-            }
+
+
             Graphics graphics = Game.gameCanvas.getGraphics();
-            muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
+            if (MovedStatics.clearScreen) {
+                graphics.setColor(Color.black);
+                graphics.fillRect(0, 0, width, height);
+            }
 
             loginBoxGraphics.drawGraphics(offsetX + 202, offsetY + 171, graphics);
             flameLeftBackground.drawGraphics(offsetX, offsetY, graphics);
             flameRightBackground.drawGraphics(offsetX + 637, offsetY, graphics);
 
-            if (!MovedStatics.clearScreen)
-                return;
-            MovedStatics.clearScreen = false;
+//            // If the screen needs to be fully redrawn
+//            if (!MovedStatics.clearScreen)
+//                return;
 
+//            MovedStatics.clearScreen = false;
+
+            // Draw additional UI elements
             aProducingGraphicsBuffer_907.drawGraphics(offsetX + 128, offsetY, graphics);
             aProducingGraphicsBuffer_1206.drawGraphics(offsetX + 202, offsetY + 371, graphics);
             aProducingGraphicsBuffer_463.drawGraphics(offsetX, offsetY + 265, graphics);
             aProducingGraphicsBuffer_1285.drawGraphics(offsetX + 562, offsetY + 265, graphics);
             aProducingGraphicsBuffer_2524.drawGraphics(offsetX + 128, offsetY + 171, graphics);
             aProducingGraphicsBuffer_1631.drawGraphics(offsetX + 562, offsetY + 171, graphics);
-            muteButton.drawGraphics(ScreenController.drawWidth-42, ScreenController.drawHeight-42, graphics);
+
+
+            // Draw mute button
+            drawMuteButton(graphics);
+
+            if (MovedStatics.clearScreen) {
+                Game.gameCanvas.repaint();
+                MovedStatics.clearScreen = false;
+            }
         } catch (Exception exception) {
+            // If an error occurs, request a full repaint of the game canvas
             Game.gameCanvas.repaint();
         }
+    }
+
+    /**
+     * Draws the mute button in the correct position based on the screen mode.
+     *
+     * @param graphics The graphics context to draw on
+     */
+    private static void drawMuteButton(Graphics graphics) {
+        muteButton.prepareRasterizer();
+        ImageRGB musicIcon = TabParts.GetPart("music");
+
+        int muteX, muteY;
+        if (ScreenController.frameMode == ScreenMode.RESIZABLE) {
+            muteX = ScreenController.drawWidth - 42;
+            muteY = ScreenController.drawHeight - 42;
+        } else {
+            muteX = 723; // Fixed position for the mute button in fixed mode
+            muteY = 461; // Fixed position for the mute button in fixed mode
+        }
+
+        Rasterizer.drawFilledRectangle(0, 0, 42, 42, 0x4d4431);
+        Rasterizer.drawUnfilledRectangle(0, 0, 42, 42, 0x242017);
+        musicIcon.drawImage(4, 3);
+
+        if (MusicSystem.musicVolume == 0) {
+            Rasterizer.drawDiagonalLine(0, 0, 42, 42, 0xFF0000);
+        }
+
+        muteButton.drawGraphics(muteX, muteY, graphics);
     }
 
     public static void setLoginScreenMessage(String line1, String line2, String line3) {
@@ -538,7 +796,8 @@ public class LoginScreen {
             Native.username = Configuration.getUsername();
             Native.password = Configuration.getPassword();
             anIntArray178 = new int[32768];
-            loginScreenState = 0;
+            setLoginScreenState(LoginScreenState.INITIAL);
+
             if (MusicSystem.musicVolume != 0 && !VertexNormal.lowMemory)
                 MusicSystem.playLoginScreenMusic(false, CacheArchive.musicCacheArchive, 0, Native.titleSong, 10, "", MusicSystem.musicVolume);
             else
@@ -551,16 +810,16 @@ public class LoginScreen {
 
     public static void method879(IndexedImage arg1) {
         int i = 0;
-        for(/**/; i < anIntArray1168.length; i++)
+        for (/**/; i < anIntArray1168.length; i++)
             anIntArray1168[i] = 0;
         int i_19_ = 256;
-        for(int i_20_ = 0; i_20_ < 5000; i_20_++) {
+        for (int i_20_ = 0; i_20_ < 5000; i_20_++) {
             int i_21_ = (int) ((double) i_19_ * (128.0 * Math.random()));
             anIntArray1168[i_21_] = (int) (256.0 * Math.random());
         }
-        for(int i_22_ = 0; i_22_ < 20; i_22_++) {
-            for(int i_23_ = 1; -1 + i_19_ > i_23_; i_23_++) {
-                for(int i_24_ = 1; i_24_ < 127; i_24_++) {
+        for (int i_22_ = 0; i_22_ < 20; i_22_++) {
+            for (int i_23_ = 1; -1 + i_19_ > i_23_; i_23_++) {
+                for (int i_24_ = 1; i_24_ < 127; i_24_++) {
                     int i_25_ = (i_23_ << 7) + i_24_;
                     anIntArray1445[i_25_] = (anIntArray1168[i_25_ - 128] + anIntArray1168[i_25_ + -1] + anIntArray1168[i_25_ + 1] + anIntArray1168[128 + i_25_]) / 4;
                 }
@@ -569,11 +828,11 @@ public class LoginScreen {
             anIntArray1168 = anIntArray1445;
             anIntArray1445 = is;
         }
-        if(arg1 != null) {
+        if (arg1 != null) {
             int i_26_ = 0;
-            for(int i_27_ = 0; arg1.imgHeight > i_27_; i_27_++) {
-                for(int i_28_ = 0; i_28_ < arg1.imgWidth; i_28_++) {
-                    if(arg1.imgPixels[i_26_++] != 0) {
+            for (int i_27_ = 0; arg1.imgHeight > i_27_; i_27_++) {
+                for (int i_28_ = 0; i_28_ < arg1.imgWidth; i_28_++) {
+                    if (arg1.imgPixels[i_26_++] != 0) {
                         int i_29_ = arg1.yDrawOffset + i_27_ + 16;
                         int i_30_ = arg1.xDrawOffset + i_28_ + 16;
                         int i_31_ = i_30_ + (i_29_ << 7);
@@ -663,55 +922,55 @@ public class LoginScreen {
     }
 
     public static void displayMessageForResponseCode(int responseCode) {
-        if(responseCode == -3) {
+        if (responseCode == -3) {
             setLoginScreenMessage(English.connectionTimedOut, English.pleaseTryUsingDifferentWorld, "");
-        } else if(responseCode == -2) {
+        } else if (responseCode == -2) {
             setLoginScreenMessage("", English.errorConnectingToServer, "");
-        } else if(responseCode == -1) {
+        } else if (responseCode == -1) {
             setLoginScreenMessage(English.noResponseFromServer, English.pleaseTryUsingDifferentWorld, "");
-        } else if(responseCode == 3) {
+        } else if (responseCode == 3) {
             setLoginScreenMessage("", English.invalidUsernameOrPassword, "");
-        } else if(responseCode == 4) {
+        } else if (responseCode == 4) {
             setLoginScreenMessage(English.yourAccountHasBeenDisabled, English.pleaseCheckYourMessageCenterForDetails, "");
-        } else if(responseCode == 5) {
+        } else if (responseCode == 5) {
             setLoginScreenMessage(English.yourAccountIsAlreadyLoggedIn, English.tryAgainIn60Secs, "");
-        } else if(responseCode == 6) {
+        } else if (responseCode == 6) {
             setLoginScreenMessage(English.gameHasBeenUpdated, English.pleaseReloadThisPage, "");
-        } else if(responseCode == 7) {
+        } else if (responseCode == 7) {
             setLoginScreenMessage(English.theWorldIsFull, English.pleaseUseADifferentWorld, "");
-        } else if(responseCode == 8) {
+        } else if (responseCode == 8) {
             setLoginScreenMessage(English.unableToConnect, English.loginServerOffline, "");
-        } else if(responseCode == 9) {
+        } else if (responseCode == 9) {
             setLoginScreenMessage(English.loginLimitExceeded, English.tooManyConnectionsFromYourAddress, "");
-        } else if(responseCode == 10) {
+        } else if (responseCode == 10) {
             setLoginScreenMessage(English.unableToConnect, English.badSessionId, "");
-        } else if(responseCode == 11) {
+        } else if (responseCode == 11) {
             setLoginScreenMessage(English.weSuspectSomeoneKnowsYourPassword, English.pressChangeYourPasswordOnFrontPage, "");
-        } else if(responseCode == 12) {
+        } else if (responseCode == 12) {
             setLoginScreenMessage(English.youNeedMembersAccountToLoginToThisWorld, English.pleaseSubscribeOrUseDifferentWorld, "");
-        } else if(responseCode == 13) {
+        } else if (responseCode == 13) {
             setLoginScreenMessage(English.couldNotCompleteLogin, English.pleaseTryUsingDifferentWorld, "");
-        } else if(responseCode == 14) {
+        } else if (responseCode == 14) {
             setLoginScreenMessage(English.theServerIsBeingUpdated, English.pleaseWait1MinuteAndTryAgain, "");
-        } else if(responseCode == 16) {
+        } else if (responseCode == 16) {
             setLoginScreenMessage(English.tooManyIncorrectLoginsFromYourAddress, English.pleaseWait5MinutesBeforeTryingAgain, "");
-        } else if(responseCode == 17) {
+        } else if (responseCode == 17) {
             setLoginScreenMessage(English.youAreStandingInMembersOnlyArea, English.toPlayOnThisWorldMoveToFreeArea, "");
-        } else if(responseCode == 18) {
+        } else if (responseCode == 18) {
             setLoginScreenMessage(English.accountLockedAsWeSuspectItHasBeenStolen, English.pressRecoverLockedAccountOnFrontPage, "");
-        } else if(responseCode == 20) {
+        } else if (responseCode == 20) {
             setLoginScreenMessage(English.invalidLoginserverRequested, English.pleaseTryUsingDifferentWorld, "");
-        } else if(responseCode == 22) {
+        } else if (responseCode == 22) {
             setLoginScreenMessage(English.malformedLoginPacket, English.pleaseTryAgain, "");
-        } else if(responseCode == 23) {
+        } else if (responseCode == 23) {
             setLoginScreenMessage(English.noReplyFromLoginserver, English.pleaseWait1MinuteAndTryAgain, "");
-        } else if(responseCode == 24) {
+        } else if (responseCode == 24) {
             setLoginScreenMessage(English.errorLoadingYourProfile, English.pleaseContactCustomerSupport, "");
-        } else if(responseCode == 25) {
+        } else if (responseCode == 25) {
             setLoginScreenMessage(English.unexpectedLoginserverResponse, English.pleaseTryUsingDifferentWorld, "");
-        } else if(responseCode == 26) {
+        } else if (responseCode == 26) {
             setLoginScreenMessage(English.thisComputersAddressHasBeenBlocked, English.asItWasUsedToBreakOurRules, "");
-        } else if(responseCode == 27) {
+        } else if (responseCode == 27) {
             setLoginScreenMessage("", English.serviceUnavailable, "");
         } else {
             setLoginScreenMessage(English.unexpectedServerResponse, English.pleaseTryUsingDifferentWorld, "");

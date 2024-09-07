@@ -10,6 +10,8 @@ public class Native {
     public static String amountSeparatorX =" x ";
     public static RSString password = RSString.CreateString("");
     public static RSString username = RSString.CreateString("");
+    public static String newPassword = "";
+    public static String newUsername = "";
     public static String amountPrefixX = " x";
     public static RSString string_blank = RSString.CreateString("");
     public static String loginScreenMessageLineOne = "";
