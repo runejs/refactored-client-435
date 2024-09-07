@@ -132,6 +132,9 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             } else {
                 keyChar = getKeyChar(keyEvent);
             }
+            if (eventKeyCode == KeyEvent.VK_SHIFT) {
+                Game.shiftPressed = true;
+            }
             if (eventKeyCode == 192 || eventKeyCode == 129) {
                 Console.console.consoleOpen = !Console.console.consoleOpen;
             }
@@ -159,11 +162,16 @@ public class KeyFocusListener implements KeyListener, FocusListener {
             framesSinceKeyboardInput = 0;
             int i = arg0.getKeyCode();
 
+            if (i == KeyEvent.VK_SHIFT) {
+                Game.shiftPressed = false;
+            }
+
             if (i < 0 || OBFUSCATED_KEY_CODES.length <= i) {
                 i = -1;
             } else {
                 i = ~0x80 & OBFUSCATED_KEY_CODES[i];
             }
+
             if (anInt2543 >= 0 && i >= 0) {
                 MovedStatics.keyCodes[anInt2543] = i ^ 0xffffffff;
                 anInt2543 = 0x7f & 1 + anInt2543;

@@ -386,9 +386,13 @@ public class ScreenController {
             int destX = Player.localPlayer.worldX + i_14_ >> 7;
             int destY = -i_15_ + Player.localPlayer.worldY >> 7;
 
+            // if the player is a mod or admin, and the shift key is pressed,
+            // this will send a console command to the server to teleport the
+            // player. This predates the shift key modifiers
+            // added on 2024-09-04.
             if (MovedStatics.obfuscatedKeyStatus[81] && Game.playerRights > 1) {
                 OutgoingPackets.buffer.putPacket(246);
-                OutgoingPackets.buffer.putString(MessageFormat.format(" move {0} {1}", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + MovedStatics.baseY)));
+                OutgoingPackets.buffer.putString(MessageFormat.format("{0} {1} {2}", "move", Integer.toString(destX + MovedStatics.baseX), Integer.toString(destY + MovedStatics.baseY)));
             } else {
                 Pathfinding.MinimapWalkAnalytics analytics = new Pathfinding.MinimapWalkAnalytics(
                     minimapClickX,
@@ -405,9 +409,9 @@ public class ScreenController {
                 );
 
                 Pathfinding.doMinimapWalkTo(
-                    Player.localPlayer.pathY[0], 
-                    Player.localPlayer.pathX[0], 
-                    destX, 
+                    Player.localPlayer.pathY[0],
+                    Player.localPlayer.pathX[0],
+                    destX,
                     destY,
                     analytics
                 );
