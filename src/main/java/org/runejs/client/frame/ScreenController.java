@@ -113,7 +113,7 @@ public class ScreenController {
         if (Game.gameStatusCode <= 35 && Game.gameStatusCode >= 30) {
             MovedStatics.gameScreenImageProducer = MovedStatics.createGraphicsBuffer(ScreenController.frameMode == ScreenMode.FIXED ? 512 : ScreenController.drawWidth, ScreenController.frameMode == ScreenMode.FIXED ? 334 : ScreenController.drawHeight, GameShell.clientFrame);
         } else {
-            Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
+            Game.gameCanvas.setSize(ScreenController.drawWidth, ScreenController.drawHeight);
             Game.gameCanvas.setVisible(true);
             if (GameShell.clientFrame == null)
                 Game.gameCanvas.setLocation(0, 0);

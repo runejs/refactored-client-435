@@ -215,7 +215,9 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
         if (cyclesSinceReset++ > 50) {
             cyclesSinceReset -= 50;
             MovedStatics.clearScreen = true;
-            Game.gameCanvas.setSize(MovedStatics.width, MovedStatics.height);
+            ScreenController.refreshFrameSize();
+            Game.gameCanvas.setSize(ScreenController.drawWidth, ScreenController.drawHeight);
+
             Game.gameCanvas.setVisible(true);
             Game.gameCanvas.setBackground(Color.BLACK);
             if (clientFrame == null)

@@ -24,88 +24,100 @@ public class Configuration {
 
             final Map<String, Object> obj = yaml.load(inputStream);
 
-            final Map<String, Object> net = (Map<String, Object>) obj.get("net");
-            final Map<String, Object> cache = (Map<String, Object>) obj.get("cache");
-            final Map<String, Object> rsa = (Map<String, Object>) obj.get("rsa");
-            final Map<String, Object> login = (Map<String, Object>) obj.get("login");
-            final Map<String, Object> game = (Map<String, Object>) obj.get("game");
+            final Map<String, Object> net = getOrDefaultMap(obj, "net");
+            final Map<String, Object> cache = getOrDefaultMap(obj, "cache");
+            final Map<String, Object> rsa = getOrDefaultMap(obj, "rsa");
+            final Map<String, Object> login = getOrDefaultMap(obj, "login");
+            final Map<String, Object> game = getOrDefaultMap(obj, "game");
 
-            SERVER_ADDRESS = (String) net.get("address");
-            GAME_PORT = (int) net.get("game_port");
-            CACHE_NAME = (String) cache.get("cacheDir");
-            RSA_PUBLIC_KEY = new BigInteger(String.valueOf((int) rsa.get("rsaPub")));
-            RSA_MODULUS = (BigInteger) rsa.get("rsaModulus");
-            USE_STATIC_DETAILS = (boolean) login.get("useStaticCredentials");
-            USERNAME = (String) login.get("username");
-            PASSWORD = (String) login.get("password");
-            ROOFS_ENABLED = (boolean) game.get("roofsEnabled");
-            SHIFT_CLICK_MODIFIER = (boolean) game.get("shiftClickModifier");
-            SOUND_MUTED = (boolean) game.get("soundMuted");
-            FREE_TELEPORTS = (boolean) game.get("freeTeleports");
-            DEBUG_CONTEXT = (boolean) game.get("debugContextMenu");
-            RESIZABLE = (boolean) game.get("resizable");
-            RENDER_FLAMES = (boolean) game.get("renderFlames");
-            SERVER_DISPLAY_NAME = (String) obj.get("serverDisplayName");
-
-            if (USERNAME == null) {
-                USERNAME = "";
-            }
-
-            if (PASSWORD == null) {
-                PASSWORD = "";
-            }
-
-            if (SERVER_DISPLAY_NAME == null) {
-                SERVER_DISPLAY_NAME = "Build 435";
-            }
+            SERVER_ADDRESS = getOrDefault(net, "address", SERVER_ADDRESS);
+            GAME_PORT = getOrDefault(net, "game_port", GAME_PORT);
+            CACHE_NAME = getOrDefault(cache, "cacheDir", CACHE_NAME);
+            RSA_PUBLIC_KEY = new BigInteger(String.valueOf(getOrDefault(rsa, "rsaPub", RSA_PUBLIC_KEY.toString())));
+            RSA_MODULUS = new BigInteger(String.valueOf(getOrDefault(rsa, "rsaModulus", RSA_MODULUS.toString())));
+            USE_STATIC_DETAILS = getOrDefault(login, "useStaticCredentials", USE_STATIC_DETAILS);
+            USERNAME = getOrDefault(login, "username", USERNAME);
+            PASSWORD = getOrDefault(login, "password", PASSWORD);
+            ROOFS_ENABLED = getOrDefault(game, "roofsEnabled", ROOFS_ENABLED);
+            SHIFT_CLICK_MODIFIER = getOrDefault(game, "shiftClickModifier", SHIFT_CLICK_MODIFIER);
+            SOUND_MUTED = getOrDefault(game, "soundMuted", SOUND_MUTED);
+            FREE_TELEPORTS = getOrDefault(game, "freeTeleports", FREE_TELEPORTS);
+            DEBUG_CONTEXT = getOrDefault(game, "debugContextMenu", DEBUG_CONTEXT);
+            RESIZABLE = getOrDefault(game, "resizable", RESIZABLE);
+            RENDER_FLAMES = getOrDefault(game, "renderFlames", RENDER_FLAMES);
+            SERVER_DISPLAY_NAME = getOrDefault(obj, "serverDisplayName", SERVER_DISPLAY_NAME);
 
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println("Unable to load client config - using defaults.");
-            Map<String, Object> net = new HashMap<String, Object>();
+            e.printStackTrace();
+            writeDefaultConfig();
+        }
+    }
 
-            net.put("address", SERVER_ADDRESS);
-            net.put("game_port", GAME_PORT);
+    private static Map<String, Object> getOrDefaultMap(Map<String, Object> map, String key) {
+        Object value = map.get(key);
+        return (value instanceof Map) ? (Map<String, Object>) value : new HashMap<>();
+    }
 
-            Map<String, Object> cache = new HashMap<String, Object>();
-            cache.put("cacheDir", CACHE_NAME);
+    private static <T> T getOrDefault(Map<String, Object> map, String key, T defaultValue) {
+        Object value = map.get(key);
+        if (value == null) {
+            return defaultValue;
+        }
+        if (defaultValue instanceof Boolean) {
+            return (T) Boolean.valueOf(String.valueOf(value));
+        }
+        if (defaultValue instanceof Integer) {
+            return (T) Integer.valueOf(String.valueOf(value));
+        }
+        return (T) value;
+    }
 
-            Map<String, Object> rsa = new HashMap<String, Object>();
-            rsa.put("rsaPub", RSA_PUBLIC_KEY);
-            rsa.put("rsaModulus", RSA_MODULUS);
+    private static void writeDefaultConfig() {
+        final File configFile = new File(clientConfigPath);
+        Map<String, Object> clientConfig = new HashMap<>();
 
-            Map<String, Object> login = new HashMap<String, Object>();
-            login.put("useStaticCredentials", USE_STATIC_DETAILS);
-            login.put("username", USERNAME);
-            login.put("password", PASSWORD);
+        Map<String, Object> net = new HashMap<>();
+        net.put("address", SERVER_ADDRESS);
+        net.put("game_port", GAME_PORT);
 
-            Map<String, Object> game = new HashMap<String, Object>();
-            game.put("roofsEnabled", ROOFS_ENABLED);
-            game.put("shiftClickModifier", SHIFT_CLICK_MODIFIER);
-            game.put("freeTeleports", FREE_TELEPORTS);
-            game.put("debugContextMenu", DEBUG_CONTEXT);
-            game.put("soundMuted", SOUND_MUTED);
-            game.put("resizable", RESIZABLE);
-            game.put("renderFlames", RENDER_FLAMES);
+        Map<String, Object> cache = new HashMap<>();
+        cache.put("cacheDir", CACHE_NAME);
 
-            Map<String, Object> clientConfig = new HashMap<String, Object>();
-            clientConfig.put("serverDisplayName", SERVER_DISPLAY_NAME);
-            clientConfig.put("net", net);
-            clientConfig.put("cache", cache);
-            clientConfig.put("rsa", rsa);
-            clientConfig.put("login", login);
-            clientConfig.put("game", game);
-            final DumperOptions options = new DumperOptions();
-            options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
-            options.setPrettyFlow(true);
-            Yaml yaml = new Yaml(options);
-            try {
-                FileWriter writer = new FileWriter(configFile);
-                yaml.dump(clientConfig, writer);
-            } catch (Exception writeExeption) {
-                System.out.println("Failed to write default configuration to disk.");
+        Map<String, Object> rsa = new HashMap<>();
+        rsa.put("rsaPub", RSA_PUBLIC_KEY.toString());
+        rsa.put("rsaModulus", RSA_MODULUS.toString());
 
-            }
+        Map<String, Object> login = new HashMap<>();
+        login.put("useStaticCredentials", USE_STATIC_DETAILS);
+        login.put("username", USERNAME);
+        login.put("password", PASSWORD);
+
+        Map<String, Object> game = new HashMap<>();
+        game.put("roofsEnabled", ROOFS_ENABLED);
+        game.put("shiftClickModifier", SHIFT_CLICK_MODIFIER);
+        game.put("freeTeleports", FREE_TELEPORTS);
+        game.put("debugContextMenu", DEBUG_CONTEXT);
+        game.put("soundMuted", SOUND_MUTED);
+        game.put("resizable", RESIZABLE);
+        game.put("renderFlames", RENDER_FLAMES);
+
+        clientConfig.put("serverDisplayName", SERVER_DISPLAY_NAME);
+        clientConfig.put("net", net);
+        clientConfig.put("cache", cache);
+        clientConfig.put("rsa", rsa);
+        clientConfig.put("login", login);
+        clientConfig.put("game", game);
+
+        final DumperOptions options = new DumperOptions();
+        options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+        options.setPrettyFlow(true);
+        Yaml yaml = new Yaml(options);
+        try {
+            FileWriter writer = new FileWriter(configFile);
+            yaml.dump(clientConfig, writer);
+        } catch (Exception writeException) {
+            System.out.println("Failed to write default configuration to disk.");
         }
     }
 
@@ -236,7 +248,7 @@ public class Configuration {
             final Map<String, Object> obj = yaml.load(inputStream);
             final Map<String, Object> game = (Map<String, Object>) obj.get("game");
             game.put("soundMuted", SOUND_MUTED);
-            obj.put("game",game);
+            obj.put("game", game);
             FileWriter writer = new FileWriter(configFile);
             yaml.dump(obj, writer);
 
@@ -248,18 +260,18 @@ public class Configuration {
     }
 
     public static RSString getUsername() {
-        if(USE_STATIC_DETAILS) {
+        if (USE_STATIC_DETAILS) {
             return RSString.CreateString(USERNAME);
-        } else{
+        } else {
             return Native.string_blank;
         }
     }
 
 
     public static RSString getPassword() {
-        if(USE_STATIC_DETAILS) {
+        if (USE_STATIC_DETAILS) {
             return RSString.CreateString(PASSWORD);
-        } else{
+        } else {
             return Native.string_blank;
         }
     }

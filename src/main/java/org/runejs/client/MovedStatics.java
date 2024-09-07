@@ -865,8 +865,11 @@ public class MovedStatics {
                     aProducingGraphicsBuffer_2213 = createGraphicsBuffer(765, 503, Game.gameCanvas);
             }
             if (statusCode == 5 || statusCode == 10 || statusCode == 20) {
+                MovedStatics.clearScreen = true;
                 aProducingGraphicsBuffer_2213 = null;
                 method344(-69);
+                Game.gameCanvas.setSize(ScreenController.drawWidth, ScreenController.drawHeight);
+
                 LoginScreen.renderLoginScreen(Game.gameCanvas, CacheArchive.huffmanCacheArchive, CacheArchive.gameImageCacheArchive);
             }
             if (statusCode == 25 || statusCode == 30 || statusCode == 40) {
