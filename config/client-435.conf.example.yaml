@@ -14,5 +14,7 @@ game:
   roofsEnabled: true
   freeTeleports: false
   debugContextMenu: true
+  renderFlames: true
+  resizable: false
   shiftClickModifier: true
 serverDisplayName: Build 435

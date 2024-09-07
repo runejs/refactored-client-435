@@ -43,6 +43,8 @@ public class Configuration {
             SOUND_MUTED = (boolean) game.get("soundMuted");
             FREE_TELEPORTS = (boolean) game.get("freeTeleports");
             DEBUG_CONTEXT = (boolean) game.get("debugContextMenu");
+            RESIZABLE = (boolean) game.get("resizable");
+            RENDER_FLAMES = (boolean) game.get("renderFlames");
             SERVER_DISPLAY_NAME = (String) obj.get("serverDisplayName");
 
             if (USERNAME == null) {
@@ -83,7 +85,8 @@ public class Configuration {
             game.put("freeTeleports", FREE_TELEPORTS);
             game.put("debugContextMenu", DEBUG_CONTEXT);
             game.put("soundMuted", SOUND_MUTED);
-
+            game.put("resizable", RESIZABLE);
+            game.put("renderFlames", RENDER_FLAMES);
 
             Map<String, Object> clientConfig = new HashMap<String, Object>();
             clientConfig.put("serverDisplayName", SERVER_DISPLAY_NAME);
@@ -185,6 +188,17 @@ public class Configuration {
      * Always light up teleports
      */
     public static boolean FREE_TELEPORTS = true;
+
+    /**
+     * Enable resizable mode
+     */
+    public static boolean RESIZABLE = false;
+
+    /**
+     * Toggle rendering frames to reduce wasted processing power on the login
+     * screen
+     */
+    public static boolean RENDER_FLAMES = true;
 
     /**
      * When rightclicking objects show id and location

@@ -241,9 +241,14 @@ public class GameShell extends Canvas implements GameErrorHandler, Runnable, Foc
             currentGameShell = this;
             clientFrame = new Frame();
             clientFrame.setTitle(Configuration.SERVER_DISPLAY_NAME);
-            ScreenController.frameMode(ScreenMode.FIXED);
+            if (Configuration.RESIZABLE == true) {
+                ScreenController.frameMode(ScreenMode.RESIZABLE);
+                clientFrame.setResizable(true);
+            } else {
+                ScreenController.frameMode(ScreenMode.FIXED);
+                clientFrame.setResizable(false);
+            }
             clientFrame.setPreferredSize(new Dimension(width, height));
-            clientFrame.setResizable(ScreenController.frameMode == ScreenMode.RESIZABLE);
             clientFrame.addWindowListener(this);
             clientFrame.setVisible(true);
             clientFrame.toFront();
