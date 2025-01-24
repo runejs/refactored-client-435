@@ -24,9 +24,9 @@ public class UpdateNPCsMessageHandler implements MessageHandler<UpdateNPCsInboun
 
         Npc.parseNpcUpdateMasks(message.appearanceUpdates);
 
-        for(int i = 0; i < MovedStatics.deregisterActorCount; i++) {
+        for (int i = 0; i < MovedStatics.deregisterActorCount; i++) {
             int trackedNpcIndex = Player.deregisterActorIndices[i];
-            if(MovedStatics.pulseCycle != Player.npcs[trackedNpcIndex].anInt3134) {
+            if (Player.npcs[trackedNpcIndex] != null && MovedStatics.pulseCycle != Player.npcs[trackedNpcIndex].anInt3134) {
                 Player.npcs[trackedNpcIndex].actorDefinition = null;
                 Player.npcs[trackedNpcIndex] = null;
             }
