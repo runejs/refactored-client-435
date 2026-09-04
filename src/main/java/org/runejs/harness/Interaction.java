@@ -6,6 +6,7 @@ import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.frame.ScreenController;
 import org.runejs.client.input.MouseHandler;
+import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.Point2d;
@@ -32,6 +33,16 @@ public final class Interaction {
     private static final int TILE_UNITS = 128;
     private static final int[] ACTOR_HEIGHT_FRACTIONS = {2, 4, 1};
     private static final int[] OBJECT_HEIGHTS = {80, 30, 160, 250, 10, 400};
+
+    /**
+     * The fixed-mode minimap's clickable box on screen, as {@code ScreenController.handleMinimapMouse} defines it.
+     */
+    private static final int MINIMAP_LEFT = 575;
+    private static final int MINIMAP_TOP = 9;
+    private static final int MINIMAP_WIDTH = 146;
+    private static final int MINIMAP_HEIGHT = 151;
+    private static final int MINIMAP_CENTRE_X = 73;
+    private static final int MINIMAP_CENTRE_Y = 75;
 
     private final HeadlessShell shell;
 
@@ -228,6 +239,83 @@ public final class Interaction {
         Map<String, Object> result = hover.toJson();
         result.put("clicked", walk.toJson());
         return result;
+    }
+
+    /**
+     * Walks to a tile by clicking it on the minimap, which is how a player covers ground the viewport cannot show.
+     *
+     * The client turns a minimap pixel into a destination tile with a rotation around the player; rather than
+     * invert that arithmetic, this scans the minimap for a pixel the client itself would map to the wanted tile,
+     * then moves the mouse there and clicks. The next game loop iteration handles the click exactly as it would a
+     * person's.
+     */
+    public Map<String, Object> clickMinimap(int absoluteX, int absoluteY) {
+        if (Player.localPlayer == null) {
+            throw new IllegalStateException("Not in the game");
+        }
+        int localX = absoluteX - MovedStatics.baseX;
+        int localY = absoluteY - MovedStatics.baseY;
+
+        int matches = 0;
+        long sumX = 0;
+        long sumY = 0;
+        for (int px = 0; px < MINIMAP_WIDTH; px++) {
+            for (int py = 0; py < MINIMAP_HEIGHT; py++) {
+                if (minimapDestinationX(px, py) == localX && minimapDestinationY(px, py) == localY) {
+                    matches++;
+                    sumX += px;
+                    sumY += py;
+                }
+            }
+        }
+        if (matches == 0) {
+            throw new IllegalStateException("tile:" + absoluteX + "," + absoluteY + " is not on the minimap");
+        }
+
+        int screenX = MINIMAP_LEFT + (int) (sumX / matches);
+        int screenY = MINIMAP_TOP + (int) (sumY / matches);
+        hover(screenX, screenY);
+        press(screenX, screenY);
+
+        Map<String, Object> result = Json.object();
+        result.put("screen", Perception.position(screenX, screenY));
+        result.put("target", Perception.position(absoluteX, absoluteY));
+        return result;
+    }
+
+    /**
+     * The scene-local x tile the client would walk to for a click at this offset into the minimap box. The
+     * arithmetic is {@code ScreenController.handleMinimapMouse}'s, kept identical on purpose.
+     */
+    private static int minimapDestinationX(int px, int py) {
+        int clickX = px - MINIMAP_CENTRE_X;
+        int clickY = py - MINIMAP_CENTRE_Y;
+        int angle = 0x7ff & Game.getMinimapRotation();
+        int sin = Rasterizer3D.sinetable[angle];
+        int cos = Rasterizer3D.cosinetable[angle];
+        int offset = clickY * sin + clickX * cos >> 11;
+        return Player.localPlayer.worldX + offset >> 7;
+    }
+
+    private static int minimapDestinationY(int px, int py) {
+        int clickX = px - MINIMAP_CENTRE_X;
+        int clickY = py - MINIMAP_CENTRE_Y;
+        int angle = 0x7ff & Game.getMinimapRotation();
+        int sin = Rasterizer3D.sinetable[angle];
+        int cos = Rasterizer3D.cosinetable[angle];
+        int offset = cos * clickY - clickX * sin >> 11;
+        return -offset + Player.localPlayer.worldY >> 7;
+    }
+
+    /**
+     * A left click at a screen position, delivered as the press and release the AWT canvas would deliver. The
+     * client consumes it on its next loop iteration.
+     */
+    public void press(int screenX, int screenY) {
+        MouseEvent pressed = new MouseEvent(Game.gameCanvas, MouseEvent.MOUSE_PRESSED, 0L, 0, screenX, screenY, 1, false, MouseEvent.BUTTON1);
+        MouseEvent released = new MouseEvent(Game.gameCanvas, MouseEvent.MOUSE_RELEASED, 0L, 0, screenX, screenY, 1, false, MouseEvent.BUTTON1);
+        Game.mouseHandler.mousePressed(pressed);
+        Game.mouseHandler.mouseReleased(released);
     }
 
     private void selectRow(MenuRow row, Hover hover) {

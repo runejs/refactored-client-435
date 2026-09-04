@@ -56,6 +56,8 @@ public final class HarnessCommands {
                 return interaction.click(EntityRef.parse(Json.stringValue(request, "entity")), Json.stringValue(request, "option"));
             case "click_tile":
                 return interaction.clickTile(Json.intValue(request, "x", -1), Json.intValue(request, "y", -1));
+            case "click_minimap":
+                return interaction.clickMinimap(Json.intValue(request, "x", -1), Json.intValue(request, "y", -1));
             case "screenshot":
                 return screenshot(Json.stringValue(request, "path"));
             default:
