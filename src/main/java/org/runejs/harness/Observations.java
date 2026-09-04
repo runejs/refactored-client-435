@@ -19,6 +19,11 @@ import java.util.Map;
  */
 public final class Observations implements MessageHandlerRegistry.InboundMessageListener {
     private static final String[] CLASS_SUFFIXES = {"InboundMessage", "Message"};
+    /**
+     * Enough for several hundred ticks of a busy scene; beyond that the oldest are dropped rather than growing
+     * without bound while the client idles.
+     */
+    private static final int CAPACITY = 20000;
 
     private final List<Object> recorded = new ArrayList<Object>();
     private long currentTick = 0;
@@ -53,6 +58,9 @@ public final class Observations implements MessageHandlerRegistry.InboundMessage
         observation.put("type", type);
         observation.putAll(details);
         recorded.add(observation);
+        if (recorded.size() > CAPACITY) {
+            recorded.subList(0, recorded.size() - CAPACITY).clear();
+        }
     }
 
     /**

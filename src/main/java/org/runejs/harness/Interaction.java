@@ -11,6 +11,7 @@ import org.runejs.client.media.renderable.actor.Actor;
 import org.runejs.client.media.renderable.actor.Player;
 import org.runejs.client.scene.Point2d;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public final class Interaction {
     private static final int TILE_UNITS = 128;
     private static final int[] ACTOR_HEIGHT_FRACTIONS = {2, 4, 1};
     private static final int[] OBJECT_HEIGHTS = {80, 30, 160, 250, 10, 400};
+    private static final int MAX_CHAT_LENGTH = 80;
 
     /**
      * The fixed-mode minimap's clickable box on screen, as {@code ScreenController.handleMinimapMouse} defines it.
@@ -305,6 +307,38 @@ public final class Interaction {
         int cos = Rasterizer3D.cosinetable[angle];
         int offset = cos * clickY - clickX * sin >> 11;
         return -offset + Player.localPlayer.worldY >> 7;
+    }
+
+    /**
+     * Says something in public chat by typing it: each character and then Enter are delivered to the client's key
+     * listener as the canvas would deliver them, and the client's own text handling sends the chat message on its
+     * next loop iteration. A leading "::" therefore reaches the server as a command, as it would for a person.
+     */
+    public Map<String, Object> say(String text) {
+        if (text == null || text.isEmpty()) {
+            throw new IllegalArgumentException("say needs text");
+        }
+        if (text.length() > MAX_CHAT_LENGTH) {
+            throw new IllegalArgumentException("Chat is limited to " + MAX_CHAT_LENGTH + " characters");
+        }
+        if (Player.localPlayer == null) {
+            throw new IllegalStateException("Not in the game");
+        }
+        for (int i = 0; i < text.length(); i++) {
+            typeKey(KeyEvent.VK_UNDEFINED, text.charAt(i));
+        }
+        typeKey(KeyEvent.VK_ENTER, '\n');
+
+        Map<String, Object> result = Json.object();
+        result.put("said", text);
+        return result;
+    }
+
+    private static void typeKey(int keyCode, char keyChar) {
+        KeyEvent pressed = new KeyEvent(Game.gameCanvas, KeyEvent.KEY_PRESSED, 0L, 0, keyCode, keyChar);
+        KeyEvent released = new KeyEvent(Game.gameCanvas, KeyEvent.KEY_RELEASED, 0L, 0, keyCode, keyChar);
+        Game.keyFocusListener.keyPressed(pressed);
+        Game.keyFocusListener.keyReleased(released);
     }
 
     /**

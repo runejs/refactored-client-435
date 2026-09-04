@@ -69,6 +69,8 @@ public final class HarnessCommands {
                 return interaction.clickTile(Json.intValue(request, "x", -1), Json.intValue(request, "y", -1));
             case "click_minimap":
                 return interaction.clickMinimap(Json.intValue(request, "x", -1), Json.intValue(request, "y", -1));
+            case "say":
+                return interaction.say(Json.stringValue(request, "text"));
             case "screenshot":
                 return screenshot(Json.stringValue(request, "path"));
             default:
@@ -154,6 +156,9 @@ public final class HarnessCommands {
      * marks the end of one of its ticks. What changed is reported the same way as in lockstep, diffed from now.
      */
     private Waiter awaitTicks(final int ticks) {
+        // Whatever arrived while nobody was waiting is not "what happened during this wait", and after an idle
+        // stretch it can be hours of sync updates.
+        observations.drain();
         final long target = observations.currentTick() + ticks;
         final boolean wasInGame = Perception.inGame();
         final long[] inventoryBefore = wasInGame ? Perception.inventorySnapshot() : null;
