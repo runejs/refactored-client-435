@@ -2,7 +2,9 @@ package org.runejs.client.message.handler;
 
 import org.runejs.client.message.InboundMessage;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,6 +17,26 @@ public class MessageHandlerRegistry {
      * A mapping of message class to handler.
      */
     private final Map<Class<? extends InboundMessage>, MessageHandler<? extends InboundMessage>> handlers = new HashMap<>();
+
+    /**
+     * Observers told about every message just before its handler applies it to the client's state.
+     */
+    private final List<InboundMessageListener> listeners = new ArrayList<>();
+
+    /**
+     * Something that wants to see every inbound message as it is handled, without changing what happens to it.
+     */
+    public interface InboundMessageListener {
+        void onMessage(InboundMessage message);
+    }
+
+    public void addListener(InboundMessageListener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeListener(InboundMessageListener listener) {
+        listeners.remove(listener);
+    }
 
     /**
      * Registers a message handler for a given message class.
@@ -39,6 +61,19 @@ public class MessageHandlerRegistry {
      * @return The message handler.
      */
     public <TMessage extends InboundMessage> MessageHandler<TMessage> getMessageHandler(Class<TMessage> messageClass) {
-        return (MessageHandler<TMessage>) handlers.get(messageClass);
+        final MessageHandler<TMessage> handler = (MessageHandler<TMessage>) handlers.get(messageClass);
+        if (handler == null || listeners.isEmpty()) {
+            return handler;
+        }
+
+        return new MessageHandler<TMessage>() {
+            @Override
+            public void handle(TMessage message) {
+                for (InboundMessageListener listener : listeners) {
+                    listener.onMessage(message);
+                }
+                handler.handle(message);
+            }
+        };
     }
 }
