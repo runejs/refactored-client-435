@@ -18,6 +18,8 @@ import java.net.InetAddress;
  * the client's state can change between a command being received and its answer being written.
  */
 public final class HarnessMain {
+    private static final long EXIT_GRACE_MS = 3000L;
+
     private HarnessMain() {
     }
 
@@ -55,6 +57,27 @@ public final class HarnessMain {
         if (driver != null) {
             driver.stop();
         }
+        haltAfter(EXIT_GRACE_MS);
         System.exit(0);
+    }
+
+    /**
+     * The controller is gone, so this process has no reason to exist. Closing the game can block on its own
+     * threads, and a client that lingers keeps its player logged in on the server, so the exit is enforced.
+     */
+    private static void haltAfter(final long millis) {
+        Thread watchdog = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(millis);
+                } catch (InterruptedException ignored) {
+                    // Falling through to halt is the point.
+                }
+                Runtime.getRuntime().halt(0);
+            }
+        }, "exit-watchdog");
+        watchdog.setDaemon(true);
+        watchdog.start();
     }
 }
