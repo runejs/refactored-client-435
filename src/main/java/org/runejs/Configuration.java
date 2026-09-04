@@ -13,7 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Configuration {
-    static final String clientConfigPath = System.getProperty("user.home") + File.separator + "client-435.conf.yaml";
+    /**
+     * Where the client configuration lives. Defaults to the user's home directory; the system property
+     * {@code runejs.client.config} points a headless or test client at a configuration of its own.
+     */
+    static final String clientConfigPath = System.getProperty("runejs.client.config",
+            System.getProperty("user.home") + File.separator + "client-435.conf.yaml");
 
 
     public static void read() {
