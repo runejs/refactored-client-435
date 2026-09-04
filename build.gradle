@@ -14,14 +14,14 @@ repositories {
 }
 
 application {
-    mainClassName 'org.runejs.client.GameShell'
+    mainClass = 'org.runejs.client.GameShell'
 }
 
 jar {
     dependsOn configurations.runtimeClasspath
 
     manifest {
-        attributes("MAIN-CLASS": application.mainClassName)
+        attributes("MAIN-CLASS": application.mainClass.get())
     }
 
     from {
