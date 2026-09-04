@@ -3,6 +3,7 @@ package org.runejs.harness;
 import org.runejs.client.Game;
 import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
+import org.runejs.client.message.inbound.updating.UpdateNPCsInboundMessage;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -21,13 +22,25 @@ public final class Observations implements MessageHandlerRegistry.InboundMessage
 
     private final List<Object> recorded = new ArrayList<Object>();
     private long currentTick = 0;
+    private boolean countingTicks = false;
 
     public void attach() {
         Game.handlerRegistry.addListener(this);
     }
 
+    /**
+     * Lockstep mode: the controller says which server tick the coming loops belong to.
+     */
     public void beginTick(long tick) {
         currentTick = tick;
+    }
+
+    /**
+     * Live mode: nobody tells the client which tick it is, but every server tick ends with the player and NPC
+     * sync messages, so the tick counter advances itself when the NPC sync has been handled.
+     */
+    public void countTicksFromSync() {
+        countingTicks = true;
     }
 
     public long currentTick() {
@@ -69,6 +82,10 @@ public final class Observations implements MessageHandlerRegistry.InboundMessage
             }
         }
         record("message." + messageName(message.getClass().getSimpleName()), details);
+
+        if (countingTicks && message instanceof UpdateNPCsInboundMessage) {
+            currentTick++;
+        }
     }
 
     /**

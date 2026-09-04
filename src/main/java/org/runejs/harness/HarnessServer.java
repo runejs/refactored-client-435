@@ -20,11 +20,13 @@ public final class HarnessServer {
     private final HeadlessShell shell;
     private final ServerSocket serverSocket;
     private final HarnessCommands commands;
+    private final CommandExecutor executor;
 
-    public HarnessServer(HeadlessShell shell, int port) throws IOException {
+    public HarnessServer(HeadlessShell shell, int port, HarnessCommands commands, CommandExecutor executor) throws IOException {
         this.shell = shell;
         this.serverSocket = new ServerSocket(port, 1, InetAddress.getLoopbackAddress());
-        this.commands = new HarnessCommands(shell);
+        this.commands = commands;
+        this.executor = executor;
     }
 
     public int port() {
@@ -47,14 +49,19 @@ public final class HarnessServer {
                 Map<String, Object> response;
                 boolean quit = false;
                 try {
-                    Map<String, Object> request = Json.parseObject(line);
-                    String op = Json.stringValue(request, "op");
+                    final Map<String, Object> request = Json.parseObject(line);
+                    final String op = Json.stringValue(request, "op");
                     if ("quit".equals(op)) {
                         quit = true;
                         response = Json.object();
                         response.put("ok", true);
                     } else {
-                        response = commands.handle(op, request);
+                        response = executor.execute(new java.util.concurrent.Callable<Object>() {
+                            @Override
+                            public Object call() throws Exception {
+                                return commands.handle(op, request);
+                            }
+                        });
                     }
                 } catch (Exception e) {
                     response = Json.error(e.getClass().getSimpleName() + ": " + e.getMessage());

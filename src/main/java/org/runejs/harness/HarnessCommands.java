@@ -23,14 +23,22 @@ public final class HarnessCommands {
     private final HeadlessShell shell;
     private final Observations observations = new Observations();
     private final Interaction interaction;
+    private final boolean realtime;
 
-    public HarnessCommands(HeadlessShell shell) {
+    public HarnessCommands(HeadlessShell shell, boolean realtime) {
         this.shell = shell;
+        this.realtime = realtime;
         this.interaction = new Interaction(shell);
         observations.attach();
+        if (realtime) {
+            observations.countTicksFromSync();
+        }
     }
 
-    public Map<String, Object> handle(String op, Map<String, Object> request) throws IOException, InterruptedException {
+    /**
+     * @return the answer, or a {@link Waiter} if the answer depends on the game reaching a later state.
+     */
+    public Object handle(String op, Map<String, Object> request) throws IOException, InterruptedException {
         if (op == null) {
             return Json.error("Missing op");
         }
@@ -39,6 +47,9 @@ public final class HarnessCommands {
             case "status":
                 return status();
             case "loop":
+                if (realtime) {
+                    throw new IllegalStateException("The loop runs by itself in realtime mode");
+                }
                 shell.loop(Json.intValue(request, "count", 1));
                 return status();
             case "draw":
@@ -47,7 +58,7 @@ public final class HarnessCommands {
             case "login":
                 return login();
             case "tick":
-                return tick(request);
+                return realtime ? awaitTicks(Json.intValue(request, "ticks", 1)) : tick(request);
             case "look":
                 return Perception.look(Json.intValue(request, "radius", DEFAULT_RADIUS));
             case "menu":
@@ -67,6 +78,7 @@ public final class HarnessCommands {
 
     private Map<String, Object> status() throws IOException {
         Map<String, Object> status = Json.object();
+        status.put("mode", realtime ? "realtime" : "lockstep");
         status.put("gameStatus", shell.gameStatusCode());
         status.put("inGame", Perception.inGame());
         status.put("loops", shell.loops());
@@ -135,6 +147,35 @@ public final class HarnessCommands {
         result.put("extraLoops", extraLoops);
         result.put("observations", observations.drain());
         return result;
+    }
+
+    /**
+     * Live mode's `tick`: the answer arrives once the server has sent {@code ticks} more sync updates, each of which
+     * marks the end of one of its ticks. What changed is reported the same way as in lockstep, diffed from now.
+     */
+    private Waiter awaitTicks(final int ticks) {
+        final long target = observations.currentTick() + ticks;
+        final boolean wasInGame = Perception.inGame();
+        final long[] inventoryBefore = wasInGame ? Perception.inventorySnapshot() : null;
+        final int xBefore = wasInGame ? Perception.absoluteX(Perception.tileX(Player.localPlayer)) : 0;
+        final int yBefore = wasInGame ? Perception.absoluteY(Perception.tileY(Player.localPlayer)) : 0;
+
+        return new Waiter() {
+            @Override
+            public boolean isDone() {
+                return observations.currentTick() >= target;
+            }
+
+            @Override
+            public Map<String, Object> result() throws Exception {
+                if (wasInGame && Perception.inGame()) {
+                    recordDerived(inventoryBefore, xBefore, yBefore);
+                }
+                Map<String, Object> result = status();
+                result.put("observations", observations.drain());
+                return result;
+            }
+        };
     }
 
     private void recordDerived(long[] inventoryBefore, int xBefore, int yBefore) {
