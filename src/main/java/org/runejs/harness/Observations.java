@@ -4,6 +4,7 @@ import org.runejs.client.Game;
 import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.inbound.updating.UpdateNPCsInboundMessage;
+import org.runejs.client.media.renderable.actor.Player;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -16,9 +17,12 @@ import java.util.Map;
  * Everything the server told the client during a tick, in the server's own vocabulary.
  *
  * Each inbound message is recorded under the name of its decoder's message class, with its public fields. No
- * event vocabulary is invented here: the client's codec already names every message.
+ * event vocabulary is invented here: the client's codec already names every message. The one exception is the
+ * player update, whose per-player masks the codec does not name: what it said about the local player's animation
+ * and graphic is recorded as {@code self.animation} and {@code self.graphic}, since a skill's animation and a
+ * level-up's fireworks are otherwise invisible to a test.
  */
-public final class Observations implements MessageHandlerRegistry.InboundMessageListener {
+public final class Observations implements MessageHandlerRegistry.InboundMessageListener, Player.UpdateListener {
     private static final String[] CLASS_SUFFIXES = {"InboundMessage", "Message"};
     /**
      * Enough for several hundred ticks of a busy scene; beyond that the oldest are dropped rather than growing
@@ -32,6 +36,7 @@ public final class Observations implements MessageHandlerRegistry.InboundMessage
 
     public void attach() {
         Game.handlerRegistry.addListener(this);
+        Player.updateListener = this;
     }
 
     /**
@@ -111,6 +116,29 @@ public final class Observations implements MessageHandlerRegistry.InboundMessage
         if (countingTicks && message instanceof UpdateNPCsInboundMessage) {
             currentTick++;
         }
+    }
+
+    @Override
+    public void onAnimation(Player player, int animationId, int delay) {
+        if (player != Player.localPlayer) {
+            return;
+        }
+        Map<String, Object> details = Json.object();
+        details.put("id", animationId);
+        details.put("delay", delay);
+        record("self.animation", details);
+    }
+
+    @Override
+    public void onGraphic(Player player, int graphicId, int height, int delay) {
+        if (player != Player.localPlayer) {
+            return;
+        }
+        Map<String, Object> details = Json.object();
+        details.put("id", graphicId);
+        details.put("height", height);
+        details.put("delay", delay);
+        record("self.graphic", details);
     }
 
     /**

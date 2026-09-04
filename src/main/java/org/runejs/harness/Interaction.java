@@ -335,10 +335,59 @@ public final class Interaction {
     }
 
     private static void typeKey(int keyCode, char keyChar) {
-        KeyEvent pressed = new KeyEvent(Game.gameCanvas, KeyEvent.KEY_PRESSED, 0L, 0, keyCode, keyChar);
-        KeyEvent released = new KeyEvent(Game.gameCanvas, KeyEvent.KEY_RELEASED, 0L, 0, keyCode, keyChar);
-        Game.keyFocusListener.keyPressed(pressed);
-        Game.keyFocusListener.keyReleased(released);
+        Game.keyFocusListener.keyPressed(keyEvent(KeyEvent.KEY_PRESSED, keyCode, keyChar));
+        Game.keyFocusListener.keyReleased(keyEvent(KeyEvent.KEY_RELEASED, keyCode, keyChar));
+    }
+
+    private static KeyEvent keyEvent(int id, int keyCode, char keyChar) {
+        return new KeyEvent(Game.gameCanvas, id, 0L, 0, keyCode, keyChar);
+    }
+
+    /**
+     * A key that is down until the shell has run a number of further loop iterations.
+     */
+    public static final class HeldKey {
+        public final int keyCode;
+        private volatile boolean released = false;
+
+        private HeldKey(int keyCode) {
+            this.keyCode = keyCode;
+        }
+
+        public boolean isReleased() {
+            return released;
+        }
+    }
+
+    /**
+     * Presses a key and keeps it down for {@code loops} loop iterations, then releases it, all through the key
+     * listener as the canvas would deliver it. The client reads the key state on each loop, so a held arrow key
+     * turns the camera at the client's own pace, as it does for a person holding the key.
+     */
+    public HeldKey holdKey(final int keyCode, int loops) {
+        if (loops <= 0) {
+            throw new IllegalArgumentException("holdKey needs a positive loop count, not " + loops);
+        }
+        final HeldKey held = new HeldKey(keyCode);
+        Game.keyFocusListener.keyPressed(keyEvent(KeyEvent.KEY_PRESSED, keyCode, KeyEvent.CHAR_UNDEFINED));
+        shell.afterLoops(loops, new Runnable() {
+            @Override
+            public void run() {
+                Game.keyFocusListener.keyReleased(keyEvent(KeyEvent.KEY_RELEASED, keyCode, KeyEvent.CHAR_UNDEFINED));
+                held.released = true;
+            }
+        });
+        return held;
+    }
+
+    /**
+     * The camera's rotation in the client's units, 2048 to a full turn. Yaw 0 looks north.
+     */
+    public static Map<String, Object> camera() {
+        Map<String, Object> camera = Json.object();
+        camera.put("yaw", Game.playerCamera.getYaw());
+        camera.put("pitch", Game.playerCamera.getPitch());
+        return camera;
     }
 
     /**

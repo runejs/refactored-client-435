@@ -15,6 +15,19 @@ import org.runejs.client.util.TextUtils;
 
 public class Player extends Actor {
 
+    /**
+     * Told what the server's player update said about a player's animation and graphic, with the values as the
+     * server sent them, before the client decides whether to play them. Lets an observer report what was sent
+     * without re-decoding the update.
+     */
+    public interface UpdateListener {
+        void onAnimation(Player player, int animationId, int delay);
+
+        void onGraphic(Player player, int graphicId, int height, int delay);
+    }
+
+    public static UpdateListener updateListener;
+
     public static int worldLevel;
     public static int[] viewportOffsets;
     public static Player localPlayer;
@@ -103,6 +116,8 @@ public class Player extends Actor {
             if(animationId == 65535)
                 animationId = -1;
             int animationDelay = appearanceBuffer.getUnsignedByte();
+            if(updateListener != null)
+                updateListener.onAnimation(player, animationId, animationDelay);
             playAnimation(animationId, animationDelay, player);
         }
         if((mask & 0x4) != 0) { // face actor
@@ -175,6 +190,8 @@ public class Player extends Actor {
             player.graphicHeight = graphicData >> 16;
             if(player.graphicDelay > MovedStatics.pulseCycle)
                 player.anInt3140 = -1;
+            if(updateListener != null)
+                updateListener.onGraphic(player, player.graphicId, player.graphicHeight, graphicData & 0xffff);
         }
         if((0x80 & mask) != 0) { // forced chat
             player.forcedChatMessage = appearanceBuffer.getString();

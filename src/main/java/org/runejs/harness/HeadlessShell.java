@@ -12,6 +12,9 @@ import org.runejs.client.util.Timer;
 
 import java.awt.Canvas;
 import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Runs the real {@link Game} without {@link org.runejs.client.GameShell}: no window, no timer, no sleeping.
@@ -33,7 +36,22 @@ public final class HeadlessShell implements GameErrorHandler {
     private static final int CACHE_INDEX_COUNT = 13;
     private static final int FILE_STORE_ID = 32;
 
+    /**
+     * Something to do once a number of further loop iterations have run: how a key stays held for a while, in
+     * either mode, without anyone sleeping.
+     */
+    private static final class Deferred {
+        int loopsLeft;
+        final Runnable action;
+
+        Deferred(int loopsLeft, Runnable action) {
+            this.loopsLeft = loopsLeft;
+            this.action = action;
+        }
+    }
+
     private final Game game;
+    private final List<Deferred> deferred = new ArrayList<Deferred>();
     private long loops = 0;
     private long frames = 0;
     private String lastError = null;
@@ -75,6 +93,29 @@ public final class HeadlessShell implements GameErrorHandler {
         MovedStatics.tickSamples[MovedStatics.currentTickSample] = System.currentTimeMillis();
         MovedStatics.currentTickSample = 0x1f & MovedStatics.currentTickSample + 1;
         game.processGameLoop();
+        runDeferred();
+    }
+
+    /**
+     * Runs {@code action} after {@code loops} more loop iterations, on the game thread, once the iteration that
+     * brings the count to zero has finished.
+     */
+    public void afterLoops(int loops, Runnable action) {
+        if (loops <= 0) {
+            throw new IllegalArgumentException("afterLoops needs a positive loop count, not " + loops);
+        }
+        deferred.add(new Deferred(loops, action));
+    }
+
+    private void runDeferred() {
+        Iterator<Deferred> iterator = deferred.iterator();
+        while (iterator.hasNext()) {
+            Deferred entry = iterator.next();
+            if (--entry.loopsLeft <= 0) {
+                iterator.remove();
+                entry.action.run();
+            }
+        }
     }
 
     public void loop(int iterations) {
