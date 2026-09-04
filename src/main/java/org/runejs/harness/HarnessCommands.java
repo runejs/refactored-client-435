@@ -113,6 +113,10 @@ public final class HarnessCommands {
                 return animation(Json.intValue(request, "id", -1));
             case "camera":
                 return camera(Json.stringValue(request, "turn"), Json.intValue(request, "loops", DEFAULT_CAMERA_LOOPS));
+            case "interface":
+                return Widgets.dump();
+            case "tab":
+                return interaction.openTab(Json.intValue(request, "tab", -1));
             default:
                 return Json.error("Unknown op: " + op);
         }

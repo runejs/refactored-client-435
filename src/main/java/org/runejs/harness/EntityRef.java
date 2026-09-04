@@ -11,10 +11,11 @@ package org.runejs.harness;
  * ground:&lt;itemId&gt;@&lt;x&gt;,&lt;y&gt;  an item on the floor
  * item:&lt;slot&gt;              an inventory slot
  * tile:&lt;x&gt;,&lt;y&gt;             a walkable tile
+ * widget:&lt;id&gt;              a widget of an open interface, as {@code interface} reports it
  * </pre>
  */
 public final class EntityRef {
-    public enum Kind { NPC, PLAYER, OBJECT, GROUND, ITEM, TILE }
+    public enum Kind { NPC, PLAYER, OBJECT, GROUND, ITEM, TILE, WIDGET }
 
     public final Kind kind;
     public final int index;
@@ -54,6 +55,10 @@ public final class EntityRef {
         return new EntityRef(Kind.TILE, -1, -1, x, y);
     }
 
+    public static EntityRef widget(int id) {
+        return new EntityRef(Kind.WIDGET, -1, id, -1, -1);
+    }
+
     public static EntityRef parse(String text) {
         if (text == null) {
             throw new IllegalArgumentException("Missing entity reference");
@@ -72,6 +77,8 @@ public final class EntityRef {
                     return player(Integer.parseInt(rest));
                 case "item":
                     return item(Integer.parseInt(rest));
+                case "widget":
+                    return widget(Integer.parseInt(rest));
                 case "tile": {
                     String[] xy = rest.split(",");
                     return tile(Integer.parseInt(xy[0]), Integer.parseInt(xy[1]));
@@ -105,6 +112,8 @@ public final class EntityRef {
                 return "player:" + index;
             case ITEM:
                 return "item:" + index;
+            case WIDGET:
+                return "widget:" + id;
             case TILE:
                 return "tile:" + x + "," + y;
             case OBJECT:

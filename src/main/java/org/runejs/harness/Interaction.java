@@ -34,7 +34,17 @@ public final class Interaction {
     private static final int TILE_UNITS = 128;
     private static final int[] ACTOR_HEIGHT_FRACTIONS = {2, 4, 1};
     private static final int[] OBJECT_HEIGHTS = {80, 30, 160, 250, 10, 400};
+    private static final int[] WALL_HEIGHTS = {80, 160, 30};
+    private static final int EDGE = TILE_UNITS / 2 - 4;
+    private static final int[][] TILE_EDGES = {{-EDGE, 0}, {EDGE, 0}, {0, -EDGE}, {0, EDGE}};
     private static final int MAX_CHAT_LENGTH = 80;
+    /**
+     * Action types the client uses for widgets without naming them in {@code ActionRowType}: a button or clickable
+     * text, a "click here to continue" line, and a widget's listener options.
+     */
+    private static final int WIDGET_BUTTON_ACTION = 42;
+    private static final int WIDGET_CONTINUE_ACTION = 54;
+    private static final int WIDGET_LISTENER_ACTION = 50;
 
     /**
      * The fixed-mode minimap's clickable box on screen, as {@code ScreenController.handleMinimapMouse} defines it.
@@ -174,14 +184,14 @@ public final class Interaction {
      * tried, since where a model is hit depends on its shape; the first that yields the entity's own rows wins.
      */
     public Hover hoverOver(EntityRef ref) {
-        List<Point2d> candidates = candidatePoints(ref);
+        if (ref.kind == EntityRef.Kind.ITEM) {
+            showInventoryTab();
+        }
+        List<Point2d> candidates = screenPoints(ref);
         Hover last = null;
         for (Point2d point : candidates) {
-            int screenX = point.x + VIEWPORT_OFFSET;
-            int screenY = point.y + VIEWPORT_OFFSET;
-            if (!ScreenController.isCoordinatesIn3dScreen(screenX, screenY)) {
-                continue;
-            }
+            int screenX = point.x;
+            int screenY = point.y;
             hover(screenX, screenY);
             List<MenuRow> menu = currentMenu();
             List<MenuRow> own = rowsFor(ref, menu);
@@ -197,13 +207,14 @@ public final class Interaction {
     }
 
     /**
-     * Chooses {@code option} from the menu for {@code ref}, the way a click on that row would.
+     * Chooses {@code option} from the menu for {@code ref}, the way a click on that row would. With no option
+     * named, the entity's first row is chosen, which is what a left click does.
      */
     public Map<String, Object> click(EntityRef ref, String option) {
         Hover hover = hoverOver(ref);
         MenuRow chosen = null;
         for (MenuRow row : hover.entityRows) {
-            if (row.option.equalsIgnoreCase(option)) {
+            if (option == null || row.option.equalsIgnoreCase(option)) {
                 chosen = row;
                 break;
             }
@@ -443,10 +454,41 @@ public final class Interaction {
                         && Perception.absoluteX(row.firstOperand) == ref.x && Perception.absoluteY(row.secondOperand) == ref.y;
             case TILE:
                 return type == ActionRowType.WALK_HERE.getId();
-            case ITEM:
+            case WIDGET:
+                return isWidgetAction(type) && row.secondOperand == ref.id;
+            case ITEM: {
+                GameInterface container = Perception.inventoryContainer();
+                return container != null && isItemAction(type) && row.firstOperand == ref.index && row.secondOperand == container.id;
+            }
             default:
                 return false;
         }
+    }
+
+    /**
+     * Rows the client adds for a widget itself: buttons and clickable text (42), "click here to continue" (54),
+     * listener options (50), and the varp, close and spell buttons. Each carries the widget id as its second operand.
+     */
+    private static boolean isWidgetAction(int type) {
+        return type == WIDGET_BUTTON_ACTION || type == WIDGET_CONTINUE_ACTION || type == WIDGET_LISTENER_ACTION
+                || type == ActionRowType.BUTTON_TOGGLE_VARP.getId() || type == ActionRowType.BUTTON_SET_VARP_VALUE.getId()
+                || type == ActionRowType.CLOSE_WIDGET.getId() || type == ActionRowType.CLOSE_PERMANENT_CHATBOX_WIDGET.getId()
+                || type == ActionRowType.SELECT_SPELL_ON_WIDGET.getId();
+    }
+
+    /**
+     * Rows for an item in an inventory widget: its own options, Use, Drop, Examine, and a selected item or spell
+     * being used on it. The slot is the first operand and the widget id the second.
+     */
+    private static boolean isItemAction(int type) {
+        return type == ActionRowType.SELECT_ITEM_ON_WIDGET.getId() || type == ActionRowType.DROP_ITEM.getId()
+                || type == ActionRowType.USE_ITEM_ON_INVENTORY_ITEM.getId() || type == ActionRowType.CAST_MAGIC_ON_WIDGET_ITEM.getId()
+                || type == ActionRowType.EXAMINE_ITEM_ON_V1_WIDGET.getId()
+                || type == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_1.getId() || type == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_2.getId()
+                || type == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_3.getId() || type == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_4.getId()
+                || type == ActionRowType.INTERACT_WITH_ITEM_ON_V1_WIDGET_OPTION_5.getId()
+                || type == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_1.getId() || type == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_2.getId()
+                || type == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_3.getId() || type == ActionRowType.INTERACT_WITH_ITEM_ON_V2_WIDGET_OPTION_4.getId();
     }
 
     private static boolean isNpcAction(int type) {
@@ -478,7 +520,45 @@ public final class Interaction {
     }
 
     /**
-     * Viewport positions worth pointing at for {@code ref}, most likely first.
+     * Screen positions worth pointing at for {@code ref}, most likely first. Something in the scene is projected
+     * through the camera and must land inside the 3D view; a widget or an inventory slot is where the client
+     * draws it.
+     */
+    private static List<Point2d> screenPoints(EntityRef ref) {
+        List<Point2d> points = new ArrayList<Point2d>();
+        if (ref.kind == EntityRef.Kind.WIDGET) {
+            Widgets.Widget widget = Widgets.find(ref.id);
+            if (widget == null) {
+                throw new IllegalStateException(ref + " is not part of any open interface");
+            }
+            if (!widget.visible) {
+                throw new IllegalStateException(ref + " is not on screen: it is hidden or scrolled out of view");
+            }
+            points.add(new Point2d(widget.centreX(), widget.centreY()));
+            return points;
+        }
+        if (ref.kind == EntityRef.Kind.ITEM) {
+            GameInterface container = Perception.inventoryContainer();
+            Widgets.Widget widget = container == null ? null : Widgets.find(container.id);
+            if (widget == null) {
+                throw new IllegalStateException(ref + " cannot be pointed at: the inventory is not the open tab");
+            }
+            int[] rect = widget.slotRect(ref.index);
+            points.add(new Point2d(rect[0] + rect[2] / 2, rect[1] + rect[3] / 2));
+            return points;
+        }
+        for (Point2d viewport : candidatePoints(ref)) {
+            int screenX = viewport.x + VIEWPORT_OFFSET;
+            int screenY = viewport.y + VIEWPORT_OFFSET;
+            if (ScreenController.isCoordinatesIn3dScreen(screenX, screenY)) {
+                points.add(new Point2d(screenX, screenY));
+            }
+        }
+        return points;
+    }
+
+    /**
+     * Viewport positions worth pointing at for something in the scene, most likely first.
      */
     private static List<Point2d> candidatePoints(EntityRef ref) {
         List<Point2d> points = new ArrayList<Point2d>();
@@ -508,6 +588,12 @@ public final class Interaction {
                     for (int height : OBJECT_HEIGHTS) {
                         addProjected(points, height, fineY, fineX);
                     }
+                    // A wall object such as a door or a gate stands on one edge of its tile, not at its centre.
+                    for (int height : WALL_HEIGHTS) {
+                        for (int[] edge : TILE_EDGES) {
+                            addProjected(points, height, fineY + edge[1], fineX + edge[0]);
+                        }
+                    }
                 } else {
                     addProjected(points, 0, fineY, fineX);
                     addProjected(points, 10, fineY, fineX);
@@ -515,10 +601,43 @@ public final class Interaction {
                 break;
             }
             case ITEM:
+            case WIDGET:
             default:
-                throw new IllegalArgumentException(ref + " is not something on screen");
+                throw new IllegalArgumentException(ref + " is not something in the scene");
         }
         return points;
+    }
+
+    /**
+     * Brings the inventory tab to the front if another tab is showing, by clicking its button and letting the
+     * client take one loop iteration to handle the click, as it would for a person. An interface occupying the
+     * tab area (a shop, a skill guide) is left alone: a person would have to close it first.
+     */
+    private void showInventoryTab() {
+        if (Game.currentTabId == Perception.INVENTORY_TAB || Game.tabWidgetIds[Perception.INVENTORY_TAB] == -1) {
+            return;
+        }
+        if (GameInterface.tabAreaInterfaceId != -1) {
+            throw new IllegalStateException("The inventory cannot be pointed at: interface " + GameInterface.tabAreaInterfaceId + " covers the tab area");
+        }
+        openTab(Perception.INVENTORY_TAB);
+        shell.loop();
+    }
+
+    /**
+     * Opens a side tab by clicking its button, which the client handles on its next loop iteration.
+     */
+    public Map<String, Object> openTab(int tab) {
+        int[] button = Widgets.tabButton(tab);
+        if (button == null) {
+            throw new IllegalStateException("Tab " + tab + " has no interface to show");
+        }
+        hover(button[0], button[1]);
+        press(button[0], button[1]);
+        Map<String, Object> result = Json.object();
+        result.put("tab", tab);
+        result.put("screen", Perception.position(button[0], button[1]));
+        return result;
     }
 
     private static void addProjected(List<Point2d> points, int height, int fineY, int fineX) {

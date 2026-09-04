@@ -34,7 +34,8 @@ public final class Perception {
             "slayer", "farming", "runecrafting",
     };
 
-    private static final int INVENTORY_TAB = 3;
+    /** The side tab the server places the inventory on. */
+    public static final int INVENTORY_TAB = 3;
     private static final int INVENTORY_SIZE = 28;
     private static final int SCENE_SIZE = 104;
     private static final int CHAT_HISTORY = 15;
