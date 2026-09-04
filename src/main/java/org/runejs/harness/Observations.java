@@ -8,6 +8,7 @@ import org.runejs.client.message.inbound.updating.UpdateNPCsInboundMessage;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -60,6 +61,22 @@ public final class Observations implements MessageHandlerRegistry.InboundMessage
         recorded.add(observation);
         if (recorded.size() > CAPACITY) {
             recorded.subList(0, recorded.size() - CAPACITY).clear();
+        }
+    }
+
+    /**
+     * Forgets everything recorded before {@code tick}. A live wait uses this to shed an idle backlog while keeping
+     * the last few ticks, which is where the consequences of the action just taken are.
+     */
+    public void forgetBefore(long tick) {
+        Iterator<Object> iterator = recorded.iterator();
+        while (iterator.hasNext()) {
+            Map<?, ?> observation = (Map<?, ?>) iterator.next();
+            if (((Number) observation.get("tick")).longValue() < tick) {
+                iterator.remove();
+            } else {
+                break;
+            }
         }
     }
 

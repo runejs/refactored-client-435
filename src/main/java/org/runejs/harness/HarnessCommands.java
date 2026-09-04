@@ -19,6 +19,7 @@ public final class HarnessCommands {
     private static final int DEFAULT_RADIUS = 12;
     private static final int MAX_REGION_LOAD_LOOPS = 6000;
     private static final long IO_WAIT_TIMEOUT_MS = 15000L;
+    private static final int RECENT_TICKS_KEPT = 5;
 
     private final HeadlessShell shell;
     private final Observations observations = new Observations();
@@ -156,9 +157,9 @@ public final class HarnessCommands {
      * marks the end of one of its ticks. What changed is reported the same way as in lockstep, diffed from now.
      */
     private Waiter awaitTicks(final int ticks) {
-        // Whatever arrived while nobody was waiting is not "what happened during this wait", and after an idle
-        // stretch it can be hours of sync updates.
-        observations.drain();
+        // An idle stretch can leave hours of sync updates behind, but the last few ticks hold the consequences of
+        // whatever was just done, so those stay.
+        observations.forgetBefore(observations.currentTick() - RECENT_TICKS_KEPT);
         final long target = observations.currentTick() + ticks;
         final boolean wasInGame = Perception.inGame();
         final long[] inventoryBefore = wasInGame ? Perception.inventorySnapshot() : null;
