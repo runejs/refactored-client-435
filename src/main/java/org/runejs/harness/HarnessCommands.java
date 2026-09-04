@@ -3,6 +3,7 @@ package org.runejs.harness;
 import org.runejs.client.Game;
 import org.runejs.client.GameSocket;
 import org.runejs.client.MovedStatics;
+import org.runejs.client.cache.def.VarPlayerDefinition;
 import org.runejs.client.cache.media.AnimationSequence;
 import org.runejs.client.media.renderable.actor.Player;
 
@@ -115,8 +116,14 @@ public final class HarnessCommands {
                 return camera(Json.stringValue(request, "turn"), Json.intValue(request, "loops", DEFAULT_CAMERA_LOOPS));
             case "interface":
                 return Widgets.dump();
+            case "varp":
+                return varp(Json.intValue(request, "index", -1));
             case "tab":
                 return interaction.openTab(Json.intValue(request, "tab", -1));
+            case "map":
+                return WorldView.map(Json.intValue(request, "radius", WorldView.DEFAULT_RADIUS));
+            case "walk_to":
+                return WorldView.walkTo(Json.intValue(request, "x", -1), Json.intValue(request, "y", -1));
             default:
                 return Json.error("Unknown op: " + op);
         }
@@ -383,6 +390,19 @@ public final class HarnessCommands {
             default:
                 throw new IllegalArgumentException("Unknown camera turn: " + turn + " (left, right, up or down)");
         }
+    }
+
+    /**
+     * What the client currently holds for a player variable, which is what its interfaces render from.
+     */
+    private static Map<String, Object> varp(int index) {
+        if (index < 0 || index >= VarPlayerDefinition.varPlayers.length) {
+            throw new IllegalArgumentException("varp needs an index between 0 and " + (VarPlayerDefinition.varPlayers.length - 1));
+        }
+        Map<String, Object> result = Json.object();
+        result.put("index", index);
+        result.put("value", VarPlayerDefinition.varPlayers[index]);
+        return result;
     }
 
     private Map<String, Object> screenshot(String path) throws IOException {

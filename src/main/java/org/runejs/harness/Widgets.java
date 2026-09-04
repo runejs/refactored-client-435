@@ -1,6 +1,7 @@
 package org.runejs.harness;
 
 import org.runejs.client.Game;
+import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceType;
@@ -58,14 +59,22 @@ public final class Widgets {
         public final GameInterface component;
         public final int x;
         public final int y;
+        /**
+         * Inside every ancestor's bounds: somewhere the mouse can reach at all.
+         */
+        public final boolean inside;
+        /**
+         * Inside and not in a layer the client hides until the mouse is over it.
+         */
         public final boolean visible;
 
-        private Widget(String area, int index, GameInterface component, int x, int y, boolean visible) {
+        private Widget(String area, int index, GameInterface component, int x, int y, boolean inside, boolean visible) {
             this.area = area;
             this.index = index;
             this.component = component;
             this.x = x;
             this.y = y;
+            this.inside = inside;
             this.visible = visible;
         }
 
@@ -108,12 +117,21 @@ public final class Widgets {
             json.put("width", component.width);
             json.put("height", component.height);
             json.put("visible", visible);
+            if (inside && !visible) {
+                json.put("hoverOnly", true);
+            }
             if (component.hide) {
                 json.put("hidden", true);
             }
             if (component.text != null && component.text.length() > 0) {
-                json.put("text", Interaction.stripColours(component.text));
+                String text = Interaction.stripColours(component.text);
+                json.put("text", text);
                 json.put("color", String.format("%06x", component.textColor & 0xffffff));
+                // The width the client draws the text at, in its own font; wider than the widget means clipped.
+                TypeFace font = component.getTypeFace();
+                if (font != null) {
+                    json.put("textWidth", font.getStringWidth(text));
+                }
             }
             if (component.option != null && component.option.length() > 0) {
                 json.put("option", component.option);
@@ -183,7 +201,7 @@ public final class Widgets {
         if (interfaceId == -1 || !GameInterface.load(interfaceId)) {
             return;
         }
-        walk(area, areaKind.getId(), region[0], region[1], region[2], region[3], GameInterface.components[interfaceId], -1, 0, 0, true, out);
+        walk(area, areaKind.getId(), region[0], region[1], region[2], region[3], GameInterface.components[interfaceId], -1, 0, 0, true, true, out);
     }
 
     /**
@@ -191,7 +209,7 @@ public final class Widgets {
      * corner, less its parent's scroll; a layer opens a region of its own for its children.
      */
     private static void walk(String area, int areaId, int minX, int minY, int maxX, int maxY, GameInterface[] children, int parentId, int scrollY,
-            int scrollX, boolean parentVisible, List<Widget> out) {
+            int scrollX, boolean parentInside, boolean parentVisible, List<Widget> out) {
         if (children == null) {
             return;
         }
@@ -202,15 +220,15 @@ public final class Widgets {
             }
             int x = child.x - scrollX + minX;
             int y = child.y - scrollY + minY;
-            boolean inside = x < maxX && x + child.width > minX && y < maxY && y + child.height > minY;
+            boolean inside = parentInside && x < maxX && x + child.width > minX && y < maxY && y + child.height > minY;
             boolean visible = parentVisible && inside;
             if (child.type == GameInterfaceType.LAYER && child.hide && !GameInterface.isHovering(areaId, i)) {
                 visible = false;
             }
-            out.add(new Widget(area, i, child, x, y, visible));
+            out.add(new Widget(area, i, child, x, y, inside, visible));
             if (child.type == GameInterfaceType.LAYER) {
-                walk(area, areaId, x, y, x + child.width, y + child.height, children, i, child.scrollY, child.scrollX, visible, out);
-                walk(area, areaId, x, y, x + child.width, y + child.height, child.createdComponents, child.id, child.scrollY, child.scrollX, visible, out);
+                walk(area, areaId, x, y, x + child.width, y + child.height, children, i, child.scrollY, child.scrollX, inside, visible, out);
+                walk(area, areaId, x, y, x + child.width, y + child.height, child.createdComponents, child.id, child.scrollY, child.scrollX, inside, visible, out);
             }
         }
     }

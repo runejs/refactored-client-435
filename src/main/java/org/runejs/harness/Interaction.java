@@ -531,8 +531,10 @@ public final class Interaction {
             if (widget == null) {
                 throw new IllegalStateException(ref + " is not part of any open interface");
             }
-            if (!widget.visible) {
-                throw new IllegalStateException(ref + " is not on screen: it is hidden or scrolled out of view");
+            // A widget in a layer the client hides until hovered still has a place on screen; pointing at it is
+            // exactly what reveals it. Only something scrolled or clipped out of its parents cannot be reached.
+            if (!widget.inside) {
+                throw new IllegalStateException(ref + " is not on screen: it is scrolled or clipped out of view");
             }
             points.add(new Point2d(widget.centreX(), widget.centreY()));
             return points;
