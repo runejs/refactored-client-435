@@ -65,10 +65,21 @@ public final class Observations implements MessageHandlerRegistry.InboundMessage
                 continue;
             }
             if (isSimple(value)) {
-                details.put(field.getName(), value);
+                details.put(fieldName(field.getName()), value);
             }
         }
         record("message." + messageName(message.getClass().getSimpleName()), details);
+    }
+
+    /**
+     * `tick` and `type` belong to the observation itself. A message field with one of those names (CreateObject
+     * has a `type`) is reported under a `message` prefix instead of overwriting them.
+     */
+    private static String fieldName(String name) {
+        if (name.equals("tick") || name.equals("type")) {
+            return "message" + Character.toUpperCase(name.charAt(0)) + name.substring(1);
+        }
+        return name;
     }
 
     private static String messageName(String className) {
