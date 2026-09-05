@@ -1,5 +1,7 @@
 package org.runejs.client.scene.camera;
 
+import org.runejs.Configuration;
+import org.runejs.client.Game;
 import org.runejs.client.scene.Point3d;
 
 public abstract class GameCamera implements Camera {
@@ -71,7 +73,17 @@ public abstract class GameCamera implements Camera {
      * Clamps the pitch to a valid value.
      */
     private int getClampedPitch(int pitch) {
-        return Math.max(128, Math.min(pitch, 383));
+        return Math.max(minimumPitch(), Math.min(pitch, 383));
+    }
+
+    /**
+     * The software renderer's tile visibility tables start at 128; only the GPU renderer can look flatter.
+     */
+    private static int minimumPitch() {
+        if (Game.sceneRenderer != null && Game.sceneRenderer.isGpu()) {
+            return Math.max(1, Math.min(128, Configuration.GPU_MIN_PITCH));
+        }
+        return 128;
     }
 
     @Override

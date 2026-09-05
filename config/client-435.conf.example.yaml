@@ -18,3 +18,10 @@ game:
   resizable: false
   shiftClickModifier: true
 serverDisplayName: Build 435
+gpu:
+  # Draw the 3D scene with OpenGL (offscreen, read back into the client's frame). Falls back to software if the
+  # platform has no offscreen context; currently only macOS is supported.
+  enabled: false
+  # Tiles kept visible before fog; the loaded region is 104 tiles across.
+  drawDistance: 104
+  fog: true

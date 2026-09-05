@@ -1,5 +1,8 @@
 package org.runejs.client;
 
+import org.runejs.Configuration;
+import org.runejs.client.renderer.gpu.GpuSceneRenderer;
+
 import org.runejs.client.cache.CacheArchive;
 import org.runejs.client.cache.def.*;
 import org.runejs.client.cache.media.AnimationSequence;
@@ -30,6 +33,9 @@ public class GameStartup {
         if (startupStage == 0) {
             Game.currentScene = new Scene();
             Game.sceneRenderer = new SceneRenderer(Game.currentScene);
+            if (Configuration.GPU_RENDERER) {
+                Game.sceneRenderer.setGpu(new GpuSceneRenderer(Configuration.GPU_DRAW_DISTANCE, Configuration.GPU_FOG));
+            }
             for (int i = 0; i < 4; i++)
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);
             Minimap.minimapImage = new ImageRGB(512, 512);

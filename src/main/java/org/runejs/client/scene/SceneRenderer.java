@@ -3,6 +3,7 @@ package org.runejs.client.scene;
 import org.runejs.client.LinkedList;
 import org.runejs.client.input.MouseHandler;
 import org.runejs.client.media.Rasterizer3D;
+import org.runejs.client.renderer.gpu.GpuSceneRenderer;
 import org.runejs.client.scene.camera.Camera;
 import org.runejs.client.scene.camera.CameraRotation;
 import org.runejs.client.scene.tile.*;
@@ -46,9 +47,21 @@ public class SceneRenderer {
 
     private Camera currentCamera;
     private CameraTileVisibility tileVisibilityInfo;
+    /**
+     * Draws the scene on the GPU instead of this class's software traversal, until it reports that it cannot.
+     */
+    private GpuSceneRenderer gpu;
 
     public SceneRenderer(Scene scene) {
         this.scene = scene;
+    }
+
+    public void setGpu(GpuSceneRenderer gpu) {
+        this.gpu = gpu;
+    }
+
+    public boolean isGpu() {
+        return gpu != null;
     }
 
     public void precalculateTileVisibility(int viewportWidth, int viewportHeight, int minHeight, int maxHeight, int[] heightsForPitch) {
@@ -56,6 +69,12 @@ public class SceneRenderer {
     }
 
     public void render(Camera camera, int plane) {
+        if (gpu != null) {
+            if (gpu.render(scene, camera, plane)) {
+                return;
+            }
+            gpu = null;
+        }
         Point3d cameraPos = camera.getPosition();
         CameraRotation cameraRotation = camera.getRotation();
 
@@ -81,7 +100,8 @@ public class SceneRenderer {
         int pitch = cameraRotation.pitch;
 
         this.scene.cycle++;
-        currentTileVisibilityMap = tileVisibilityInfo.visibilityInfo[(pitch - 128) / 32][yaw / 64];
+        // The camera can sit below 128 after the GPU renderer has given up; the tables start there.
+        currentTileVisibilityMap = tileVisibilityInfo.visibilityInfo[(Math.max(128, pitch) - 128) / 32][yaw / 64];
         drawFromTileX = currentCamera.getPosition().tileX - TILE_DRAW_DISTANCE;
         if (drawFromTileX < 0) {
             drawFromTileX = 0;
@@ -951,7 +971,7 @@ public class SceneRenderer {
         }
     }
 
-    private boolean isMouseWithinTriangle(int mouseX, int mouseY, int pointAY, int pointBY, int pointCY, int pointAX, int pointBX, int pointCX) {
+    public static boolean isMouseWithinTriangle(int mouseX, int mouseY, int pointAY, int pointBY, int pointCY, int pointAX, int pointBX, int pointCX) {
         if (mouseY < pointAY && mouseY < pointBY && mouseY < pointCY) {
             return false;
         }

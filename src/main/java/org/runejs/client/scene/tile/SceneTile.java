@@ -1,6 +1,7 @@
 package org.runejs.client.scene.tile;
 
 import org.runejs.client.node.Node;
+import org.runejs.client.renderer.gpu.StaticRange;
 import org.runejs.client.scene.GroundItemTile;
 import org.runejs.client.scene.InteractiveObject;
 
@@ -28,6 +29,10 @@ public class SceneTile extends Node {
     public int anInt2078;
     public WallDecoration wallDecoration;
     public int entityCount;
+    /**
+     * Where the GPU renderer keeps this tile's terrain triangles, when it has uploaded them.
+     */
+    public StaticRange gpuTerrain;
 
     public SceneTile(int arg0, int arg1, int arg2) {
         interactiveObjectsSizeOR = 0;
