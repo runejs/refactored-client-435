@@ -4,6 +4,7 @@ import org.runejs.client.Game;
 import org.runejs.client.message.InboundMessage;
 import org.runejs.client.message.handler.MessageHandlerRegistry;
 import org.runejs.client.message.inbound.updating.UpdateNPCsInboundMessage;
+import org.runejs.client.media.renderable.actor.Npc;
 import org.runejs.client.media.renderable.actor.Player;
 
 import java.lang.reflect.Field;
@@ -20,9 +21,12 @@ import java.util.Map;
  * event vocabulary is invented here: the client's codec already names every message. The one exception is the
  * player update, whose per-player masks the codec does not name: what it said about the local player's animation
  * and graphic is recorded as {@code self.animation} and {@code self.graphic}, since a skill's animation and a
- * level-up's fireworks are otherwise invisible to a test.
+ * level-up's fireworks are otherwise invisible to a test. Likewise the NPC update's per-NPC masks: what an NPC
+ * said and what it animated are recorded as {@code npc.chat} and {@code npc.animation}, with the NPC's index and
+ * definition id, so background characters can be watched.
  */
-public final class Observations implements MessageHandlerRegistry.InboundMessageListener, Player.UpdateListener {
+public final class Observations
+        implements MessageHandlerRegistry.InboundMessageListener, Player.UpdateListener, Npc.UpdateListener {
     private static final String[] CLASS_SUFFIXES = {"InboundMessage", "Message"};
     /**
      * Enough for several hundred ticks of a busy scene; beyond that the oldest are dropped rather than growing
@@ -37,6 +41,7 @@ public final class Observations implements MessageHandlerRegistry.InboundMessage
     public void attach() {
         Game.handlerRegistry.addListener(this);
         Player.updateListener = this;
+        Npc.updateListener = this;
     }
 
     /**
@@ -127,6 +132,25 @@ public final class Observations implements MessageHandlerRegistry.InboundMessage
         details.put("id", animationId);
         details.put("delay", delay);
         record("self.animation", details);
+    }
+
+    @Override
+    public void onNpcChat(int index, Npc npc, String text) {
+        Map<String, Object> details = Json.object();
+        details.put("index", index);
+        details.put("id", npc.actorDefinition == null ? null : npc.actorDefinition.id);
+        details.put("text", text);
+        record("npc.chat", details);
+    }
+
+    @Override
+    public void onNpcAnimation(int index, Npc npc, int animationId, int delay) {
+        Map<String, Object> details = Json.object();
+        details.put("index", index);
+        details.put("id", npc.actorDefinition == null ? null : npc.actorDefinition.id);
+        details.put("animation", animationId);
+        details.put("delay", delay);
+        record("npc.animation", details);
     }
 
     @Override

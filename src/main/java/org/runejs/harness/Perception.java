@@ -206,6 +206,7 @@ public final class Perception {
         entity.put("at", position(absoluteX(tileX(npc)), absoluteY(tileY(npc))));
         entity.put("options", definition == null ? Json.array() : nonNull(definition.options));
         entity.put("animation", npc.playingAnimation == -1 ? null : npc.playingAnimation);
+        entity.put("chat", npc.chatTimer > 0 ? npc.forcedChatMessage : null);
         return entity;
     }
 

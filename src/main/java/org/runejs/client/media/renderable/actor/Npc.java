@@ -10,6 +10,18 @@ import org.runejs.client.net.PacketBuffer;
 public class Npc extends Actor {
     public ActorDefinition actorDefinition;
 
+    /**
+     * Told what the server's NPC update said an NPC said or animated, with the values as the server sent them.
+     * Lets an observer report NPC speech and animations without re-decoding the update.
+     */
+    public interface UpdateListener {
+        void onNpcChat(int index, Npc npc, String text);
+
+        void onNpcAnimation(int index, Npc npc, int animationId, int delay);
+    }
+
+    public static UpdateListener updateListener;
+
     public static void parseNpcUpdateMasks(PacketBuffer buffer) {
         for (int i = 0; i < actorUpdatingIndex; i++) {
             int npcIndex = -1;
@@ -109,6 +121,8 @@ public class Npc extends Actor {
                 npc.forcedChatMessage = forcedChatMessage;
 
                 npc.chatTimer = 100;
+                if (updateListener != null)
+                    updateListener.onNpcChat(npcIndex, npc, forcedChatMessage);
             }
             if ((mask & 0x80) != 0) {
                 int actorDefinition = buffer.getUnsignedShortBE();
@@ -162,6 +176,9 @@ public class Npc extends Actor {
                 if (animationId == 65535) {
                     animationId = -1;
                 }
+
+                if (updateListener != null)
+                    updateListener.onNpcAnimation(npcIndex, npc, animationId, animationDelay);
 
                 if (animationId == npc.playingAnimation && animationId != -1) {
                     int i_10_ = AnimationSequence.getAnimationSequence(animationId).replyMode;
