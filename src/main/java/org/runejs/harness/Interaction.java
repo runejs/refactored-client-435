@@ -35,6 +35,7 @@ public final class Interaction {
     private static final int[] ACTOR_HEIGHT_FRACTIONS = {2, 4, 1};
     private static final int[] OBJECT_HEIGHTS = {80, 30, 160, 250, 10, 400};
     private static final int[] WALL_HEIGHTS = {80, 160, 30};
+    private static final int[] FLAT_HEIGHTS = {10, 0};
     private static final int EDGE = TILE_UNITS / 2 - 4;
     private static final int[][] TILE_EDGES = {{-EDGE, 0}, {EDGE, 0}, {0, -EDGE}, {0, EDGE}};
     private static final int MAX_CHAT_LENGTH = 80;
@@ -592,6 +593,13 @@ public final class Interaction {
                     }
                     // A wall object such as a door or a gate stands on one edge of its tile, not at its centre.
                     for (int height : WALL_HEIGHTS) {
+                        for (int[] edge : TILE_EDGES) {
+                            addProjected(points, height, fineY + edge[1], fineX + edge[0]);
+                        }
+                    }
+                    // A flat object lying along its footprint, such as a shaped canoe on the water, can miss the
+                    // centre of its anchor tile at every height; its edges, low down, are tried too.
+                    for (int height : FLAT_HEIGHTS) {
                         for (int[] edge : TILE_EDGES) {
                             addProjected(points, height, fineY + edge[1], fineX + edge[0]);
                         }
