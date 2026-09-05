@@ -91,7 +91,27 @@ public final class Perception {
         self.put("level", Player.worldLevel);
         self.put("animation", local.playingAnimation == -1 ? null : local.playingAnimation);
         self.put("name", local.playerName);
+        self.put("facing", facing(local.facingActorIndex));
         return self;
+    }
+
+    /**
+     * The entity an actor has been told to face, as the client holds it: an NPC by index, a player by index
+     * above 32768, or null when facing nothing.
+     */
+    public static Map<String, Object> facing(int facingActorIndex) {
+        if (facingActorIndex == -1) {
+            return null;
+        }
+        Map<String, Object> facing = Json.object();
+        if (facingActorIndex >= 32768) {
+            facing.put("type", "player");
+            facing.put("index", facingActorIndex - 32768);
+        } else {
+            facing.put("type", "npc");
+            facing.put("index", facingActorIndex);
+        }
+        return facing;
     }
 
     public static Map<String, Object> position(int x, int y) {
@@ -207,6 +227,7 @@ public final class Perception {
         entity.put("options", definition == null ? Json.array() : nonNull(definition.options));
         entity.put("animation", npc.playingAnimation == -1 ? null : npc.playingAnimation);
         entity.put("chat", npc.chatTimer > 0 ? npc.forcedChatMessage : null);
+        entity.put("facing", facing(npc.facingActorIndex));
         entity.put("hitpoints", hitpoints(npc.remainingHitpoints, npc.maximumHitpoints));
         return entity;
     }
