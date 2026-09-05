@@ -34,7 +34,7 @@ public class GameStartup {
             Game.currentScene = new Scene();
             Game.sceneRenderer = new SceneRenderer(Game.currentScene);
             if (Configuration.GPU_RENDERER) {
-                Game.sceneRenderer.setGpu(new GpuSceneRenderer(Configuration.GPU_DRAW_DISTANCE, Configuration.GPU_FOG));
+                Game.sceneRenderer.setGpu(new GpuSceneRenderer(Configuration.GPU_DRAW_DISTANCE, Configuration.GPU_FOG, Configuration.GPU_EXTENDED_TERRAIN));
             }
             for (int i = 0; i < 4; i++)
                 Landscape.currentCollisionMap[i] = new CollisionMap(104, 104);

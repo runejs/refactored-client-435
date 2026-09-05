@@ -2,15 +2,12 @@ package org.runejs.client.renderer.gpu;
 
 import org.lwjgl.system.MemoryUtil;
 import org.runejs.client.Landscape;
-import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.media.renderable.Model;
 import org.runejs.client.media.renderable.Renderable;
 import org.runejs.client.scene.InteractiveObject;
 import org.runejs.client.scene.Scene;
 import org.runejs.client.scene.SceneRenderer;
-import org.runejs.client.scene.tile.ComplexTile;
 import org.runejs.client.scene.tile.FloorDecoration;
-import org.runejs.client.scene.tile.GenericTile;
 import org.runejs.client.scene.tile.SceneTile;
 import org.runejs.client.scene.tile.Wall;
 import org.runejs.client.scene.tile.WallDecoration;
@@ -29,9 +26,8 @@ import static org.lwjgl.opengl.GL30.glBindVertexArray;
  * multi-draw calls. Nothing here depends on the camera, so the whole region is drawn whatever the distance.
  */
 final class StaticScene {
-    private static final int HIDDEN_COLOUR = 12345678;
-
     private final ModelEmitter emitter;
+    private final TerrainEmitter terrainEmitter;
     /**
      * Terrain is kept apart from the models so it can be drawn with a depth bias: the software renderer paints
      * a tile's models over its ground, and a flat model lying on the ground (a ripple, a carpet) has to win the
@@ -51,8 +47,9 @@ final class StaticScene {
     private final RangeList alphaRanges = new RangeList();
     private int collectStamp;
 
-    StaticScene(ModelEmitter emitter) {
+    StaticScene(ModelEmitter emitter, TerrainEmitter terrainEmitter) {
         this.emitter = emitter;
+        this.terrainEmitter = terrainEmitter;
         terrainVbo = glGenBuffers();
         terrainVao = VertexLayout.createVertexArray(terrainVbo);
         opaqueVbo = glGenBuffers();
@@ -108,9 +105,10 @@ final class StaticScene {
         StaticRange ground = new StaticRange();
         ground.opaqueFirst = terrain.vertexCount();
         if (tile.plainTile != null) {
-            emitPlainTile(tile.plainTile, landscape, heightPlane, x, y);
+            int[][] heights = landscape.tile_height[heightPlane];
+            terrainEmitter.plainTile(terrain, tile.plainTile, x, y, heights[x][y], heights[x + 1][y], heights[x + 1][y + 1], heights[x][y + 1]);
         } else if (tile.shapedTile != null) {
-            emitShapedTile(tile.shapedTile, x, y);
+            terrainEmitter.shapedTile(terrain, tile.shapedTile, x, y);
         }
         ground.opaqueCount = terrain.vertexCount() - ground.opaqueFirst;
         tile.gpuTerrain = ground;
@@ -169,101 +167,6 @@ final class StaticScene {
         range.opaqueCount = opaque.vertexCount() - range.opaqueFirst;
         range.alphaCount = alpha.vertexCount() - range.alphaFirst;
         return range;
-    }
-
-    /**
-     * The two triangles of {@code SceneRenderer.renderPlainTile}, with the same vertex order and colours.
-     */
-    private void emitPlainTile(GenericTile tile, Landscape landscape, int plane, int tileX, int tileY) {
-        int[][] heights = landscape.tile_height[plane];
-        int x0 = tileX << 7;
-        int x1 = x0 + 128;
-        int y0 = tileY << 7;
-        int y1 = y0 + 128;
-        int hSW = heights[tileX][tileY];
-        int hSE = heights[tileX + 1][tileY];
-        int hNE = heights[tileX + 1][tileY + 1];
-        int hNW = heights[tileX][tileY + 1];
-        int[] hsl2rgb = Rasterizer3D.hsl2rgb;
-        if (tile.texture == -1) {
-            if (tile.colourNE != HIDDEN_COLOUR) {
-                terrain.put(x1, hNE, y1, opaqueColour(hsl2rgb[tile.colourNE & 0xffff]), 0f, 0f, -1);
-                terrain.put(x0, hNW, y1, opaqueColour(hsl2rgb[tile.colourNW & 0xffff]), 0f, 0f, -1);
-                terrain.put(x1, hSE, y0, opaqueColour(hsl2rgb[tile.colourSE & 0xffff]), 0f, 0f, -1);
-            }
-            if (tile.colourSW != HIDDEN_COLOUR) {
-                terrain.put(x0, hSW, y0, opaqueColour(hsl2rgb[tile.colourSW & 0xffff]), 0f, 0f, -1);
-                terrain.put(x1, hSE, y0, opaqueColour(hsl2rgb[tile.colourSE & 0xffff]), 0f, 0f, -1);
-                terrain.put(x0, hNW, y1, opaqueColour(hsl2rgb[tile.colourNW & 0xffff]), 0f, 0f, -1);
-            }
-        } else if (Scene.lowMemory) {
-            int average = Rasterizer3D.interface3.getAverageTextureColour(tile.texture);
-            terrain.put(x1, hNE, y1, opaqueColour(hsl2rgb[Scene.adjustLightness(average, tile.colourNE) & 0xffff]), 0f, 0f, -1);
-            terrain.put(x0, hNW, y1, opaqueColour(hsl2rgb[Scene.adjustLightness(average, tile.colourNW) & 0xffff]), 0f, 0f, -1);
-            terrain.put(x1, hSE, y0, opaqueColour(hsl2rgb[Scene.adjustLightness(average, tile.colourSE) & 0xffff]), 0f, 0f, -1);
-            terrain.put(x0, hSW, y0, opaqueColour(hsl2rgb[Scene.adjustLightness(average, tile.colourSW) & 0xffff]), 0f, 0f, -1);
-            terrain.put(x1, hSE, y0, opaqueColour(hsl2rgb[Scene.adjustLightness(average, tile.colourSE) & 0xffff]), 0f, 0f, -1);
-            terrain.put(x0, hNW, y1, opaqueColour(hsl2rgb[Scene.adjustLightness(average, tile.colourNW) & 0xffff]), 0f, 0f, -1);
-        } else {
-            int texture = tile.texture;
-            emitter.markTexture(texture);
-            terrain.put(x1, hNE, y1, shadeColour(tile.colourNE), 1f, 1f, texture);
-            terrain.put(x0, hNW, y1, shadeColour(tile.colourNW), 0f, 1f, texture);
-            terrain.put(x1, hSE, y0, shadeColour(tile.colourSE), 1f, 0f, texture);
-            terrain.put(x0, hSW, y0, shadeColour(tile.colourSW), 0f, 0f, texture);
-            terrain.put(x1, hSE, y0, shadeColour(tile.colourSE), 1f, 0f, texture);
-            terrain.put(x0, hNW, y1, shadeColour(tile.colourNW), 0f, 1f, texture);
-        }
-    }
-
-    /**
-     * The triangles of {@code SceneRenderer.renderShapedTile}. Textures are mapped over the tile rather than per
-     * triangle; on a flat tile that is what the software path does as well.
-     */
-    private void emitShapedTile(ComplexTile tile, int tileX, int tileY) {
-        int[] hsl2rgb = Rasterizer3D.hsl2rgb;
-        int originX = tileX << 7;
-        int originY = tileY << 7;
-        int triangleCount = tile.triangleA.length;
-        for (int triangle = 0; triangle < triangleCount; triangle++) {
-            int a = tile.triangleA[triangle];
-            int b = tile.triangleB[triangle];
-            int c = tile.triangleC[triangle];
-            int texture = tile.triangleTexture == null ? -1 : tile.triangleTexture[triangle];
-            if (texture == -1) {
-                if (tile.triangleHSLA[triangle] == HIDDEN_COLOUR) {
-                    continue;
-                }
-                putShapedVertex(tile, a, opaqueColour(hsl2rgb[tile.triangleHSLA[triangle] & 0xffff]), 0, 0, -1);
-                putShapedVertex(tile, b, opaqueColour(hsl2rgb[tile.triangleHSLB[triangle] & 0xffff]), 0, 0, -1);
-                putShapedVertex(tile, c, opaqueColour(hsl2rgb[tile.triangleHSLC[triangle] & 0xffff]), 0, 0, -1);
-            } else if (Scene.lowMemory) {
-                int average = Rasterizer3D.interface3.getAverageTextureColour(texture);
-                putShapedVertex(tile, a, opaqueColour(hsl2rgb[Scene.adjustLightness(average, tile.triangleHSLA[triangle]) & 0xffff]), 0, 0, -1);
-                putShapedVertex(tile, b, opaqueColour(hsl2rgb[Scene.adjustLightness(average, tile.triangleHSLB[triangle]) & 0xffff]), 0, 0, -1);
-                putShapedVertex(tile, c, opaqueColour(hsl2rgb[Scene.adjustLightness(average, tile.triangleHSLC[triangle]) & 0xffff]), 0, 0, -1);
-            } else {
-                emitter.markTexture(texture);
-                putShapedVertex(tile, a, shadeColour(tile.triangleHSLA[triangle]), originX, originY, texture);
-                putShapedVertex(tile, b, shadeColour(tile.triangleHSLB[triangle]), originX, originY, texture);
-                putShapedVertex(tile, c, shadeColour(tile.triangleHSLC[triangle]), originX, originY, texture);
-            }
-        }
-    }
-
-    private void putShapedVertex(ComplexTile tile, int vertex, int colour, int originX, int originY, int texture) {
-        int x = tile.originalVertexX[vertex];
-        int height = tile.originalVertexY[vertex];
-        int north = tile.originalVertexZ[vertex];
-        terrain.put(x, height, north, colour, (x - originX) / 128f, (north - originY) / 128f, texture);
-    }
-
-    private static int opaqueColour(int rgb) {
-        return 0xff000000 | (rgb & 0xffffff);
-    }
-
-    private static int shadeColour(int shade) {
-        return 0xff000000 | ((shade & 0xff) << 16);
     }
 
     /**

@@ -1,6 +1,7 @@
 package org.runejs.client.renderer.gpu;
 
 import org.lwjgl.system.MemoryUtil;
+import org.runejs.client.MovedStatics;
 import org.runejs.client.media.Rasterizer;
 import org.runejs.client.media.Rasterizer3D;
 import org.runejs.client.scene.Point3d;
@@ -41,6 +42,7 @@ public final class GpuSceneRenderer {
 
     private final int drawDistanceTiles;
     private final boolean fog;
+    private final int extendedTerrainTiles;
 
     private GlContext context;
     private ShaderProgram program;
@@ -51,6 +53,7 @@ public final class GpuSceneRenderer {
     private TextureArray textures;
     private ModelEmitter emitter;
     private StaticScene staticScene;
+    private ExtendedTerrain extendedTerrain;
     private GpuSceneTraversal traversal;
     private Scene builtScene;
     private int builtGeneration;
@@ -83,10 +86,13 @@ public final class GpuSceneRenderer {
      * @param drawDistanceTiles how far, in tiles, the world stays visible before fog takes it; also sets the far
      *                          clipping plane
      * @param fog               whether distant geometry fades to the background rather than ending abruptly
+     * @param extendedTerrainTiles how many tiles of ground to draw beyond each edge of the loaded region, from
+     *                          the map files in the cache; 0 stops at the region edge
      */
-    public GpuSceneRenderer(int drawDistanceTiles, boolean fog) {
+    public GpuSceneRenderer(int drawDistanceTiles, boolean fog, int extendedTerrainTiles) {
         this.drawDistanceTiles = Math.max(1, drawDistanceTiles);
         this.fog = fog;
+        this.extendedTerrainTiles = Math.max(0, extendedTerrainTiles);
     }
 
     /**
@@ -146,7 +152,11 @@ public final class GpuSceneRenderer {
         if (textures == null) {
             textures = new TextureArray(Rasterizer3D.interface3);
             emitter = new ModelEmitter(textures.layers);
-            staticScene = new StaticScene(emitter);
+            TerrainEmitter terrainEmitter = new TerrainEmitter(emitter);
+            staticScene = new StaticScene(emitter, terrainEmitter);
+            if (extendedTerrainTiles > 0) {
+                extendedTerrain = new ExtendedTerrain(extendedTerrainTiles, terrainEmitter);
+            }
             traversal = new GpuSceneTraversal(emitter);
         }
         ensureFramebuffer(width, height);
@@ -158,6 +168,9 @@ public final class GpuSceneRenderer {
             System.out.println("GPU renderer: uploaded region, " + staticScene.terrainVertexCount() / 3 + " terrain, "
                     + staticScene.opaqueVertexCount() / 3 + " opaque and " + staticScene.alphaVertexCount() / 3
                     + " translucent triangles in " + (System.nanoTime() - started) / 1000000 + " ms");
+        }
+        if (extendedTerrain != null) {
+            extendedTerrain.update(scene.generation, MovedStatics.baseX, MovedStatics.baseY);
         }
 
         Point3d position = camera.getPosition();
@@ -199,6 +212,9 @@ public final class GpuSceneRenderer {
         glEnable(GL_POLYGON_OFFSET_FILL);
         glPolygonOffset(1f, 2f);
         staticScene.drawTerrain();
+        if (extendedTerrain != null) {
+            extendedTerrain.draw();
+        }
         glDisable(GL_POLYGON_OFFSET_FILL);
         staticScene.drawOpaque();
         drawStream(dynamicOpaqueVao, dynamicOpaqueVbo, dynamicOpaque);
@@ -340,6 +356,9 @@ public final class GpuSceneRenderer {
                 context.makeCurrent();
                 if (staticScene != null) {
                     staticScene.delete();
+                }
+                if (extendedTerrain != null) {
+                    extendedTerrain.delete();
                 }
                 if (textures != null) {
                     textures.delete();

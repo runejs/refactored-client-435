@@ -56,6 +56,7 @@ public class Configuration {
             GPU_DRAW_DISTANCE = getOrDefault(gpu, "drawDistance", GPU_DRAW_DISTANCE);
             GPU_FOG = getOrDefault(gpu, "fog", GPU_FOG);
             GPU_MIN_PITCH = getOrDefault(gpu, "minPitch", GPU_MIN_PITCH);
+            GPU_EXTENDED_TERRAIN = getOrDefault(gpu, "extendedTerrain", GPU_EXTENDED_TERRAIN);
 
         } catch (Exception e) {
             System.out.println("Unable to load client config - using defaults.");
@@ -124,6 +125,7 @@ public class Configuration {
         gpu.put("drawDistance", GPU_DRAW_DISTANCE);
         gpu.put("fog", GPU_FOG);
         gpu.put("minPitch", GPU_MIN_PITCH);
+        gpu.put("extendedTerrain", GPU_EXTENDED_TERRAIN);
         clientConfig.put("gpu", gpu);
 
         final DumperOptions options = new DumperOptions();
@@ -267,6 +269,12 @@ public class Configuration {
      * only worth having when the whole region is drawn.
      */
     public static int GPU_MIN_PITCH = 128;
+
+    /**
+     * How many tiles of ground the GPU renderer draws beyond each edge of the loaded region, decoded from the map
+     * files in the cache. Only the ground floor, without objects; 0 stops at the region edge.
+     */
+    public static int GPU_EXTENDED_TERRAIN = 128;
 
     /**
      * Should music be muted, overridden when logged in

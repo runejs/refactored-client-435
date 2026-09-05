@@ -1,6 +1,7 @@
 package org.runejs.harness;
 
 import org.runejs.client.Game;
+import org.runejs.client.scene.SceneCamera;
 import org.runejs.client.GameSocket;
 import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.def.VarPlayerDefinition;
@@ -144,6 +145,14 @@ public final class HarnessCommands {
         GameSocket socket = MovedStatics.gameServerSocket;
         status.put("bytesSent", socket == null ? 0 : socket.bytesQueued());
         status.put("bytesReceived", socket == null ? 0 : socket.bytesRead());
+        if (Game.playerCamera != null) {
+            Map<String, Object> camera = Json.object();
+            camera.put("yaw", Game.playerCamera.getYaw());
+            camera.put("pitch", Game.playerCamera.getPitch());
+            camera.put("minPitch", SceneCamera.minimumPitch());
+            camera.put("terrainMinPitch", SceneCamera.cameraTerrainMinScaledPitch / 256);
+            status.put("camera", camera);
+        }
         return status;
     }
 

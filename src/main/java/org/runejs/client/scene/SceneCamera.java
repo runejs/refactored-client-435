@@ -1,5 +1,8 @@
 package org.runejs.client.scene;
 
+import org.runejs.Configuration;
+import org.runejs.client.Game;
+
 /**
  * Temporary holding ground for camera code
  *
@@ -36,10 +39,10 @@ public class SceneCamera {
      */
     public static void setMaxSurroundingTerrainHeight(int i_3_) {
         int i_9_ = i_3_ * 192;
-        if (i_9_ > 98048)
-            i_9_ = 98048;
-        if (i_9_ < 32768)
-            i_9_ = 32768;
+        if (i_9_ > 383 * 256)
+            i_9_ = 383 * 256;
+        if (i_9_ < minimumPitch() * 256)
+            i_9_ = minimumPitch() * 256;
         if (cameraTerrainMinScaledPitch < i_9_) {
             cameraTerrainMinScaledPitch += (-cameraTerrainMinScaledPitch + i_9_) / 24;
         } else if (cameraTerrainMinScaledPitch > i_9_)
@@ -47,10 +50,21 @@ public class SceneCamera {
     }
 
     public static int getClampedPitch(int pitch) {
-        if (pitch < 128)
-            return 128;
+        if (pitch < minimumPitch())
+            return minimumPitch();
         if (pitch > 383)
             return 383;
         return pitch;
+    }
+
+    /**
+     * The flattest the camera may look. The software renderer's tile visibility tables start at 128; only the GPU
+     * renderer, which draws the whole region and beyond, can go lower, by {@code gpu.minPitch} in the config.
+     */
+    public static int minimumPitch() {
+        if (Game.sceneRenderer != null && Game.sceneRenderer.isGpu()) {
+            return Math.max(1, Math.min(128, Configuration.GPU_MIN_PITCH));
+        }
+        return 128;
     }
 }
