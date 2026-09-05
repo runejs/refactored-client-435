@@ -153,6 +153,35 @@ public final class Observations
         record("npc.animation", details);
     }
 
+    /**
+     * A hit-splat on the local player is {@code self.hit}, on another player {@code player.hit}; both carry the
+     * damage, the splat kind (0 a miss, 1 a hit, 2 poison) and the health bar the server sent with it.
+     */
+    @Override
+    public void onHit(Player player, int damage, int type, int remainingHitpoints, int maximumHitpoints) {
+        Map<String, Object> details = Json.object();
+        if (player != Player.localPlayer) {
+            details.put("name", player.playerName);
+        }
+        details.put("damage", damage);
+        details.put("splat", type);
+        details.put("hitpoints", remainingHitpoints);
+        details.put("maxHitpoints", maximumHitpoints);
+        record(player == Player.localPlayer ? "self.hit" : "player.hit", details);
+    }
+
+    @Override
+    public void onNpcHit(int index, Npc npc, int damage, int type, int remainingHitpoints, int maximumHitpoints) {
+        Map<String, Object> details = Json.object();
+        details.put("index", index);
+        details.put("id", npc.actorDefinition == null ? null : npc.actorDefinition.id);
+        details.put("damage", damage);
+        details.put("splat", type);
+        details.put("hitpoints", remainingHitpoints);
+        details.put("maxHitpoints", maximumHitpoints);
+        record("npc.hit", details);
+    }
+
     @Override
     public void onGraphic(Player player, int graphicId, int height, int delay) {
         if (player != Player.localPlayer) {

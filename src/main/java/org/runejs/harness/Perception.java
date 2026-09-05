@@ -207,7 +207,21 @@ public final class Perception {
         entity.put("options", definition == null ? Json.array() : nonNull(definition.options));
         entity.put("animation", npc.playingAnimation == -1 ? null : npc.playingAnimation);
         entity.put("chat", npc.chatTimer > 0 ? npc.forcedChatMessage : null);
+        entity.put("hitpoints", hitpoints(npc.remainingHitpoints, npc.maximumHitpoints));
         return entity;
+    }
+
+    /**
+     * An actor's health bar as the client last saw it, or null before any hit has told the client what it is.
+     */
+    public static Map<String, Object> hitpoints(int remaining, int maximum) {
+        if (maximum <= 0) {
+            return null;
+        }
+        Map<String, Object> hitpoints = Json.object();
+        hitpoints.put("current", remaining);
+        hitpoints.put("max", maximum);
+        return hitpoints;
     }
 
     public static Map<String, Object> describePlayer(int index, Player player) {
@@ -218,6 +232,7 @@ public final class Perception {
         entity.put("name", player.playerName);
         entity.put("at", position(absoluteX(tileX(player)), absoluteY(tileY(player))));
         entity.put("options", nonNull(Player.playerActions));
+        entity.put("hitpoints", hitpoints(player.remainingHitpoints, player.maximumHitpoints));
         return entity;
     }
 

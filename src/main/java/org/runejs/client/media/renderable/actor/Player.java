@@ -24,6 +24,8 @@ public class Player extends Actor {
         void onAnimation(Player player, int animationId, int delay);
 
         void onGraphic(Player player, int graphicId, int height, int delay);
+
+        void onHit(Player player, int damage, int type, int remainingHitpoints, int maximumHitpoints);
     }
 
     public static UpdateListener updateListener;
@@ -106,6 +108,8 @@ public class Player extends Actor {
             player.anInt3139 = 300 + MovedStatics.pulseCycle;
             player.remainingHitpoints = appearanceBuffer.getUnsignedByte();
             player.maximumHitpoints = appearanceBuffer.getUnsignedByte();
+            if(updateListener != null)
+                updateListener.onHit(player, damageType1, damageType2, player.remainingHitpoints, player.maximumHitpoints);
         }
         if((mask & 0x10) != 0) { // face position
             player.facePositionX = appearanceBuffer.getUnsignedShortBE();
@@ -132,6 +136,8 @@ public class Player extends Actor {
             player.anInt3139 = 300 + MovedStatics.pulseCycle;
             player.remainingHitpoints = appearanceBuffer.getUnsignedByte();
             player.maximumHitpoints = appearanceBuffer.getUnsignedByte();
+            if(updateListener != null)
+                updateListener.onHit(player, damageType1, damageType2, player.remainingHitpoints, player.maximumHitpoints);
         }
         if((mask & 0x400) != 0) { // Forced movement?
             player.forceMoveStartX = appearanceBuffer.getUnsignedByte();

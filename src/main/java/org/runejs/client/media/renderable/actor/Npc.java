@@ -18,6 +18,8 @@ public class Npc extends Actor {
         void onNpcChat(int index, Npc npc, String text);
 
         void onNpcAnimation(int index, Npc npc, int animationId, int delay);
+
+        void onNpcHit(int index, Npc npc, int damage, int type, int remainingHitpoints, int maximumHitpoints);
     }
 
     public static UpdateListener updateListener;
@@ -48,6 +50,8 @@ public class Npc extends Actor {
                 npc.anInt3139 = MovedStatics.pulseCycle + 300;
                 npc.remainingHitpoints = remainingHitpoints;
                 npc.maximumHitpoints = maximumHitpoints;
+                if (updateListener != null)
+                    updateListener.onNpcHit(npcIndex, npc, i_3_, i_4_, remainingHitpoints, maximumHitpoints);
             }
             if ((0x20 & mask) != 0) {
                 int graphicId = buffer.getUnsignedShortLE();
