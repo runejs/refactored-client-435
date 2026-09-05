@@ -1,6 +1,7 @@
 package org.runejs.harness;
 
 import org.runejs.client.Game;
+import org.runejs.client.MovedStatics;
 import org.runejs.client.cache.media.TypeFace;
 import org.runejs.client.cache.media.gameInterface.GameInterface;
 import org.runejs.client.cache.media.gameInterface.GameInterfaceArea;
@@ -128,7 +129,7 @@ public final class Widgets {
                 json.put("text", text);
                 json.put("color", String.format("%06x", component.textColor & 0xffffff));
                 // The width the client draws the text at, in its own font; wider than the widget means clipped.
-                TypeFace font = component.getTypeFace();
+                TypeFace font = typeFaceOf(component);
                 if (font != null) {
                     json.put("textWidth", font.getStringWidth(text));
                 }
@@ -230,6 +231,20 @@ public final class Widgets {
                 walk(area, areaId, x, y, x + child.width, y + child.height, children, i, child.scrollY, child.scrollX, inside, visible, out);
                 walk(area, areaId, x, y, x + child.width, y + child.height, child.createdComponents, child.id, child.scrollY, child.scrollX, inside, visible, out);
             }
+        }
+    }
+
+    /**
+     * The widget's font, or null when the cache cannot give one. A font group that decodes to something other
+     * than a font (group 495, used by the prayer tab's points, is one) throws inside the client's loader and leaves
+     * its sprite scratch state half filled; that is cleared here so the next decode starts clean.
+     */
+    private static TypeFace typeFaceOf(GameInterface component) {
+        try {
+            return component.getTypeFace();
+        } catch (RuntimeException e) {
+            MovedStatics.clearDecodedSpriteData();
+            return null;
         }
     }
 

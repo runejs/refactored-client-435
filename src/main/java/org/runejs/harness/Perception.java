@@ -92,6 +92,7 @@ public final class Perception {
         self.put("animation", local.playingAnimation == -1 ? null : local.playingAnimation);
         self.put("name", local.playerName);
         self.put("facing", facing(local.facingActorIndex));
+        self.put("headIcon", local.headIcon == -1 ? null : local.headIcon);
         return self;
     }
 
