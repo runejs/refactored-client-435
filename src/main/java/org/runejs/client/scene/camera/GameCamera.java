@@ -1,6 +1,7 @@
 package org.runejs.client.scene.camera;
 
 import org.runejs.client.scene.Point3d;
+import org.runejs.client.scene.SceneCamera;
 
 public abstract class GameCamera implements Camera {
     /**
@@ -71,7 +72,7 @@ public abstract class GameCamera implements Camera {
      * Clamps the pitch to a valid value.
      */
     private int getClampedPitch(int pitch) {
-        return Math.max(128, Math.min(pitch, 383));
+        return Math.max(SceneCamera.minimumPitch(), Math.min(pitch, 383));
     }
 
     @Override

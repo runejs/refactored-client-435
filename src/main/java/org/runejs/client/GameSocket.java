@@ -22,6 +22,19 @@ public class GameSocket implements Runnable {
     public boolean socketDisconnected;
     public byte[] queuedData;
 
+    /**
+     * Bytes consumed from the server since this socket was opened.
+     */
+    private long bytesRead = 0L;
+    /**
+     * Bytes handed to this socket for sending since it was opened.
+     */
+    private long bytesQueued = 0L;
+    /**
+     * Bytes actually written to the network by the writer thread.
+     */
+    private volatile long bytesWritten = 0L;
+
     public GameSocket(Socket socket, Signlink signLink) throws IOException {
         socketDisconnected = false;
         socketError = false;
@@ -42,8 +55,37 @@ public class GameSocket implements Runnable {
                     throw new EOFException();
                 packetSize -= i;
                 currentPosition += i;
+                bytesRead += i;
             }
         }
+    }
+
+    /**
+     * Bytes consumed from the server so far.
+     */
+    public long bytesRead() {
+        return bytesRead;
+    }
+
+    /**
+     * Bytes that have arrived from the server so far, consumed or not.
+     */
+    public long bytesArrived() throws IOException {
+        return bytesRead + inputStreamAvailable();
+    }
+
+    /**
+     * Bytes handed over for sending so far.
+     */
+    public long bytesQueued() {
+        return bytesQueued;
+    }
+
+    /**
+     * Whether everything handed over for sending has reached the network.
+     */
+    public boolean flushed() {
+        return bytesWritten >= bytesQueued;
     }
 
     public void kill() {
@@ -88,6 +130,7 @@ public class GameSocket implements Runnable {
                     if (queuedDataPosition == (4900 + dataWrittenPosition) % 5000)
                         throw new IOException();
                 }
+                bytesQueued += size;
                 if (signLinkNode == null)
                     signLinkNode = signLink.putThreadNode(3, this);
                 this.notifyAll();
@@ -130,6 +173,7 @@ public class GameSocket implements Runnable {
                         socketError = true;
                     }
                     dataWrittenPosition = (dataSize + dataWrittenPosition) % 5000;
+                    bytesWritten += dataSize;
                     try {
                         if (dataWrittenPosition == queuedDataPosition)
                             socketOutputStream.flush();
@@ -165,6 +209,9 @@ public class GameSocket implements Runnable {
     public int read() throws IOException {
         if (socketDisconnected)
             return 0;
-        return socketInputStream.read();
+        int value = socketInputStream.read();
+        if (value >= 0)
+            bytesRead++;
+        return value;
     }
 }

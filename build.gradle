@@ -14,14 +14,17 @@ repositories {
 }
 
 application {
-    mainClassName 'org.runejs.client.GameShell'
+    mainClass = 'org.runejs.client.GameShell'
 }
 
 jar {
     dependsOn configurations.runtimeClasspath
+    // Every runtime jar is unpacked into this one; the LWJGL jars each bring their own manifest index.
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    exclude 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA', 'META-INF/INDEX.LIST'
 
     manifest {
-        attributes("MAIN-CLASS": application.mainClassName)
+        attributes("MAIN-CLASS": application.mainClass.get())
     }
 
     from {
@@ -31,6 +34,20 @@ jar {
     }
 }
 
+ext {
+    lwjglVersion = '3.3.6'
+    lwjglNatives = ['natives-macos-arm64', 'natives-macos', 'natives-linux', 'natives-windows']
+}
+
 dependencies {
     implementation group: 'org.yaml', name: 'snakeyaml', version:'1.26'
+
+    // OpenGL bindings for the optional GPU scene renderer (gpu.enabled in the client config).
+    implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
+    implementation 'org.lwjgl:lwjgl'
+    implementation 'org.lwjgl:lwjgl-opengl'
+    lwjglNatives.each { natives ->
+        runtimeOnly "org.lwjgl:lwjgl::$natives"
+        runtimeOnly "org.lwjgl:lwjgl-opengl::$natives"
+    }
 }

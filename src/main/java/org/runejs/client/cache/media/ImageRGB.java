@@ -6,7 +6,10 @@ import org.runejs.client.media.Rasterizer;
 import org.runejs.client.util.BitUtils;
 
 import java.awt.*;
-import java.awt.image.PixelGrabber;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class ImageRGB extends Rasterizer {
     public int offsetY;
@@ -28,23 +31,27 @@ public class ImageRGB extends Rasterizer {
         offsetX = offsetY = 0;
     }
 
+    /**
+     * Decodes an encoded image (JPEG or PNG) into pixels.
+     *
+     * @param component Unused. Decoding used to go through the AWT toolkit and a MediaTracker, which needed a
+     *                  component; ImageIO needs neither, so a headless client can decode images too.
+     */
     public ImageRGB(byte[] imagedata, Component component) {
         try {
-            Image image = Toolkit.getDefaultToolkit().createImage(imagedata);
-            MediaTracker mediatracker = new MediaTracker(component);
-            mediatracker.addImage(image, 0);
-            mediatracker.waitForAll();
-            imageWidth = image.getWidth(component);
-            imageHeight = image.getHeight(component);
+            BufferedImage image = ImageIO.read(new ByteArrayInputStream(imagedata));
+            if (image == null) {
+                throw new IOException("Unrecognised image format");
+            }
+            imageWidth = image.getWidth();
+            imageHeight = image.getHeight();
             maxWidth = imageWidth;
             maxHeight = imageHeight;
             offsetX = 0;
             offsetY = 0;
-            pixels = new int[imageWidth * imageHeight];
-            PixelGrabber pixelgrabber = new PixelGrabber(image, 0, 0, imageWidth, imageHeight, pixels, 0, imageWidth);
-            pixelgrabber.grabPixels();
-        } catch(InterruptedException interruptedexception) {
-            System.out.println("Error converting jpg");
+            pixels = image.getRGB(0, 0, imageWidth, imageHeight, null, 0, imageWidth);
+        } catch(IOException exception) {
+            System.out.println("Error decoding image: " + exception.getMessage());
         }
     }
 

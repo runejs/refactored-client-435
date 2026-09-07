@@ -60,6 +60,11 @@ public class Scene {
     public int mapSizeX = 104;
     public int mapSizeY = 104;
     public int mapSizeZ = 4;
+    /**
+     * Counts the times the scene has been emptied for a new region, so a renderer that keeps the scene's geometry
+     * uploaded can tell when its copy is stale.
+     */
+    public int generation = 0;
 
     public int activeOccluderCount = 0;
     public SceneCluster[][] cullingClusters = new SceneCluster[mapSizeZ][500];
@@ -229,6 +234,7 @@ public class Scene {
     }
 
     public void initToNull() {
+        generation++;
         for (int z = 0; z < mapSizeZ; z++) {
             for (int x = 0; x < mapSizeX; x++) {
                 for (int y = 0; y < mapSizeY; y++) {

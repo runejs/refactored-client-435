@@ -7,6 +7,14 @@ import java.io.File;
 public class JagexCacheLocator implements CacheLocator{
     @Override
     public String getCachePath(String homeDirectory) throws RuntimeException {
+        File configuredCache = new File(Configuration.CACHE_NAME);
+        if (configuredCache.isAbsolute()) {
+            if (configuredCache.isDirectory() || configuredCache.mkdirs()) {
+                return configuredCache.getPath() + "/";
+            }
+            throw new RuntimeException("Unable to create cache directory " + configuredCache);
+        }
+
         if (homeDirectory == null) {
             homeDirectory = "~/";
         }

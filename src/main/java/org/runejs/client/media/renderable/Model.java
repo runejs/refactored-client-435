@@ -735,7 +735,51 @@ public class Model extends Renderable {
         }
     }
 
-    public void renderAtPoint(int arg0, CameraRotation cameraRotation, int x, int z, int y, int arg8) {
+    /**
+     * Flags returned by {@link #testBounds}.
+     */
+    public static final int VISIBLE = 1;
+    /**
+     * Some of the model may lie in front of the near plane, so faces need clipping while they are drawn.
+     */
+    public static final int NEAR_CLIPPED = 2;
+    /**
+     * The cursor lies within the model's screen bounds and the model is not a single tile, so its faces have to be
+     * tested one by one before it can be reported as hovered.
+     */
+    public static final int CURSOR_INSIDE = 4;
+
+    /**
+     * Depth of the model origin in view space, kept from {@link #testBounds} for {@link #projectVertices}.
+     */
+    private int projectedOriginDepth;
+
+    public void renderAtPoint(int rotation, CameraRotation cameraRotation, int x, int z, int y, int hash) {
+        int bounds = testBounds(rotation, cameraRotation, x, z, y, hash);
+        if((bounds & VISIBLE) == 0)
+            return;
+        boolean nearClipped = (bounds & NEAR_CLIPPED) != 0;
+        boolean anyVertexClipped = projectVertices(rotation, cameraRotation, x, z, y, nearClipped || texturedTriangleCount > 0);
+        try {
+            method815(anyVertexClipped, (bounds & CURSOR_INSIDE) != 0, hash);
+        } catch(Exception exception) {
+            /* empty */
+        }
+    }
+
+    /**
+     * Decides whether the model, placed at the given camera-relative position, can appear on screen at all, and
+     * reports a single-tile model as hovered when the cursor lies within its screen bounds.
+     *
+     * @param rotation model rotation, 0-2047
+     * @param x        east offset of the model origin from the camera
+     * @param z        height offset of the model origin from the camera
+     * @param y        north offset of the model origin from the camera
+     * @param hash     the scene hash to report on hover, or 0 for none
+     * @return 0 when off screen, otherwise {@link #VISIBLE} with {@link #NEAR_CLIPPED} and {@link #CURSOR_INSIDE}
+     * as they apply
+     */
+    public int testBounds(int rotation, CameraRotation cameraRotation, int x, int z, int y, int hash) {
         if(anInt3169 != 1)
             method799();
 
@@ -749,36 +793,34 @@ public class Model extends Renderable {
         int i_5_ = diagonal2DAboveOrigin * pitchCosine >> 16;
         int i_6_ = i_4_ + i_5_;
         if(i_6_ <= 50/* || i_4_ >= 3500*/) {
-            return;
+            return 0;
         }
         int i_7_ = y * yawSine + x * yawCosine >> 16;
         int i_8_ = i_7_ - diagonal2DAboveOrigin << 9;
         if(i_8_ / i_6_ >= Rasterizer3D.anInt2934) {
-            return;
+            return 0;
         }
         int i_9_ = i_7_ + diagonal2DAboveOrigin << 9;
         if(i_9_ / i_6_ <= Rasterizer3D.anInt2942) {
-            return;
+            return 0;
         }
         int i_10_ = z * pitchCosine - i * pitchSine >> 16;
         int i_11_ = diagonal2DAboveOrigin * pitchSine >> 16;
         int i_12_ = i_10_ + i_11_ << 9;
         if(i_12_ / i_6_ <= Rasterizer3D.anInt2935) {
-            return;
+            return 0;
         }
         int i_13_ = i_11_ + (modelHeight * pitchCosine >> 16);
         int i_14_ = i_10_ - i_13_ << 9;
         if(i_14_ / i_6_ >= Rasterizer3D.anInt2941) {
-            return;
+            return 0;
         }
+        projectedOriginDepth = i_4_;
+        int result = VISIBLE;
         int i_15_ = i_5_ + (modelHeight * pitchSine >> 16);
-        boolean bool = false;
-        boolean bool_16_ = false;
         if(i_4_ - i_15_ <= 50)
-            bool_16_ = true;
-        boolean bool_17_ = bool_16_ || texturedTriangleCount > 0;
-        boolean bool_18_ = false;
-        if(arg8 > 0 && MouseHandler.gameScreenClickable) {
+            result |= NEAR_CLIPPED;
+        if(hash > 0 && MouseHandler.gameScreenClickable) {
             int i_19_ = i_4_ - i_5_;
             if(i_19_ <= 50)
                 i_19_ = 50;
@@ -800,24 +842,41 @@ public class Model extends Renderable {
             int i_21_ = MouseHandler.cursorY - Rasterizer3D.center_y;
             if(i_20_ > i_8_ && i_20_ < i_9_ && i_21_ > i_14_ && i_21_ < i_12_) {
                 if(singleTile)
-                    hoveredHash[resourceCount++] = arg8;
+                    hoveredHash[resourceCount++] = hash;
                 else
-                    bool_18_ = true;
+                    result |= CURSOR_INSIDE;
             }
         }
+        return result;
+    }
+
+    /**
+     * Projects every vertex into {@link #vertexScreenX}, {@link #vertexScreenY} and {@link #vertexScreenZ} for the
+     * placement last passed to {@link #testBounds}. A vertex in front of the near plane gets screen x -5000.
+     *
+     * @param keepViewCoordinates also keep the view-space coordinates, which drawing textured or near-clipped
+     *                            faces needs
+     * @return whether any vertex lies in front of the near plane
+     */
+    public boolean projectVertices(int rotation, CameraRotation cameraRotation, int x, int z, int y, boolean keepViewCoordinates) {
+        int yawSine = cameraRotation.yawSine;
+        int yawCosine = cameraRotation.yawCosine;
+        int pitchSine = cameraRotation.pitchSine;
+        int pitchCosine = cameraRotation.pitchCosine;
         int i_22_ = Rasterizer3D.center_x;
         int i_23_ = Rasterizer3D.center_y;
         int i_24_ = 0;
         int i_25_ = 0;
-        if(arg0 != 0) {
-            i_24_ = SINE[arg0];
-            i_25_ = COSINE[arg0];
+        if(rotation != 0) {
+            i_24_ = SINE[rotation];
+            i_25_ = COSINE[rotation];
         }
+        boolean anyVertexClipped = false;
         for(int i_26_ = 0; i_26_ < vertexCount; i_26_++) {
             int i_27_ = verticesX[i_26_];
             int i_28_ = verticesY[i_26_];
             int i_29_ = verticesZ[i_26_];
-            if(arg0 != 0) {
+            if(rotation != 0) {
                 int i_30_ = i_29_ * i_24_ + i_27_ * i_25_ >> 16;
                 i_29_ = i_29_ * i_25_ - i_27_ * i_24_ >> 16;
                 i_27_ = i_30_;
@@ -831,24 +890,44 @@ public class Model extends Renderable {
             i_31_ = i_28_ * pitchCosine - i_29_ * pitchSine >> 16;
             i_29_ = i_28_ * pitchSine + i_29_ * pitchCosine >> 16;
             i_28_ = i_31_;
-            vertexScreenZ[i_26_] = i_29_ - i_4_;
+            vertexScreenZ[i_26_] = i_29_ - projectedOriginDepth;
             if(i_29_ >= 50) {
                 vertexScreenX[i_26_] = i_22_ + (i_27_ << 9) / i_29_;
                 vertexScreenY[i_26_] = i_23_ + (i_28_ << 9) / i_29_;
             } else {
                 vertexScreenX[i_26_] = -5000;
-                bool = true;
+                anyVertexClipped = true;
             }
-            if(bool_17_) {
+            if(keepViewCoordinates) {
                 anIntArray3225[i_26_] = i_27_;
                 anIntArray3203[i_26_] = i_28_;
                 anIntArray3223[i_26_] = i_29_;
             }
         }
-        try {
-            method815(bool, bool_18_, arg8);
-        } catch(Exception exception) {
-            /* empty */
+        return anyVertexClipped;
+    }
+
+    /**
+     * Reports the model as hovered if the cursor lies within any of its projected faces: the test
+     * {@link #method815} performs while it draws, for a caller that does not draw. Needs
+     * {@link #projectVertices} first.
+     */
+    public void hitTestFaces(int hash) {
+        for(int face = 0; face < triangleCount; face++) {
+            if(triangleDrawType != null && triangleDrawType[face] == -1)
+                continue;
+            int a = trianglePointsX[face];
+            int b = trianglePointsY[face];
+            int c = trianglePointsZ[face];
+            int xA = vertexScreenX[a];
+            int xB = vertexScreenX[b];
+            int xC = vertexScreenX[c];
+            if(xA == -5000 || xB == -5000 || xC == -5000)
+                continue;
+            if(isPointWithinTriangle(MouseHandler.cursorX, MouseHandler.cursorY, vertexScreenY[a], vertexScreenY[b], vertexScreenY[c], xA, xB, xC)) {
+                hoveredHash[resourceCount++] = hash;
+                return;
+            }
         }
     }
 

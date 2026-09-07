@@ -18,6 +18,33 @@ The client will use a set of default configurations if no file is provided. The 
 
 To provide your own configurations, copy the file [`./config/client-435.conf.example.yml`](./config/client-435.conf.example.yaml) to `client-435.conf.yaml` in your user's home directory, and modify the given configuration for your specific needs.
 
+### GPU renderer
+
+The 3D scene can be drawn with OpenGL instead of the software rasterizer. Enable it in the client configuration:
+
+```yaml
+gpu:
+  enabled: true
+  drawDistance: 104    # tiles kept visible before fog takes them; the loaded region is 104 across
+  fog: true
+  minPitch: 128        # lowest camera pitch (2048 = full circle); lower looks further toward the horizon
+  extendedTerrain: 128 # tiles of ground drawn beyond each edge of the loaded region, from the cache's map files
+```
+
+The renderer keeps the client's own lighting, projection, hover tests and 2D layer. It renders into an offscreen
+framebuffer and copies the pixels into the scene buffer the interface is drawn over, so the option menu and the
+headless harness behave exactly as before. Terrain and the models placed by the landscape are uploaded once per
+region and drawn whole every frame, so the whole loaded region is visible rather than the software renderer's
+26-tile radius; anything that moves or animates is streamed per frame. Beyond the region, `extendedTerrain`
+decodes the surrounding map files and draws their ground floor (no objects) so that a low camera sees a horizon.
+The camera's own rule that raises the pitch near hills still applies, so `minPitch` only takes effect on
+reasonably flat ground.
+
+Offscreen contexts are created through CGL, so this works on macOS only for now; on other platforms, or if no
+context can be created, the client logs the reason and keeps the software renderer. Textured faces are drawn opaque,
+as the software rasterizer draws them, and translucent faces are blended in scene order over a depth buffer rather
+than sorted per face. Running with `-Drunejs.gpu.stats=true` prints frame timings every 100 frames.
+
 ### Gradle
 
 Gradle provides a wrapper script which downloads the build system to a local cache. This allows you to run the client

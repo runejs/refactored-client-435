@@ -92,4 +92,15 @@ public class Class35 implements Interface3 {
     public boolean method15() {
         return textureSize == 64;
     }
+
+    @Override
+    public int textureCount() {
+        return textures.length;
+    }
+
+    @Override
+    public boolean isTextureAnimated(int textureId) {
+        Texture texture = textureId >= 0 && textureId < textures.length ? textures[textureId] : null;
+        return texture != null && texture.animateDirection != 0;
+    }
 }

@@ -35,26 +35,31 @@ public class ScreenController {
     public static void frameMode(ScreenMode screenMode) {
         if (frameMode != screenMode) {
             frameMode = screenMode;
+            Frame frame = GameShell.clientFrame;
             if (screenMode == ScreenMode.FIXED) {
                 frameWidth = 765;
                 frameHeight = 503;
-                GameShell.clientFrame.setResizable(false);
-                GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
-                GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                if (frame != null) {
+                    frame.setResizable(false);
+                    frame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                    frame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                }
             } else if (screenMode == ScreenMode.RESIZABLE) {
                 frameWidth = 900;
                 frameHeight = 637;
-                GameShell.clientFrame.setResizable(true);
-                GameShell.clientFrame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
-                GameShell.clientFrame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
-
-
+                if (frame != null) {
+                    frame.setResizable(true);
+                    frame.setPreferredSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                    frame.setMinimumSize(new Dimension(ScreenController.frameWidth, ScreenController.frameHeight));
+                }
             } else if (screenMode == ScreenMode.FULLSCREEN) {
                 frameWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
                 frameHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
             }
-            GameShell.clientFrame.setSize(ScreenController.frameWidth, ScreenController.frameHeight);
-            Dimension innerSize = getInnerSize(GameShell.clientFrame);
+            if (frame != null) {
+                frame.setSize(ScreenController.frameWidth, ScreenController.frameHeight);
+            }
+            Dimension innerSize = getInnerSize(frame);
             drawHeight = innerSize.height;
             drawWidth = innerSize.width;
             setBounds();
@@ -69,7 +74,7 @@ public class ScreenController {
         }
         MovedStatics.width = drawWidth;
         MovedStatics.height = drawHeight;
-        if (frameMode != ScreenMode.FIXED) {
+        if (frameMode != ScreenMode.FIXED && GameShell.clientFrame != null) {
             if (frameWidth != GameShell.clientFrame.getWidth()) {
                 frameWidth = GameShell.clientFrame.getWidth();
                 setBounds();
@@ -190,7 +195,14 @@ public class ScreenController {
     }
 
 
+    /**
+     * The drawable area inside the window's borders. Without a window (a headless client) the drawable area is
+     * simply the configured frame size.
+     */
     public static Dimension getInnerSize(Frame frame) {
+        if (frame == null) {
+            return new Dimension(frameWidth, frameHeight);
+        }
         Dimension size = frame.getSize();
         Insets insets = frame.getInsets();
         if (insets != null) {

@@ -13,7 +13,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Configuration {
-    static final String clientConfigPath = System.getProperty("user.home") + File.separator + "client-435.conf.yaml";
+    /**
+     * Where the client configuration lives. Defaults to the user's home directory; the system property
+     * {@code runejs.client.config} points a headless or test client at a configuration of its own.
+     */
+    static final String clientConfigPath = System.getProperty("runejs.client.config",
+            System.getProperty("user.home") + File.separator + "client-435.conf.yaml");
 
 
     public static void read() {
@@ -29,6 +34,7 @@ public class Configuration {
             final Map<String, Object> rsa = getOrDefaultMap(obj, "rsa");
             final Map<String, Object> login = getOrDefaultMap(obj, "login");
             final Map<String, Object> game = getOrDefaultMap(obj, "game");
+            final Map<String, Object> gpu = getOrDefaultMap(obj, "gpu");
 
             SERVER_ADDRESS = getOrDefault(net, "address", SERVER_ADDRESS);
             GAME_PORT = getOrDefault(net, "game_port", GAME_PORT);
@@ -46,6 +52,11 @@ public class Configuration {
             RESIZABLE = getOrDefault(game, "resizable", RESIZABLE);
             RENDER_FLAMES = getOrDefault(game, "renderFlames", RENDER_FLAMES);
             SERVER_DISPLAY_NAME = getOrDefault(obj, "serverDisplayName", SERVER_DISPLAY_NAME);
+            GPU_RENDERER = getOrDefault(gpu, "enabled", GPU_RENDERER);
+            GPU_DRAW_DISTANCE = getOrDefault(gpu, "drawDistance", GPU_DRAW_DISTANCE);
+            GPU_FOG = getOrDefault(gpu, "fog", GPU_FOG);
+            GPU_MIN_PITCH = getOrDefault(gpu, "minPitch", GPU_MIN_PITCH);
+            GPU_EXTENDED_TERRAIN = getOrDefault(gpu, "extendedTerrain", GPU_EXTENDED_TERRAIN);
 
         } catch (Exception e) {
             System.out.println("Unable to load client config - using defaults.");
@@ -108,6 +119,14 @@ public class Configuration {
         clientConfig.put("rsa", rsa);
         clientConfig.put("login", login);
         clientConfig.put("game", game);
+
+        Map<String, Object> gpu = new HashMap<>();
+        gpu.put("enabled", GPU_RENDERER);
+        gpu.put("drawDistance", GPU_DRAW_DISTANCE);
+        gpu.put("fog", GPU_FOG);
+        gpu.put("minPitch", GPU_MIN_PITCH);
+        gpu.put("extendedTerrain", GPU_EXTENDED_TERRAIN);
+        clientConfig.put("gpu", gpu);
 
         final DumperOptions options = new DumperOptions();
         options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
@@ -226,6 +245,36 @@ public class Configuration {
      * When hovering over widgets, show useful information
      */
     public static boolean DEBUG_WIDGETS = false;
+
+    /**
+     * Draw the 3D scene with OpenGL instead of the software rasterizer. Falls back to software if no offscreen
+     * context can be created on this machine.
+     */
+    public static boolean GPU_RENDERER = false;
+
+    /**
+     * How far, in tiles, the GPU renderer keeps the world visible before fog takes it. The loaded region is 104
+     * tiles across, so anything from about 52 upwards shows all of it.
+     */
+    public static int GPU_DRAW_DISTANCE = 104;
+
+    /**
+     * Whether the GPU renderer fades distant geometry into the background instead of cutting it off.
+     */
+    public static boolean GPU_FOG = true;
+
+    /**
+     * The lowest camera pitch, in the client's 2048-step angle units, while the GPU renderer draws. The client
+     * never goes below 128 on its own; a lower value lets the camera look further toward the horizon, which is
+     * only worth having when the whole region is drawn.
+     */
+    public static int GPU_MIN_PITCH = 128;
+
+    /**
+     * How many tiles of ground the GPU renderer draws beyond each edge of the loaded region, decoded from the map
+     * files in the cache. Only the ground floor, without objects; 0 stops at the region edge.
+     */
+    public static int GPU_EXTENDED_TERRAIN = 128;
 
     /**
      * Should music be muted, overridden when logged in

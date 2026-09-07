@@ -1,0 +1,220 @@
+package org.runejs.harness;
+
+import org.runejs.client.Game;
+import org.runejs.client.message.InboundMessage;
+import org.runejs.client.message.handler.MessageHandlerRegistry;
+import org.runejs.client.message.inbound.updating.UpdateNPCsInboundMessage;
+import org.runejs.client.media.renderable.actor.Npc;
+import org.runejs.client.media.renderable.actor.Player;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Everything the server told the client during a tick, in the server's own vocabulary.
+ *
+ * Each inbound message is recorded under the name of its decoder's message class, with its public fields. No
+ * event vocabulary is invented here: the client's codec already names every message. The one exception is the
+ * player update, whose per-player masks the codec does not name: what it said about the local player's animation
+ * and graphic is recorded as {@code self.animation} and {@code self.graphic}, since a skill's animation and a
+ * level-up's fireworks are otherwise invisible to a test. Likewise the NPC update's per-NPC masks: what an NPC
+ * said and what it animated are recorded as {@code npc.chat} and {@code npc.animation}, with the NPC's index and
+ * definition id, so background characters can be watched.
+ */
+public final class Observations
+        implements MessageHandlerRegistry.InboundMessageListener, Player.UpdateListener, Npc.UpdateListener {
+    private static final String[] CLASS_SUFFIXES = {"InboundMessage", "Message"};
+    /**
+     * Enough for several hundred ticks of a busy scene; beyond that the oldest are dropped rather than growing
+     * without bound while the client idles.
+     */
+    private static final int CAPACITY = 20000;
+
+    private final List<Object> recorded = new ArrayList<Object>();
+    private long currentTick = 0;
+    private boolean countingTicks = false;
+
+    public void attach() {
+        Game.handlerRegistry.addListener(this);
+        Player.updateListener = this;
+        Npc.updateListener = this;
+    }
+
+    /**
+     * Lockstep mode: the controller says which server tick the coming loops belong to.
+     */
+    public void beginTick(long tick) {
+        currentTick = tick;
+    }
+
+    /**
+     * Live mode: nobody tells the client which tick it is, but every server tick ends with the player and NPC
+     * sync messages, so the tick counter advances itself when the NPC sync has been handled.
+     */
+    public void countTicksFromSync() {
+        countingTicks = true;
+    }
+
+    public long currentTick() {
+        return currentTick;
+    }
+
+    public void record(String type, Map<String, Object> details) {
+        Map<String, Object> observation = Json.object();
+        observation.put("tick", currentTick);
+        observation.put("type", type);
+        observation.putAll(details);
+        recorded.add(observation);
+        if (recorded.size() > CAPACITY) {
+            recorded.subList(0, recorded.size() - CAPACITY).clear();
+        }
+    }
+
+    /**
+     * Forgets everything recorded before {@code tick}. A live wait uses this to shed an idle backlog while keeping
+     * the last few ticks, which is where the consequences of the action just taken are.
+     */
+    public void forgetBefore(long tick) {
+        Iterator<Object> iterator = recorded.iterator();
+        while (iterator.hasNext()) {
+            Map<?, ?> observation = (Map<?, ?>) iterator.next();
+            if (((Number) observation.get("tick")).longValue() < tick) {
+                iterator.remove();
+            } else {
+                break;
+            }
+        }
+    }
+
+    /**
+     * Hands over everything recorded since the last drain.
+     */
+    public List<Object> drain() {
+        List<Object> drained = new ArrayList<Object>(recorded);
+        recorded.clear();
+        return drained;
+    }
+
+    @Override
+    public void onMessage(InboundMessage message) {
+        Map<String, Object> details = Json.object();
+        for (Field field : message.getClass().getFields()) {
+            if (Modifier.isStatic(field.getModifiers())) {
+                continue;
+            }
+            Object value;
+            try {
+                value = field.get(message);
+            } catch (IllegalAccessException e) {
+                continue;
+            }
+            if (isSimple(value)) {
+                details.put(fieldName(field.getName()), value);
+            }
+        }
+        record("message." + messageName(message.getClass().getSimpleName()), details);
+
+        if (countingTicks && message instanceof UpdateNPCsInboundMessage) {
+            currentTick++;
+        }
+    }
+
+    @Override
+    public void onAnimation(Player player, int animationId, int delay) {
+        if (player != Player.localPlayer) {
+            return;
+        }
+        Map<String, Object> details = Json.object();
+        details.put("id", animationId);
+        details.put("delay", delay);
+        record("self.animation", details);
+    }
+
+    @Override
+    public void onNpcChat(int index, Npc npc, String text) {
+        Map<String, Object> details = Json.object();
+        details.put("index", index);
+        details.put("id", npc.actorDefinition == null ? null : npc.actorDefinition.id);
+        details.put("text", text);
+        record("npc.chat", details);
+    }
+
+    @Override
+    public void onNpcAnimation(int index, Npc npc, int animationId, int delay) {
+        Map<String, Object> details = Json.object();
+        details.put("index", index);
+        details.put("id", npc.actorDefinition == null ? null : npc.actorDefinition.id);
+        details.put("animation", animationId);
+        details.put("delay", delay);
+        record("npc.animation", details);
+    }
+
+    /**
+     * A hit-splat on the local player is {@code self.hit}, on another player {@code player.hit}; both carry the
+     * damage, the splat kind (0 a miss, 1 a hit, 2 poison) and the health bar the server sent with it.
+     */
+    @Override
+    public void onHit(Player player, int damage, int type, int remainingHitpoints, int maximumHitpoints) {
+        Map<String, Object> details = Json.object();
+        if (player != Player.localPlayer) {
+            details.put("name", player.playerName);
+        }
+        details.put("damage", damage);
+        details.put("splat", type);
+        details.put("hitpoints", remainingHitpoints);
+        details.put("maxHitpoints", maximumHitpoints);
+        record(player == Player.localPlayer ? "self.hit" : "player.hit", details);
+    }
+
+    @Override
+    public void onNpcHit(int index, Npc npc, int damage, int type, int remainingHitpoints, int maximumHitpoints) {
+        Map<String, Object> details = Json.object();
+        details.put("index", index);
+        details.put("id", npc.actorDefinition == null ? null : npc.actorDefinition.id);
+        details.put("damage", damage);
+        details.put("splat", type);
+        details.put("hitpoints", remainingHitpoints);
+        details.put("maxHitpoints", maximumHitpoints);
+        record("npc.hit", details);
+    }
+
+    @Override
+    public void onGraphic(Player player, int graphicId, int height, int delay) {
+        if (player != Player.localPlayer) {
+            return;
+        }
+        Map<String, Object> details = Json.object();
+        details.put("id", graphicId);
+        details.put("height", height);
+        details.put("delay", delay);
+        record("self.graphic", details);
+    }
+
+    /**
+     * `tick` and `type` belong to the observation itself. A message field with one of those names (CreateObject
+     * has a `type`) is reported under a `message` prefix instead of overwriting them.
+     */
+    private static String fieldName(String name) {
+        if (name.equals("tick") || name.equals("type")) {
+            return "message" + Character.toUpperCase(name.charAt(0)) + name.substring(1);
+        }
+        return name;
+    }
+
+    private static String messageName(String className) {
+        for (String suffix : CLASS_SUFFIXES) {
+            if (className.endsWith(suffix) && className.length() > suffix.length()) {
+                return className.substring(0, className.length() - suffix.length());
+            }
+        }
+        return className;
+    }
+
+    private static boolean isSimple(Object value) {
+        return value == null || value instanceof String || value instanceof Number || value instanceof Boolean || value instanceof int[];
+    }
+}

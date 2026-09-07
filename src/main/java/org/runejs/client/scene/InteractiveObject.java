@@ -1,6 +1,7 @@
 package org.runejs.client.scene;
 
 import org.runejs.client.media.renderable.Renderable;
+import org.runejs.client.renderer.gpu.StaticRange;
 
 public class InteractiveObject {
     public int z;
@@ -17,6 +18,15 @@ public class InteractiveObject {
     public int tileRight;
     public int cycle;
     public int anInt491;
+    /**
+     * Where the GPU renderer keeps the model, when it has uploaded it; null for anything that moves or animates.
+     */
+    public StaticRange gpu;
+    /**
+     * The last frame in which the GPU renderer gathered this object's range, so an object spanning several tiles
+     * is drawn once.
+     */
+    public int gpuCollectStamp;
 
     public InteractiveObject() {
         hash = 0;
